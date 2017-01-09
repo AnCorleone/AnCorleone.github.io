@@ -10,7 +10,7 @@
     <!-- Title -->
     
     <title>
-        about | null
+        到底有没有 | null
     </title>
     
     <!-- Favicons -->
@@ -46,7 +46,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoururl.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="about | null">
+    <meta property="og:title" content="到底有没有 | null">
     <meta property="og:description" content="null">
     
      <!--[if lte IE 9]>
@@ -202,6 +202,33 @@
 				
                 <!-- Post TOC -->
 
+    
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
+
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
+			
+			
+		
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
 
 <!-- Layouts -->
 
@@ -230,7 +257,7 @@
 		
 	
         <p class="article-headline-p">
-            about
+            到底有没有
         </p>
     </div>
 
@@ -290,7 +317,7 @@
 
     <!-- Share Weibo -->
     
-    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=about&url=http://yoururl.com//about/index.html&pic=&searchPic=false&style=simple" target="_blank">
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=到底有没有&url=http://yoururl.com//2017/01/09/到底有没有/index.html&pic=&searchPic=false&style=simple" target="_blank">
         <li class="mdl-menu__item">
             分享到微博
         </li>
@@ -299,7 +326,7 @@
 
     <!-- Share Twitter -->
     
-    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=about&url=http://yoururl.com//about/index.html&via=Anran.Z" target="_blank">
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=到底有没有&url=http://yoururl.com//2017/01/09/到底有没有/index.html&via=Anran.Z" target="_blank">
         <li class="mdl-menu__item">
             分享到 Twitter
         </li>
@@ -308,7 +335,7 @@
 
     <!-- Share Facebook -->
     
-    <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoururl.com//about/index.html" target="_blank">
+    <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoururl.com//2017/01/09/到底有没有/index.html" target="_blank">
         <li class="mdl-menu__item">
             分享到 Facebook
         </li>
@@ -317,7 +344,7 @@
 
     <!-- Share Google+ -->
     
-    <a class="post_share-link" href="https://plus.google.com/share?url=http://yoururl.com//about/index.html" target="_blank">
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://yoururl.com//2017/01/09/到底有没有/index.html" target="_blank">
         <li class="mdl-menu__item">
             分享到 Google+
         </li>
@@ -341,7 +368,7 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
-		<div style="font-size:12px;border-bottom: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; BACKGROUND: #f6f6f6; HEIGHT: 120px; BORDER-TOP: #ddd 1px solid; BORDER-RIGHT: #ddd 1px solid"><br><div style="MARGIN-TOP: 10px; FLOAT: left; MARGIN-LEFT: 5px; MARGIN-RIGHT: 10px"><br><img alt="" src="https://avatars1.githubusercontent.com/u/168751?v=3&s=140" width="90" height="100"><br></div><br><div style="LINE-HEIGHT: 200%; MARGIN-TOP: 10px; COLOR: #000000"><br>本文链接：<a href="<%= post.link %>">&lt;%= post.title %&gt;</a> <br><br>作者：<br><a href="http://AnCorleone.github.io/" target="_blank" rel="external">Anakin</a> <br>出处：<br><a href="http://AnCorleone.github.io/" target="_blank" rel="external">http://AnCorleone.github.io/</a><br><br>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a><br>国际许可协议发布，欢迎转载，演绎或用于商业目的，但是必须保留本文的署名<br><a href="http://jiji262.github.io/" target="_blank" rel="external">Anakin</a>及链接。<br></div><br></div>
+		
 	
 	
 	
@@ -368,6 +395,14 @@
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
+    
+        <a href="/2017/01/09/再新建一篇文章/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
     
 </nav>
         </div>
@@ -532,6 +567,13 @@ It will not impact the appearance and can give developers a lot of support :)
 
 				
 				
+				
+					<!-- Footer Top Button -->
+					<div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 				
 				
 				<!--Footer-->
