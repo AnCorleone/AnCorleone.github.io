@@ -218,7 +218,7 @@
 	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
 		for="post-toc-trigger-btn">
 			
-			
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#读文件"><span class="post-toc-number">1.</span> <span class="post-toc-text">读文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#读取二进制文件"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">读取二进制文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符编码"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">字符编码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#写文件"><span class="post-toc-number">2.</span> <span class="post-toc-text">写文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#StringIO-和BytesIO"><span class="post-toc-number">3.</span> <span class="post-toc-text">StringIO 和BytesIO</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#StringIO"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">StringIO</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BytesIO"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">BytesIO</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#操作文件和目录"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">操作文件和目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#序列化"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">序列化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JSON"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">JSON</span></a></li></ol></li></ol>
 		
 <!--			<li class="mdl-menu__item">Some Action</li>-->
 	</ul>
@@ -363,7 +363,175 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
-		
+		<h2 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h2><ul>
+<li>使用open(‘文件地址’，’标识符’)函数</li>
+<li>使用read()读取</li>
+<li>最后一步使用close(关闭)</li>
+</ul>
+<p>使用<strong><code>with</code></strong>读取，自动关闭</p>
+<pre><code># 使用with 读取，自动关闭
+with open(&apos;D:/pro/python/test.txt&apos;,&apos;r&apos;) as f:
+    print(f.read())
+</code></pre><ul>
+<li>调用readline() 可以一次读取一行内容</li>
+<li>调用readlines() 一次读取所有的内容，并返回一个list</li>
+<li><p>不能确定文件大小使用readlines()</p>
+<pre><code>with open(&apos;D:/pro/python/test.txt&apos;,&apos;r&apos;) as f:
+    for line in f.readlines():
+        print(line.strip())
+</code></pre></li>
+</ul>
+<h3 id="读取二进制文件"><a href="#读取二进制文件" class="headerlink" title="读取二进制文件"></a>读取二进制文件</h3><ul>
+<li><p>打开模式使用’rb’</p>
+<pre><code># 读取二进制文件
+with open(&apos;D:/pro/python/img.png&apos;,&apos;rb&apos;) as f:
+    for line in f.readlines():
+        print(line.strip())
+</code></pre></li>
+</ul>
+<h3 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h3><ul>
+<li><p>要读取非UTF-8编码的文本文件，需要给open()函数传入encoding参数</p>
+<pre><code>f = open(&apos;/Users/michael/gbk.txt&apos;, &apos;r&apos;, encoding=&apos;gbk&apos;)
+</code></pre></li>
+<li><p>遇到非法编码文件，open函数还接受一个errors参数，表示遇到编码错误后如何处理，最简单的方式就直接忽略</p>
+<pre><code>f = open(&apos;/Users/michael/gbk.txt&apos;, &apos;r&apos;, 
+encoding=&apos;gbk&apos;,errors = &apos;ignore&apos;)
+</code></pre></li>
+</ul>
+<h2 id="写文件"><a href="#写文件" class="headerlink" title="写文件"></a>写文件</h2><blockquote>
+<p>与读文件的区别open() 函数的的标识符，传入’w’,’wb’表示写文件和二进制文件</p>
+</blockquote>
+<ul>
+<li><p>写文件</p>
+<pre><code>with open(&apos;D:/pro/python/write.txt&apos;,&apos;w&apos;) as f:
+    f.write(&apos;hello write new file... &apos;)
+</code></pre></li>
+</ul>
+<h2 id="StringIO-和BytesIO"><a href="#StringIO-和BytesIO" class="headerlink" title="StringIO 和BytesIO"></a>StringIO 和BytesIO</h2><h3 id="StringIO"><a href="#StringIO" class="headerlink" title="StringIO"></a>StringIO</h3><p>很多时候，数据读写不一定是文件，也可以在内存中读写</p>
+<ul>
+<li><p>在内存中写str，使用<code>getvalue()</code>获取写入的内容</p>
+<pre><code> from io import StringIO
+f = StringIO()
+f.write(&apos;hello&apos;)
+f.write(&apos;hello&apos;)
+f.write(&apos;hello&apos;)
+print(f.getvalue())
+</code></pre></li>
+<li><p>读取StringIO</p>
+<pre><code>while True:
+    s =f.readline()
+    if s ==&apos;&apos;:
+        print(&apos;s ==&apos;+ s)
+        break
+    print(s.strip())
+</code></pre></li>
+</ul>
+<h3 id="BytesIO"><a href="#BytesIO" class="headerlink" title="BytesIO"></a>BytesIO</h3><ul>
+<li><p>内存中读写二进制文件</p>
+<pre><code># 写入二进制文件
+from io import BytesIO
+f = BytesIO()
+f.write(&apos;你好&apos;.encode(&apos;utf-8&apos;))
+s= f.getvalue()
+print(s)
+</code></pre></li>
+<li><p>读取二进制文件</p>
+<pre><code># 读取二进制文件
+from io import BytesIO
+f = BytesIO(b&apos;\xe4\xbd\xa0\xe5\xa5\xbd&apos;)
+s= f.read()
+print(s)
+</code></pre></li>
+</ul>
+<h3 id="操作文件和目录"><a href="#操作文件和目录" class="headerlink" title="操作文件和目录"></a>操作文件和目录</h3><ul>
+<li><p><strong>查看当前目录的绝对路径</strong></p>
+<pre><code>import os
+v= os.path.abspath(&apos;&apos;) # 查看当前目录的绝对路径
+print(v)
+</code></pre></li>
+<li><p>在某个路径下创建一个新目录,首页把新路径目录表示出来</p>
+<pre><code># 删除一个文件夹
+os.rmdir(&apos;D:/pro/python/testdir&apos;)
+
+# 对文章重命名
+a = os.rename(&apos;test.txt&apos;,&apos;test.py&apos;)
+
+#删除文件
+d = os.remove(&apos;test.py&apos;)
+</code></pre></li>
+<li><p>过滤文件</p>
+<pre><code># 过滤文件,比如列出当前目录下的所有文件夹
+s = [x for x in os.listdir(&apos;.&apos;) if os.path.isdir(x)]
+print(s)
+
+# 过滤文件 ,获得所有的.py文件
+s = [ x for x  in os.listdir(&apos;.&apos;) if os.path.isfile(x) and
+os.path.splitext(x)[1]==&apos;.py&apos;]
+print(s)
+</code></pre></li>
+</ul>
+<h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><blockquote>
+<p>我们把变量从内存中变成可存储的过程称为序列化<br>序列化后的内容可以写到磁盘上或者通过网络传输</p>
+</blockquote>
+<ul>
+<li><p>将对象序列化</p>
+<pre><code>import pickle
+d = dict(name=&apos;zhanghua&apos;,age=18,score=100)
+s =pickle.dumps(d)
+print(s)
+</code></pre></li>
+<li><p>将对象写入文件中</p>
+<pre><code>import pickle
+d = dict(name=&apos;zhanghua&apos;,age=18,score=100)
+s =pickle.dumps(d)
+print(s)
+f= open(&apos;dump.txt&apos;,&apos;wb&apos;)
+pickle.dump(d,f)
+f.close()
+</code></pre></li>
+<li><p>读取存储在文件中的对象</p>
+<pre><code># 读取存储的对象
+r= open(&apos;dump.txt&apos;,&apos;rb&apos;)
+o = pickle.load(r)
+r.close()
+print(o)
+</code></pre></li>
+</ul>
+<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><p>我们要在不同的编程语言中传递对象,就必须把对象序列化为标准格式,如xml 和json</p>
+<ul>
+<li><p>序列化json和反序列化json</p>
+<pre><code>import json
+# 序列化
+d = dict(name=&apos;Bob&apos;,age=20,score=88)
+j = json.dumps(d)
+print(j)
+
+# 反序列化
+json_str = &apos;{&quot;age&quot;: 20, &quot;score&quot;: 88, &quot;name&quot;: &quot;Bob&quot;}&apos;
+s =json.loads(json_str)
+print(s)
+</code></pre></li>
+<li><p>将实例对象序列化</p>
+<pre><code>class Student(object):
+    def __init__(self, name,age,score):
+        self.name = name
+        self.age = age
+        self.score = score
+s = Student(&apos;anakin&apos;,18,100)
+# 将实例转换为json
+j = json.dumps(s,default=lambda obj : obj.__dict__)
+print(j)
+</code></pre></li>
+<li><p>json反序列化成对象</p>
+<pre><code># json 反序列化成对象
+def dict2student(d):
+    return Student(d[&apos;name&apos;],d[&apos;age&apos;],d[&apos;score&apos;])
+json_str = &apos;{&quot;score&quot;: 100, &quot;name&quot;: &quot;anakin&quot;, &quot;age&quot;: 18}&apos;
+r = json.loads(json_str, object_hook=dict2student)
+print(r)
+</code></pre></li>
+</ul>
+
 	
 	
 	
@@ -384,6 +552,14 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     
     <!-- Prev Nav -->
+    
+        <a href="/2017/01/13/自学Python-线程和进程/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
     
 
     <!-- Section Spacer -->
@@ -477,7 +653,7 @@
         </a>
         <ul class="dropdown-menu">
             <li>
-            <a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">8</span></a>
+            <a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">9</span></a>
         </ul>
     </li>
 
@@ -495,7 +671,7 @@
     <li>
         <a href="/archives">
              文章总数
-             <span class="sidebar-badge">8</span>
+             <span class="sidebar-badge">9</span>
         </a>
     </li>
 </ul>

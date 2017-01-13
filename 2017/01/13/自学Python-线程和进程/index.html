@@ -10,7 +10,7 @@
     <!-- Title -->
     
     <title>
-        自学Python-模块 | 欢迎来到安然的博客
+        自学Python-线程和进程 | 欢迎来到安然的博客
     </title>
     
     <!-- Favicons -->
@@ -46,7 +46,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoururl.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="自学Python-模块 | 欢迎来到安然的博客">
+    <meta property="og:title" content="自学Python-线程和进程 | 欢迎来到安然的博客">
     <meta property="og:description" content="曾弯板觉难，一朝回收，一度万水千山。">
     
      <!--[if lte IE 9]>
@@ -218,7 +218,7 @@
 	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
 		for="post-toc-trigger-btn">
 			
-			<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用模块"><span class="post-toc-number">1.</span> <span class="post-toc-text">使用模块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#作用域"><span class="post-toc-number">2.</span> <span class="post-toc-text">作用域</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装第三方模块"><span class="post-toc-number">3.</span> <span class="post-toc-text">安装第三方模块</span></a></li></ol>
+			
 		
 <!--			<li class="mdl-menu__item">Some Action</li>-->
 	</ul>
@@ -252,7 +252,7 @@
 		
 	
         <p class="article-headline-p">
-            自学Python-模块
+            自学Python-线程和进程
         </p>
     </div>
 
@@ -270,7 +270,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Anran.Z</strong>
-        <span>1月 11, 2017</span>
+        <span>1月 13, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -312,7 +312,7 @@
 
     <!-- Share Weibo -->
     
-    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=自学Python-模块&url=http://yoururl.com//2017/01/11/自学Python-模块/index.html&pic=&searchPic=false&style=simple" target="_blank">
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=自学Python-线程和进程&url=http://yoururl.com//2017/01/13/自学Python-线程和进程/index.html&pic=&searchPic=false&style=simple" target="_blank">
         <li class="mdl-menu__item">
             分享到微博
         </li>
@@ -321,7 +321,7 @@
 
     <!-- Share Twitter -->
     
-    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=自学Python-模块&url=http://yoururl.com//2017/01/11/自学Python-模块/index.html&via=Anran.Z" target="_blank">
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=自学Python-线程和进程&url=http://yoururl.com//2017/01/13/自学Python-线程和进程/index.html&via=Anran.Z" target="_blank">
         <li class="mdl-menu__item">
             分享到 Twitter
         </li>
@@ -330,7 +330,7 @@
 
     <!-- Share Facebook -->
     
-    <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoururl.com//2017/01/11/自学Python-模块/index.html" target="_blank">
+    <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoururl.com//2017/01/13/自学Python-线程和进程/index.html" target="_blank">
         <li class="mdl-menu__item">
             分享到 Facebook
         </li>
@@ -339,7 +339,7 @@
 
     <!-- Share Google+ -->
     
-    <a class="post_share-link" href="https://plus.google.com/share?url=http://yoururl.com//2017/01/11/自学Python-模块/index.html" target="_blank">
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://yoururl.com//2017/01/13/自学Python-线程和进程/index.html" target="_blank">
         <li class="mdl-menu__item">
             分享到 Google+
         </li>
@@ -363,69 +363,7 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
-		<h3 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h3><p><strong>标准注释</strong></p>
-<pre><code>#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-</code></pre><ul>
-<li><p>test_1.py</p>
-<pre><code>#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-&apos;a test module&apos;
-___author__=&apos;anakin&apos;
-
-import sys
-
-def test():
-    args = sys.argv
-    if len(args)==1:
-        print(&apos;hello,world&apos;)
-    elif len(args)==2:
-        print(&apos;hello :&apos;+ args[1])
-    else:
-        print(&apos;too many argument!&apos;)
-
-if __name__==&apos;__main__&apos;:
-    test()
-</code></pre></li>
-</ul>
-<ul>
-<li><p>test_2.py</p>
-<pre><code>import test_1
-
-test_1.test()
-</code></pre></li>
-</ul>
-<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><ul>
-<li><p>外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。</p>
-<pre><code>#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-&apos;函数的作用域&apos;
-___author__=&apos;anakin&apos;
-
-def _private_1(name):
-    print(&apos;private 1 run&apos;)
-
-def _private_2(name):
-    print(&apos;private 2 run&apos;)
-
-def greeting(name):
-    if len(name)&gt;3:
-        return _private_1(name)
-    else :
-        return _private_2(name)
-</code></pre><h3 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h3></li>
-</ul>
-<p>安装Pillow </p>
-<pre><code>安装Pillow
-pip install Pillow
-
-from PIL import Image
-im = Image.open(&apos;img.png&apos;)
-print(im.format,im.size,im.mode)
-</code></pre><p>生成缩略图</p>
-<pre><code>im.thumbnail((200, 100))
-im.save(&apos;thmb.jpg&apos;,&apos;JPEG&apos;)
-</code></pre>
+		
 	
 	
 	
@@ -447,21 +385,13 @@ im.save(&apos;thmb.jpg&apos;,&apos;JPEG&apos;)
     
     <!-- Prev Nav -->
     
-        <a href="/2017/01/11/自学Python-面向对象编程/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/01/11/自学Python-函数式编程/" id="post_nav-older" class="next-content">
+        <a href="/2017/01/13/自学Python-IO编程/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
