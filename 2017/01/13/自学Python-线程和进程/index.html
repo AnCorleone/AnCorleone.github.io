@@ -218,7 +218,7 @@
 	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
 		for="post-toc-trigger-btn">
 			
-			
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#multiprocessing"><span class="post-toc-number">1.</span> <span class="post-toc-text">multiprocessing</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Pool"><span class="post-toc-number">2.</span> <span class="post-toc-text">Pool</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#子进程"><span class="post-toc-number">3.</span> <span class="post-toc-text">子进程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进程间通信"><span class="post-toc-number">4.</span> <span class="post-toc-text">进程间通信</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#多线程"><span class="post-toc-number"></span> <span class="post-toc-text">多线程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Lock"><span class="post-toc-number">1.</span> <span class="post-toc-text">Lock</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ThreadLocal"><span class="post-toc-number">2.</span> <span class="post-toc-text">ThreadLocal</span></a></li></ol>
 		
 <!--			<li class="mdl-menu__item">Some Action</li>-->
 	</ul>
@@ -363,7 +363,141 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
-		
+		<h3 id="multiprocessing"><a href="#multiprocessing" class="headerlink" title="multiprocessing"></a>multiprocessing</h3><p>windows 创建多线程使用 <code>multiprocessing</code><br>linux unix 使用<code>fork()</code></p>
+<ul>
+<li>创建子线程的时候,只需要传入一个函数,和一个参数,创建一个<code>Process</code>实例,用<code>start()</code>方法启动,这样创建进程比<code>fork()</code>简单</li>
+</ul>
+<pre><code>from multiprocessing import Process
+import os
+# 子进程要执行的代码
+def run_proc(name):
+    print(os.getpid())
+    print(name)
+
+print(__name__)
+if __name__ == &apos;__main__&apos;:
+    print(&apos;prent process %s&apos;%os.getpid() )
+    # 创建一个子线程
+    p = Process(target = run_proc,args = (&apos;test&apos;,))
+    print(&apos; child process will start &apos;)
+    # 开始子线程
+    p.start()
+    # 放如线程队列
+    p.join()
+    print(&apos; child process end &apos;)
+</code></pre><h3 id="Pool"><a href="#Pool" class="headerlink" title="Pool"></a>Pool</h3><p>如果要开启大量子线程,可以用线程池批量化创建子线程</p>
+<pre><code>from multiprocessing import Pool
+import os,time,random
+
+def long_time_task(name):
+    print(&apos; 开启新的任务...&apos;+name)
+    start = time.time()
+    time.sleep(random.random() * 3)
+    end = time.time()
+    s = end - start
+    print(s)
+    print(name)
+
+if __name__==&apos;__main__&apos;:
+    p = Pool(4)
+    for i in range(5):
+        print(&apos;------------&gt;&gt;&gt;&gt; &apos;)
+        p.apply_async(long_time_task, args=(i,))
+
+    print(&apos; wait for process done...&apos;)
+    p.close()
+    p.join()
+    print(&apos;all progress done ..&apos;)
+</code></pre><h3 id="子进程"><a href="#子进程" class="headerlink" title="子进程"></a>子进程</h3><ul>
+<li><p>启动一个子进程</p>
+<pre><code>import subprocess
+
+print(&apos;$ nslookup www.python.org&apos;)
+r = subprocess.call([&apos;nslookup&apos;,&apos;www.python.org&apos;])
+print(&apos;exit code &apos;, r)
+</code></pre></li>
+</ul>
+<h3 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h3><ul>
+<li><p>进程间传递数据</p>
+<pre><code>from multiprocessing import Process,Queue
+import os,time,random
+
+# 写数据进程间执行代码
+def write_data(q):
+    print(&apos;  pid  :%s&apos; %os.getpid())
+    for value in [&apos;q&apos;,&apos;w&apos;,&apos;e&apos;,&apos;r&apos;]:
+        print(value)
+        q.put(value)
+        time.sleep(random.random())
+
+# 读数据进程间执行代码
+def read_data(q):
+    print(&apos; read pid : %s&apos; %os.getpid())
+    while True:
+        value =q.get(True)
+        print(&apos; 读取的数据 : &apos;+ value)
+
+if __name__ == &apos;__main__&apos;:
+    # 父进程创建Quenu,并传递给子进程
+    q = Queue()
+    pw = Process(target = write_data,args = (q,))
+    pr = Process(target = read_data,args =(q,))
+    pw.start()
+    pr.start()
+    pw.join()
+    # pr 是死循环 无法等待其结束,只能强行终止
+    pr.terminate()
+</code></pre></li>
+</ul>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><ul>
+<li>启动一个线程就是把一个函数传入并创建<code>Thread</code>实例,然后调用<code>start()</code>开始执行</li>
+</ul>
+<pre><code># 创建一个线程,并执行
+import time,threading
+
+# 新线程的代码
+def loop():
+    print(&apos;线程%s is running ....&apos;%threading.current_thread().name)
+    n =0
+    while n&lt;5:
+        n=n+1
+        print(&apos;thread %s &gt;&gt;&gt; %s&apos;%(threading.current_thread().name,n))
+        time.sleep(1)
+    print(&apos;线程%s is running ....&apos;%threading.current_thread().name)
+
+t =threading.Thread(target= loop,name= &apos;LoopThread&apos;)
+t.start()
+t.join()
+</code></pre><h3 id="Lock"><a href="#Lock" class="headerlink" title="Lock"></a>Lock</h3><ul>
+<li>任何一个线程启动一个子线程,我们把该线程称为主线程</li>
+<li>当多个线程共享一个变量并操作,导致内容错乱</li>
+<li>使用lock.acquire(),当多个线程同时执行lock.acquire(),只有一个线程能成功获取锁,然后继续执行代码,其他线程就继续等待直到获得锁为止,获得锁的线程用完后一定要释放锁,否则会出现其他线程一直等待,成为死线程,所有使用try … finally 确保锁一定会被释放</li>
+</ul>
+<h3 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h3><ul>
+<li>ThreadLocal 变量虽然是全局变量，但是每个线程都能读写自己线程的独立副本，互不干扰。ThreadLocal解决了参数在一个线程中各个参数之间互相传递的问题</li>
+</ul>
+<pre><code>import threading
+# 获取全局的ThreadLocal对象
+local_school = threading.local()
+
+def process_student():
+    # 获取线程相关的student
+    std = local_school.student
+    print(&apos;hello ,%s(in %s)&apos;%(std,threading.current_thread().name))
+
+def process_thread(name):
+    # 绑定ThreadLocal的student
+    local_school.student= name
+    process_student()
+
+# 开启两个线程
+t1 =threading.Thread(target= process_thread,args = (&apos;anakin&apos;,),name=&apos;Thread -a&apos;)
+t2 =threading.Thread(target= process_thread,args = (&apos;hahha&apos;,),name =&apos;Thread -b &apos;)
+t1.start()
+t2.start()
+t1.join()
+t2.join()
+</code></pre>
 	
 	
 	
@@ -384,6 +518,14 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     
     <!-- Prev Nav -->
+    
+        <a href="/2017/01/14/自学Python-正则表达式/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
     
 
     <!-- Section Spacer -->
@@ -477,7 +619,7 @@
         </a>
         <ul class="dropdown-menu">
             <li>
-            <a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">9</span></a>
+            <a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">10</span></a>
         </ul>
     </li>
 
@@ -495,7 +637,7 @@
     <li>
         <a href="/archives">
              文章总数
-             <span class="sidebar-badge">9</span>
+             <span class="sidebar-badge">10</span>
         </a>
     </li>
 </ul>
