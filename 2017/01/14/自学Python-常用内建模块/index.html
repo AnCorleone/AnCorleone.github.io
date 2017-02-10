@@ -218,7 +218,7 @@
 	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
 		for="post-toc-trigger-btn">
 			
-			
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Python内建模块"><span class="post-toc-number">1.</span> <span class="post-toc-text">Python内建模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于时间"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">关于时间</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#collections"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">collections</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#计数函数Counter"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">计数函数Counter</span></a></li></ol></li></ol>
 		
 <!--			<li class="mdl-menu__item">Some Action</li>-->
 	</ul>
@@ -363,7 +363,90 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
-		
+		<h2 id="Python内建模块"><a href="#Python内建模块" class="headerlink" title="Python内建模块"></a>Python内建模块</h2><h3 id="关于时间"><a href="#关于时间" class="headerlink" title="关于时间"></a>关于时间</h3><pre><code># 1. 获取当前时间
+from datetime import datetime,timedelta
+r =datetime.now()
+print (r)
+
+# 2. 获取指定的时间和日期
+r1 = datetime(2017,1,14,12,53)
+print (r1)
+
+# 3. 将datetime转换为datestamp
+t= 12345645.12
+r2 = datetime.fromtimestamp(t)
+print(r2)
+
+# 4. str转换为datetime
+r3 = datetime.strptime(&apos;2017-01-14 15:58:29&apos;,&apos;%Y-%m-%d %H:%M:%S&apos;)
+print(r3)
+
+# 5. datetime转换为str
+s1 = datetime.now()
+r4 = s1.strftime(&apos;%a, %b %d %H:%M&apos;)
+print(r4)
+
+# 6. 时间的加减
+n1 = datetime.now()
+print(n1)
+n2 =n1+timedelta(hours=10)  # 增加10小时
+print (n2)
+</code></pre><h3 id="collections"><a href="#collections" class="headerlink" title="collections"></a>collections</h3><blockquote>
+<p>collections是Python的内建模块提供集合操作的类</p>
+</blockquote>
+<pre><code># Python的内建模块 - collections
+
+# 1. 使用namedtuple表示一个点的坐标
+
+from collections import namedtuple,deque,defaultdict,OrderedDict
+Point = namedtuple(&apos;point&apos;,[&apos;x&apos;,&apos;y&apos;])
+p =Point(1,2)
+print(p.x)
+print(p.y)
+
+# 2. deque 高效的对list进行删除和插入
+
+d = deque([&apos;a&apos;,&apos;b&apos;,&apos;c&apos;])
+s = d.appendleft(&apos;x&apos;)
+d.append(&apos;z&apos;)
+d.pop()
+print(s)
+print(d)
+
+# 3 .defaultdict ,使用dict的时候如果应用的key不存在会抛出keyError ,使用defaultdict 返回一个默认值
+
+dd = defaultdict(lambda :&apos;N/A&apos;)
+dd[&apos;key1&apos;] =&apos;anakin&apos;
+s1 = dd[&apos;key1&apos;]
+s2 = dd[&apos;key2&apos;]
+print(s1)
+print(s2)
+
+# 4. 使用OrderedDict ,dict 是无序的,迭代的时候不能按照顺序取出数据,使用OrderedDict
+
+d1 = dict([(&apos;a&apos;,&apos;1&apos;),(&apos;b&apos;,&apos;2&apos;),(&apos;c&apos;,&apos;3&apos;)])
+print(d1)
+
+d2= OrderedDict([(&apos;a&apos;,&apos;1&apos;),(&apos;b&apos;,&apos;2&apos;),(&apos;c&apos;,&apos;3&apos;)])
+print (d2)
+#  注意 OrderedDict会按照插入的顺序排序,而不是按照key 的顺序
+
+d3 = OrderedDict()
+d3[&apos;x&apos;]=3
+d3[&apos;z&apos;]=6
+d3[&apos;d&apos;]=4
+print d3
+</code></pre><h3 id="计数函数Counter"><a href="#计数函数Counter" class="headerlink" title="计数函数Counter"></a>计数函数Counter</h3><ul>
+<li><p>统计字符出现的次数</p>
+<pre><code># Counter 计数的方法,可以统计字符出现的次数
+
+c = Counter()
+for ch in &apos;luoyang&apos;:
+    c[ch]= c[ch]+1
+print (c)
+</code></pre></li>
+</ul>
+
 	
 	
 	
@@ -384,6 +467,14 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     
     <!-- Prev Nav -->
+    
+        <a href="/2017/01/20/MySQL使用/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
     
 
     <!-- Section Spacer -->
@@ -477,7 +568,7 @@
         </a>
         <ul class="dropdown-menu">
             <li>
-            <a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">11</span></a>
+            <a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">12</span></a>
         </ul>
     </li>
 
@@ -495,7 +586,7 @@
     <li>
         <a href="/archives">
              文章总数
-             <span class="sidebar-badge">11</span>
+             <span class="sidebar-badge">19</span>
         </a>
     </li>
 </ul>

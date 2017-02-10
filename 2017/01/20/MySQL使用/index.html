@@ -10,7 +10,7 @@
     <!-- Title -->
     
     <title>
-        自学Python-正则表达式 | 欢迎来到安然的博客
+        MySQL使用 | 欢迎来到安然的博客
     </title>
     
     <!-- Favicons -->
@@ -46,7 +46,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoururl.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="自学Python-正则表达式 | 欢迎来到安然的博客">
+    <meta property="og:title" content="MySQL使用 | 欢迎来到安然的博客">
     <meta property="og:description" content="曾弯板觉难，一朝回收，一度万水千山。">
     
      <!--[if lte IE 9]>
@@ -218,7 +218,7 @@
 	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
 		for="post-toc-trigger-btn">
 			
-			<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正则表达式"><span class="post-toc-number">1.</span> <span class="post-toc-text">正则表达式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#re模块"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">re模块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分组"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">分组</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#预编译"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">预编译</span></a></li></ol></li></ol>
+			
 		
 <!--			<li class="mdl-menu__item">Some Action</li>-->
 	</ul>
@@ -252,7 +252,7 @@
 		
 	
         <p class="article-headline-p">
-            自学Python-正则表达式
+            MySQL使用
         </p>
     </div>
 
@@ -270,7 +270,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Anran.Z</strong>
-        <span>1月 14, 2017</span>
+        <span>1月 20, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -312,7 +312,7 @@
 
     <!-- Share Weibo -->
     
-    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=自学Python-正则表达式&url=http://yoururl.com//2017/01/14/自学Python-正则表达式/index.html&pic=&searchPic=false&style=simple" target="_blank">
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=MySQL使用&url=http://yoururl.com//2017/01/20/MySQL使用/index.html&pic=&searchPic=false&style=simple" target="_blank">
         <li class="mdl-menu__item">
             分享到微博
         </li>
@@ -321,7 +321,7 @@
 
     <!-- Share Twitter -->
     
-    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=自学Python-正则表达式&url=http://yoururl.com//2017/01/14/自学Python-正则表达式/index.html&via=Anran.Z" target="_blank">
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=MySQL使用&url=http://yoururl.com//2017/01/20/MySQL使用/index.html&via=Anran.Z" target="_blank">
         <li class="mdl-menu__item">
             分享到 Twitter
         </li>
@@ -330,7 +330,7 @@
 
     <!-- Share Facebook -->
     
-    <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoururl.com//2017/01/14/自学Python-正则表达式/index.html" target="_blank">
+    <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoururl.com//2017/01/20/MySQL使用/index.html" target="_blank">
         <li class="mdl-menu__item">
             分享到 Facebook
         </li>
@@ -339,7 +339,7 @@
 
     <!-- Share Google+ -->
     
-    <a class="post_share-link" href="https://plus.google.com/share?url=http://yoururl.com//2017/01/14/自学Python-正则表达式/index.html" target="_blank">
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://yoururl.com//2017/01/20/MySQL使用/index.html" target="_blank">
         <li class="mdl-menu__item">
             分享到 Google+
         </li>
@@ -363,50 +363,66 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
-		<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><ul>
-<li>[0-9a-zA-Z_]匹配任意数字字母和下划线</li>
-<li>[0-9a-zA-Z_]+ 匹配至少一个字母数字下划线组成的字符串</li>
-<li>[a-zA-Z_][0-9a-zA-Z_]* 匹配以字母或者下划线开头，后面跟任意个字母或数字</li>
-<li>[a-zA-Z_][0-9a-zA-Z_]{0，19} 匹配一字母或者下划线开头，后面0到19个数字或者字母下划线</li>
-<li>A|B 可以匹配 A或者B ，（P\p)ython可以匹配python,或者Python</li>
-<li>^ 表示行的开头 </li>
-<li>^\d表示以数字开头</li>
-<li>$ 表示行的末尾 </li>
+		<p>##ubuntu��ʹ��MySQL##</p>
+<p>###��װMySQL###</p>
+<ul>
+<li>��װ���ķ��� sudo apt-get install mysql-server</li>
+<li>��װ�ͻ���   sudo apt-get install mysql-client</li>
 </ul>
-<h3 id="re模块"><a href="#re模块" class="headerlink" title="re模块"></a>re模块</h3><ul>
-<li><p>判断表达式是否匹配成功,如果成功,返回一个Match对象,失败返回None</p>
-<pre><code># 判断一个电话号码
-s= re.match(r&apos;^\d{3}-\d{3,8}$&apos;,&apos;012-1234&apos;)
-print (s)
-</code></pre></li>
-<li><p>切割字符串</p>
-<pre><code># 通过空格切割字符串
-str = &apos;q we r   t&apos;
-r =re.split(r&apos;[\s]+&apos;,str);
-print (r)
-</code></pre></li>
-</ul>
-<h3 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h3><ul>
-<li><p>除了简单的匹配,正则表达式还可以提取子串,用()表示要提取的分组(Group)</p>
-<pre><code># 提取分组
-# 提取区号和电话号码
-s = re.match(r&apos;^(\d{3})-(\d{3,8})$&apos;,&apos;021-5386112&apos;)
-print (s)
-g1 =s.group(1)
-g2 =s.group(2)
-print (g1)
-print (g2)
-</code></pre></li>
-</ul>
-<h3 id="预编译"><a href="#预编译" class="headerlink" title="预编译"></a>预编译</h3><ul>
-<li><p>如果执行横多次的正则匹配,每次执行都要对正则表达式进行编译,出于效率我们可以预编译正则表达式</p>
-<pre><code># 编译
-re_tel = re.compile(r&apos;^(\d{3})-(\d{3,8})$&apos;)
-# 使用
-s = re_tel.match(&apos;021-5386112&apos;).group()
-print (s)
-</code></pre></li>
-</ul>
+<p>###��������ݿ��Ļ�������###</p>
+<ol>
+<li>����MySQL :sudo service mysql start</li>
+<li>ʹ��root��û���¼ :mysql -u root -p</li>
+<li>�鿴���ݿ� :show databases;</li>
+<li>�������ݿ�:use&lt;���ݿ���&gt;</li>
+<li>�鿴��:show tables;</li>
+<li>�˳�:quit ����exit</li>
+</ol>
+<p>###�������ݿ��ͱ�###</p>
+<ol>
+<li>�������ݿ�: CREATE DATABASES &lt;���ݿ����&gt;</li>
+<li>������ : CAEATE TABLE &lt;����&gt;(�….);</li>
+</ol>
+<p>###��ѯ��###</p>
+<ol>
+<li>��ѯȫ��select * from ����</li>
+<li>������ѯ: select Ҫ��ѯ������ from where ��������</li>
+</ol>
+<p>###������ѯ###</p>
+<ol>
+<li>where��������������������ѧ����= ,&lt;,&gt;,&gt;=,&lt;=</li>
+<li>and or : select * from employee where age<25 or="">30;</25></li>
+<li>in ��not in:��ʾ�ڻ��߲���ĳ����Χ�ڵĽ���,select name,age,in_dpt FROM employee WHERE in_dpt IN(‘dpt3,dpt4’);</li>
+<li>LIKE ͨ���� ‘<em>‘ ƥ�������ַ�һ��’</em>‘ƥ��һ���ַ�,’%’ƥ�䲻�����ַ�eg: select name,age FROM employee WHERE phone LIKE ‘11%’<br>###�Խ�������###<blockquote>
+<p>Ϊ�˶Խ�������,ʹ��ORDER BY�����ؼ���,Ĭ��������,ʹ��ASC��DESC����ָ���������߽���,���簴salary��������</p>
+</blockquote>
+</li>
+<li>��������:SELECT name,age,salary,phone FROM employee ORDER BY salary DESC; </li>
+</ol>
+<p>###SQL���ú����ͼ���###</p>
+<ol>
+<li>COUNT SUM AVG MAX MIN �ֱ�Ϊ���� ���� ��ƽ�� ����ֵ ��Сֵ</li>
+<li>ʹ��AS�ؼ��ָ�ֵ������<br>eg :</li>
+<li>select max(salary),min(salary) from employee;</li>
+<li>select count(sum) as salary_count from emplary;</li>
+</ol>
+<p>###�Ӳ�ѯ###</p>
+<ol>
+<li>�������������ܻ�ȡ��Ϣ,����ȡname =’Tom’���ڵ�in_dpt,���˼���project<br>eg: select count(proj_name) from project where of_dpt in(select in_dpt from employee where name =’Tom’)</li>
+</ol>
+<p>###��������###</p>
+<ol>
+<li>insert into ����(����) values(ֵ)</li>
+<li>insert into ���� values(ֵ)</li>
+</ol>
+<p>##Լ��##<br><strong>������Լ��</strong></p>
+<ol>
+<li>���� PRIMARY KEY</li>
+<li>Ĭ��ֵ DEFAULT </li>
+<li>ΨһUNIQUE </li>
+<li>����FOREIGN KEY</li>
+<li>�ǿ� NOT NULL<br>###������Լ���ı�###</li>
+</ol>
 
 	
 	
@@ -429,7 +445,7 @@ print (s)
     
     <!-- Prev Nav -->
     
-        <a href="/2017/01/14/自学Python-常用内建模块/" id="post_nav-newer" class="prev-content">
+        <a href="/2017/02/06/MYSQL的修改和删除/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -443,7 +459,7 @@ print (s)
 
     <!-- Next Nav -->
     
-        <a href="/2017/01/13/自学Python-线程和进程/" id="post_nav-older" class="next-content">
+        <a href="/2017/01/14/自学Python-常用内建模块/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
