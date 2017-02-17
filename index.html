@@ -6,15 +6,15 @@
   
   <title>Welcome to Anakin&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="曾万般觉难，一朝回收，一度万水千山。">
+  <meta name="description" content="曾万般觉难，一朝回收，一渡万水千山。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Welcome to Anakin's blog">
 <meta property="og:url" content="http://yoururl.com/index.html">
 <meta property="og:site_name" content="Welcome to Anakin's blog">
-<meta property="og:description" content="曾万般觉难，一朝回收，一度万水千山。">
+<meta property="og:description" content="曾万般觉难，一朝回收，一渡万水千山。">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Welcome to Anakin's blog">
-<meta name="twitter:description" content="曾万般觉难，一朝回收，一度万水千山。">
+<meta name="twitter:description" content="曾万般觉难，一朝回收，一渡万水千山。">
   
     <link rel="alternative" href="/atom.xml" title="Welcome to Anakin&#39;s blog" type="application/atom+xml">
   
@@ -45,9 +45,9 @@
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-          <a class="main-nav-link" href="/">Home</a>
+          <a class="main-nav-link" href="/">主页</a>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          <a class="main-nav-link" href="/archives">所有文章</a>
         
       </nav>
       <nav id="sub-nav">
@@ -99,7 +99,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/Android基础知识-md/" data-id="ciz9a8ka80000ekvv3noj7d0m" class="article-share-link" data-share="baidu" data-title="Android基础知识.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/Android基础知识-md/" data-id="ciz9g5i2y00006ovv6mevewg2" class="article-share-link" data-share="baidu" data-title="Android基础知识.md">分享到</a>
       
 
       
@@ -114,9 +114,9 @@
 
 
   
-    <article id="post-MYSQL的修改和删除" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Java设计模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/17/MYSQL的修改和删除/" class="article-date">
+    <a href="/2017/02/17/Java设计模式/" class="article-date">
   <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
@@ -128,7 +128,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/MYSQL的修改和删除/">MySql的修改和删除.md</a>
+      <a class="article-title" href="/2017/02/17/Java设计模式/">Java设计模式.md</a>
     </h1>
   
 
@@ -136,56 +136,82 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="数据库的修改和删除"><a href="#数据库的修改和删除" class="headerlink" title="数据库的修改和删除"></a>数据库的修改和删除</h3><ol>
-<li>打开数据库 ‘sudo service mysql start’</li>
-<li>登录数据库 ‘mysql -u root -p’</li>
-<li>查看数据卡 show databsaes</li>
-<li>删除数据库 drop databsaes 数据库名</li>
-<li>连接数据库 use 数据库名</li>
-<li>显示数据库中的表 show tables</li>
-<li>查看表中的类容 select * from 表名</li>
-<li>修改表的名字 rename table 旧表名 to 新表名</li>
-<li>删除一张表 drop table 表名</li>
-<li>增加列 alter table 表名 add column 列名字 数据类型 约束 eg: alter table employee add height int(4) default 170  (给employee 表增加height列 )</li>
-<li>增加列并指定新增列的位置 使用after  eg: alter table employee add height int(4) dafault 170 after age ; 新增加列放在第一个使用 first</li>
-<li>删除一列 alter table 表名 drop column 列名字</li>
-<li>修改表中的某个值 update 表名 set 列1=值1，列2=值2 where 条件 eg: update employee set age=24,salary=300 where name = ‘Tom’</li>
-<li>根据条件删除一列 delete table from employee where name=’Tom’;</li>
-</ol>
-<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><ol>
-<li>增加索引 create index 索引名字 on 表名（列名）<br>eg : create index idx_id on employee(id)</li>
-</ol>
-<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>视图是从一个或多个表中取出数据在窗口中展示，可以看作一张表，但数据依赖原表</p>
-<ol>
-<li>创建视图的语句: create view 视图名字（列a,列b，列c) as select 列1,列2,列3 from 表名<br>eg : create view v_emp(v_name,v_age,v_salary) as select name,age,salary from employee;</li>
-</ol>
-<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><blockquote>
-<p>把文件中的数据导入表中</p>
+        <h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><h3 id="1-单一职责原则"><a href="#1-单一职责原则" class="headerlink" title="1.单一职责原则 :"></a>1.单一职责原则 :</h3><blockquote>
+<p>一个类只负责一个功能领域中的相应职责</p>
+</blockquote>
+<h3 id="2-开闭原则"><a href="#2-开闭原则" class="headerlink" title="2. 开闭原则 :"></a>2. 开闭原则 :</h3><blockquote>
+<p>一个软件实体应当对扩展开放，对修改关闭</p>
+</blockquote>
+<h3 id="3-里氏代换原则"><a href="#3-里氏代换原则" class="headerlink" title="3. 里氏代换原则 :"></a>3. 里氏代换原则 :</h3><blockquote>
+<p>　所有应用基类（父类）的地方，必须能透明的使用其子类对象</p>
 </blockquote>
 <ol>
-<li>导入语句格式 load data infile ‘文件路径’ to 表名<br>eg: load data infile ‘/home/anakin/MySql/SQL6/in.txt’ to employee</li>
+<li>使用原则 : 在程序设计时,尽量使用基类类型对对象进行定义,而在运行时再确定子类类型,用子类对象替换父类对象</li>
 </ol>
-<h3 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h3><blockquote>
-<p>将表中的数据导出到文本中</p>
+<h3 id="4-依赖倒转原则"><a href="#4-依赖倒转原则" class="headerlink" title="4. 依赖倒转原则"></a>4. 依赖倒转原则</h3><blockquote>
+<p>抽象不应该依赖于细节,细节应当依赖于抽象.换言之就是,要面向接口编程,而不是针对实现编程.</p>
+<p>程序代码中传递参数或关联关系时,尽量应用层次高的抽象层类,既使用抽象类,接口进行变量类型声明,参数声明,返回值类型声明,以及数据类型的转换等,而不要用具体的类来做这些事.</p>
 </blockquote>
-<ol>
-<li>导出的语句格式：select name,age into outfile ‘文件路径和文件名’ from 表名<br>eg : select * into outfile ‘/tmp/out.txt’ from employee</li>
-</ol>
-<h3 id="数据库备份"><a href="#数据库备份" class="headerlink" title="数据库备份"></a>数据库备份</h3><blockquote>
-<p>使用mysqldump备份数据库，生成sql脚本文件</p>
-</blockquote>
-<ol>
-<li><p>备份整个数据库 mysqldump -u root 数据库名&gt;备份文件名</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/02/17/Java设计模式/" data-id="ciz9g5i3g00036ovvjt33zb6r" class="article-share-link" data-share="baidu" data-title="Java设计模式.md">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/02/17/Java设计模式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MySQL进阶-操作详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/MySQL进阶-操作详解/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/MySQL进阶-操作详解/">MySQL基本操作.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="MySQL基本操作"><a href="#MySQL基本操作" class="headerlink" title="MySQL基本操作"></a>MySQL基本操作</h3><ol>
+<li><p>打开数据库 sudo service mysql start;</p>
 </li>
-<li><p>备份数据表 mysqldump -u root 数据库名 表名&gt;备份文件名</p>
+<li><p>连接数据库 mysql -u root -p</p>
 </li>
-</ol>
-<p>eg : mysqldump -u root -p mysql_shiyanlou&gt;bak.sql;</p>
-<h3 id="数据库恢复"><a href="#数据库恢复" class="headerlink" title="数据库恢复"></a>数据库恢复</h3><ol>
-<li>恢复数据的语句：<ol>
-<li>使用source sql 脚本</li>
-<li>新建一个数据库 create database test;  恢复数据 mysqldump -u root -p test&lt;bak.sqp</li>
-</ol>
+<li><p>查看数据库 show dabases</p>
+</li>
+<li><p>使用数据库 use 数据库名字</p>
+</li>
+<li><p>创建数据库 create database 数据库名 eg : create database test</p>
+</li>
+<li><p>创建表 create table 表名（列名 数据类型 约束）<br>eg : create table pet(name VARCHAR(20),owner VARCHAR(20),species VARCHAR(20),sex CHAR(1),birth DATE , death DATE);</p>
+</li>
+<li><p>查看创建的表 DESCRIBE pet;</p>
+</li>
+<li><p>插入数据 insert into test VALUES(‘tom’,’panda’,’hamster’,’f’,’2017-02-06’，NULL);</p>
+</li>
+<li><p>从表中检索数据 select * from pet;</p>
 </li>
 </ol>
 
@@ -193,11 +219,11 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/MYSQL的修改和删除/" data-id="ciz9a8kaq0003ekvvw1y7l1qe" class="article-share-link" data-share="baidu" data-title="MySql的修改和删除.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/MySQL进阶-操作详解/" data-id="ciz9g5i3k00056ovvfflp72pi" class="article-share-link" data-share="baidu" data-title="MySQL基本操作.md">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/02/17/MYSQL的修改和删除/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://yoururl.com/2017/02/17/MySQL进阶-操作详解/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -266,73 +292,11 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/设计模式-观察者模式/" data-id="ciz9a8kcd000mekvvtz5z48kn" class="article-share-link" data-share="baidu" data-title="观察者模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-观察者模式/" data-id="ciz9g5i4k000m6ovvq9kuof7x" class="article-share-link" data-share="baidu" data-title="观察者模式.md">分享到</a>
       
 
       
         <a href="http://yoururl.com/2017/02/17/设计模式-观察者模式/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-MySQL进阶-操作详解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/MySQL进阶-操作详解/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/MySQL进阶-操作详解/">MySQL基本操作.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="MySQL基本操作"><a href="#MySQL基本操作" class="headerlink" title="MySQL基本操作"></a>MySQL基本操作</h3><ol>
-<li><p>打开数据库 sudo service mysql start;</p>
-</li>
-<li><p>连接数据库 mysql -u root -p</p>
-</li>
-<li><p>查看数据库 show dabases</p>
-</li>
-<li><p>使用数据库 use 数据库名字</p>
-</li>
-<li><p>创建数据库 create database 数据库名 eg : create database test</p>
-</li>
-<li><p>创建表 create table 表名（列名 数据类型 约束）<br>eg : create table pet(name VARCHAR(20),owner VARCHAR(20),species VARCHAR(20),sex CHAR(1),birth DATE , death DATE);</p>
-</li>
-<li><p>查看创建的表 DESCRIBE pet;</p>
-</li>
-<li><p>插入数据 insert into test VALUES(‘tom’,’panda’,’hamster’,’f’,’2017-02-06’，NULL);</p>
-</li>
-<li><p>从表中检索数据 select * from pet;</p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoururl.com/2017/02/17/MySQL进阶-操作详解/" data-id="ciz9a8kaw0005ekvvt7fem1i2" class="article-share-link" data-share="baidu" data-title="MySQL基本操作.md">分享到</a>
-      
-
-      
-        <a href="http://yoururl.com/2017/02/17/MySQL进阶-操作详解/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -377,7 +341,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/设计模式-简单工厂模式/" data-id="ciz9a8kcc000lekvv6w53mbb4" class="article-share-link" data-share="baidu" data-title="简单工厂模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-简单工厂模式/" data-id="ciz9g5i4j000l6ovve91klnr0" class="article-share-link" data-share="baidu" data-title="简单工厂模式.md">分享到</a>
       
 
       
@@ -519,7 +483,7 @@ public class MilitaryComputer extends OpenComputer {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/设计模式-模版模式/" data-id="ciz9a8kcb000kekvvz131pcxi" class="article-share-link" data-share="baidu" data-title="模版模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-模版模式/" data-id="ciz9g5i4i000k6ovvknxtkh2d" class="article-share-link" data-share="baidu" data-title="模版模式.md">分享到</a>
       
 
       
@@ -566,7 +530,7 @@ public class MilitaryComputer extends OpenComputer {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/设计模式-桥接模式/" data-id="ciz9a8kc9000jekvvyqf3j5tl" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-桥接模式/" data-id="ciz9g5i4g000j6ovvdv4mw15s" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
       
 
       
@@ -618,7 +582,7 @@ public class MilitaryComputer extends OpenComputer {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/设计模式-工厂方法模式/" data-id="ciz9a8kc6000iekvv0thyqhve" class="article-share-link" data-share="baidu" data-title="工厂方法模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-工厂方法模式/" data-id="ciz9g5i4e000i6ovvf8f7s9sd" class="article-share-link" data-share="baidu" data-title="工厂方法模式.md">分享到</a>
       
 
       
@@ -813,7 +777,7 @@ public class Director {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/设计模式-Builder模式/" data-id="ciz9a8kc5000hekvvss3vrbd0" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-Builder模式/" data-id="ciz9g5i4d000h6ovv70p1gzqg" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
       
 
       
@@ -828,9 +792,9 @@ public class Director {
 
 
   
-    <article id="post-Java设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-MYSQL的修改和删除" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/17/Java设计模式/" class="article-date">
+    <a href="/2017/02/17/MYSQL的修改和删除/" class="article-date">
   <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
@@ -842,7 +806,7 @@ public class Director {
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/Java设计模式/">Java设计模式.md</a>
+      <a class="article-title" href="/2017/02/17/MYSQL的修改和删除/">MySql的修改和删除.md</a>
     </h1>
   
 
@@ -850,32 +814,68 @@ public class Director {
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><h3 id="1-单一职责原则"><a href="#1-单一职责原则" class="headerlink" title="1.单一职责原则 :"></a>1.单一职责原则 :</h3><blockquote>
-<p>一个类只负责一个功能领域中的相应职责</p>
-</blockquote>
-<h3 id="2-开闭原则"><a href="#2-开闭原则" class="headerlink" title="2. 开闭原则 :"></a>2. 开闭原则 :</h3><blockquote>
-<p>一个软件实体应当对扩展开放，对修改关闭</p>
-</blockquote>
-<h3 id="3-里氏代换原则"><a href="#3-里氏代换原则" class="headerlink" title="3. 里氏代换原则 :"></a>3. 里氏代换原则 :</h3><blockquote>
-<p>　所有应用基类（父类）的地方，必须能透明的使用其子类对象</p>
+        <h3 id="数据库的修改和删除"><a href="#数据库的修改和删除" class="headerlink" title="数据库的修改和删除"></a>数据库的修改和删除</h3><ol>
+<li>打开数据库 ‘sudo service mysql start’</li>
+<li>登录数据库 ‘mysql -u root -p’</li>
+<li>查看数据卡 show databsaes</li>
+<li>删除数据库 drop databsaes 数据库名</li>
+<li>连接数据库 use 数据库名</li>
+<li>显示数据库中的表 show tables</li>
+<li>查看表中的类容 select * from 表名</li>
+<li>修改表的名字 rename table 旧表名 to 新表名</li>
+<li>删除一张表 drop table 表名</li>
+<li>增加列 alter table 表名 add column 列名字 数据类型 约束 eg: alter table employee add height int(4) default 170  (给employee 表增加height列 )</li>
+<li>增加列并指定新增列的位置 使用after  eg: alter table employee add height int(4) dafault 170 after age ; 新增加列放在第一个使用 first</li>
+<li>删除一列 alter table 表名 drop column 列名字</li>
+<li>修改表中的某个值 update 表名 set 列1=值1，列2=值2 where 条件 eg: update employee set age=24,salary=300 where name = ‘Tom’</li>
+<li>根据条件删除一列 delete table from employee where name=’Tom’;</li>
+</ol>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><ol>
+<li>增加索引 create index 索引名字 on 表名（列名）<br>eg : create index idx_id on employee(id)</li>
+</ol>
+<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>视图是从一个或多个表中取出数据在窗口中展示，可以看作一张表，但数据依赖原表</p>
+<ol>
+<li>创建视图的语句: create view 视图名字（列a,列b，列c) as select 列1,列2,列3 from 表名<br>eg : create view v_emp(v_name,v_age,v_salary) as select name,age,salary from employee;</li>
+</ol>
+<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><blockquote>
+<p>把文件中的数据导入表中</p>
 </blockquote>
 <ol>
-<li>使用原则 : 在程序设计时,尽量使用基类类型对对象进行定义,而在运行时再确定子类类型,用子类对象替换父类对象</li>
+<li>导入语句格式 load data infile ‘文件路径’ to 表名<br>eg: load data infile ‘/home/anakin/MySql/SQL6/in.txt’ to employee</li>
 </ol>
-<h3 id="4-依赖倒转原则"><a href="#4-依赖倒转原则" class="headerlink" title="4. 依赖倒转原则"></a>4. 依赖倒转原则</h3><blockquote>
-<p>抽象不应该依赖于细节,细节应当依赖于抽象.换言之就是,要面向接口编程,而不是针对实现编程.</p>
-<p>程序代码中传递参数或关联关系时,尽量应用层次高的抽象层类,既使用抽象类,接口进行变量类型声明,参数声明,返回值类型声明,以及数据类型的转换等,而不要用具体的类来做这些事.</p>
+<h3 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h3><blockquote>
+<p>将表中的数据导出到文本中</p>
 </blockquote>
+<ol>
+<li>导出的语句格式：select name,age into outfile ‘文件路径和文件名’ from 表名<br>eg : select * into outfile ‘/tmp/out.txt’ from employee</li>
+</ol>
+<h3 id="数据库备份"><a href="#数据库备份" class="headerlink" title="数据库备份"></a>数据库备份</h3><blockquote>
+<p>使用mysqldump备份数据库，生成sql脚本文件</p>
+</blockquote>
+<ol>
+<li><p>备份整个数据库 mysqldump -u root 数据库名&gt;备份文件名</p>
+</li>
+<li><p>备份数据表 mysqldump -u root 数据库名 表名&gt;备份文件名</p>
+</li>
+</ol>
+<p>eg : mysqldump -u root -p mysql_shiyanlou&gt;bak.sql;</p>
+<h3 id="数据库恢复"><a href="#数据库恢复" class="headerlink" title="数据库恢复"></a>数据库恢复</h3><ol>
+<li>恢复数据的语句：<ol>
+<li>使用source sql 脚本</li>
+<li>新建一个数据库 create database test;  恢复数据 mysqldump -u root -p test&lt;bak.sqp</li>
+</ol>
+</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/Java设计模式/" data-id="ciz9a8kal0002ekvv4kw1tkro" class="article-share-link" data-share="baidu" data-title="Java设计模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/MYSQL的修改和删除/" data-id="ciz9g5i3a00026ovvekcxgea3" class="article-share-link" data-share="baidu" data-title="MySql的修改和删除.md">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/02/17/Java设计模式/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://yoururl.com/2017/02/17/MYSQL的修改和删除/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -905,7 +905,7 @@ public class Director {
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">12</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -921,15 +921,15 @@ public class Director {
           </li>
         
           <li>
-            <a href="/2017/02/17/MYSQL的修改和删除/">MySql的修改和删除.md</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/17/设计模式-观察者模式/">观察者模式.md</a>
+            <a href="/2017/02/17/Java设计模式/">Java设计模式.md</a>
           </li>
         
           <li>
             <a href="/2017/02/17/MySQL进阶-操作详解/">MySQL基本操作.md</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/17/设计模式-观察者模式/">观察者模式.md</a>
           </li>
         
           <li>
@@ -952,11 +952,11 @@ public class Director {
           </li>
         
           <li>
-            <a href="http://reqianduan.com" target="_blank">热前端</a>
+            <a href="https://www.google.com.hk" target="_blank">Googel</a>
           </li>
         
           <li>
-            <a href="http://yuancheng.work" target="_blank">远程.work</a>
+            <a href="http://developers.google.cn" target="_blank">developers</a>
           </li>
         
       </ul>
@@ -981,9 +981,9 @@ public class Director {
   </div>
   <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">Home</a>
+    <a href="/" class="mobile-nav-link">主页</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <a href="/archives" class="mobile-nav-link">所有文章</a>
   
 </nav>
   <!-- totop start -->
