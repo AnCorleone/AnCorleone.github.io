@@ -1,1062 +1,1911 @@
+
 <!DOCTYPE html>
 <html>
-    <head>
-    <!--
-        © Material Theme 
-        https://github.com/viosey/hexo-theme-material
-        Version: 1.2.5
-    -->
-    
-    <!-- Title -->
-    
-    <title>
-        欢迎来到安然的博客
-    </title>
-    
-    <!-- Favicons -->
-    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
-    <link rel="icon" sizes="192x192" href="/img/favicon.png">
-    <link rel="apple-touch-icon" href="/img/favicon.png">
-    
-    <!-- Meta & INfo -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0097A7">
-    <meta name="author" content="Anran.Z">
-    <meta name="description" content="曾弯板觉难，一朝回收，一度万水千山。">
-    <meta name="keywords" content="null">
-    
-    <!--iOS -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-title" content="Title">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="480">
-    
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-    
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="欢迎来到安然的博客">
-    
-    <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoururl.com">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="欢迎来到安然的博客">
-    <meta property="og:description" content="曾弯板觉难，一朝回收，一度万水千山。">
-    
-     <!--[if lte IE 9]>
-        <link rel="stylesheet" href="/css/ie-blocker.css">
-        
-        
-            <script src="/js/ie-blocker.zhCN.js"></script>
-        
-    <![endif]-->
-    
-    <!-- Import CSS -->
-    <link rel="stylesheet" href="/css/material.min.css">
-    <link rel="stylesheet" href="/css/style.min.css">
-    <!-- Config CSS -->
-
-
-<!-- Other Styles -->
-<style>
-	body, html{
-		font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-	}
-	
-    a{
-        color: #00838F
-    }
-    
-    .mdl-card__media,
-    #search-label,
-    #search-form-label:after,
-    #scheme-Paradox .hot_tags-count,
-    #scheme-Paradox .sidebar_archives-count,
-    #scheme-Paradox .sidebar-colored .sidebar-header,
-    #scheme-Paradox .sidebar-colored .sidebar-badge{
-        background-color: #0097A7 !important
-    }
-    
-	/* Sidebar User Drop Down Menu Text Color */
-	#scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
-    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus{
-        color: #0097A7 !important
-    }
-    
-    #post_entry-right-info,
-    .sidebar-colored .sidebar-nav li:hover > a,
-    .sidebar-colored .sidebar-nav li:hover > a i,
-    .sidebar-colored .sidebar-nav li > a:hover,
-    .sidebar-colored .sidebar-nav li > a:hover i,
-    .sidebar-colored .sidebar-nav li > a:focus i,
-    .sidebar-colored .sidebar-nav > .open > a,
-    .sidebar-colored .sidebar-nav > .open > a:hover,
-    .sidebar-colored .sidebar-nav > .open > a:focus,
-    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a{
-        color: #0097A7 !important
-    }
-    
-    .toTop{
-        background: #757575 !important
-    }
-		
-	.material-layout .material-post>.material-nav,
-	.material-layout .material-index>.material-nav,
-	.material-nav a{
-		color: #757575;
-	}
-		
-	#scheme-Paradox .MD-burger-layer {
-		background-color: #757575;
-	}
-
-	#scheme-Paradox #post-toc-trigger-btn{
-		color: #757575;
-	}
-	
-	.post-toc a:hover{
-		color: #00838F;
-		text-decoration: underline;
-	}
-</style>
-
-
-<!-- Theme Background Related-->
-
-    <style>
-        body{
-            background-image: url(/img/bg.png);
-        }
-    </style>
-
-
-
-
-<!-- Fade Effect -->
-
-    <style>
-        .fade {
-            transition: all 800ms linear;
-            -webkit-transform: translate3d(0,0,0);
-            -moz-transform: translate3d(0,0,0);
-            -ms-transform: translate3d(0,0,0);
-            -o-transform: translate3d(0,0,0);
-            transform: translate3d(0,0,0);
-            opacity: 1;
-        }
-
-        .fade.out{
-            opacity: 0;
-        }
-    </style>
-
-	<script src="/js/jquery.min.js"></script>
-	
-	<link rel="stylesheet" href="/css/highlight/xcode.css">
-	
-	<!-- UC Browser Compatible-->
-	<script>
-		var agent = navigator.userAgent.toLowerCase();
-		if(agent.indexOf('ucbrowser')>0) {
-			document.write('<link rel="stylesheet" href="/css/uc.css">');
-		   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
-		}
-	</script>
-    
-    <!-- Custom Head -->
-    
+<head>
+  <meta charset="utf-8">
+  
+  <title>欢迎来到安然的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="曾万般觉难，一朝回收，一度万水千山。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="欢迎来到安然的博客">
+<meta property="og:url" content="http://yoururl.com/page/2/index.html">
+<meta property="og:site_name" content="欢迎来到安然的博客">
+<meta property="og:description" content="曾万般觉难，一朝回收，一度万水千山。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="欢迎来到安然的博客">
+<meta name="twitter:description" content="曾万般觉难，一朝回收，一度万水千山。">
+  
+    <link rel="alternative" href="/atom.xml" title="欢迎来到安然的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
 </head>
-	
-	
-
-    <body id="scheme-Paradox">
-
-		
-        <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
-				
-			
-			
-            <!-- Main Container -->
-            <main class="material-layout__content" id="main">
-				
-                <!-- Top Anchor -->
-                <div id="top"></div>
-				
-				
-                <!-- Hamburger Button -->
-                <button class="MD-burger-icon sidebar-toggle">
-                    <span class="MD-burger-layer"></span>
-                </button>
-				
-				
-                <!-- Index Module -->
-<div class="material-index mdl-grid">
-	
-    <div class="locate-thumbnail-symbol"></div>
-    
-    
-		
-			<!-- Paradox Thumbnail -->
-        	<div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    
-    <!-- Post Thumbnail -->
-	
-		
-			<!-- Random Thumbnail -->
-			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-		
-	
-				
-		<!-- Post Title -->
-		<p class="article-headline-p"><a href="/2017/01/13/自学Python-线程和进程/">自学Python-线程和进程</a></p>
-	</div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/01/13/自学Python-线程和进程/" target="_self">继续阅读</a>
-        </span>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">欢迎来到安然的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Welcome to Anakin&#39;s blog</a>
+        </h2>
+      
     </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/icon_my.png" width="44px" height="44px" alt="Anran.Z's avatar">
-            </div>
-            <div>
-                <strong>Anran.Z</strong>
-                <span>1月 13, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-            
-            
-            
-            <!-- Post Views -->
-            <span class="post_entry-views">
-                
-            </span>
-        </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoururl.com">
+        </form>
+      </div>
     </div>
-            
-</div>
-
-		
-		
+  </div>
+</header>
+    <div class="outer">
+      <section id="main">
+  
+    <article id="post-自学Python-线程和进程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/13/自学Python-线程和进程/" class="article-date">
+  <time datetime="2017-01-13T07:05:52.000Z" itemprop="datePublished">2017-01-13</time>
+</a>
     
-		
-			<!-- Paradox Thumbnail -->
-        	<div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
+  </div>
+  <div class="article-inner">
     
-    <!-- Post Thumbnail -->
-	
-		
-			<!-- Random Thumbnail -->
-			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-		
-	
-				
-		<!-- Post Title -->
-		<p class="article-headline-p"><a href="/2017/01/13/自学Python-IO编程/">自学Python-IO编程</a></p>
-	</div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+    
+      <header class="article-header">
         
-            读文件
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/13/自学Python-线程和进程/">自学Python-线程和进程</a>
+    </h1>
+  
 
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/01/13/自学Python-IO编程/" target="_self">继续阅读</a>
-        </span>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="multiprocessing"><a href="#multiprocessing" class="headerlink" title="multiprocessing"></a>multiprocessing</h3><p>windows 创建多线程使用 <code>multiprocessing</code><br>linux unix 使用<code>fork()</code></p>
+<ul>
+<li>创建子线程的时候,只需要传入一个函数,和一个参数,创建一个<code>Process</code>实例,用<code>start()</code>方法启动,这样创建进程比<code>fork()</code>简单</li>
+</ul>
+<pre><code>from multiprocessing import Process
+import os
+# 子进程要执行的代码
+def run_proc(name):
+    print(os.getpid())
+    print(name)
+
+print(__name__)
+if __name__ == &apos;__main__&apos;:
+    print(&apos;prent process %s&apos;%os.getpid() )
+    # 创建一个子线程
+    p = Process(target = run_proc,args = (&apos;test&apos;,))
+    print(&apos; child process will start &apos;)
+    # 开始子线程
+    p.start()
+    # 放如线程队列
+    p.join()
+    print(&apos; child process end &apos;)
+</code></pre><h3 id="Pool"><a href="#Pool" class="headerlink" title="Pool"></a>Pool</h3><p>如果要开启大量子线程,可以用线程池批量化创建子线程</p>
+<pre><code>from multiprocessing import Pool
+import os,time,random
+
+def long_time_task(name):
+    print(&apos; 开启新的任务...&apos;+name)
+    start = time.time()
+    time.sleep(random.random() * 3)
+    end = time.time()
+    s = end - start
+    print(s)
+    print(name)
+
+if __name__==&apos;__main__&apos;:
+    p = Pool(4)
+    for i in range(5):
+        print(&apos;------------&gt;&gt;&gt;&gt; &apos;)
+        p.apply_async(long_time_task, args=(i,))
+
+    print(&apos; wait for process done...&apos;)
+    p.close()
+    p.join()
+    print(&apos;all progress done ..&apos;)
+</code></pre><h3 id="子进程"><a href="#子进程" class="headerlink" title="子进程"></a>子进程</h3><ul>
+<li><p>启动一个子进程</p>
+<pre><code>import subprocess
+
+print(&apos;$ nslookup www.python.org&apos;)
+r = subprocess.call([&apos;nslookup&apos;,&apos;www.python.org&apos;])
+print(&apos;exit code &apos;, r)
+</code></pre></li>
+</ul>
+<h3 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h3><ul>
+<li><p>进程间传递数据</p>
+<pre><code>from multiprocessing import Process,Queue
+import os,time,random
+
+# 写数据进程间执行代码
+def write_data(q):
+    print(&apos;  pid  :%s&apos; %os.getpid())
+    for value in [&apos;q&apos;,&apos;w&apos;,&apos;e&apos;,&apos;r&apos;]:
+        print(value)
+        q.put(value)
+        time.sleep(random.random())
+
+# 读数据进程间执行代码
+def read_data(q):
+    print(&apos; read pid : %s&apos; %os.getpid())
+    while True:
+        value =q.get(True)
+        print(&apos; 读取的数据 : &apos;+ value)
+
+if __name__ == &apos;__main__&apos;:
+    # 父进程创建Quenu,并传递给子进程
+    q = Queue()
+    pw = Process(target = write_data,args = (q,))
+    pr = Process(target = read_data,args =(q,))
+    pw.start()
+    pr.start()
+    pw.join()
+    # pr 是死循环 无法等待其结束,只能强行终止
+    pr.terminate()
+</code></pre></li>
+</ul>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><ul>
+<li>启动一个线程就是把一个函数传入并创建<code>Thread</code>实例,然后调用<code>start()</code>开始执行</li>
+</ul>
+<pre><code># 创建一个线程,并执行
+import time,threading
+
+# 新线程的代码
+def loop():
+    print(&apos;线程%s is running ....&apos;%threading.current_thread().name)
+    n =0
+    while n&lt;5:
+        n=n+1
+        print(&apos;thread %s &gt;&gt;&gt; %s&apos;%(threading.current_thread().name,n))
+        time.sleep(1)
+    print(&apos;线程%s is running ....&apos;%threading.current_thread().name)
+
+t =threading.Thread(target= loop,name= &apos;LoopThread&apos;)
+t.start()
+t.join()
+</code></pre><h3 id="Lock"><a href="#Lock" class="headerlink" title="Lock"></a>Lock</h3><ul>
+<li>任何一个线程启动一个子线程,我们把该线程称为主线程</li>
+<li>当多个线程共享一个变量并操作,导致内容错乱</li>
+<li>使用lock.acquire(),当多个线程同时执行lock.acquire(),只有一个线程能成功获取锁,然后继续执行代码,其他线程就继续等待直到获得锁为止,获得锁的线程用完后一定要释放锁,否则会出现其他线程一直等待,成为死线程,所有使用try … finally 确保锁一定会被释放</li>
+</ul>
+<h3 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h3><ul>
+<li>ThreadLocal 变量虽然是全局变量，但是每个线程都能读写自己线程的独立副本，互不干扰。ThreadLocal解决了参数在一个线程中各个参数之间互相传递的问题</li>
+</ul>
+<pre><code>import threading
+# 获取全局的ThreadLocal对象
+local_school = threading.local()
+
+def process_student():
+    # 获取线程相关的student
+    std = local_school.student
+    print(&apos;hello ,%s(in %s)&apos;%(std,threading.current_thread().name))
+
+def process_thread(name):
+    # 绑定ThreadLocal的student
+    local_school.student= name
+    process_student()
+
+# 开启两个线程
+t1 =threading.Thread(target= process_thread,args = (&apos;anakin&apos;,),name=&apos;Thread -a&apos;)
+t2 =threading.Thread(target= process_thread,args = (&apos;hahha&apos;,),name =&apos;Thread -b &apos;)
+t1.start()
+t2.start()
+t1.join()
+t2.join()
+</code></pre>
+      
     </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/icon_my.png" width="44px" height="44px" alt="Anran.Z's avatar">
-            </div>
-            <div>
-                <strong>Anran.Z</strong>
-                <span>1月 13, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-            
-            
-            
-            <!-- Post Views -->
-            <span class="post_entry-views">
-                
-            </span>
-        </div>
-    </div>
-            
-</div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/01/13/自学Python-线程和进程/" data-id="ciz96xjub000co0vvj0b4xwbe" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
+      
 
-		
-		
-    
-		
-			<!-- Paradox Thumbnail -->
-        	<div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    
-    <!-- Post Thumbnail -->
-	
-		
-			<!-- Random Thumbnail -->
-			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-		
-	
-				
-		<!-- Post Title -->
-		<p class="article-headline-p"><a href="/2017/01/11/自学Python-面向对象编程/">自学Python-面向对象编程</a></p>
-	</div>
+      
+        <a href="http://yoururl.com/2017/01/13/自学Python-线程和进程/#ds-thread" class="article-comment-link">评论</a>
+      
 
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-自学Python-IO编程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/13/自学Python-IO编程/" class="article-date">
+  <time datetime="2017-01-13T01:30:18.000Z" itemprop="datePublished">2017-01-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
         
-            类cla...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/01/11/自学Python-面向对象编程/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/icon_my.png" width="44px" height="44px" alt="Anran.Z's avatar">
-            </div>
-            <div>
-                <strong>Anran.Z</strong>
-                <span>1月 11, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-            
-            
-            
-            <!-- Post Views -->
-            <span class="post_entry-views">
-                
-            </span>
-        </div>
-    </div>
-            
-</div>
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/13/自学Python-IO编程/">自学Python-IO编程</a>
+    </h1>
+  
 
-		
-		
+      </header>
     
-		
-			<!-- Paradox Thumbnail -->
-        	<div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    
-    <!-- Post Thumbnail -->
-	
-		
-			<!-- Random Thumbnail -->
-			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-		
-	
-				
-		<!-- Post Title -->
-		<p class="article-headline-p"><a href="/2017/01/11/自学Python-模块/">自学Python-模块</a></p>
-	</div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h2><ul>
+<li>使用open(‘文件地址’，’标识符’)函数</li>
+<li>使用read()读取</li>
+<li>最后一步使用close(关闭)</li>
+</ul>
+<p>使用<strong><code>with</code></strong>读取，自动关闭</p>
+<pre><code># 使用with 读取，自动关闭
+with open(&apos;D:/pro/python/test.txt&apos;,&apos;r&apos;) as f:
+    print(f.read())
+</code></pre><ul>
+<li>调用readline() 可以一次读取一行内容</li>
+<li>调用readlines() 一次读取所有的内容，并返回一个list</li>
+<li><p>不能确定文件大小使用readlines()</p>
+<pre><code>with open(&apos;D:/pro/python/test.txt&apos;,&apos;r&apos;) as f:
+    for line in f.readlines():
+        print(line.strip())
+</code></pre></li>
+</ul>
+<h3 id="读取二进制文件"><a href="#读取二进制文件" class="headerlink" title="读取二进制文件"></a>读取二进制文件</h3><ul>
+<li><p>打开模式使用’rb’</p>
+<pre><code># 读取二进制文件
+with open(&apos;D:/pro/python/img.png&apos;,&apos;rb&apos;) as f:
+    for line in f.readlines():
+        print(line.strip())
+</code></pre></li>
+</ul>
+<h3 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h3><ul>
+<li><p>要读取非UTF-8编码的文本文件，需要给open()函数传入encoding参数</p>
+<pre><code>f = open(&apos;/Users/michael/gbk.txt&apos;, &apos;r&apos;, encoding=&apos;gbk&apos;)
+</code></pre></li>
+<li><p>遇到非法编码文件，open函数还接受一个errors参数，表示遇到编码错误后如何处理，最简单的方式就直接忽略</p>
+<pre><code>f = open(&apos;/Users/michael/gbk.txt&apos;, &apos;r&apos;, 
+encoding=&apos;gbk&apos;,errors = &apos;ignore&apos;)
+</code></pre></li>
+</ul>
+<h2 id="写文件"><a href="#写文件" class="headerlink" title="写文件"></a>写文件</h2><blockquote>
+<p>与读文件的区别open() 函数的的标识符，传入’w’,’wb’表示写文件和二进制文件</p>
+</blockquote>
+<ul>
+<li><p>写文件</p>
+<pre><code>with open(&apos;D:/pro/python/write.txt&apos;,&apos;w&apos;) as f:
+    f.write(&apos;hello write new file... &apos;)
+</code></pre></li>
+</ul>
+<h2 id="StringIO-和BytesIO"><a href="#StringIO-和BytesIO" class="headerlink" title="StringIO 和BytesIO"></a>StringIO 和BytesIO</h2><h3 id="StringIO"><a href="#StringIO" class="headerlink" title="StringIO"></a>StringIO</h3><p>很多时候，数据读写不一定是文件，也可以在内存中读写</p>
+<ul>
+<li><p>在内存中写str，使用<code>getvalue()</code>获取写入的内容</p>
+<pre><code> from io import StringIO
+f = StringIO()
+f.write(&apos;hello&apos;)
+f.write(&apos;hello&apos;)
+f.write(&apos;hello&apos;)
+print(f.getvalue())
+</code></pre></li>
+<li><p>读取StringIO</p>
+<pre><code>while True:
+    s =f.readline()
+    if s ==&apos;&apos;:
+        print(&apos;s ==&apos;+ s)
+        break
+    print(s.strip())
+</code></pre></li>
+</ul>
+<h3 id="BytesIO"><a href="#BytesIO" class="headerlink" title="BytesIO"></a>BytesIO</h3><ul>
+<li><p>内存中读写二进制文件</p>
+<pre><code># 写入二进制文件
+from io import BytesIO
+f = BytesIO()
+f.write(&apos;你好&apos;.encode(&apos;utf-8&apos;))
+s= f.getvalue()
+print(s)
+</code></pre></li>
+<li><p>读取二进制文件</p>
+<pre><code># 读取二进制文件
+from io import BytesIO
+f = BytesIO(b&apos;\xe4\xbd\xa0\xe5\xa5\xbd&apos;)
+s= f.read()
+print(s)
+</code></pre></li>
+</ul>
+<h3 id="操作文件和目录"><a href="#操作文件和目录" class="headerlink" title="操作文件和目录"></a>操作文件和目录</h3><ul>
+<li><p><strong>查看当前目录的绝对路径</strong></p>
+<pre><code>import os
+v= os.path.abspath(&apos;&apos;) # 查看当前目录的绝对路径
+print(v)
+</code></pre></li>
+<li><p>在某个路径下创建一个新目录,首页把新路径目录表示出来</p>
+<pre><code># 删除一个文件夹
+os.rmdir(&apos;D:/pro/python/testdir&apos;)
 
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            使用模块
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/01/11/自学Python-模块/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/icon_my.png" width="44px" height="44px" alt="Anran.Z's avatar">
-            </div>
-            <div>
-                <strong>Anran.Z</strong>
-                <span>1月 11, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-            
-            
-            
-            <!-- Post Views -->
-            <span class="post_entry-views">
-                
-            </span>
-        </div>
-    </div>
-            
-</div>
+# 对文章重命名
+a = os.rename(&apos;test.txt&apos;,&apos;test.py&apos;)
 
-		
-		
-    
-		
-			<!-- Paradox Thumbnail -->
-        	<div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    
-    <!-- Post Thumbnail -->
-	
-		
-			<!-- Random Thumbnail -->
-			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-		
-	
-				
-		<!-- Post Title -->
-		<p class="article-headline-p"><a href="/2017/01/11/自学Python-函数式编程/"></a></p>
-	</div>
+#删除文件
+d = os.remove(&apos;test.py&apos;)
+</code></pre></li>
+<li><p>过滤文件</p>
+<pre><code># 过滤文件,比如列出当前目录下的所有文件夹
+s = [x for x in os.listdir(&apos;.&apos;) if os.path.isdir(x)]
+print(s)
 
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-title: 自学Python-函数式编程date: 2017-01-11 14:01:12tags:—函数式编程...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/01/11/自学Python-函数式编程/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/icon_my.png" width="44px" height="44px" alt="Anran.Z's avatar">
-            </div>
-            <div>
-                <strong>Anran.Z</strong>
-                <span>1月 11, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-            
-            
-            
-            <!-- Post Views -->
-            <span class="post_entry-views">
-                
-            </span>
-        </div>
-    </div>
-            
-</div>
+# 过滤文件 ,获得所有的.py文件
+s = [ x for x  in os.listdir(&apos;.&apos;) if os.path.isfile(x) and
+os.path.splitext(x)[1]==&apos;.py&apos;]
+print(s)
+</code></pre></li>
+</ul>
+<h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><blockquote>
+<p>我们把变量从内存中变成可存储的过程称为序列化<br>序列化后的内容可以写到磁盘上或者通过网络传输</p>
+</blockquote>
+<ul>
+<li><p>将对象序列化</p>
+<pre><code>import pickle
+d = dict(name=&apos;zhanghua&apos;,age=18,score=100)
+s =pickle.dumps(d)
+print(s)
+</code></pre></li>
+<li><p>将对象写入文件中</p>
+<pre><code>import pickle
+d = dict(name=&apos;zhanghua&apos;,age=18,score=100)
+s =pickle.dumps(d)
+print(s)
+f= open(&apos;dump.txt&apos;,&apos;wb&apos;)
+pickle.dump(d,f)
+f.close()
+</code></pre></li>
+<li><p>读取存储在文件中的对象</p>
+<pre><code># 读取存储的对象
+r= open(&apos;dump.txt&apos;,&apos;rb&apos;)
+o = pickle.load(r)
+r.close()
+print(o)
+</code></pre></li>
+</ul>
+<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><p>我们要在不同的编程语言中传递对象,就必须把对象序列化为标准格式,如xml 和json</p>
+<ul>
+<li><p>序列化json和反序列化json</p>
+<pre><code>import json
+# 序列化
+d = dict(name=&apos;Bob&apos;,age=20,score=88)
+j = json.dumps(d)
+print(j)
 
-		
-		
-    
-		
-			<!-- Paradox Thumbnail -->
-        	<div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    
-    <!-- Post Thumbnail -->
-	
-		
-			<!-- Random Thumbnail -->
-			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-		
-	
-				
-		<!-- Post Title -->
-		<p class="article-headline-p"><a href="/2017/01/10/自学Python-Python基础/"></a></p>
-	</div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            注释
-以...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/01/10/自学Python-Python基础/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/icon_my.png" width="44px" height="44px" alt="Anran.Z's avatar">
-            </div>
-            <div>
-                <strong>Anran.Z</strong>
-                <span>1月 10, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-            
-            
-            
-            <!-- Post Views -->
-            <span class="post_entry-views">
-                
-            </span>
-        </div>
-    </div>
-            
-</div>
-
-		
-		
-    
-		
-			<!-- Paradox Thumbnail -->
-        	<div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    
-    <!-- Post Thumbnail -->
-	
-		
-			<!-- Random Thumbnail -->
-			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-		
-	
-				
-		<!-- Post Title -->
-		<p class="article-headline-p"><a href="/2017/01/10/代码示例/">代码示例</a></p>
-	</div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            package com.dy.dyth.base;
-import android.graphics....
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/01/10/代码示例/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/icon_my.png" width="44px" height="44px" alt="Anran.Z's avatar">
-            </div>
-            <div>
-                <strong>Anran.Z</strong>
-                <span>1月 10, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-            
-            
-            
-            <!-- Post Views -->
-            <span class="post_entry-views">
-                
-            </span>
-        </div>
-    </div>
-            
-</div>
-
-		
-		
-    
-		
-			<!-- Paradox Thumbnail -->
-        	<div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    
-    <!-- Post Thumbnail -->
-	
-		
-			<!-- Random Thumbnail -->
-			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-		
-	
-				
-		<!-- Post Title -->
-		<p class="article-headline-p"><a href="/2017/01/09/日常笔记/">日常笔记</a></p>
-	</div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            遇到的问题
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/01/09/日常笔记/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/icon_my.png" width="44px" height="44px" alt="Anran.Z's avatar">
-            </div>
-            <div>
-                <strong>Anran.Z</strong>
-                <span>1月 09, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-            
-            
-            
-            <!-- Post Views -->
-            <span class="post_entry-views">
-                
-            </span>
-        </div>
-    </div>
-            
-</div>
-
-		
-		
-    
-		
-			<!-- Paradox Thumbnail -->
-        	<div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    
-    <!-- Post Thumbnail -->
-	
-		
-			<!-- Random Thumbnail -->
-			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-		
-	
-				
-		<!-- Post Title -->
-		<p class="article-headline-p"><a href="/2017/01/09/hello-world/">Hello World</a></p>
-	</div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            Welcome to Hexo
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/01/09/hello-world/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/icon_my.png" width="44px" height="44px" alt="Anran.Z's avatar">
-            </div>
-            <div>
-                <strong>Anran.Z</strong>
-                <span>1月 09, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-            
-            
-            
-            <!-- Post Views -->
-            <span class="post_entry-views">
-                
-            </span>
-        </div>
-    </div>
-            
-</div>
-
-		
-		
-    
-		<!-- Index nav -->
-        <nav class="material-nav mdl-cell mdl-cell--12-col">
-            <a class="extend prev" rel="prev" href="/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_back</i></button></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-        </nav>
-    
-    
-	
-		<script>
-    
-    var randomNum;
-    
-    var locatePost = $(".locate-thumbnail-symbol").next();
-    for(var i=0; i < 10; i++){
-        
-        randomNum = Math.floor(Math.random() * 29 + 1);
-        
-        locatePost.children(".post_thumbnail-random").attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')')
-        
-        locatePost = locatePost.next();
-    }
-    
-</script>
-
-	
-
-</div>
-
-				
-				
-					<!-- Overlay For Active Sidebar -->
-<div class="sidebar-overlay "></div>
-
-<!-- Material sidebar -->
-<aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
-	<div id="sidebar-main">
-	    <!-- Sidebar Header -->
-		<div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
-    <!-- Top bar -->
-    <div class="top-bar"></div>
-
-    <!-- Sidebar toggle button -->
-    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
-    <i class="material-icons">clear_all</i>
-    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
-
-    <!-- Sidebar Avatar -->
-    <div class="sidebar-image">
-        <img src="/img/icon_my.png" alt="Anran.Z's avatar">
-    </div>
-
-    <!-- Sidebar Email -->
-    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-        anran0919@163.com
-        <b class="caret"></b>
-    </a>
-</div>
-
-		<!-- Sidebar Navigation  -->
-		<ul class="nav sidebar-nav">
-    <!-- User dropdown  -->
-    <li class="dropdown">
-        <ul id="settings-dropdown" class="dropdown-menu">
-			
-                <li>
-                    <a href="#" target="_blank" title="Email Me">
-						<i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
-                        Email Me
-                    </a>
-                </li>
-            
-        </ul>
-    </li>
-
-    <!-- Homepage -->
-    <li id="sidebar-first-li">
-        <a href="/" target="_self">
-            <i class="material-icons sidebar-material-icons">home</i>
-             主页
-        </a>
-    </li>
-
-    <!-- I'm Feeling Lucky -->
-<!--
-    <li class="dropdown">
-        <a href="" target="_self">
-            <i class="material-icons sidebar-material-icons">explore</i>
-             sidebar.imlucky
-        </a>
-    </li>
--->
-
-
-    <!-- Archives  -->
-    <li class="dropdown">
-        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
-            <i class="material-icons sidebar-material-icons">inbox</i>
-             归档
-            <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-            <li>
-            <a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">12</span></a>
-        </ul>
-    </li>
-
-    <!-- Categories  -->
-    
-
-    <!-- Divider -->
-    <li class="divider"></li>
-
-
-    <!-- Pages  -->
-	
-
-    <!-- Article Numebr  -->
-    <li>
-        <a href="/archives">
-             文章总数
-             <span class="sidebar-badge">19</span>
-        </a>
-    </li>
+# 反序列化
+json_str = &apos;{&quot;age&quot;: 20, &quot;score&quot;: 88, &quot;name&quot;: &quot;Bob&quot;}&apos;
+s =json.loads(json_str)
+print(s)
+</code></pre></li>
+<li><p>将实例对象序列化</p>
+<pre><code>class Student(object):
+    def __init__(self, name,age,score):
+        self.name = name
+        self.age = age
+        self.score = score
+s = Student(&apos;anakin&apos;,18,100)
+# 将实例转换为json
+j = json.dumps(s,default=lambda obj : obj.__dict__)
+print(j)
+</code></pre></li>
+<li><p>json反序列化成对象</p>
+<pre><code># json 反序列化成对象
+def dict2student(d):
+    return Student(d[&apos;name&apos;],d[&apos;age&apos;],d[&apos;score&apos;])
+json_str = &apos;{&quot;score&quot;: 100, &quot;name&quot;: &quot;anakin&quot;, &quot;age&quot;: 18}&apos;
+r = json.loads(json_str, object_hook=dict2student)
+print(r)
+</code></pre></li>
 </ul>
 
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/01/13/自学Python-IO编程/" data-id="ciz96xjts0007o0vvb8fcgvlc" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
+      
 
-		<!-- Sidebar Divider -->
-		<div class="sidebar-divider"></div>
+      
+        <a href="http://yoururl.com/2017/01/13/自学Python-IO编程/#ds-thread" class="article-comment-link">评论</a>
+      
 
-		<!-- Sidebar Footer -->
-		<!-- 
-I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
-If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
-It will not impact the appearance and can give developers a lot of support :)
+      
+    </footer>
+  </div>
+  
+</article>
 
-很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
-如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
-它不会影响美观并可以给开发者很大的支持和动力。 :) 
--->
 
-<!-- Theme Material -->
-<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
-	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-		主题 - Material
-		<span class="sidebar-badge badge-circle">i</span>
-	</div>
+  
+    <article id="post-自学Python-面向对象编程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/11/自学Python-面向对象编程/" class="article-date">
+  <time datetime="2017-01-11T11:38:56.000Z" itemprop="datePublished">2017-01-11</time>
 </a>
-
-<!-- Help & Support -->
-<!--
-<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
-    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-		sidebar.help
-		<span class="mdl-button__ripple-container">
-			<span class="mdl-ripple"></span>
-		</span>
-	</div>
-</a>
--->
-
-<!-- Feedback -->
-<!--
-<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
-    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-         sidebar.feedback
-                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
-</a>
--->
-
-<!-- Abount Theme -->
-<!--
-<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
-    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-         sidebar.about_theme
-        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
-</a>-->
-
-	</div>
     
-    <!-- Sidebar Sponsor -->
+  </div>
+  <div class="article-inner">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/11/自学Python-面向对象编程/">自学Python-面向对象编程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><pre><code>class Student(object):
+    def __init__(self, name,score):
+        self.name = name
+        self.score = score
+    def print_score(self):
+        print(&apos;%s: %s&apos; % (self.name,self.score))
+s1 = Student(&apos;anakin&apos;,18)
+s2 = Student(&apos;anran&apos;,18)
+s1.print_score()
+s2.print_score()
+</code></pre><ul>
+<li>定义类以<code>class</code>开头,后买年跟类名,类名后面的括号中写继承的类(一般默认继承Object)</li>
+<li>和普通函数相比,在类中定义函数,第一个变量永远是实例变量<code>self</code>,但是调用的时候不用传入,Python解释器会自动把实例变量传进去</li>
+</ul>
+<h3 id="数据封装"><a href="#数据封装" class="headerlink" title="数据封装"></a>数据封装</h3><ul>
+<li>我们直接擦操作了对象内部数据,但无法知道方法内部的实现细节</li>
+</ul>
+<h3 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h3><ul>
+<li>在Class内部,有属性和方法,而外部代码通过直接调用实例变量的方法来操作数据,这样就隐藏了内部的复杂逻辑</li>
+<li>如果要想是内部属性不被外部访问,在属性名称前面加<strong>,在Python中如果变量名以</strong>开头,就变成了私有变量,只有内部可以访问,外部不能访问</li>
+</ul>
+<p>不能被直接访问</p>
+<pre><code>class Student(object):
+    def __init__(self, name,score):
+        self.__name = name
+        self.__score = score
+    def print_score(self):
+        print(&apos;%s: %s&apos; % (self.__name,self.__score))
+s1 = Student(&apos;anakin&apos;,18)
+
+print(s1.__name);
+</code></pre><ul>
+<li><p>外部如果想访问和修改实例的,可以通过get和set方法</p>
+<pre><code>class Student(object):
+def __init__(self, name,score):
+    self.__name = name
+    self.__score = score
+def print_score(self):
+    print(&apos;%s: %s&apos; % (self.__name,self.__score))
+def get_name(self):
+    return self.__name
+def set_name(self,name):
+    self.__name=name
+s1 = Student(&apos;anakin&apos;,18)
+print(s1.get_name())
+s1.set_name(&apos;change&apos;)
+print(s1.get_name());
+print(s1.print_score())
+</code></pre></li>
+</ul>
+<p><strong>注意 :</strong></p>
+<ul>
+<li><p>类似<strong>xxx_</strong> ,双下划线开头,双下划线结尾属于特殊变量,特殊变量可以直接访问,所以在命名变量名的时候不要使用<strong>xxx</strong> 这样的变量名</p>
+</li>
+<li><p>类似_name的实例变量,外部是可以访问的,但是按照约定俗成的固定,这样的实例看作是私有的</p>
+</li>
+</ul>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ul>
+<li>继承的好处,子类可以获得父类的全部功能</li>
+<li><p>子类和父类存在同样的方法,这时我们说子类覆盖了父类的方法,运行时会调用子类的方法,这样我们就获得了继承的另外一个好处:<strong>多态</strong></p>
+<pre><code>class Animal(object):
+    def run(self):
+        print(&apos;aninmal is running....&apos;)
+
+class Dog(Animal):
+    def run(self):
+        print(&apos;Dog is running....&apos;)
+
+class Cat(Animal):
+        def run(self):
+            print(&apos;Cat is running....&apos;)
+
+d = Dog()
+c = Cat()
+d.run()
+c.run()
+</code></pre></li>
+</ul>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><ul>
+<li><p>对于静态语言像java ,如果需要传入Anima类型,则传入的对象必须是Animal类型或者它的子类,否则无法调用run方法</p>
+</li>
+<li><p>对于动态语言想Python,则不一定要传入Animal类型,只需要保证传入的对象有一个run方法就可以了</p>
+</li>
+</ul>
+<blockquote>
+<p>动态语言的的”鸭子类型”,比要求严格的继承体系,一个对象只要”看起来像鸭子”,那它就可以被看作是鸭子.</p>
+</blockquote>
+<h3 id="获取对象信息"><a href="#获取对象信息" class="headerlink" title="获取对象信息"></a>获取对象信息</h3><ul>
+<li><p>判断基本数据类型</p>
+<pre><code>s= type(&apos;123&apos;)
+print(s)
+</code></pre></li>
+<li><p>判断一个对象是否是函数,使用types提供的函数</p>
+<pre><code>import types
+&apos;判断对象是否是函数&apos;
+def fn():
+    pass
+s= types.FunctionType
+print(s)
+</code></pre></li>
+</ul>
+<pre><code>&apos;判断对象是否是函数&apos;
+def fn():
+    pass
+s= types.FunctionType
+s2 =types.BuiltinFunctionType
+s3 = type(abs)==s2
+print(s3)
+print(s)
+</code></pre><p> <strong>isinstance()函数</strong></p>
+<pre><code>&apos;isinstance()函数&apos;
+class Animal(object):
+    pass
+class Dog(Animal):
+    pass
+class Cat(Animal):
+    pass
+a =Animal()
+d =Dog()
+c = Cat()
+s = isinstance(d,Animal)
+print(s)
+</code></pre><ul>
+<li><p>判断是否是其中一种</p>
+<pre><code>s=isinstance([1,2,3],(list,tuple))
+print(s)
+</code></pre></li>
+</ul>
+<p><strong>使用dir()</strong></p>
+<ul>
+<li><p>获得一个对象的所有属性和方法使用<code>dir()</code></p>
+</li>
+<li><p>配合使用<code>getattr(),setattr(),hasattr()</code>,可以直接操作一个对象的状态</p>
+<pre><code>class Animal(object):
+    def __init__(self):
+        self.x= 9
+    def power(self):
+        return self.x*self.x
+a = Animal()
+s1 =hasattr(a,&apos;x&apos;)
+s2 =hasattr(a,&apos;y&apos;)
+s3 =getattr(a,&apos;x&apos;)
+s4 =setattr(a,&apos;x&apos;,4)
+s5= getattr(a,&apos;x&apos;)
+print(s1)
+print(s2)
+print(s3)
+print(s4)
+print(s5)
+</code></pre></li>
+</ul>
+<h3 id="实例属性和类属性"><a href="#实例属性和类属性" class="headerlink" title="实例属性和类属性"></a>实例属性和类属性</h3><ul>
+<li>Python是动态语言,根据类创建的实例可以绑定任意属性,可以删除</li>
+<li>如果类中存在这个属性,绑定新的属性,会得到新绑定的属性,如果删除就得到类的属性,绑定的属性只能通过类的实例调用,不能通过类名获取</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/01/11/自学Python-面向对象编程/" data-id="ciz96xjuj000fo0vvodqh4b13" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象编程">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/01/11/自学Python-面向对象编程/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
 
 
+  
+    <article id="post-自学Python-模块" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/11/自学Python-模块/" class="article-date">
+  <time datetime="2017-01-11T09:35:35.000Z" itemprop="datePublished">2017-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/11/自学Python-模块/">自学Python-模块</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h3><p><strong>标准注释</strong></p>
+<pre><code>#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+</code></pre><ul>
+<li><p>test_1.py</p>
+<pre><code>#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+&apos;a test module&apos;
+___author__=&apos;anakin&apos;
+
+import sys
+
+def test():
+    args = sys.argv
+    if len(args)==1:
+        print(&apos;hello,world&apos;)
+    elif len(args)==2:
+        print(&apos;hello :&apos;+ args[1])
+    else:
+        print(&apos;too many argument!&apos;)
+
+if __name__==&apos;__main__&apos;:
+    test()
+</code></pre></li>
+</ul>
+<ul>
+<li><p>test_2.py</p>
+<pre><code>import test_1
+
+test_1.test()
+</code></pre></li>
+</ul>
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><ul>
+<li><p>外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。</p>
+<pre><code>#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+&apos;函数的作用域&apos;
+___author__=&apos;anakin&apos;
+
+def _private_1(name):
+    print(&apos;private 1 run&apos;)
+
+def _private_2(name):
+    print(&apos;private 2 run&apos;)
+
+def greeting(name):
+    if len(name)&gt;3:
+        return _private_1(name)
+    else :
+        return _private_2(name)
+</code></pre><h3 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h3></li>
+</ul>
+<p>安装Pillow </p>
+<pre><code>安装Pillow
+pip install Pillow
+
+from PIL import Image
+im = Image.open(&apos;img.png&apos;)
+print(im.format,im.size,im.mode)
+</code></pre><p>生成缩略图</p>
+<pre><code>im.thumbnail((200, 100))
+im.save(&apos;thmb.jpg&apos;,&apos;JPEG&apos;)
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/01/11/自学Python-模块/" data-id="ciz96xjue000do0vv04gqjl0i" class="article-share-link" data-share="baidu" data-title="自学Python-模块">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/01/11/自学Python-模块/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-自学Python-函数式编程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/11/自学Python-函数式编程/" class="article-date">
+  <time datetime="2017-01-11T06:01:12.185Z" itemprop="datePublished">2017-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: 自学Python-函数式编程<br>date: 2017-01-11 14:01:12<br>tags:<br>—函数式编程</p>
+<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><blockquote>
+<p>变量可以指向函数，函数的参数能接收变量，那么一个函数可以接收另一<br>个函数作为参数，这种函数就称为高阶函数</p>
+</blockquote>
+<ol>
+<li>变量可以指向函数</li>
+<li>函数也是变量</li>
+<li><p>传入函数</p>
+<pre><code>def add(x,y,f):
+    return f(x)+f(y)
+s= add(2,3,abs)
+print(s)
+</code></pre></li>
+</ol>
+<h3 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map/reduce"></a>map/reduce</h3><h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><blockquote>
+<p>map 接收两个参数，一个函数，一个<code>Iterabale</code>,map将传入的函数依<br>次祖作用到序列的每个元素，并把结果作为新的<code>Iterator</code>返回</p>
+</blockquote>
+<pre><code>def f(x):
+    return x*x
+L=[1,2,3,4,5]
+m=map(f,L)
+s=list(m)
+print(s)
+</code></pre><p>一个集合中的元素转换成字符串</p>
+<pre><code>m=map(str,[1,2,3,45])
+s=list(m)
+print(s)
+</code></pre><h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h3><blockquote>
+<p><code>reduce</code>的用法，把一个函数作用在一个序列[x1,x2,x3…],必须接&gt;收两个参数,<code>return</code>结果继续和序列的下一个元素做累积运算</p>
+</blockquote>
+<pre><code>from functools import reduce
+def fn(x,y):
+    return x*10+y
+s=reduce(fn,[1,2,3,4])
+print(s)
+</code></pre><h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><p>filter()函数用于过滤序列</p>
+<blockquote>
+<p>和<code>map()</code>不同的是<code>filter()</code>,接收两个参数,一个函数和一个序列, &gt; 依次将函数作用序列的每一个元素,根据返回值是<code>ture</code> 还是<code>false</code> 决定保留还是丢弃该元素</p>
+</blockquote>
+<p>筛选出奇数</p>
+<pre><code>def is_odd(n):
+    return n%2==1
+f =filter(is_odd,[1,2,3,4,5,6])
+s = list(f)
+print(s)
+</code></pre><h3 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h3><ul>
+<li><p>对list进行排序</p>
+<pre><code>s= sorted([1,2,3,53,21,0,3])
+print(s)
+</code></pre></li>
+<li><p>可以接收一个key进行自定义排序</p>
+<pre><code>s= sorted([1,-2,-3,-53,21,0,3],key=abs)
+print(s)
+</code></pre></li>
+<li><p>根据字母顺序排列</p>
+<pre><code>L =[&apos;bob&apos;, &apos;about&apos;, &apos;Zoo&apos;, &apos;Credit&apos;]
+s =sorted(L,key=str.lower)
+print(s)
+</code></pre></li>
+</ul>
+<h2 id="返回函数"><a href="#返回函数" class="headerlink" title="返回函数"></a>返回函数</h2><p>返回一个函数</p>
+<pre><code>def lazy_sum(*arg):
+    def sum():
+        temp =0
+        for i in arg:
+            temp = i+ temp
+        return temp
+    return sum
+f= lazy_sum(1,2,3,4)
+print(f)
+s = f()
+print(s)
+</code></pre><p><strong>总结</strong></p>
+<ul>
+<li>函数可以返回一个结果,也可以返回一个函数</li>
+<li>返回函数时,函数并未执行,返回函数中不要应用任何可能会变化的变量</li>
+</ul>
+<h3 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h3><p>匿名函数使用Lambda 表达式</p>
+<pre><code>L = [1,2,3,4]
+m = map(lambda x : x*x,L)
+s = list(m)
+print(s)
+</code></pre><ul>
+<li>关键字lambda表示匿名函数,冒号前面的x就是参数</li>
+<li>限制:只能有一个表达式,不用写retuen ,结果就为返回值</li>
+<li>好处:不用担心命名冲突,可以把匿名函数赋值给一个变量,通过变量调用函数</li>
+<li><p>同样,匿名函数也可以作为返回值返回</p>
+<pre><code>def build(x,y):
+    return lambda:x*x+y*y
+f = build(1,2);
+print(f)
+</code></pre></li>
+</ul>
+<h3 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h3><p>代码中<code>*arg</code>可变参数,<code>**kw</code> 关键字参数</p>
+<pre><code>def log(func):
+    def wrapper(*arg,**kw):
+        print(&apos;call :&apos;+func.__name__)
+        return func(*arg,**kw)
+    return wrapper
+@log
+def now():
+    print(&apos;print log&apos;)
+now()
+</code></pre><h3 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h3><pre><code>import functools
+int2 = functools.partial(int,base=2)
+s =int2(&apos;10000&apos;)
+print(s)
+</code></pre><ul>
+<li>当函数的参数太多需要简化时,<code>functools.partial()</code>创建一个新的函数,这个函数可以固定原函数的部分参数,是函数调用更简单</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/01/11/自学Python-函数式编程/" data-id="ciz96xju5000ao0vv8fxudul8" class="article-share-link" data-share="baidu" data-title="">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/01/11/自学Python-函数式编程/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-自学Python-Python基础" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/10/自学Python-Python基础/" class="article-date">
+  <time datetime="2017-01-10T06:16:06.367Z" itemprop="datePublished">2017-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><ol>
+<li>以#开头作为注释右面的代码不会被执行</li>
+</ol>
+<h3 id="代码格式"><a href="#代码格式" class="headerlink" title="代码格式"></a>代码格式</h3><ul>
+<li>语法比较简单,不同于java以分号作为结束,Python采用缩进的方式,所以代码格式非常重要</li>
+</ul>
+<h2 id="数据类型和变量"><a href="#数据类型和变量" class="headerlink" title="数据类型和变量"></a>数据类型和变量</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><ul>
+<li>整数:可以处理任意大小的整数</li>
+<li><p>浮点数 : 1.11, -3.15,,对于很大和很小的浮点数需要用科学计数法</p>
+<blockquote>
+<p>注意:证书和浮点数在计算机内部存储方式是不同的,整数永远是精确的(除法也是精确的),浮点可能会四舍五入</p>
+</blockquote>
+</li>
+<li><p>字符串:以单引号或者双引号括起来的任意文本,”字符串”,’字符串’</p>
+</li>
+<li><p>boolean :一个布尔值只有True ,False两种值</p>
+<blockquote>
+<p>注意大小写</p>
+</blockquote>
+</li>
+<li><p>空值:一个特殊的值None,不能理解为0 ,0是有意义的,None是一个特殊的空值</p>
+</li>
+</ul>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><blockquote>
+<p>变量不仅可以是数字,可说是任意数据类型,变量在程序中使用一个变量名表示,变量名必须符号命名规范</p>
+</blockquote>
+<ul>
+<li>“=” 是赋值语句,表示把任意数据类型赋值给变量,同一个变量可以反复赋值,而且可以是不同类型的变量<br>  eg:a= 123, a=’abc’</li>
+</ul>
+<blockquote>
+<p>这种变量本身不固定的语言称为动态语言,与之对应的静态语言比如java,定义变量时必须指定变量的数据类型,并且,一旦指定就不能被其他类型的变量赋值</p>
+</blockquote>
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><ul>
+<li>常量是不能改变的变量,比如数学中的常数π,就是一个常量,通常用全部大学表示常量</li>
+</ul>
+<h4 id="Python中的除法"><a href="#Python中的除法" class="headerlink" title="Python中的除法"></a>Python中的除法</h4><ol>
+<li>/ 10/3 = 3.33333333整数相除得到的结果是浮点数</li>
+<li>// 10//3 =3  只取结果的整数部分</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/01/10/自学Python-Python基础/" data-id="ciz96xju30009o0vvb3xpz0ja" class="article-share-link" data-share="baidu" data-title="">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/01/10/自学Python-Python基础/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-代码示例" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/10/代码示例/" class="article-date">
+  <time datetime="2017-01-10T01:57:30.000Z" itemprop="datePublished">2017-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/10/代码示例/">代码示例</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>package com.dy.dyth.base;
+</code></pre><p>import android.graphics.Bitmap;<br>import android.graphics.Canvas;<br>import android.graphics.drawable.Drawable;<br>import android.support.v7.widget.RecyclerView;<br>import android.view.KeyEvent;<br>import android.view.View;<br>import android.view.ViewGroup;</p>
+<p>import java.util.ArrayList;<br>import java.util.List;</p>
+<p>/**</p>
+<ul>
+<li>创建者     demo</li>
+<li>创建时间   2016/7/26 16:48</li>
+<li><p></p></li>
+<li>更新者     $Author$</li>
+<li><p>更新时间   $Date$<br>*/<br>public abstract class BaseAdapter<t> extends RecyclerView.Adapter {</t></p>
+<p> private static final String TAG = “BaseAdapter”;<br> public List<t> mDatas = new ArrayList&lt;&gt;();<br> public int layoutResId;<br> public int layoutResIdtwo;   //两种布局<br> public RecyclerView mRecyclerView;</t></p>
+<p> public BaseAdapter() {</p>
+<p> }</p>
+<p> public BaseAdapter(List<t> data, int layoutResId) {</t></p>
+<pre><code>this.mDatas = data;
+this.layoutResId = layoutResId;
+</code></pre><p> }</p>
+<p> /**</p>
+<ul>
+<li>两种布局<br>*</li>
+<li>@param data</li>
+<li>@param layoutResId</li>
+<li><p>@param layoutResIdtwo<br>*/<br>public BaseAdapter(List<t> data, int layoutResId, int layoutResIdtwo) {<br> this.mDatas = data;<br> this.layoutResId = layoutResId;<br> this.layoutResIdtwo = layoutResIdtwo;<br>}</t></p>
+<p>//设置回调监听<br>public interface OnFocusChange {<br> void onFocusChangeListener(View v, boolean hasFocus, int position);<br>}</p>
+<p>OnFocusChange mOnFocusChange;</p>
+<p>public void setOnFocusChange(OnFocusChange listener) {<br> this.mOnFocusChange = listener;<br>}</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>//按键监听
+public interface OnKey {
+    void onKeyListener(View v, int keyCode, KeyEvent event, Object o, int position);
+}
+
+OnKey mOnKey;
+
+public void setOnKeyListener(OnKey listener) {
+    this.mOnKey = listener;
+}
+
+// 长按
+
+
+public interface OnLongClick {
+    void onLongClickListener(View v, int position, Object bean);
+}
+
+OnLongClick mOnLongClick;
+
+public void setOnLongClickListener(OnLongClick listener) {
+    this.mOnLongClick = listener;
+}
+
+//按下监听
+
+
+public interface OnClick {
+    void onClickListener(View v, int position, Object bean);
+}
+
+OnClick mOnClick;
+
+public void setOnClickListener(OnClick listener) {
+    this.mOnClick = listener;
+}
+
+
+@Override
+public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    return initCreateViewHolder(parent, viewType);
+}
+
+protected abstract RecyclerView.ViewHolder initCreateViewHolder(ViewGroup parent, int viewType);
+
+@Override
+public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+    final int itemPosition = holder.getLayoutPosition();
+    initBindViewHolder(holder, itemPosition);
+    final Object bean = mDatas.get(position);
+    //按下监听
+    if (mOnClick != null) {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnClick.onClickListener(v, itemPosition, bean);
+            }
+        });
+    }
+
+    // 焦点监听
+    if (mOnFocusChange != null) {
+        holder.itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                mOnFocusChange.onFocusChangeListener(v, hasFocus, itemPosition);
+            }
+        });
+    }
+    //长按监听
+    if (mOnLongClick != null) {
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                mOnLongClick.onLongClickListener(v, itemPosition, bean);
+                return true;
+            }
+        });
+    }
+
+    //按键监听
+    if (mOnKey != null) {
+        holder.itemView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                mOnKey.onKeyListener(v, keyCode, event, bean, position);
+                return false;
+            }
+        });
+    }
+}
+
+protected abstract void initBindViewHolder(RecyclerView.ViewHolder holder, int position);
+
+@Override
+public int getItemCount() {
+    if (mDatas != null) {
+        return mDatas.size();
+    }
+    return 0;
+}
+
+
+
+/**
+ * 解决当显示两张相同资源图片的时候，发生抖动，提高图片质量为Bitmap.Config.ARGB_8888
+ *
+ * @param drawable 当前资源
+ * @return bitmap对象
+ */
+
+private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
+{
+    int width = drawable.getIntrinsicWidth();// 取drawable的长宽
+    int height = drawable.getIntrinsicHeight();
+    Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);// 建立对应bitmap
+    Canvas canvas = new Canvas(bitmap);// 建立对应bitmap的画布
+    drawable.setBounds(0, 0, width, height);
+    drawable.draw(canvas);// 把drawable内容画到画布中
+    return bitmap;
+}
+</code></pre><p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/01/10/代码示例/" data-id="ciz96xju10008o0vv0q1gnzit" class="article-share-link" data-share="baidu" data-title="代码示例">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/01/10/代码示例/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="n-日常笔记" class="article article-type-n" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/09/日常笔记/" class="article-date">
+  <time datetime="2017-01-09T09:59:29.000Z" itemprop="datePublished">2017-01-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/09/日常笔记/">日常笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><pre><code>1 .使用mainup 解决左边不显示焦点框
+2 .使用boderview 解决recyclerview 滑动中焦点的错位
+3 .使用recylcerviewtv 控制焦点在中间
+4 .recyclerview 显示左边复杂布局
+</code></pre><h4 id="选择方法-1-，-3"><a href="#选择方法-1-，-3" class="headerlink" title="选择方法  1  ， 3"></a>选择方法  1  ， 3</h4><pre><code>问题 了解框架
+</code></pre><h3 id="焦点框错位"><a href="#焦点框错位" class="headerlink" title="焦点框错位"></a>焦点框错位</h3><pre><code>1. 焦点框图片     
+2. 计算方法 
+3. 布局文件问题 
+</code></pre><h4 id="选择方法"><a href="#选择方法" class="headerlink" title="选择方法"></a>选择方法</h4><pre><code>1. 布局问题 
+package com.dy.dyth.view;
+
+import android.content.Context;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
+import android.util.AttributeSet;
+
+/**
+ * Created by lph on 2016/8/17.
+ * adapter TV
+ */
+public class TvRecyclerView extends RecyclerView {
+public TvRecyclerView(Context context) {
+    this(context,null);
+}
+
+public TvRecyclerView(Context context, @Nullable AttributeSet attrs) {
+    this(context, attrs,0);
+}
+
+public TvRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) {
+    super(context, attrs, defStyle);
+    init();
+}
+
+private void init(){
+    setChildrenDrawingOrderEnabled(true);
+}
+
+
+//设置当前选中条目显示在最前面
+@Override
+protected int getChildDrawingOrder(int childCount, int i) {
+    int currentPos = getChildAdapterPosition(findFocus());
+    if(i==childCount-1){
+        return currentPos;
+    }
+    if(i==currentPos){
+        return childCount - 1;
+    }
+    return super.getChildDrawingOrder(childCount, i);
+}
+</code></pre><p>}</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h4 id="首页焦点在滑动过程中错位"><a href="#首页焦点在滑动过程中错位" class="headerlink" title="首页焦点在滑动过程中错位"></a>首页焦点在滑动过程中错位</h4><p>####解决办法  ####</p>
+<pre><code>1. 修改本来布局 在layoutmanger中找到问题 
+2. 使用新的框架 
+</code></pre><h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><pre><code>1. 新框架需要改动的东西太多 
+2. 原有框架不明确出问题的地方 
+</code></pre><h4 id="综合考虑"><a href="#综合考虑" class="headerlink" title="综合考虑"></a>综合考虑</h4><pre><code>1 .半天时间在原有框架上找出解决方法
+2 .无法解决，则使用新的框架
+</code></pre><p>###超出边界分析 </p>
+<pre><code>1. 为什么滑动的过程中会超出边界
+    1. recycler View  或者gridLyaoutManger 本身的问题 
+    2. 或者 我自己布局的问题
+</code></pre><hr>
+<p><strong>解决方法</strong></p>
+<ul>
+<li><strong><em>当滑动停止的时候 recyclerView 向右移动</em></strong></li>
+<li><strong><em>使recyclerview的滑动不超过边界</em></strong></li>
+</ul>
+<p><strong>原因确认</strong></p>
+<ul>
+<li>view放大没有超出边界</li>
+</ul>
+<p><strong>解决方法</strong></p>
+<ul>
+<li>手动当view获取焦点手懂控制recycler 向右移动10dp</li>
+</ul>
+<p><strong>头大</strong></p>
+<hr>
+<p><em>2016年9月5日09:51:14</em></p>
+<h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><ul>
+<li>焦点框<h3 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h3></li>
+<li>修改布局 </li>
+</ul>
+<p><strong><em>坚持一种方法 不要一直换</em></strong></p>
+<p><strong><em>使用框架，了解基本用法</em></strong></p>
+<p><strong>记住</strong></p>
+<ul>
+<li><p>clipToPadding就是说控件的绘制区域是否在padding里面的</p>
+</li>
+<li><p>clipChildren是指子控件是否超过padding区域</p>
+</li>
+</ul>
+<hr>
+<p>###初始化显示焦点框##</p>
+<ul>
+<li>隐藏不了</li>
+</ul>
+<h3 id="显示时间天气-wifi"><a href="#显示时间天气-wifi" class="headerlink" title="显示时间天气 wifi"></a>显示时间天气 wifi</h3><h3 id="显示圆角图片"><a href="#显示圆角图片" class="headerlink" title="显示圆角图片"></a>显示圆角图片</h3><hr>
+<p><em>2016年9月7日10:56:09</em></p>
+<h3 id="待解决"><a href="#待解决" class="headerlink" title="待解决"></a>待解决</h3><ul>
+<li>页面切换焦点的问题 </li>
+<li>分类和首页item 在没有焦点的情况下隐藏焦点框</li>
+<li>首页appinfo 按下鼠标下键的焦点切换</li>
+</ul>
+<hr>
+<p><em>2016年9月9日 14:30:46</em></p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ul>
+<li>在第三方库中找到焦点框的变化,设置显示影藏</li>
+</ul>
+<hr>
+<p><em>2016年9月12日09:43:33</em></p>
+<h3 id="模拟网络请求显示图片"><a href="#模拟网络请求显示图片" class="headerlink" title="模拟网络请求显示图片"></a>模拟网络请求显示图片</h3><ul>
+<li>使用okhttp</li>
+<li>使用rxjava</li>
+<li><p>修改坑位命名 homekw_1; </p>
+</li>
+<li><p><a href="http://192.168.1.119:8080/home/home.json" title="json" target="_blank" rel="external"> http://192.168.1.119:8080/home/home.json</a></p>
+</li>
+<li><a href="http://192.168.1.119:8080/home/home.json" title="图片地址" target="_blank" rel="external">http://192.168.1.119:8080/home/kw1.png</a></li>
+<li>解决打开app 应用崩溃的问题</li>
+</ul>
+<hr>
+<p><em>2016年9月13日10:28:43</em></p>
+<h3 id="设置launcher"><a href="#设置launcher" class="headerlink" title="设置launcher"></a>设置launcher</h3><p> <strong>添加下面属性</strong></p>
+<pre><code>&lt;category android:name=&quot;ansroid.intent.category.HOME&quot;/&gt;
+&lt;category android:name=&quot;ansroid.intent.category.DEFAULT&quot;/&gt;`
+</code></pre><h3 id="问题-：-打开app后laucnher崩溃"><a href="#问题-：-打开app后laucnher崩溃" class="headerlink" title="问题 ： 打开app后laucnher崩溃"></a>问题 ： 打开app后laucnher崩溃</h3><h4 id="原因-："><a href="#原因-：" class="headerlink" title="原因 ："></a>原因 ：</h4><ol>
+<li>bean中的Drawable没有序列化<br>####解决办法####</li>
+<li>修改bean中的Bean </li>
+<li>重写home中的app管理逻辑</li>
+<li>360的实现方法</li>
+</ol>
+<h2 id="Bugly-日志"><a href="#Bugly-日志" class="headerlink" title="Bugly 日志:"></a>Bugly 日志:</h2><h4 id="帐号-2014161860"><a href="#帐号-2014161860" class="headerlink" title="帐号:2014161860"></a>帐号:2014161860</h4><h4 id="密码-dyth123456"><a href="#密码-dyth123456" class="headerlink" title="密码:dyth123456"></a>密码:dyth123456</h4><h4 id="Bugly崩溃日志-https-bugly-qq-com-issueIndex-app-900052943-amp-pid-1"><a href="#Bugly崩溃日志-https-bugly-qq-com-issueIndex-app-900052943-amp-pid-1" class="headerlink" title="Bugly崩溃日志 : https://bugly.qq.com/issueIndex?app=900052943&amp;pid=1"></a>Bugly崩溃日志 : <a href="https://bugly.qq.com/issueIndex?app=900052943&amp;pid=1" title="Bugly崩溃日志" target="_blank" rel="external">https://bugly.qq.com/issueIndex?app=900052943&amp;pid=1</a></h4><h2 id="git命令："><a href="#git命令：" class="headerlink" title="git命令："></a>git命令：</h2><h3 id="提交到远程服务器"><a href="#提交到远程服务器" class="headerlink" title="提交到远程服务器"></a>提交到远程服务器</h3><pre><code>git remote add origin git@github.com:AnCorleone/TvVertiacalViewPager.git关联一个远程库
+git remote rm origin   // 添加错误清楚仓储
+git push -u origin master  //第一次推送master分支的所有内容
+git push origin master   //推送最新修改
+</code></pre><h3 id="同步代码-合并-解决冲突"><a href="#同步代码-合并-解决冲突" class="headerlink" title="同步代码 合并 解决冲突"></a>同步代码 合并 解决冲突</h3><pre><code>git fetch origin master:temp  
+git merge temp 
+</code></pre><h3 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h3><pre><code>git branch    
+</code></pre><h3 id="Git忽略规则及-gitignore规则不生效的解决办法"><a href="#Git忽略规则及-gitignore规则不生效的解决办法" class="headerlink" title="Git忽略规则及.gitignore规则不生效的解决办法"></a>Git忽略规则及.gitignore规则不生效的解决办法</h3><p>Git忽略规则及.gitignore规则不生效的解决办法 :<a href="http://www.pfeng.org/archives/840" target="_blank" rel="external">http://www.pfeng.org/archives/840</a></p>
+<h2 id="解决打开app-launcher崩溃"><a href="#解决打开app-launcher崩溃" class="headerlink" title="解决打开app launcher崩溃"></a>解决打开app launcher崩溃</h2><p><em>2016年9月14日16:41:05</em></p>
+<ul>
+<li>将Drawable 从bean 中移除</li>
+</ul>
+<hr>
+<p><em>2016年9月18日13:51:15</em></p>
+<h3 id="monkey-测试"><a href="#monkey-测试" class="headerlink" title="monkey 测试"></a>monkey 测试</h3><pre><code>adb shell monkey -p com.dy.dyth –-throttle 300 500  // monkey 测试命令
+</code></pre><h3 id="app-管理"><a href="#app-管理" class="headerlink" title="app 管理"></a>app 管理</h3><ul>
+<li><p><strong>卸载app</strong> </p>
+<ol>
+<li>判断用户是否卸载成功<br>2.</li>
+</ol>
+</li>
+<li><p>影梭购买地址 ：<a href="https://shadowsocks.com/" title="影梭地址" target="_blank" rel="external">https://shadowsocks.com/</a></p>
+</li>
+<li><p>服务器搭建 ：  <a href="https://www.loyalsoldier.me/fuck-the-gfw-with-my-own-shadowsocks-server/" title="服务器搭建" target="_blank" rel="external">https://www.loyalsoldier.me/fuck-the-gfw-with-my-own-shadowsocks-server/</a></p>
+</li>
+<li><p>服务器搭建(大胡子) :<a href="http://www.barretlee.com/blog/2016/08/03/shadowsocks/" target="_blank" rel="external">http://www.barretlee.com/blog/2016/08/03/shadowsocks/</a></p>
+</li>
+<li><p>搬瓦工 :<a href="http://banwagong.cn/" target="_blank" rel="external">http://banwagong.cn/</a></p>
+</li>
+<li><p>阿里服务器网址 ：<a href="https://account.aliyun.com/alipay/quick_login_return.htm?email=1018966939%40qq.com&amp;is_success=T&amp;notify_id=RqPnCoPT3K9%252Fvwbh3InWesh3oVFcSYEmWEsOrU6Ju2PrpgPSTlRM7rUmqTlV9kW%252F9%252B99&amp;real_name=%E5%BC%A0%E5%AE%89%E7%84%B6&amp;token=20160918d1f108c5face4ef69365c381a89a0X20&amp;user_id=2088602257446202&amp;sign=37548480cde2b1f14e73a5c3dc51220d&amp;sign_type=MD5" target="_blank" rel="external">https://account.aliyun.com/alipay/quick_login_return.htm?email=1018966939%40qq.com&amp;is_success=T&amp;notify_id=RqPnCoPT3K9%252Fvwbh3InWesh3oVFcSYEmWEsOrU6Ju2PrpgPSTlRM7rUmqTlV9kW%252F9%252B99&amp;real_name=%E5%BC%A0%E5%AE%89%E7%84%B6&amp;token=20160918d1f108c5face4ef69365c381a89a0X20&amp;user_id=2088602257446202&amp;sign=37548480cde2b1f14e73a5c3dc51220d&amp;sign_type=MD5</a></p>
+</li>
+<li>影梭指南 :<a href="http://www.auooo.com/2015/06/26/shadowsocks%EF%BC%88%E5%BD%B1%E6%A2%AD%EF%BC%89%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97/" title="影梭指南" target="_blank" rel="external">http://www.auooo.com/2015/06/26/shadowsocks%EF%BC%88%E5%BD%B1%E6%A2%AD%EF%BC%89%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97/</a></li>
+</ul>
+<hr>
+<p><em>2016年9月19日 09:43:17</em></p>
+<h2 id="路线"><a href="#路线" class="headerlink" title="路线"></a>路线</h2><pre><code>深圳 ——&gt; 南昌（10.1 5：13）——&gt;长沙 ——&gt; 武昌（10.1 9：31） ——&gt; 襄阳——&gt;南漳（签证）
+</code></pre><h3 id="电子地图-："><a href="#电子地图-：" class="headerlink" title="电子地图  ："></a>电子地图  ：</h3><p><a href="http://poi.mapbar.com/" title="地图" target="_blank" rel="external">http://poi.mapbar.com/</a> </p>
+<hr>
+<p><em>2016年9月20日09:42:44</em></p>
+<h2 id="安装和卸载软件更新界面"><a href="#安装和卸载软件更新界面" class="headerlink" title="安装和卸载软件更新界面"></a>安装和卸载软件更新界面</h2><ul>
+<li>监听广播，有软件安装获取安装的软件信息，或者重新查询一遍获取所有的app重新加入集合</li>
+<li>notify adapter</li>
+<li>卸载软件 获取卸载的软件信息 ，从mall集合中移除或者重新查询，notify()<h3 id="问题-："><a href="#问题-：" class="headerlink" title="问题 ："></a>问题 ：</h3></li>
+<li><strong>安装软件空指针异常，软件崩溃</strong></li>
+<li><strong>安装和卸载软件后焦点跑到home 上了 ，并显示了焦点框</strong></li>
+</ul>
+<h3 id="adb-path"><a href="#adb-path" class="headerlink" title="adb path"></a>adb path</h3><p>adb path :<br><a href="C:\DevTools\Android\Sdk\platform-tools" target="_blank" rel="external">C:\DevTools\Android\Sdk\platform-tools</a></p>
+<h3 id="脚本代码-："><a href="#脚本代码-：" class="headerlink" title="脚本代码 ："></a>脚本代码 ：</h3><pre><code>@ECHO off  
+@REM 无限循环的标签  
+:LOOP  
+ECHO 请插入手机…  
+adb wait-for-device  
+@REM 循环安装本目录下的APK文件  
+FOR %%i IN (*.apk) DO (   
+ECHO 正在安装：%%i  
+adb install &quot;%%i&quot;  
+)  
+ECHO 安装完毕；请更换下一台手机！
+PAUSE  
+GOTO LOOP  
+@ECHO on
+</code></pre><p>9/21/2016 11:22:57 AM </p>
+<h3 id="问题-：-1"><a href="#问题-：-1" class="headerlink" title="问题 ："></a>问题 ：</h3><h4 id="dialog-dismiss-焦点跑到home"><a href="#dialog-dismiss-焦点跑到home" class="headerlink" title="dialog  dismiss 焦点跑到home"></a><em>dialog  dismiss 焦点跑到home</em></h4><p>RecyclerView进行数据更新时焦点丢失的解决方案 : <a href="http://www.jianshu.com/p/749c0c91eb9c" target="_blank" rel="external">http://www.jianshu.com/p/749c0c91eb9c</a></p>
+<pre><code>android:descendantFocusability=&quot;afterDescendants&quot;
+android:duplicateParentState=&quot;true&quot;
+</code></pre><h3 id="大数据"><a href="#大数据" class="headerlink" title="大数据"></a>大数据</h3><h3 id="优达学院"><a href="#优达学院" class="headerlink" title="优达学院"></a>优达学院</h3><blockquote>
+<p>网址 :<a href="https://cn.udacity.com/" target="_blank" rel="external">https://cn.udacity.com/</a></p>
+<p><em>“我是一名码农,请尊重我的职业”</em></p>
+</blockquote>
+<h3 id="问题-：-2"><a href="#问题-：-2" class="headerlink" title="问题 ："></a>问题 ：</h3><ul>
+<li>notify后可以获取焦点，但不显示焦点框</li>
+</ul>
+<hr>
+<p> 9/22/2016 10:47:37 AM </p>
+<h2 id="问题-：-3"><a href="#问题-：-3" class="headerlink" title="问题 ："></a>问题 ：</h2><h3 id="dilog-在卸软件卸载后弹出位置错位"><a href="#dilog-在卸软件卸载后弹出位置错位" class="headerlink" title="dilog 在卸软件卸载后弹出位置错位"></a>dilog 在卸软件卸载后弹出位置错位</h3><h4 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h4><ol>
+<li>重新计算dilog 弹出的位置 x 轴计算问题 没有发现规律 可能是软件卸载后,布局跟新</li>
+</ol>
+<h2 id="微信公众平台"><a href="#微信公众平台" class="headerlink" title="微信公众平台"></a>微信公众平台</h2><blockquote>
+<p><a href="https://mp.weixin.qq.com/cgi-bin/home?token=511173594" target="_blank" rel="external">https://mp.weixin.qq.com/cgi-bin/home?token=511173594</a></p>
+</blockquote>
+<h2 id="问题-2"><a href="#问题-2" class="headerlink" title="问题 :"></a>问题 :</h2><h3 id="app移动过程的bug"><a href="#app移动过程的bug" class="headerlink" title="app移动过程的bug"></a>app移动过程的bug</h3><h4 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法:"></a>解决方法:</h4><ol>
+<li>调整移动的逻辑</li>
+</ol>
+<hr>
+<p> 9/23/2016 10:29:59 AM </p>
+<h2 id="问题-：-4"><a href="#问题-：-4" class="headerlink" title="问题 ："></a>问题 ：</h2><h3 id="学籍注册"><a href="#学籍注册" class="headerlink" title="学籍注册"></a>学籍注册</h3><h3 id="移动的逻辑-："><a href="#移动的逻辑-：" class="headerlink" title="移动的逻辑 ："></a>移动的逻辑 ：</h3><blockquote>
+<h3 id="微信公众平台-小程序开发文档-http-mp-weixin-qq-com-wiki-t-resource-res-main-amp-id-mp1445241432-amp-token-amp-lang-zh-CN"><a href="#微信公众平台-小程序开发文档-http-mp-weixin-qq-com-wiki-t-resource-res-main-amp-id-mp1445241432-amp-token-amp-lang-zh-CN" class="headerlink" title="微信公众平台,小程序开发文档 :http://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1445241432&amp;token=&amp;lang=zh_CN"></a>微信公众平台,小程序开发文档 :<a href="http://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1445241432&amp;token=&amp;lang=zh_CN" target="_blank" rel="external">http://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1445241432&amp;token=&amp;lang=zh_CN</a></h3><h3 id="微信小程序：-http-www-helloxcx-com"><a href="#微信小程序：-http-www-helloxcx-com" class="headerlink" title="微信小程序：  http://www.helloxcx.com/"></a>微信小程序：  <a href="http://www.helloxcx.com/" target="_blank" rel="external">http://www.helloxcx.com/</a></h3><h3 id="小程序api：-http-wxopen-notedown-cn"><a href="#小程序api：-http-wxopen-notedown-cn" class="headerlink" title="小程序api： http://wxopen.notedown.cn/"></a>小程序api： <a href="http://wxopen.notedown.cn/" target="_blank" rel="external">http://wxopen.notedown.cn/</a></h3></blockquote>
+<hr>
+<p>9/24/2016 9:36:06 AM </p>
+<h3 id="显示网络错误的占位图片-Fresco"><a href="#显示网络错误的占位图片-Fresco" class="headerlink" title="显示网络错误的占位图片　Fresco"></a>显示网络错误的占位图片　Fresco</h3><hr>
+<p>9/26/2016 9:47:03 AM </p>
+<h3 id="新建分类文件夹，显示预览效果"><a href="#新建分类文件夹，显示预览效果" class="headerlink" title="新建分类文件夹，显示预览效果"></a>新建分类文件夹，显示预览效果</h3><ol>
+<li>预览显示app icon从分类集合中获取显示，分类集合有多少显示多少</li>
+<li>数据回显，存储info 到数据库中，并对每个分类添加分类的名字，根据类名查询该分类下的 所有信息</li>
+<li>删除和替换，删除，从集合中删除，根据package name 从数据库删除 该app ； 替换：从集合中删除要替换的元素，并加入要替换的app ,从数据库中查找该分类删除该app，添加新的app info </li>
+</ol>
+<hr>
+<p>9/27/2016 10:15:47 AM </p>
+<h3 id="分类页面展示app-数据的回显，删除和替换"><a href="#分类页面展示app-数据的回显，删除和替换" class="headerlink" title="分类页面展示app,数据的回显，删除和替换"></a>分类页面展示app,数据的回显，删除和替换</h3><ol>
+<li>回显数据的问题，初始化界面的是时候从sp 中获取集合<strong>mAddList</strong>，在adapter中显示，并添加一个空的待添加item,加到集合，每次点击添加，把添加的应用加到<strong>mAddList</strong>,把集合加到sp 中。</li>
+<li>点击添加替换原来的坑位,增加一个坑位(<em>在倒数第二个位置插入一个元素</em>)</li>
+</ol>
+<h2 id="添加应用回显数据"><a href="#添加应用回显数据" class="headerlink" title="添加应用回显数据"></a>添加应用回显数据</h2><ol>
+<li>添加到size-1 位置 ，notify</li>
+</ol>
+<h3 id="1-替换回显会有问题"><a href="#1-替换回显会有问题" class="headerlink" title="1. 替换回显会有问题"></a>1. 替换回显会有问题</h3><h3 id="2-删除会回到主界面"><a href="#2-删除会回到主界面" class="headerlink" title="2. 删除会回到主界面"></a>2. 删除会回到主界面</h3><p>10/8/2016 9:55:34 AM </p>
+<h2 id="问题-3"><a href="#问题-3" class="headerlink" title="问题"></a>问题</h2><h3 id="app-长按弹出-移动-卸载-替换-新建分类逻辑的实现"><a href="#app-长按弹出-移动-卸载-替换-新建分类逻辑的实现" class="headerlink" title="app 长按弹出 ,移动 ,卸载,替换,新建分类逻辑的实现"></a>app 长按弹出 ,移动 ,卸载,替换,新建分类逻辑的实现</h3><h3 id="解决卸载-替换-打开应用-数据回显-新建分类"><a href="#解决卸载-替换-打开应用-数据回显-新建分类" class="headerlink" title="解决卸载  替换 打开应用  数据回显  新建分类"></a><em>解决卸载  替换 打开应用  数据回显  新建分类</em></h3><h2 id="小程序教程网址"><a href="#小程序教程网址" class="headerlink" title="小程序教程网址"></a>小程序教程网址</h2><p><a href="http://www.helloxcx.com/article-20.php" target="_blank" rel="external">http://www.helloxcx.com/article-20.php</a></p>
+<h3 id="PAC-翻墙"><a href="#PAC-翻墙" class="headerlink" title="PAC 翻墙"></a>PAC 翻墙</h3><p> <a href="https://www.seavia.com/share/iphone-ipad-mac-firefox-chrome-proxy.html" target="_blank" rel="external">https://www.seavia.com/share/iphone-ipad-mac-firefox-chrome-proxy.html</a></p>
+<h3 id="小米mini-路由翻墙"><a href="#小米mini-路由翻墙" class="headerlink" title="小米mini 路由翻墙"></a>小米mini 路由翻墙</h3><p><a href="https://seonoco.com/xiaomi-router-ss" target="_blank" rel="external">https://seonoco.com/xiaomi-router-ss</a></p>
+<h2 id="问题-4"><a href="#问题-4" class="headerlink" title="问题"></a>问题</h2><h3 id="app-移动和坑位焦点框出边界"><a href="#app-移动和坑位焦点框出边界" class="headerlink" title="app 移动和坑位焦点框出边界"></a>app 移动和坑位焦点框出边界</h3><h2 id="问题-5"><a href="#问题-5" class="headerlink" title="问题"></a>问题</h2><p>10/11/2016 9:14:51 AM </p>
+<h3 id="android官网镜像网站-http-android-youdaxue-com"><a href="#android官网镜像网站-http-android-youdaxue-com" class="headerlink" title="android官网镜像网站 http://android.youdaxue.com/"></a>android官网镜像网站 <a href="http://android.youdaxue.com/" target="_blank" rel="external">http://android.youdaxue.com/</a></h3><h3 id="API-文档镜像-http-developer-android-youdaxue-com-guide-index-html"><a href="#API-文档镜像-http-developer-android-youdaxue-com-guide-index-html" class="headerlink" title="API 文档镜像 http://developer.android.youdaxue.com/guide/index.html"></a>API 文档镜像 <a href="http://developer.android.youdaxue.com/guide/index.html" target="_blank" rel="external">http://developer.android.youdaxue.com/guide/index.html</a></h3><h3 id="优达Android基础视屏-https-classroom-udacity-com-courses-ud837-lessons-4027328704-concepts-43295507890923"><a href="#优达Android基础视屏-https-classroom-udacity-com-courses-ud837-lessons-4027328704-concepts-43295507890923" class="headerlink" title="优达Android基础视屏 https://classroom.udacity.com/courses/ud837/lessons/4027328704/concepts/43295507890923#"></a>优达Android基础视屏 <a href="https://classroom.udacity.com/courses/ud837/lessons/4027328704/concepts/43295507890923#" target="_blank" rel="external">https://classroom.udacity.com/courses/ud837/lessons/4027328704/concepts/43295507890923#</a></h3><h3 id="Google-优达资源-https-discussions-youdaxue-com-t-android-84"><a href="#Google-优达资源-https-discussions-youdaxue-com-t-android-84" class="headerlink" title="Google 优达资源 https://discussions.youdaxue.com/t/android/84"></a>Google 优达资源 <a href="https://discussions.youdaxue.com/t/android/84" target="_blank" rel="external">https://discussions.youdaxue.com/t/android/84</a></h3><h3 id="Google-Play下载apk-http-apps-evozi-com-apk-downloader"><a href="#Google-Play下载apk-http-apps-evozi-com-apk-downloader" class="headerlink" title="Google Play下载apk http://apps.evozi.com/apk-downloader"></a>Google Play下载apk <a href="http://apps.evozi.com/apk-downloader" target="_blank" rel="external">http://apps.evozi.com/apk-downloader</a></h3><hr>
+<h4 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h4><ol>
+<li>App item 移动 </li>
+</ol>
+<hr>
+<h3 id="理财平台-https-www-zhihu-com-question-24454597"><a href="#理财平台-https-www-zhihu-com-question-24454597" class="headerlink" title="理财平台 https://www.zhihu.com/question/24454597"></a>理财平台 <a href="https://www.zhihu.com/question/24454597" target="_blank" rel="external">https://www.zhihu.com/question/24454597</a></h3><h2 id="问题-6"><a href="#问题-6" class="headerlink" title="问题"></a>问题</h2><p>10/12/2016 10:34:49 AM </p>
+<ol>
+<li>app 移动dialog 没有一起移动</li>
+</ol>
+<h3 id="一个接口demo-http-www-jianshu-com-p-a28d4260a9d4"><a href="#一个接口demo-http-www-jianshu-com-p-a28d4260a9d4" class="headerlink" title="一个接口demo :  http://www.jianshu.com/p/a28d4260a9d4"></a>一个接口demo :  <a href="http://www.jianshu.com/p/a28d4260a9d4" target="_blank" rel="external">http://www.jianshu.com/p/a28d4260a9d4</a></h3><h3 id="View-的绘制流程-http-www-idtkm-com-customview-customview1"><a href="#View-的绘制流程-http-www-idtkm-com-customview-customview1" class="headerlink" title="View 的绘制流程 http://www.idtkm.com/customview/customview1/"></a>View 的绘制流程 <a href="http://www.idtkm.com/customview/customview1/" target="_blank" rel="external">http://www.idtkm.com/customview/customview1/</a></h3><h3 id="2016安卓开发资料大全-http-www-jcodecraeer-com-a-anzhuokaifa-androidkaifa-2016-1007-6660-html"><a href="#2016安卓开发资料大全-http-www-jcodecraeer-com-a-anzhuokaifa-androidkaifa-2016-1007-6660-html" class="headerlink" title="2016安卓开发资料大全 http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/1007/6660.html"></a>2016安卓开发资料大全 <a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/1007/6660.html" target="_blank" rel="external">http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/1007/6660.html</a></h3><h2 id=""><a href="#" class="headerlink" title="#"></a>#</h2><p>10/13/2016 11:23:27 AM </p>
+<h3 id="两步搞定Fragment的返回键-http-blog-csdn-net-lx448593jp-article-details-51121581"><a href="#两步搞定Fragment的返回键-http-blog-csdn-net-lx448593jp-article-details-51121581" class="headerlink" title="两步搞定Fragment的返回键 http://blog.csdn.net/lx448593jp/article/details/51121581"></a>两步搞定Fragment的返回键 <a href="http://blog.csdn.net/lx448593jp/article/details/51121581" target="_blank" rel="external">http://blog.csdn.net/lx448593jp/article/details/51121581</a></h3><hr>
+<h3 id="Android-中文文档-http-hukai-me-android-training-course-in-chinese-basics-index-html"><a href="#Android-中文文档-http-hukai-me-android-training-course-in-chinese-basics-index-html" class="headerlink" title="Android 中文文档  http://hukai.me/android-training-course-in-chinese/basics/index.html"></a>Android 中文文档  <a href="http://hukai.me/android-training-course-in-chinese/basics/index.html" target="_blank" rel="external">http://hukai.me/android-training-course-in-chinese/basics/index.html</a></h3><p>10/14/2016 3:08:34 PM </p>
+<h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p>10/17/2016 4:56:51 PM<br>      <imageview android:id="@+id/iv_home_app_icon" style="@style/unFocusable" android:layout_width="143dp" android:layout_height="147dp" android:layout_centerhorizontal="true" android:layout_margintop="5dp"></imageview></p>
+<h2 id="首页问题"><a href="#首页问题" class="headerlink" title="首页问题"></a>首页问题</h2><ol>
+<li>替换没有问题 </li>
+<li>新建 卸载  移动 item 错乱</li>
+</ol>
+<p>使用imageloader 加载图片</p>
+<h3 id="一切都可以被改变"><a href="#一切都可以被改变" class="headerlink" title="一切都可以被改变"></a><em>一切都可以被改变</em></h3><p>11/1/2016 10:11:35 AM </p>
+<hr>
+<p><strong>长记性</strong></p>
+<h3 id="获取view的位置-https-my-oschina-net-u-1376187-blog-172792"><a href="#获取view的位置-https-my-oschina-net-u-1376187-blog-172792" class="headerlink" title="获取view的位置  https://my.oschina.net/u/1376187/blog/172792"></a>获取view的位置  <a href="https://my.oschina.net/u/1376187/blog/172792" target="_blank" rel="external">https://my.oschina.net/u/1376187/blog/172792</a></h3><h3 id="获取view的坐标系：http-blog-csdn-net-jason0539-article-details-42743531"><a href="#获取view的坐标系：http-blog-csdn-net-jason0539-article-details-42743531" class="headerlink" title="获取view的坐标系：http://blog.csdn.net/jason0539/article/details/42743531"></a>获取view的坐标系：<a href="http://blog.csdn.net/jason0539/article/details/42743531" target="_blank" rel="external">http://blog.csdn.net/jason0539/article/details/42743531</a></h3><h3 id="问题-1-切换后来RecylerView-没有焦点框"><a href="#问题-1-切换后来RecylerView-没有焦点框" class="headerlink" title="问题 1: 切换后来RecylerView 没有焦点框"></a>问题 1: 切换后来RecylerView 没有焦点框</h3><hr>
+<p>11/4/2016 9:37:00 AM </p>
+<h3 id="RecyclerView-局部刷新闪烁-http-wetest-qq-com-lab-view-176-html-from-content-zhihuzhuanlan"><a href="#RecyclerView-局部刷新闪烁-http-wetest-qq-com-lab-view-176-html-from-content-zhihuzhuanlan" class="headerlink" title="RecyclerView 局部刷新闪烁 http://wetest.qq.com/lab/view/176.html?from=content_zhihuzhuanlan"></a>RecyclerView 局部刷新闪烁 <a href="http://wetest.qq.com/lab/view/176.html?from=content_zhihuzhuanlan" target="_blank" rel="external">http://wetest.qq.com/lab/view/176.html?from=content_zhihuzhuanlan</a></h3><h3 id="Google-镜像站-http-xiaoyu2er-github-io-2016-03-16-google-mirror"><a href="#Google-镜像站-http-xiaoyu2er-github-io-2016-03-16-google-mirror" class="headerlink" title="Google 镜像站 http://xiaoyu2er.github.io/2016/03/16/google-mirror/"></a>Google 镜像站 <a href="http://xiaoyu2er.github.io/2016/03/16/google-mirror/" target="_blank" rel="external">http://xiaoyu2er.github.io/2016/03/16/google-mirror/</a></h3><h3 id="问题1-删除一个分类后焦点框不在正确的位置显示-上面一行最后一个"><a href="#问题1-删除一个分类后焦点框不在正确的位置显示-上面一行最后一个" class="headerlink" title="问题1 : 删除一个分类后焦点框不在正确的位置显示 (上面一行最后一个)"></a>问题1 : 删除一个分类后焦点框不在正确的位置显示 (上面一行最后一个)</h3><h3 id="问题2-点击卸载-在弹出对话框的时候点击取消-或者返回-item放大正常不能缩小-在弹出菜单时候设置的放大造成的影响"><a href="#问题2-点击卸载-在弹出对话框的时候点击取消-或者返回-item放大正常不能缩小-在弹出菜单时候设置的放大造成的影响" class="headerlink" title="问题2 : 点击卸载,在弹出对话框的时候点击取消,或者返回,item放大正常不能缩小 ( 在弹出菜单时候设置的放大造成的影响)"></a>问题2 : 点击卸载,在弹出对话框的时候点击取消,或者返回,item放大正常不能缩小 ( <em>在弹出菜单时候设置的放大造成的影响</em>)</h3><h3 id="问题3-在移动过程中操作item-位置不对应-（-操纵的是前一个bean-）"><a href="#问题3-在移动过程中操作item-位置不对应-（-操纵的是前一个bean-）" class="headerlink" title="问题3 : 在移动过程中操作item 位置不对应   （ 操纵的是前一个bean ）"></a>问题3 : 在移动过程中操作item 位置不对应   （ 操纵的是前一个bean ）</h3><h3 id="问题4-卸载应用后新的item不能缩小"><a href="#问题4-卸载应用后新的item不能缩小" class="headerlink" title="问题4 : 卸载应用后新的item不能缩小"></a>问题4 : 卸载应用后新的item不能缩小</h3><h2 id="问题-：-5"><a href="#问题-：-5" class="headerlink" title="问题 ："></a>问题 ：</h2><p>11/8/2016 11:19:03 AM</p>
+<ul>
+<li>软件安装和卸载后焦点丢失  </li>
+<li>移动过程中的放大效果 </li>
+</ul>
+<h2 id="问题-7"><a href="#问题-7" class="headerlink" title="问题"></a>问题</h2><p>11/10/2016 9:18:41 AM </p>
+<ol>
+<li>卸载后相同的应用没有卸载</li>
+<li>卸载失败，取消有放大效果</li>
+<li>移动过程中放大异常</li>
+</ol>
+<hr>
+<p>11/11/2016 3:54:01 PM </p>
+<h3 id="问题-8"><a href="#问题-8" class="headerlink" title="问题 :"></a>问题 :</h3><ol>
+<li>新建文件夹的逻辑问题 ,移动后新建退出 焦点异常</li>
+</ol>
+<h3 id="问题-：-6"><a href="#问题-：-6" class="headerlink" title="问题 ："></a>问题 ：</h3><p>11/14/2016 10:19:52 AM </p>
+<ol>
+<li>判断记录head 的view 还是记录recyclerView 的view ，当Head 有焦点的时候将position置为-1 ，当RecyclerView 有焦点的时候将Head view 置为null </li>
+</ol>
+<h3 id="问题-9"><a href="#问题-9" class="headerlink" title="问题 :"></a>问题 :</h3><p>11/15/2016 9:45:02 AM </p>
+<ol>
+<li>记录焦点的view 如果记录view 不为空让记录的view获取焦点，如果为menu 就让menu获取焦点 </li>
+<li>menu 有焦点就显示光圈 没有先不显示 （没有问题了 ）</li>
+<li>如果menu hasfocus 按上下键 重现的position 设置为 -1 ；</li>
+</ol>
+<h4 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键:"></a>快捷键:</h4><ul>
+<li>ctrl + p 参数提示</li>
+<li>ctrl + j 自动代码</li>
+<li>ctrl + n 查找类</li>
+</ul>
+<h3 id="自定义接口回掉"><a href="#自定义接口回掉" class="headerlink" title="自定义接口回掉"></a>自定义接口回掉</h3><ol>
+<li>定义一个接口 OnxxListener  接口中的方法 onXxx()</li>
+<li>在需要的回调事件的类中声明接口对象 ， OnxxListener xxlistener ;定义回掉的方法 setOnxxListener(OnxxListener listenr) 将接口对象赋值给listener this.listenr =xxListener</li>
+<li>在事件发生的位置调用接口中的方法 xxlistener. onXxx();</li>
+</ol>
+<h3 id="知乎日报Api"><a href="#知乎日报Api" class="headerlink" title="知乎日报Api"></a>知乎日报Api</h3><p><a href="https://github.com/izzyleung/ZhihuDailyPurify/wiki/%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5-API-%E5%88%86%E6%9E%90" target="_blank" rel="external">https://github.com/izzyleung/ZhihuDailyPurify/wiki/%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5-API-%E5%88%86%E6%9E%90</a></p>
+<h3 id="gank-io-API-http-gank-io-api"><a href="#gank-io-API-http-gank-io-api" class="headerlink" title="gank io API http://gank.io/api"></a>gank io API <a href="http://gank.io/api" target="_blank" rel="external">http://gank.io/api</a></h3><h3 id="mvp-模式"><a href="#mvp-模式" class="headerlink" title="mvp 模式"></a>mvp 模式</h3><h4 id="获取天气实例-http-rocko-xyz-2015-02-06-Android-E4-B8-AD-E7-9A-84MVP"><a href="#获取天气实例-http-rocko-xyz-2015-02-06-Android-E4-B8-AD-E7-9A-84MVP" class="headerlink" title="获取天气实例   http://rocko.xyz/2015/02/06/Android%E4%B8%AD%E7%9A%84MVP/"></a>获取天气实例   <a href="http://rocko.xyz/2015/02/06/Android%E4%B8%AD%E7%9A%84MVP/" target="_blank" rel="external">http://rocko.xyz/2015/02/06/Android%E4%B8%AD%E7%9A%84MVP/</a></h4><h3 id="http-www-jianshu-com-p-9a6845b26856"><a href="#http-www-jianshu-com-p-9a6845b26856" class="headerlink" title="http://www.jianshu.com/p/9a6845b26856"></a><a href="http://www.jianshu.com/p/9a6845b26856" target="_blank" rel="external">http://www.jianshu.com/p/9a6845b26856</a></h3><h3 id="gank-demo-http-blog-csdn-net-castledrv-article-details-51396637"><a href="#gank-demo-http-blog-csdn-net-castledrv-article-details-51396637" class="headerlink" title="gank demo : http://blog.csdn.net/castledrv/article/details/51396637"></a>gank demo : <a href="http://blog.csdn.net/castledrv/article/details/51396637" target="_blank" rel="external">http://blog.csdn.net/castledrv/article/details/51396637</a></h3><ul>
+<li>model <ul>
+<li>entity</li>
+<li>impl</li>
+</ul>
+</li>
+<li>view <ul>
+<li>ui<ul>
+<li>fragment</li>
+<li>activity</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>presenter<ul>
+<li>impl</li>
+<li>listener</li>
+</ul>
+</li>
+</ul>
+<h3 id="一个API-http-v3-wufazhuce-com-8000-api-hp-bymonth-20161125"><a href="#一个API-http-v3-wufazhuce-com-8000-api-hp-bymonth-20161125" class="headerlink" title="一个API http://v3.wufazhuce.com:8000/api/hp/bymonth/20161125"></a>一个API <a href="http://v3.wufazhuce.com:8000/api/hp/bymonth/20161125" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/hp/bymonth/20161125</a></h3><p>###<a href="http://119.29.116.107:8088/fmms/" target="_blank" rel="external">http://119.29.116.107:8088/fmms/</a> ###</p>
+<h3 id="http-rest-wufazhuce-com-OneForWeb-one-getHpinfo-strDate-2016-07-25"><a href="#http-rest-wufazhuce-com-OneForWeb-one-getHpinfo-strDate-2016-07-25" class="headerlink" title="http://rest.wufazhuce.com/OneForWeb/one/getHpinfo?strDate=2016-07-25"></a><a href="http://rest.wufazhuce.com/OneForWeb/one/getHpinfo?strDate=2016-11-25" target="_blank" rel="external">http://rest.wufazhuce.com/OneForWeb/one/getHpinfo?strDate=2016-07-25</a></h3><h3 id="问答-http-v3-wufazhuce-com-8000-api-question-1282"><a href="#问答-http-v3-wufazhuce-com-8000-api-question-1282" class="headerlink" title="问答 http://v3.wufazhuce.com:8000/api/question/1282"></a>问答 <a href="http://v3.wufazhuce.com:8000/api/question/1282" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/question/1282</a></h3><h3 id="文章-http-v3-wufazhuce-com-8000-api-essay-1339"><a href="#文章-http-v3-wufazhuce-com-8000-api-essay-1339" class="headerlink" title="文章 http://v3.wufazhuce.com:8000/api/essay/1339"></a>文章 <a href="http://v3.wufazhuce.com:8000/api/essay/1339" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/essay/1339</a></h3><h3 id="首页-http-v3-wufazhuce-com-8000-api-hp-idlist-0"><a href="#首页-http-v3-wufazhuce-com-8000-api-hp-idlist-0" class="headerlink" title="首页 http://v3.wufazhuce.com:8000/api/hp/idlist/0"></a>首页 <a href="http://v3.wufazhuce.com:8000/api/hp/idlist/0" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/hp/idlist/0</a></h3><h3 id="首页详情-http-v3-wufazhuce-com-8000-api-hp-detail-1275"><a href="#首页详情-http-v3-wufazhuce-com-8000-api-hp-detail-1275" class="headerlink" title="首页详情 http://v3.wufazhuce.com:8000/api/hp/detail/1275"></a>首页详情 <a href="http://v3.wufazhuce.com:8000/api/hp/detail/1275" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/hp/detail/1275</a></h3><h3 id="其他-："><a href="#其他-：" class="headerlink" title="其他  ："></a>其他  ：</h3><h3 id="http-v3-wufazhuce-com-8000-api-music-idlist-0"><a href="#http-v3-wufazhuce-com-8000-api-music-idlist-0" class="headerlink" title="http://v3.wufazhuce.com:8000/api/music/idlist/0"></a><a href="http://v3.wufazhuce.com:8000/api/music/idlist/0" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/music/idlist/0</a></h3><h3 id="http-v3-wufazhuce-com-8000-api-movie-list-0"><a href="#http-v3-wufazhuce-com-8000-api-movie-list-0" class="headerlink" title="http://v3.wufazhuce.com:8000/api/movie/list/0"></a><a href="http://v3.wufazhuce.com:8000/api/movie/list/0" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/movie/list/0</a></h3><h3 id="http-v3-wufazhuce-com-8000-api-movie-detail-1"><a href="#http-v3-wufazhuce-com-8000-api-movie-detail-1" class="headerlink" title="http://v3.wufazhuce.com:8000/api/movie/detail/%1"></a><a href="http://v3.wufazhuce.com:8000/api/movie/detail/%1" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/movie/detail/%1</a></h3><h3 id="http-v3-wufazhuce-com-8000-api-reading-index"><a href="#http-v3-wufazhuce-com-8000-api-reading-index" class="headerlink" title="http://v3.wufazhuce.com:8000/api/reading/index/"></a><a href="http://v3.wufazhuce.com:8000/api/reading/index/" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/reading/index/</a></h3><h3 id="http-v3-wufazhuce-com-8000-api-music-detail-1"><a href="#http-v3-wufazhuce-com-8000-api-music-detail-1" class="headerlink" title="http://v3.wufazhuce.com:8000/api/music/detail/%1"></a><a href="http://v3.wufazhuce.com:8000/api/music/detail/%1" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/music/detail/%1</a></h3><h3 id="原网址https-gist-github-com-0312birdzhang-6d2ed45457c908a0d290"><a href="#原网址https-gist-github-com-0312birdzhang-6d2ed45457c908a0d290" class="headerlink" title="原网址https://gist.github.com/0312birdzhang/6d2ed45457c908a0d290"></a>原网址<a href="https://gist.github.com/0312birdzhang/6d2ed45457c908a0d290" target="_blank" rel="external">https://gist.github.com/0312birdzhang/6d2ed45457c908a0d290</a></h3><h3 id="bing-每日图片-api-http-www-bing-com-HPImageArchive-aspx-format-js-amp-idx-0-amp-n-1"><a href="#bing-每日图片-api-http-www-bing-com-HPImageArchive-aspx-format-js-amp-idx-0-amp-n-1" class="headerlink" title="bing 每日图片 api http://www.bing.com/HPImageArchive.aspx?format=js&amp;idx=0&amp;n=1"></a>bing 每日图片 api <a href="http://www.bing.com/HPImageArchive.aspx?format=js&amp;idx=0&amp;n=1" target="_blank" rel="external">http://www.bing.com/HPImageArchive.aspx?format=js&amp;idx=0&amp;n=1</a></h3><h3 id="混淆-："><a href="#混淆-：" class="headerlink" title="混淆 ："></a>混淆 ：</h3><p>  <strong>5分钟搞定android混淆 <a href="http://blog.csdn.net/jdsjlzx/article/details/51853423" target="_blank" rel="external">http://blog.csdn.net/jdsjlzx/article/details/51853423</a></strong></p>
+<hr>
+<p>11/29/2016 10:27:39 AM </p>
+<h3 id="问题-10"><a href="#问题-10" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>页面切换，如果有选中item恢复焦点，左边menu会抢焦点</li>
+</ol>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><ol>
+<li>页面显示的时候，如果记录的有item 就让让所有button 不能获取焦点，焦点移动到左边，需要button 获取焦点的时候，监听按键，使button可以获取焦点  </li>
+<li>当button 获取焦点的时候判断是否有item记录，如果有就让不显示焦点图片，没有则显示</li>
+</ol>
+<h3 id="问题-11"><a href="#问题-11" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>新建文件夹添加应用后，将首页显示的item移除</li>
+<li>从分类中删除，在首页恢复显示</li>
+</ol>
+<h3 id="解决办法-1"><a href="#解决办法-1" class="headerlink" title="解决办法"></a>解决办法</h3><ol>
+<li>getDatas setDatas </li>
+</ol>
+<hr>
+<p>11/30/2016 9:11:11 AM<br>重新运行程序的时候，应用列表会显示文件夹</p>
+<h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><ol>
+<li><big> 重新运行程序的时候，应用列表会显示文件夹 </big></li>
+<li>重新运行程序的时候，应用列表会显示文件夹</li>
+</ol>
+<h3 id="解决办法-2"><a href="#解决办法-2" class="headerlink" title="解决办法"></a>解决办法</h3><ol>
+<li><font size="4" color="black">判断类型再加入到集合中</font></li>
+<li></li>
+</ol>
+<hr>
+<p>12/1/2016 2:47:38 PM </p>
+<p>CSDN 投票 <a href="http://blog.csdn.net/vote/candidate.html?username=lmj623565791" target="_blank" rel="external">http://blog.csdn.net/vote/candidate.html?username=lmj623565791</a></p>
+<h3 id="问题-12"><a href="#问题-12" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>最近使用</li>
+<li>应用收藏<h3 id="解决办法-3"><a href="#解决办法-3" class="headerlink" title="解决办法"></a>解决办法</h3></li>
+<li>使用数据库存储数据 ORMLite </li>
+</ol>
+<hr>
+<p>12/2/2016 11:38:11 AM </p>
+<h5 id="框架应用https-bng86-gitbooks-io-android-third-party-content-greendao-html"><a href="#框架应用https-bng86-gitbooks-io-android-third-party-content-greendao-html" class="headerlink" title="框架应用https://bng86.gitbooks.io/android-third-party-/content/greendao.html"></a>框架应用<a href="https://bng86.gitbooks.io/android-third-party-/content/greendao.html" target="_blank" rel="external">https://bng86.gitbooks.io/android-third-party-/content/greendao.html</a></h5><h5 id="ORMlite-怎删改查-http-www-cnblogs-com-alexthecoder-p-4277758-html"><a href="#ORMlite-怎删改查-http-www-cnblogs-com-alexthecoder-p-4277758-html" class="headerlink" title="ORMlite 怎删改查 http://www.cnblogs.com/alexthecoder/p/4277758.html"></a>ORMlite 怎删改查 <a href="http://www.cnblogs.com/alexthecoder/p/4277758.html" target="_blank" rel="external">http://www.cnblogs.com/alexthecoder/p/4277758.html</a></h5><hr>
+<p>12/3/2016 5:46:06 PM </p>
+<h3 id="问题-13"><a href="#问题-13" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>按下menu键 弹出管理应用的菜单 将移动变为收藏</li>
+<li>按下ok键 显示移动菜单<ol>
+<li>如果是上面一行，不显示向上移动，显示其他操作</li>
+<li>如果是下面一行，不显示向下移动，显示其他操作</li>
+</ol>
+</li>
+</ol>
+<h3 id="问题-14"><a href="#问题-14" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>按ok键弹出菜单，item 上下左右移动</li>
+<li>但</li>
+</ol>
+<hr>
+<p>12/7/2016 9:18:41 AM </p>
+<h3 id="组装配置"><a href="#组装配置" class="headerlink" title="组装配置"></a>组装配置</h3><ol>
+<li>cpu i5 6500        1200</li>
+<li>显卡 gtx1050         1299</li>
+<li>主板 华硕B150M-A M.2 500</li>
+<li>电源 全汉蓝暴450w    269</li>
+<li>机箱 金河田预见N6    169</li>
+<li>散热 九州玄冰智能版   49</li>
+<li>硬盘  </li>
+<li>内存 金士顿120G固态 299<br>9.<font color="red"> 明年双11</font></li>
+<li><br></li>
+</ol>
+<p>=================                    <b>3486</b></p>
+<h3 id="网盘搜索工具-http-panc-cc"><a href="#网盘搜索工具-http-panc-cc" class="headerlink" title="网盘搜索工具  http://panc.cc/"></a>网盘搜索工具  <a href="http://panc.cc/" target="_blank" rel="external">http://panc.cc/</a></h3><h3 id="问题-15"><a href="#问题-15" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>焦点框的放大</li>
+<li>按下返回键，焦点丢失</li>
+</ol>
+<h3 id="问题-16"><a href="#问题-16" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>上下移动没有view没有放大效果</li>
+<li>删除文件夹焦点错乱</li>
+<li>新建文件夹错乱</li>
+<li>替换焦点框错乱 </li>
+<li>弹出菜单消失,页面</li>
+</ol>
+<hr>
+<p>12/9/2016 1:58:46 PM </p>
+<h3 id="招商银行卡号-6214-8378-0241-2118"><a href="#招商银行卡号-6214-8378-0241-2118" class="headerlink" title="招商银行卡号  6214 8378 0241 2118"></a>招商银行卡号  6214 8378 0241 2118</h3><hr>
+<p>12/12/2016 10:43:30 AM </p>
+<h3 id="Android-官方课程http-hukai-me-android-training-course-in-chinese"><a href="#Android-官方课程http-hukai-me-android-training-course-in-chinese" class="headerlink" title="Android 官方课程http://hukai.me/android-training-course-in-chinese/"></a>Android 官方课程<a href="http://hukai.me/android-training-course-in-chinese/" target="_blank" rel="external">http://hukai.me/android-training-course-in-chinese/</a></h3><hr>
+<p>12/15/2016 2:36:08 PM </p>
+<h3 id="重新写数据库"><a href="#重新写数据库" class="headerlink" title="重新写数据库"></a>重新写数据库</h3><hr>
+<p>12/16/2016 11:11:40 AM </p>
+<hr>
+<p>12/19/2016 5:10:29 PM<br>流程图工具 亿图图示 :<a href="http://www.edrawsoft.cn/" target="_blank" rel="external">http://www.edrawsoft.cn/</a></p>
+<hr>
+<p>12/21/2016 9:59:43 AM </p>
+<ol>
+<li>先进行移动操作，然后点击新建文件夹，分类会执行移动操作</li>
+<li><code>adb shell am start -n com.dy.dyth/.ui.activity.LaunchActivity</code></li>
+</ol>
+<h3 id="问题-17"><a href="#问题-17" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>选择移动,再选择分类,然后返回,弹出框没有影藏</li>
+<li>保存移动和插入的数据(移动的数序,和插入的分类)</li>
+<li>移动item 选择分类,遥控器按返回 焦点丢失</li>
+</ol>
+<h3 id="问题-18"><a href="#问题-18" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>新建分类或者删除焦点错位</li>
+<li>移动到最后一个返回键，焦点框丢失</li>
+<li></li>
+</ol>
+<hr>
+<p>12/26/2016 5:16:48 PM </p>
+<h3 id="问题-19"><a href="#问题-19" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>移动到后面 页面切换的恢复错误</li>
+<li>移动 和分类的混乱</li>
+<li>加入分类的应用从首页删除</li>
+</ol>
+<h3 id="问题-20"><a href="#问题-20" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>选择新建分类,不输入名字,点击确定,焦点框错位 </li>
+<li>在分类中增加应用,返回首页 ,焦点框丢失 </li>
+<li>替换只显示首页的应用(就是不包括已经添加到分类)</li>
+<li>应用分类，替换应用替换掉的重新显示在首页，新的应用从首页删除</li>
+</ol>
+<h3 id="adb截图命令"><a href="#adb截图命令" class="headerlink" title="adb截图命令"></a>adb截图命令</h3><pre><code>adb shell /system/bin/screencap -p /sdcard/image.png
+adb pull /sdcard/image.png c:\dir
+</code></pre><h3 id="问题-21"><a href="#问题-21" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>数据库内存泄露</li>
+</ol>
+<h3 id="Monkey-命令"><a href="#Monkey-命令" class="headerlink" title="Monkey 命令"></a>Monkey 命令</h3><pre><code>adb shell monkey -v -p  com.dy.dyth     --monitor-native-crashes --throttle 500 10000    &gt;D:/7.22-RK_1.LOG
+
+adb shell monkey -v -p com.dy.dyth --monitor-native-crashes --throttle 300 10000&gt;D:/5.7-RK1.LOG
+
+adb shell monkey -v -p  com.dy.dyth --monitor-native-crashes --throttle 300 5000    &gt;D:/NL1.LOG
+
+//优客超级直播 1万次测试
+adb shell monkey -v -p     com.dy.dyth     --monitor-native-crashes --throttle 300 1000
+
+ps | grep monkey    // 获取monkey 端口 
+
+adb shell monkey -p com.dy.dyth –-throttle 300 5000  &gt;D:/DYTH.LOG
+
+
+
+
+set rw.sw.defaultlauncherpackage com.dy.dyth
+set rw.sw.defaultlauncherclass com.dy.dyth.LaunchActivity
+set rw.sw.settofirstlauncher 0
+</code></pre><hr>
+<p>1/3/2017 3:44:11 PM </p>
+<h4 id="-1"><a href="#-1" class="headerlink" title="-"></a>-</h4><ul>
+<li><font size="4" color="black">用户卸载软件 从收藏和最近使用中删除</font>
+
+
+
+</li>
+</ul>
+<hr>
+<p>tiem : 2.5<br>火车 2.4 号<br>高铁 2.4 初八</p>
+<h3 id="问题-22"><a href="#问题-22" class="headerlink" title="问题"></a>问题</h3><p>1.按下菜单键 选择替换 选择点击返回,在按下菜单键,按下返回,焦点丢失</p>
+<h3 id="抢票时间"><a href="#抢票时间" class="headerlink" title="抢票时间"></a>抢票时间</h3><ol>
+<li>12.30  武汉到深圳 z</li>
+<li>13.30  武汉到深圳 高铁</li>
+<li>16：00 襄阳到深圳 z232</li>
+<li>16:00 襄阳东到广州 z124 z232</li>
+</ol>
+<h3 id="搭建个人博客"><a href="#搭建个人博客" class="headerlink" title="搭建个人博客"></a>搭建个人博客</h3><p>教程地址<a href="https://xuanwo.org/2015/03/26/hexo-intor/" target="_blank" rel="external">https://xuanwo.org/2015/03/26/hexo-intor/</a></p>
+<p>教程<a href="http://blog.fens.me/hexo-blog-github/" target="_blank" rel="external">http://blog.fens.me/hexo-blog-github/</a></p>
+<h3 id="我的博客地址"><a href="#我的博客地址" class="headerlink" title="我的博客地址"></a>我的博客地址</h3><h4 id="gmail"><a href="#gmail" class="headerlink" title="@gmail"></a>@gmail</h4><p><a href="https://anran0919.github.io/" target="_blank" rel="external">https://anran0919.github.io/</a></p>
+<h4 id="163-mail"><a href="#163-mail" class="headerlink" title="@163 mail"></a>@163 mail</h4><p><a href="https://ancorleone.github.io/" target="_blank" rel="external">https://ancorleone.github.io/</a></p>
+<h3 id="github-ip"><a href="#github-ip" class="headerlink" title="github ip"></a>github ip</h3><p>ping username.github.io</p>
+<h3 id="域名-https-dcc-godaddy-com-manage"><a href="#域名-https-dcc-godaddy-com-manage" class="headerlink" title="域名 https://dcc.godaddy.com/manage/"></a>域名 <a href="https://dcc.godaddy.com/manage/" target="_blank" rel="external">https://dcc.godaddy.com/manage/</a></h3><h3 id="http-jiji262-github-io-2016-04-15-2016-04-15-hexo-github-pages-blog"><a href="#http-jiji262-github-io-2016-04-15-2016-04-15-hexo-github-pages-blog" class="headerlink" title="http://jiji262.github.io/2016/04/15/2016-04-15-hexo-github-pages-blog/"></a><a href="http://jiji262.github.io/2016/04/15/2016-04-15-hexo-github-pages-blog/" target="_blank" rel="external">http://jiji262.github.io/2016/04/15/2016-04-15-hexo-github-pages-blog/</a></h3><h3 id="Hexo更新博客命令"><a href="#Hexo更新博客命令" class="headerlink" title="Hexo更新博客命令"></a>Hexo更新博客命令</h3><pre><code>hexo clean // 清空
+hexo g // 生成静态网页
+hexo d // 更新到github
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/01/09/日常笔记/" data-id="ciz96xjtr0006o0vvbkk56o0a" class="article-share-link" data-share="baidu" data-title="日常笔记">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/01/09/日常笔记/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/09/hello-world/" class="article-date">
+  <time datetime="2017-01-09T03:05:39.368Z" itemprop="datePublished">2017-01-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/09/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/01/09/hello-world/" data-id="ciz96xjto0005o0vv3lafpx66" class="article-share-link" data-share="baidu" data-title="Hello World">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/01/09/hello-world/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/02/09/设计模式-工厂方法模式/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/09/设计模式-简单工厂模式/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/09/读取XML中的配置参数/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/09/设计模式-桥接模式/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/08/Java设计模式/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://reqianduan.com" target="_blank">热前端</a>
+          </li>
+        
+          <li>
+            <a href="http://yuancheng.work" target="_blank">远程.work</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
 </aside>
-
-				
-				
-				
-					<!-- Footer Top Button -->
-					<div class="toTop-wrap">
-    <a href="#top" class="toTop">
-        <i class="material-icons footer_top-i">expand_less</i>
-    </a>
-</div>
-				
-				
-				<!--Footer-->
-<footer class="mdl-mini-footer" id="bottom">
-	
-	
-		<!-- Paradox Footer Left Section -->
-		<div class="mdl-mini-footer--left-section sns-list">
-    <!-- Twitter -->
-    
-    <a href="https://twitter.com/twitter" target="_blank"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
-        <span class="visuallyhidden">Twitter</span>
-    </button></a>
-    
-
-    <!-- Facebook -->
-    
-    <a href="https://www.facebook.com/facebook" target="_blank"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
-        <span class="visuallyhidden">Facebook</span>
-    </button></a>
-    
-
-    <!-- Google + -->
-    
-    <a href="https://www.google.com/" target="_blank"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
-        <span class="visuallyhidden">Google Plus</span>
-    </button></a>
-    
-
-    <!-- Weibo -->
-    
-    
-
-    <!-- Instagram -->
-    
-    
-
-    <!-- Tumblr -->
-    
-    
-
-    <!-- Github -->
-    
-    
-
-    <!-- LinkedIn -->
-    
-    
-
-    <!-- Zhihu -->
-    
-    
-</div>
-
-
-		<!--Copyright-->
-		<div id="copyright">Copyright&nbsp;©&nbsp;<script type="text/javascript">var fd = new Date();document.write(fd.getFullYear());</script>&nbsp;欢迎来到安然的博客</div>
-
-		<!-- Paradox Footer Right Section -->
-
-		<!-- 
-		I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
-		It will not impact the appearance and can give developers a lot of support :)
-
-		很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
-		它不会影响美观并可以给开发者很大的支持。 :) 
-		-->
-
-		<div class="mdl-mini-footer--right-section">
-			<div>
-				<div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
-				<div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
-			</div>
-		</div>
-	
-    
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Anran.Z<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
 </footer>
-                
-				<!-- Import File -->
-<script src="/js/highlight.min.js"></script>
-<script src="/js/js.min.js"></script>
-<script src="/js/nprogress.js"></script>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
 
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
 <script type="text/javascript">
-    NProgress.configure({
-        showSpinner: true
-    });
-    NProgress.start();
-    
-    $('#nprogress .bar').css({
-        'background': '#FF4081'
-    });
-    $('#nprogress .peg').css({
-        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
-    });
-    $('#nprogress .spinner-icon').css({
-        'border-top-color': '#FF4081',
-        'border-left-color': '#FF4081'
-    });
-    
-    setTimeout(function() {
-        NProgress.done();
-        $('.fade').removeClass('out');
-    }, 800);
-</script>
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
 
 
+<!-- 百度分享 start -->
 
-
-
-
-
-
-
-
-
-<!-- Swiftye -->
-
-
-<!-- Local Search-->
-
-
-<!-- Window Load-->
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
 <script>
-    $(window).load(function() {
-        // Post_Toc parent position fixed
-        $(".post-toc-wrap").parent(".mdl-menu__container").css("position", "fixed");
-    });
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
 </script>
 
-<!-- MathJax Load-->
+<!-- 百度分享 end -->
 
-            </main>
-        </div>
-		
-    </body>
-		
-	
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
 </html>
