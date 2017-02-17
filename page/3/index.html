@@ -4,45 +4,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>日常笔记 | Welcome to Anakin&#39;s blog</title>
+  <title>Welcome to Anakin&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="遇到的问题方法1 .使用mainup 解决左边不显示焦点框
-2 .使用boderview 解决recyclerview 滑动中焦点的错位
-3 .使用recylcerviewtv 控制焦点在中间
-4 .recyclerview 显示左边复杂布局
-选择方法  1  ， 3问题 了解框架
-焦点框错位1. 焦点框图片     
-2. 计算方法 
-3. 布局文件问题 
-选择方法1. 布局问题 
-packag">
-<meta property="og:type" content="article">
-<meta property="og:title" content="日常笔记">
-<meta property="og:url" content="http://yoururl.com/2017/01/09/日常笔记/index.html">
+  <meta name="description" content="曾万般觉难，一朝回收，一度万水千山。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Welcome to Anakin's blog">
+<meta property="og:url" content="http://yoururl.com/page/3/index.html">
 <meta property="og:site_name" content="Welcome to Anakin's blog">
-<meta property="og:description" content="遇到的问题方法1 .使用mainup 解决左边不显示焦点框
-2 .使用boderview 解决recyclerview 滑动中焦点的错位
-3 .使用recylcerviewtv 控制焦点在中间
-4 .recyclerview 显示左边复杂布局
-选择方法  1  ， 3问题 了解框架
-焦点框错位1. 焦点框图片     
-2. 计算方法 
-3. 布局文件问题 
-选择方法1. 布局问题 
-packag">
-<meta property="og:updated_time" content="2017-01-09T10:06:32.937Z">
+<meta property="og:description" content="曾万般觉难，一朝回收，一度万水千山。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="日常笔记">
-<meta name="twitter:description" content="遇到的问题方法1 .使用mainup 解决左边不显示焦点框
-2 .使用boderview 解决recyclerview 滑动中焦点的错位
-3 .使用recylcerviewtv 控制焦点在中间
-4 .recyclerview 显示左边复杂布局
-选择方法  1  ， 3问题 了解框架
-焦点框错位1. 焦点框图片     
-2. 计算方法 
-3. 布局文件问题 
-选择方法1. 布局问题 
-packag">
+<meta name="twitter:title" content="Welcome to Anakin's blog">
+<meta name="twitter:description" content="曾万般觉难，一朝回收，一度万水千山。">
   
     <link rel="alternative" href="/atom.xml" title="Welcome to Anakin&#39;s blog" type="application/atom+xml">
   
@@ -98,7 +70,203 @@ packag">
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="n-日常笔记" class="article article-type-n" itemscope itemprop="blogPost">
+      <section id="main">
+  
+    <article id="post-代码示例" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/10/代码示例/" class="article-date">
+  <time datetime="2017-01-10T01:57:30.000Z" itemprop="datePublished">2017-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/10/代码示例/">代码示例</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>package com.dy.dyth.base;
+</code></pre><p>import android.graphics.Bitmap;<br>import android.graphics.Canvas;<br>import android.graphics.drawable.Drawable;<br>import android.support.v7.widget.RecyclerView;<br>import android.view.KeyEvent;<br>import android.view.View;<br>import android.view.ViewGroup;</p>
+<p>import java.util.ArrayList;<br>import java.util.List;</p>
+<p>/**</p>
+<ul>
+<li>创建者     demo</li>
+<li>创建时间   2016/7/26 16:48</li>
+<li><p></p></li>
+<li>更新者     $Author$</li>
+<li><p>更新时间   $Date$<br>*/<br>public abstract class BaseAdapter<t> extends RecyclerView.Adapter {</t></p>
+<p> private static final String TAG = “BaseAdapter”;<br> public List<t> mDatas = new ArrayList&lt;&gt;();<br> public int layoutResId;<br> public int layoutResIdtwo;   //两种布局<br> public RecyclerView mRecyclerView;</t></p>
+<p> public BaseAdapter() {</p>
+<p> }</p>
+<p> public BaseAdapter(List<t> data, int layoutResId) {</t></p>
+<pre><code>this.mDatas = data;
+this.layoutResId = layoutResId;
+</code></pre><p> }</p>
+<p> /**</p>
+<ul>
+<li>两种布局<br>*</li>
+<li>@param data</li>
+<li>@param layoutResId</li>
+<li><p>@param layoutResIdtwo<br>*/<br>public BaseAdapter(List<t> data, int layoutResId, int layoutResIdtwo) {<br> this.mDatas = data;<br> this.layoutResId = layoutResId;<br> this.layoutResIdtwo = layoutResIdtwo;<br>}</t></p>
+<p>//设置回调监听<br>public interface OnFocusChange {<br> void onFocusChangeListener(View v, boolean hasFocus, int position);<br>}</p>
+<p>OnFocusChange mOnFocusChange;</p>
+<p>public void setOnFocusChange(OnFocusChange listener) {<br> this.mOnFocusChange = listener;<br>}</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>//按键监听
+public interface OnKey {
+    void onKeyListener(View v, int keyCode, KeyEvent event, Object o, int position);
+}
+
+OnKey mOnKey;
+
+public void setOnKeyListener(OnKey listener) {
+    this.mOnKey = listener;
+}
+
+// 长按
+
+
+public interface OnLongClick {
+    void onLongClickListener(View v, int position, Object bean);
+}
+
+OnLongClick mOnLongClick;
+
+public void setOnLongClickListener(OnLongClick listener) {
+    this.mOnLongClick = listener;
+}
+
+//按下监听
+
+
+public interface OnClick {
+    void onClickListener(View v, int position, Object bean);
+}
+
+OnClick mOnClick;
+
+public void setOnClickListener(OnClick listener) {
+    this.mOnClick = listener;
+}
+
+
+@Override
+public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    return initCreateViewHolder(parent, viewType);
+}
+
+protected abstract RecyclerView.ViewHolder initCreateViewHolder(ViewGroup parent, int viewType);
+
+@Override
+public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+    final int itemPosition = holder.getLayoutPosition();
+    initBindViewHolder(holder, itemPosition);
+    final Object bean = mDatas.get(position);
+    //按下监听
+    if (mOnClick != null) {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnClick.onClickListener(v, itemPosition, bean);
+            }
+        });
+    }
+
+    // 焦点监听
+    if (mOnFocusChange != null) {
+        holder.itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                mOnFocusChange.onFocusChangeListener(v, hasFocus, itemPosition);
+            }
+        });
+    }
+    //长按监听
+    if (mOnLongClick != null) {
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                mOnLongClick.onLongClickListener(v, itemPosition, bean);
+                return true;
+            }
+        });
+    }
+
+    //按键监听
+    if (mOnKey != null) {
+        holder.itemView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                mOnKey.onKeyListener(v, keyCode, event, bean, position);
+                return false;
+            }
+        });
+    }
+}
+
+protected abstract void initBindViewHolder(RecyclerView.ViewHolder holder, int position);
+
+@Override
+public int getItemCount() {
+    if (mDatas != null) {
+        return mDatas.size();
+    }
+    return 0;
+}
+
+
+
+/**
+ * 解决当显示两张相同资源图片的时候，发生抖动，提高图片质量为Bitmap.Config.ARGB_8888
+ *
+ * @param drawable 当前资源
+ * @return bitmap对象
+ */
+
+private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
+{
+    int width = drawable.getIntrinsicWidth();// 取drawable的长宽
+    int height = drawable.getIntrinsicHeight();
+    Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);// 建立对应bitmap
+    Canvas canvas = new Canvas(bitmap);// 建立对应bitmap的画布
+    drawable.setBounds(0, 0, width, height);
+    drawable.draw(canvas);// 把drawable内容画到画布中
+    return bitmap;
+}
+</code></pre><p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/01/10/代码示例/" data-id="ciz9a8kb60007ekvvn927f92g" class="article-share-link" data-share="baidu" data-title="代码示例">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/01/10/代码示例/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="n-日常笔记" class="article article-type-n" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/09/日常笔记/" class="article-date">
   <time datetime="2017-01-09T09:59:29.000Z" itemprop="datePublished">2017-01-09</time>
@@ -111,8 +279,8 @@ packag">
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      日常笔记
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/09/日常笔记/">日常笔记</a>
     </h1>
   
 
@@ -625,33 +793,66 @@ hexo d // 更新到github
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2017/01/10/代码示例/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          代码示例
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/01/09/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
-</nav>
+</article>
 
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/09/hello-world/" class="article-date">
+  <time datetime="2017-01-09T03:05:39.368Z" itemprop="datePublished">2017-01-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/09/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/01/09/hello-world/" data-id="ciz9a8kb20006ekvvawaw0xih" class="article-share-link" data-share="baidu" data-title="Hello World">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/01/09/hello-world/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
   
 </article>
 
 
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2017/01/09/日常笔记/" data-title="日常笔记" data-url="http://yoururl.com/2017/01/09/日常笔记/"></div>
-  </section>
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
 </section>
       
       <aside id="sidebar">

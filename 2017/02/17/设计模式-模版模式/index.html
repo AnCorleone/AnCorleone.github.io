@@ -4,21 +4,48 @@
 <head>
   <meta charset="utf-8">
   
-  <title>代码示例 | Welcome to Anakin&#39;s blog</title>
+  <title>模版模式.md | Welcome to Anakin&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="package com.dy.dyth.base;
-import android.graphics.Bitmap;import android.graphics.Canvas;import android.graphics.drawable.Drawable;import android.support.v7.widget.RecyclerView;import android.view.KeyE">
+  <meta name="description" content="##模版模式
+定义 :定一个操作中的算法框架,而将一些步骤延迟到子类中,使子类不用改变算法的结构重新定义算法中的步骤.
+使用场景
+多个子类共有方法并且逻辑基本相同
+重要,复杂的核心算法,可以把核心算法设计成模版方法,周边的具体细节由子类去实现
+重构时,将相同的代码抽取到父类中,然后通过子函数约束其行为
+
+使用示例
+以电脑开机为例,基本过程相同,不同的电脑具体细节不同
+
+ 开机的父类定义模版方法,调">
 <meta property="og:type" content="article">
-<meta property="og:title" content="代码示例">
-<meta property="og:url" content="http://yoururl.com/2017/01/10/代码示例/index.html">
+<meta property="og:title" content="模版模式.md">
+<meta property="og:url" content="http://yoururl.com/2017/02/17/设计模式-模版模式/index.html">
 <meta property="og:site_name" content="Welcome to Anakin's blog">
-<meta property="og:description" content="package com.dy.dyth.base;
-import android.graphics.Bitmap;import android.graphics.Canvas;import android.graphics.drawable.Drawable;import android.support.v7.widget.RecyclerView;import android.view.KeyE">
-<meta property="og:updated_time" content="2017-01-10T01:58:37.473Z">
+<meta property="og:description" content="##模版模式
+定义 :定一个操作中的算法框架,而将一些步骤延迟到子类中,使子类不用改变算法的结构重新定义算法中的步骤.
+使用场景
+多个子类共有方法并且逻辑基本相同
+重要,复杂的核心算法,可以把核心算法设计成模版方法,周边的具体细节由子类去实现
+重构时,将相同的代码抽取到父类中,然后通过子函数约束其行为
+
+使用示例
+以电脑开机为例,基本过程相同,不同的电脑具体细节不同
+
+ 开机的父类定义模版方法,调">
+<meta property="og:updated_time" content="2017-02-17T03:31:48.326Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="代码示例">
-<meta name="twitter:description" content="package com.dy.dyth.base;
-import android.graphics.Bitmap;import android.graphics.Canvas;import android.graphics.drawable.Drawable;import android.support.v7.widget.RecyclerView;import android.view.KeyE">
+<meta name="twitter:title" content="模版模式.md">
+<meta name="twitter:description" content="##模版模式
+定义 :定一个操作中的算法框架,而将一些步骤延迟到子类中,使子类不用改变算法的结构重新定义算法中的步骤.
+使用场景
+多个子类共有方法并且逻辑基本相同
+重要,复杂的核心算法,可以把核心算法设计成模版方法,周边的具体细节由子类去实现
+重构时,将相同的代码抽取到父类中,然后通过子函数约束其行为
+
+使用示例
+以电脑开机为例,基本过程相同,不同的电脑具体细节不同
+
+ 开机的父类定义模版方法,调">
   
     <link rel="alternative" href="/atom.xml" title="Welcome to Anakin&#39;s blog" type="application/atom+xml">
   
@@ -74,10 +101,10 @@ import android.graphics.Bitmap;import android.graphics.Canvas;import android.gra
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-代码示例" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-设计模式-模版模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/10/代码示例/" class="article-date">
-  <time datetime="2017-01-10T01:57:30.000Z" itemprop="datePublished">2017-01-10</time>
+    <a href="/2017/02/17/设计模式-模版模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
   </div>
@@ -88,7 +115,7 @@ import android.graphics.Bitmap;import android.graphics.Canvas;import android.gra
         
   
     <h1 class="article-title" itemprop="name">
-      代码示例
+      模版模式.md
     </h1>
   
 
@@ -96,168 +123,116 @@ import android.graphics.Bitmap;import android.graphics.Canvas;import android.gra
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code>package com.dy.dyth.base;
-</code></pre><p>import android.graphics.Bitmap;<br>import android.graphics.Canvas;<br>import android.graphics.drawable.Drawable;<br>import android.support.v7.widget.RecyclerView;<br>import android.view.KeyEvent;<br>import android.view.View;<br>import android.view.ViewGroup;</p>
-<p>import java.util.ArrayList;<br>import java.util.List;</p>
-<p>/**</p>
-<ul>
-<li>创建者     demo</li>
-<li>创建时间   2016/7/26 16:48</li>
-<li><p></p></li>
-<li>更新者     $Author$</li>
-<li><p>更新时间   $Date$<br>*/<br>public abstract class BaseAdapter<t> extends RecyclerView.Adapter {</t></p>
-<p> private static final String TAG = “BaseAdapter”;<br> public List<t> mDatas = new ArrayList&lt;&gt;();<br> public int layoutResId;<br> public int layoutResIdtwo;   //两种布局<br> public RecyclerView mRecyclerView;</t></p>
-<p> public BaseAdapter() {</p>
-<p> }</p>
-<p> public BaseAdapter(List<t> data, int layoutResId) {</t></p>
-<pre><code>this.mDatas = data;
-this.layoutResId = layoutResId;
-</code></pre><p> }</p>
-<p> /**</p>
-<ul>
-<li>两种布局<br>*</li>
-<li>@param data</li>
-<li>@param layoutResId</li>
-<li><p>@param layoutResIdtwo<br>*/<br>public BaseAdapter(List<t> data, int layoutResId, int layoutResIdtwo) {<br> this.mDatas = data;<br> this.layoutResId = layoutResId;<br> this.layoutResIdtwo = layoutResIdtwo;<br>}</t></p>
-<p>//设置回调监听<br>public interface OnFocusChange {<br> void onFocusChangeListener(View v, boolean hasFocus, int position);<br>}</p>
-<p>OnFocusChange mOnFocusChange;</p>
-<p>public void setOnFocusChange(OnFocusChange listener) {<br> this.mOnFocusChange = listener;<br>}</p>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code>//按键监听
-public interface OnKey {
-    void onKeyListener(View v, int keyCode, KeyEvent event, Object o, int position);
-}
-
-OnKey mOnKey;
-
-public void setOnKeyListener(OnKey listener) {
-    this.mOnKey = listener;
-}
-
-// 长按
-
-
-public interface OnLongClick {
-    void onLongClickListener(View v, int position, Object bean);
-}
-
-OnLongClick mOnLongClick;
-
-public void setOnLongClickListener(OnLongClick listener) {
-    this.mOnLongClick = listener;
-}
-
-//按下监听
-
-
-public interface OnClick {
-    void onClickListener(View v, int position, Object bean);
-}
-
-OnClick mOnClick;
-
-public void setOnClickListener(OnClick listener) {
-    this.mOnClick = listener;
-}
-
-
-@Override
-public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    return initCreateViewHolder(parent, viewType);
-}
-
-protected abstract RecyclerView.ViewHolder initCreateViewHolder(ViewGroup parent, int viewType);
-
-@Override
-public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-    final int itemPosition = holder.getLayoutPosition();
-    initBindViewHolder(holder, itemPosition);
-    final Object bean = mDatas.get(position);
-    //按下监听
-    if (mOnClick != null) {
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mOnClick.onClickListener(v, itemPosition, bean);
-            }
-        });
-    }
-
-    // 焦点监听
-    if (mOnFocusChange != null) {
-        holder.itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                mOnFocusChange.onFocusChangeListener(v, hasFocus, itemPosition);
-            }
-        });
-    }
-    //长按监听
-    if (mOnLongClick != null) {
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                mOnLongClick.onLongClickListener(v, itemPosition, bean);
-                return true;
-            }
-        });
-    }
-
-    //按键监听
-    if (mOnKey != null) {
-        holder.itemView.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                mOnKey.onKeyListener(v, keyCode, event, bean, position);
-                return false;
-            }
-        });
-    }
-}
-
-protected abstract void initBindViewHolder(RecyclerView.ViewHolder holder, int position);
-
-@Override
-public int getItemCount() {
-    if (mDatas != null) {
-        return mDatas.size();
-    }
-    return 0;
-}
-
-
+        <p>##模版模式</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义 :"></a>定义 :</h3><p>定一个操作中的算法框架,而将一些步骤延迟到子类中,使子类不用改变算法的结构重新定义算法中的步骤.</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
+<li>多个子类共有方法并且逻辑基本相同</li>
+<li>重要,复杂的核心算法,可以把核心算法设计成模版方法,周边的具体细节由子类去实现</li>
+<li>重构时,将相同的代码抽取到父类中,然后通过子函数约束其行为</li>
+</ol>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><ol>
+<li>以电脑开机为例,基本过程相同,不同的电脑具体细节不同</li>
+</ol>
+<p><strong> 开机的父类定义模版方法,调用开机的过程</strong></p>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.templatemethod;
 
 /**
- * 解决当显示两张相同资源图片的时候，发生抖动，提高图片质量为Bitmap.Config.ARGB_8888
- *
- * @param drawable 当前资源
- * @return bitmap对象
+ * Created by demo on 2017/2/8 0008
  */
+public abstract class OpenComputer {
 
-private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
-{
-    int width = drawable.getIntrinsicWidth();// 取drawable的长宽
-    int height = drawable.getIntrinsicHeight();
-    Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);// 建立对应bitmap
-    Canvas canvas = new Canvas(bitmap);// 建立对应bitmap的画布
-    drawable.setBounds(0, 0, width, height);
-    drawable.draw(canvas);// 把drawable内容画到画布中
-    return bitmap;
+    public void loadOs() {
+        System.out.println(&quot;加载系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
+    }
+
+    public void checkHardware() {
+        System.out.println(&quot;检查防火墙&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
+    }
+
+
+    public void powerOn() {
+        System.out.println(&quot;连接电源&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
+    }
+
+    public void login() {
+        System.out.println(&quot;验证登录系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
+    }
+
+    public final void  startUp(){
+        System.out.println(&quot;=========== open start ============&quot;);
+        powerOn();
+        checkHardware();
+        loadOs();
+        login();
+        System.out.println(&quot;=========== open end  ============&quot;);
+    }
+
 }
-</code></pre><p>}</p>
+</code></pre><hr>
+<ol>
+<li>以程序员的电脑和军人的电脑开机为例,程序在登录的时候需要输出密码,而军人的电脑在开机的过程中需要检查防火墙</li>
+</ol>
+<p><strong> 程序员的电脑</strong></p>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.templatemethod;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class CoderComputer extends OpenComputer {
+
+    @Override
+    public void login() {
+//        super.login();
+        System.out.println(&quot; ......... coder&apos;s computer open login &quot;);
+    }
+}
+</code></pre><hr>
+<p><strong> 军人的电脑 </strong></p>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.templatemethod;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class MilitaryComputer extends OpenComputer {
+
+    @Override
+    public void checkHardware() {
+        System.out.println(&quot; military&apos;s is check haedware !!!!!!!!!!!&quot;);
+    }
+}
+</code></pre><hr>
+<p><strong> 测试 </strong></p>
+<pre><code>// 模版模式测试
+     OpenComputer coderPc = new CoderComputer();
+     coderPc.startUp();
+
+     OpenComputer militaryPc = new MilitaryComputer();
+     militaryPc.startUp();
+</code></pre><hr>
+<p><strong> 测试结果 </strong></p>
+<pre><code>02-08 08:53:19.246 3221-3221/com.anakin.design_pattern_test I/System.out: =========== open start ============
+02-08 08:53:19.246 3221-3221/com.anakin.design_pattern_test I/System.out: 连接电源&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+02-08 08:53:19.246 3221-3221/com.anakin.design_pattern_test I/System.out: 检查防火墙&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+02-08 08:53:19.246 3221-3221/com.anakin.design_pattern_test I/System.out: 加载系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+02-08 08:53:19.247 3221-3221/com.anakin.design_pattern_test I/System.out:  ......... coder&apos;s computer open login
+02-08 08:53:19.247 3221-3221/com.anakin.design_pattern_test I/System.out: =========== open end  ============
+02-08 08:53:19.247 3221-3221/com.anakin.design_pattern_test I/System.out: =========== open start ============
+02-08 08:53:19.247 3221-3221/com.anakin.design_pattern_test I/System.out: 连接电源&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+02-08 08:53:19.248 3221-3221/com.anakin.design_pattern_test I/System.out:  military&apos;s is check haedware !!!!!!!!!!!
+02-08 08:53:19.248 3221-3221/com.anakin.design_pattern_test I/System.out: 加载系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+02-08 08:53:19.248 3221-3221/com.anakin.design_pattern_test I/System.out: 验证登录系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+02-08 08:53:19.253 3221-3221/com.anakin.design_pattern_test I/System.out: =========== open end  ============
+</code></pre><p>　</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/10/代码示例/" data-id="ciz9a8kb60007ekvvn927f92g" class="article-share-link" data-share="baidu" data-title="代码示例">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-模版模式/" data-id="ciz9a8kcb000kekvvz131pcxi" class="article-share-link" data-share="baidu" data-title="模版模式.md">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/01/10/代码示例/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://yoururl.com/2017/02/17/设计模式-模版模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -267,19 +242,19 @@ private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
     
 <nav id="article-nav">
   
-    <a href="/2017/01/10/自学Python-Python基础/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/17/设计模式-简单工厂模式/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">
         
-          (no title)
+          简单工厂模式.md
         
       </div>
     </a>
   
   
-    <a href="/2017/01/09/日常笔记/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/02/17/设计模式-桥接模式/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">日常笔记</div>
+      <div class="article-nav-title">桥接模式.md</div>
     </a>
   
 </nav>
@@ -289,7 +264,7 @@ private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2017/01/10/代码示例/" data-title="代码示例" data-url="http://yoururl.com/2017/01/10/代码示例/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017/02/17/设计模式-模版模式/" data-title="模版模式.md" data-url="http://yoururl.com/2017/02/17/设计模式-模版模式/"></div>
   </section>
 </section>
       

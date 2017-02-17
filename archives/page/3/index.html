@@ -4,54 +4,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>自学Python-模块 | Welcome to Anakin&#39;s blog</title>
+  <title>Archives | Welcome to Anakin&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用模块标准注释
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-test_1.py
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-&amp;apos;a test module&amp;apos;
-___author__=&amp;apos;anakin&amp;apos;
-
-import sys
-
-def test():">
-<meta property="og:type" content="article">
-<meta property="og:title" content="自学Python-模块">
-<meta property="og:url" content="http://yoururl.com/2017/01/11/自学Python-模块/index.html">
+  <meta name="description" content="曾万般觉难，一朝回收，一度万水千山。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Welcome to Anakin's blog">
+<meta property="og:url" content="http://yoururl.com/archives/page/3/index.html">
 <meta property="og:site_name" content="Welcome to Anakin's blog">
-<meta property="og:description" content="使用模块标准注释
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-test_1.py
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-&amp;apos;a test module&amp;apos;
-___author__=&amp;apos;anakin&amp;apos;
-
-import sys
-
-def test():">
-<meta property="og:updated_time" content="2017-01-11T11:35:12.181Z">
+<meta property="og:description" content="曾万般觉难，一朝回收，一度万水千山。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="自学Python-模块">
-<meta name="twitter:description" content="使用模块标准注释
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-test_1.py
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-&amp;apos;a test module&amp;apos;
-___author__=&amp;apos;anakin&amp;apos;
-
-import sys
-
-def test():">
+<meta name="twitter:title" content="Welcome to Anakin's blog">
+<meta name="twitter:description" content="曾万般觉难，一朝回收，一度万水千山。">
   
     <link rel="alternative" href="/atom.xml" title="Welcome to Anakin&#39;s blog" type="application/atom+xml">
   
@@ -107,133 +70,82 @@ def test():">
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-自学Python-模块" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/11/自学Python-模块/" class="article-date">
-  <time datetime="2017-01-11T09:35:35.000Z" itemprop="datePublished">2017-01-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+      <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      自学Python-模块
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2017/01/10/代码示例/" class="archive-article-date">
+  <time datetime="2017-01-10T01:57:30.000Z" itemprop="datePublished">1月 10</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/01/10/代码示例/">代码示例</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h3><p><strong>标准注释</strong></p>
-<pre><code>#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-</code></pre><ul>
-<li><p>test_1.py</p>
-<pre><code>#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-&apos;a test module&apos;
-___author__=&apos;anakin&apos;
-
-import sys
-
-def test():
-    args = sys.argv
-    if len(args)==1:
-        print(&apos;hello,world&apos;)
-    elif len(args)==2:
-        print(&apos;hello :&apos;+ args[1])
-    else:
-        print(&apos;too many argument!&apos;)
-
-if __name__==&apos;__main__&apos;:
-    test()
-</code></pre></li>
-</ul>
-<ul>
-<li><p>test_2.py</p>
-<pre><code>import test_1
-
-test_1.test()
-</code></pre></li>
-</ul>
-<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><ul>
-<li><p>外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。</p>
-<pre><code>#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-&apos;函数的作用域&apos;
-___author__=&apos;anakin&apos;
-
-def _private_1(name):
-    print(&apos;private 1 run&apos;)
-
-def _private_2(name):
-    print(&apos;private 2 run&apos;)
-
-def greeting(name):
-    if len(name)&gt;3:
-        return _private_1(name)
-    else :
-        return _private_2(name)
-</code></pre><h3 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h3></li>
-</ul>
-<p>安装Pillow </p>
-<pre><code>安装Pillow
-pip install Pillow
-
-from PIL import Image
-im = Image.open(&apos;img.png&apos;)
-print(im.format,im.size,im.mode)
-</code></pre><p>生成缩略图</p>
-<pre><code>im.thumbnail((200, 100))
-im.save(&apos;thmb.jpg&apos;,&apos;JPEG&apos;)
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoururl.com/2017/01/11/自学Python-模块/" data-id="ciz9a8kbv000dekvv3hdxrw3z" class="article-share-link" data-share="baidu" data-title="自学Python-模块">分享到</a>
-      
-
-      
-        <a href="http://yoururl.com/2017/01/11/自学Python-模块/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-    </footer>
+    </header>
   </div>
+</article>
   
     
-<nav id="article-nav">
+    
+    <article class="archive-article archive-type-n">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2017/01/09/日常笔记/" class="archive-article-date">
+  <time datetime="2017-01-09T09:59:29.000Z" itemprop="datePublished">1月 9</time>
+</a>
+      
   
-    <a href="/2017/01/11/自学Python-面向对象编程/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          自学Python-面向对象编程
-        
-      </div>
-    </a>
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/01/09/日常笔记/">日常笔记</a>
+    </h1>
   
-  
-    <a href="/2017/01/11/自学Python-函数式编程/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title"></div>
-    </a>
-  
-</nav>
 
-  
+    </header>
+  </div>
 </article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2017/01/09/hello-world/" class="archive-article-date">
+  <time datetime="2017-01-09T03:05:39.368Z" itemprop="datePublished">1月 9</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/01/09/hello-world/">Hello World</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
+  
 
 
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2017/01/11/自学Python-模块/" data-title="自学Python-模块" data-url="http://yoururl.com/2017/01/11/自学Python-模块/"></div>
-  </section>
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/archives/page/2/">&laquo; 上一页</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
 </section>
       
       <aside id="sidebar">

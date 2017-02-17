@@ -4,26 +4,29 @@
 <head>
   <meta charset="utf-8">
   
-  <title>欢迎来到安然的博客</title>
+  <title>桥接模式.md | Welcome to Anakin&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="工厂方法模式　和简单工厂模式不同是,简单工厂模式,实例都由一个工厂类创建,工厂类的代码量会比较多,而且增加新的对象需要修改工厂类的代码,增加if else 的判断.
-工厂模式,创建产品的抽象类和实现类,以及工厂的抽象类和实现类.
-以打印log为例,log的存储方式可以是db也可以是file中,需要创建Logger的抽象类,具体是FileLogger实现类和DbLogger的实现类,工厂的抽象类Lo">
+  <meta name="description" content="桥接模式使用实例以两个程序绘制圆形和方形为例
+
+定义两个绘图程序类 DP1,DP2,定义绘制方法
+抽象两个形状的派生类 shape">
 <meta property="og:type" content="article">
-<meta property="og:title" content="欢迎来到安然的博客">
-<meta property="og:url" content="http://yoururl.com/2017/02/09/设计模式-工厂方法模式/index.html">
-<meta property="og:site_name" content="欢迎来到安然的博客">
-<meta property="og:description" content="工厂方法模式　和简单工厂模式不同是,简单工厂模式,实例都由一个工厂类创建,工厂类的代码量会比较多,而且增加新的对象需要修改工厂类的代码,增加if else 的判断.
-工厂模式,创建产品的抽象类和实现类,以及工厂的抽象类和实现类.
-以打印log为例,log的存储方式可以是db也可以是file中,需要创建Logger的抽象类,具体是FileLogger实现类和DbLogger的实现类,工厂的抽象类Lo">
-<meta property="og:updated_time" content="2017-02-09T09:11:51.726Z">
+<meta property="og:title" content="桥接模式.md">
+<meta property="og:url" content="http://yoururl.com/2017/02/17/设计模式-桥接模式/index.html">
+<meta property="og:site_name" content="Welcome to Anakin's blog">
+<meta property="og:description" content="桥接模式使用实例以两个程序绘制圆形和方形为例
+
+定义两个绘图程序类 DP1,DP2,定义绘制方法
+抽象两个形状的派生类 shape">
+<meta property="og:updated_time" content="2017-02-17T03:32:16.681Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="欢迎来到安然的博客">
-<meta name="twitter:description" content="工厂方法模式　和简单工厂模式不同是,简单工厂模式,实例都由一个工厂类创建,工厂类的代码量会比较多,而且增加新的对象需要修改工厂类的代码,增加if else 的判断.
-工厂模式,创建产品的抽象类和实现类,以及工厂的抽象类和实现类.
-以打印log为例,log的存储方式可以是db也可以是file中,需要创建Logger的抽象类,具体是FileLogger实现类和DbLogger的实现类,工厂的抽象类Lo">
+<meta name="twitter:title" content="桥接模式.md">
+<meta name="twitter:description" content="桥接模式使用实例以两个程序绘制圆形和方形为例
+
+定义两个绘图程序类 DP1,DP2,定义绘制方法
+抽象两个形状的派生类 shape">
   
-    <link rel="alternative" href="/atom.xml" title="欢迎来到安然的博客" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Welcome to Anakin&#39;s blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -40,7 +43,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">欢迎来到安然的博客</a>
+        <a href="/" id="logo">Welcome to Anakin&#39;s blog</a>
       </h1>
       
         <h2 id="subtitle-wrap">
@@ -77,38 +80,43 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-设计模式-工厂方法模式" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-设计模式-桥接模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/09/设计模式-工厂方法模式/" class="article-date">
-  <time datetime="2017-02-09T07:50:00.867Z" itemprop="datePublished">2017-02-09</time>
+    <a href="/2017/02/17/设计模式-桥接模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      桥接模式.md
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式　"></a>工厂方法模式　</h2><p>和简单工厂模式不同是,简单工厂模式,实例都由一个工厂类创建,工厂类的代码量会比较多,而且增加新的对象需要修改工厂类的代码,增加if else 的判断.</p>
-<p>工厂模式,创建产品的抽象类和实现类,以及工厂的抽象类和实现类.</p>
-<p>以打印log为例,log的存储方式可以是db也可以是file中,需要创建Logger的抽象类,具体是FileLogger实现类和DbLogger的实现类,工厂的抽象类LoggerFactory,和具体的实现类DbLoggerFactory,FileLoggerFactory</p>
+        <h2 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h2><h3 id="使用实例"><a href="#使用实例" class="headerlink" title="使用实例"></a>使用实例</h3><p>以两个程序绘制圆形和方形为例</p>
 <ol>
-<li>在抽象Logger类中定义公共的抽象方法writeLog()</li>
-<li>在具体实现类DbLogger和FileLogger中实现各自的具体的writeLog方法</li>
-<li>在抽象的工厂类中定义抽象的创建对象的方法creatLogger()</li>
-<li>在具体的实类DbLoggerFactory,FileLoggerFactory中实现方法,创建DbLogger和FileLogger的实例,并返回其父类Logger</li>
-<li>客户端的使用 : 根据需要创建工厂的实例,调用实例中创建对象的方法creatLogger返回具体log存放的实例对象,在调用具体打印log的方法writeLog()</li>
+<li>定义两个绘图程序类 DP1,DP2,定义绘制方法</li>
+<li>抽象两个形状的派生类 shape </li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/09/设计模式-工厂方法模式/" data-id="ciz98de61000ho8vvgd1s3ylo" class="article-share-link" data-share="baidu" data-title="">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-桥接模式/" data-id="ciz9a8kc9000jekvvyqf3j5tl" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/02/09/设计模式-工厂方法模式/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://yoururl.com/2017/02/17/设计模式-桥接模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -118,10 +126,19 @@
     
 <nav id="article-nav">
   
+    <a href="/2017/02/17/设计模式-模版模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          模版模式.md
+        
+      </div>
+    </a>
   
-    <a href="/2017/02/09/设计模式-简单工厂模式/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="/2017/02/17/设计模式-工厂方法模式/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title"></div>
+      <div class="article-nav-title">工厂方法模式.md</div>
     </a>
   
 </nav>
@@ -131,7 +148,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2017/02/09/设计模式-工厂方法模式/" data-title="" data-url="http://yoururl.com/2017/02/09/设计模式-工厂方法模式/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017/02/17/设计模式-桥接模式/" data-title="桥接模式.md" data-url="http://yoururl.com/2017/02/17/设计模式-桥接模式/"></div>
   </section>
 </section>
       
@@ -147,7 +164,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">12</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -159,23 +176,23 @@
       <ul>
         
           <li>
-            <a href="/2017/02/09/设计模式-工厂方法模式/">(no title)</a>
+            <a href="/2017/02/17/Android基础知识-md/">Android基础知识.md</a>
           </li>
         
           <li>
-            <a href="/2017/02/09/设计模式-简单工厂模式/">(no title)</a>
+            <a href="/2017/02/17/MYSQL的修改和删除/">MySql的修改和删除.md</a>
           </li>
         
           <li>
-            <a href="/2017/02/09/读取XML中的配置参数/">(no title)</a>
+            <a href="/2017/02/17/设计模式-观察者模式/">观察者模式.md</a>
           </li>
         
           <li>
-            <a href="/2017/02/09/设计模式-桥接模式/">(no title)</a>
+            <a href="/2017/02/17/MySQL进阶-操作详解/">MySQL基本操作.md</a>
           </li>
         
           <li>
-            <a href="/2017/02/08/Java设计模式/">(no title)</a>
+            <a href="/2017/02/17/设计模式-简单工厂模式/">简单工厂模式.md</a>
           </li>
         
       </ul>
@@ -281,6 +298,44 @@ var duoshuoQuery = {short_name:"reqianduan"};
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 <script src="/js/script.js"></script>

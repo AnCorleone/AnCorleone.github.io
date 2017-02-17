@@ -4,21 +4,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>代码示例 | Welcome to Anakin&#39;s blog</title>
+  <title>Builder模式.md | Welcome to Anakin&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="package com.dy.dyth.base;
-import android.graphics.Bitmap;import android.graphics.Canvas;import android.graphics.drawable.Drawable;import android.support.v7.widget.RecyclerView;import android.view.KeyE">
+  <meta name="description" content="Builder模式定义:将复杂的创建与他的表示分离,使同样的创建过程可以创建不同的表示
+设计的步骤:Builder builder = new AppleBuilder();
+        Director director = new Director(builder);
+        director.construct(4,2,&amp;quot;linux&amp;quot;);
+        Lo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="代码示例">
-<meta property="og:url" content="http://yoururl.com/2017/01/10/代码示例/index.html">
+<meta property="og:title" content="Builder模式.md">
+<meta property="og:url" content="http://yoururl.com/2017/02/17/设计模式-Builder模式/index.html">
 <meta property="og:site_name" content="Welcome to Anakin's blog">
-<meta property="og:description" content="package com.dy.dyth.base;
-import android.graphics.Bitmap;import android.graphics.Canvas;import android.graphics.drawable.Drawable;import android.support.v7.widget.RecyclerView;import android.view.KeyE">
-<meta property="og:updated_time" content="2017-01-10T01:58:37.473Z">
+<meta property="og:description" content="Builder模式定义:将复杂的创建与他的表示分离,使同样的创建过程可以创建不同的表示
+设计的步骤:Builder builder = new AppleBuilder();
+        Director director = new Director(builder);
+        director.construct(4,2,&amp;quot;linux&amp;quot;);
+        Lo">
+<meta property="og:updated_time" content="2017-02-17T03:29:48.155Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="代码示例">
-<meta name="twitter:description" content="package com.dy.dyth.base;
-import android.graphics.Bitmap;import android.graphics.Canvas;import android.graphics.drawable.Drawable;import android.support.v7.widget.RecyclerView;import android.view.KeyE">
+<meta name="twitter:title" content="Builder模式.md">
+<meta name="twitter:description" content="Builder模式定义:将复杂的创建与他的表示分离,使同样的创建过程可以创建不同的表示
+设计的步骤:Builder builder = new AppleBuilder();
+        Director director = new Director(builder);
+        director.construct(4,2,&amp;quot;linux&amp;quot;);
+        Lo">
   
     <link rel="alternative" href="/atom.xml" title="Welcome to Anakin&#39;s blog" type="application/atom+xml">
   
@@ -74,10 +83,10 @@ import android.graphics.Bitmap;import android.graphics.Canvas;import android.gra
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-代码示例" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-设计模式-Builder模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/10/代码示例/" class="article-date">
-  <time datetime="2017-01-10T01:57:30.000Z" itemprop="datePublished">2017-01-10</time>
+    <a href="/2017/02/17/设计模式-Builder模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
   </div>
@@ -88,7 +97,7 @@ import android.graphics.Bitmap;import android.graphics.Canvas;import android.gra
         
   
     <h1 class="article-title" itemprop="name">
-      代码示例
+      Builder模式.md
     </h1>
   
 
@@ -96,168 +105,169 @@ import android.graphics.Bitmap;import android.graphics.Canvas;import android.gra
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code>package com.dy.dyth.base;
-</code></pre><p>import android.graphics.Bitmap;<br>import android.graphics.Canvas;<br>import android.graphics.drawable.Drawable;<br>import android.support.v7.widget.RecyclerView;<br>import android.view.KeyEvent;<br>import android.view.View;<br>import android.view.ViewGroup;</p>
-<p>import java.util.ArrayList;<br>import java.util.List;</p>
-<p>/**</p>
-<ul>
-<li>创建者     demo</li>
-<li>创建时间   2016/7/26 16:48</li>
-<li><p></p></li>
-<li>更新者     $Author$</li>
-<li><p>更新时间   $Date$<br>*/<br>public abstract class BaseAdapter<t> extends RecyclerView.Adapter {</t></p>
-<p> private static final String TAG = “BaseAdapter”;<br> public List<t> mDatas = new ArrayList&lt;&gt;();<br> public int layoutResId;<br> public int layoutResIdtwo;   //两种布局<br> public RecyclerView mRecyclerView;</t></p>
-<p> public BaseAdapter() {</p>
-<p> }</p>
-<p> public BaseAdapter(List<t> data, int layoutResId) {</t></p>
-<pre><code>this.mDatas = data;
-this.layoutResId = layoutResId;
-</code></pre><p> }</p>
-<p> /**</p>
-<ul>
-<li>两种布局<br>*</li>
-<li>@param data</li>
-<li>@param layoutResId</li>
-<li><p>@param layoutResIdtwo<br>*/<br>public BaseAdapter(List<t> data, int layoutResId, int layoutResIdtwo) {<br> this.mDatas = data;<br> this.layoutResId = layoutResId;<br> this.layoutResIdtwo = layoutResIdtwo;<br>}</t></p>
-<p>//设置回调监听<br>public interface OnFocusChange {<br> void onFocusChangeListener(View v, boolean hasFocus, int position);<br>}</p>
-<p>OnFocusChange mOnFocusChange;</p>
-<p>public void setOnFocusChange(OnFocusChange listener) {<br> this.mOnFocusChange = listener;<br>}</p>
+        <h2 id="Builder模式"><a href="#Builder模式" class="headerlink" title="Builder模式"></a>Builder模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>将复杂的创建与他的表示分离,使同样的创建过程可以创建不同的表示</p>
+<h3 id="设计的步骤"><a href="#设计的步骤" class="headerlink" title="设计的步骤:"></a>设计的步骤:</h3><pre><code>Builder builder = new AppleBuilder();
+        Director director = new Director(builder);
+        director.construct(4,2,&quot;linux&quot;);
+        Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
+</code></pre><hr>
+<ol>
+<li><p>以组装电脑为例,创建电脑的抽象类,包含os ram,core定义,提供设置的抽象方法</p>
 </li>
-</ul>
+<li><p>创建要组装的具体电脑类AppleComputer,继承Computer类,实现所用方法</p>
 </li>
-</ul>
-<pre><code>//按键监听
-public interface OnKey {
-    void onKeyListener(View v, int keyCode, KeyEvent event, Object o, int position);
-}
-
-OnKey mOnKey;
-
-public void setOnKeyListener(OnKey listener) {
-    this.mOnKey = listener;
-}
-
-// 长按
-
-
-public interface OnLongClick {
-    void onLongClickListener(View v, int position, Object bean);
-}
-
-OnLongClick mOnLongClick;
-
-public void setOnLongClickListener(OnLongClick listener) {
-    this.mOnLongClick = listener;
-}
-
-//按下监听
-
-
-public interface OnClick {
-    void onClickListener(View v, int position, Object bean);
-}
-
-OnClick mOnClick;
-
-public void setOnClickListener(OnClick listener) {
-    this.mOnClick = listener;
-}
-
-
-@Override
-public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    return initCreateViewHolder(parent, viewType);
-}
-
-protected abstract RecyclerView.ViewHolder initCreateViewHolder(ViewGroup parent, int viewType);
-
-@Override
-public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-    final int itemPosition = holder.getLayoutPosition();
-    initBindViewHolder(holder, itemPosition);
-    final Object bean = mDatas.get(position);
-    //按下监听
-    if (mOnClick != null) {
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mOnClick.onClickListener(v, itemPosition, bean);
-            }
-        });
-    }
-
-    // 焦点监听
-    if (mOnFocusChange != null) {
-        holder.itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                mOnFocusChange.onFocusChangeListener(v, hasFocus, itemPosition);
-            }
-        });
-    }
-    //长按监听
-    if (mOnLongClick != null) {
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                mOnLongClick.onLongClickListener(v, itemPosition, bean);
-                return true;
-            }
-        });
-    }
-
-    //按键监听
-    if (mOnKey != null) {
-        holder.itemView.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                mOnKey.onKeyListener(v, keyCode, event, bean, position);
-                return false;
-            }
-        });
-    }
-}
-
-protected abstract void initBindViewHolder(RecyclerView.ViewHolder holder, int position);
-
-@Override
-public int getItemCount() {
-    if (mDatas != null) {
-        return mDatas.size();
-    }
-    return 0;
-}
-
-
+<li><p>创建抽象的Builder类,提供builder的设置方法,另外提供返回Computer的create的抽象方法</p>
+</li>
+<li><p>创建具体的AppleBuilder类实现抽象方法,创建AppleComputer 实例对象,并设置数据,返回AppleComputer的实例</p>
+</li>
+<li><p>创建具体的Director类,构造方法中接受builder对象,提供接受数据的construct 方法,将参数传递给builder对象</p>
+</li>
+<li><p>传递的参数最终被AppleBuilder接收,并返回一个具体的AppleComputer对象</p>
+</li>
+</ol>
+<h3 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h3><pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
 
 /**
- * 解决当显示两张相同资源图片的时候，发生抖动，提高图片质量为Bitmap.Config.ARGB_8888
- *
- * @param drawable 当前资源
- * @return bitmap对象
+ * Created by demo on 2017/2/8 0008
  */
+public abstract class Computer {
+    protected int mCore = 1;
+    protected int mRam = 10;
+    protected String mOs = &quot;dos&quot;;
 
-private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
-{
-    int width = drawable.getIntrinsicWidth();// 取drawable的长宽
-    int height = drawable.getIntrinsicHeight();
-    Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);// 建立对应bitmap
-    Canvas canvas = new Canvas(bitmap);// 建立对应bitmap的画布
-    drawable.setBounds(0, 0, width, height);
-    drawable.draw(canvas);// 把drawable内容画到画布中
-    return bitmap;
+    protected Computer() {
+
+    }
+
+    public abstract void setCore(int core);
+
+    public abstract void setRem(int rem);
+
+    public abstract void setOs(String os);
+
+    @Override
+    public String toString() {
+        return &quot;Computer{&quot; +
+                &quot;mCore=&quot; + mCore +
+                &quot;, mRam=&quot; + mRam +
+                &quot;, mOs=&apos;&quot; + mOs + &apos;\&apos;&apos; +
+                &apos;}&apos;;
+    }
 }
-</code></pre><p>}</p>
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class AppleComputer extends Computer {
+
+
+    protected AppleComputer() {
+
+    }
+
+    @Override
+    public void setCore(int core) {
+        this.mCore = core;
+    }
+
+    @Override
+    public void setRem(int ram) {
+        this.mRam = ram;
+    }
+
+    @Override
+    public void setOs(String os) {
+        this.mOs = os;
+    }
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+* Created by demo on 2017/2/8 0008
+*/
+public class AppleBuilder extends Builder {
+
+private  Computer mApplePc =new AppleComputer();
+@Override
+public void buildCore(int core) {
+    mApplePc.setCore(core);
+}
+
+@Override
+public void buildRam(int ram) {
+    mApplePc.setRem(ram);
+}
+
+@Override
+public void buildOs(String os) {
+    mApplePc.setOs(os);
+}
+
+@Override
+public Computer create() {
+
+    return mApplePc;
+}
+
+
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public abstract class Builder {
+
+
+    public abstract void buildCore(int core);
+
+    public abstract void buildRam(int ram);
+
+    public abstract void buildOs(String os);
+
+    public abstract Computer create();
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class Director {
+    Builder mBuilder=null;
+
+    public Director(Builder builder) {
+        mBuilder = builder;
+    }
+
+    public void construct(int core,int ram, String os){
+        mBuilder.buildCore(core);
+        mBuilder.buildRam(ram);
+        mBuilder.buildOs(os);
+    }
+}
+</code></pre><hr>
+<p> 测试代码</p>
+<pre><code>// 测试运行效果
+      Builder builder = new AppleBuilder();
+      Director director = new Director(builder);
+      director.construct(4,2,&quot;linux&quot;);
+      Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
+</code></pre><hr>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/10/代码示例/" data-id="ciz9a8kb60007ekvvn927f92g" class="article-share-link" data-share="baidu" data-title="代码示例">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-Builder模式/" data-id="ciz9a8kc5000hekvvss3vrbd0" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/01/10/代码示例/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://yoururl.com/2017/02/17/设计模式-Builder模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -267,19 +277,19 @@ private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
     
 <nav id="article-nav">
   
-    <a href="/2017/01/10/自学Python-Python基础/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/17/设计模式-工厂方法模式/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">
         
-          (no title)
+          工厂方法模式.md
         
       </div>
     </a>
   
   
-    <a href="/2017/01/09/日常笔记/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/02/17/Java设计模式/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">日常笔记</div>
+      <div class="article-nav-title">Java设计模式.md</div>
     </a>
   
 </nav>
@@ -289,7 +299,7 @@ private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2017/01/10/代码示例/" data-title="代码示例" data-url="http://yoururl.com/2017/01/10/代码示例/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017/02/17/设计模式-Builder模式/" data-title="Builder模式.md" data-url="http://yoururl.com/2017/02/17/设计模式-Builder模式/"></div>
   </section>
 </section>
       

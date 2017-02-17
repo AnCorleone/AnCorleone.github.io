@@ -4,21 +4,51 @@
 <head>
   <meta charset="utf-8">
   
-  <title>代码示例 | Welcome to Anakin&#39;s blog</title>
+  <title>MySQL基本操作.md | Welcome to Anakin&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="package com.dy.dyth.base;
-import android.graphics.Bitmap;import android.graphics.Canvas;import android.graphics.drawable.Drawable;import android.support.v7.widget.RecyclerView;import android.view.KeyE">
+  <meta name="description" content="MySQL基本操作
+打开数据库 sudo service mysql start;
+
+连接数据库 mysql -u root -p
+
+查看数据库 show dabases
+
+使用数据库 use 数据库名字
+
+创建数据库 create database 数据库名 eg : create database test
+
+创建表 create table 表名（列名 数据类型 约束）eg : create">
 <meta property="og:type" content="article">
-<meta property="og:title" content="代码示例">
-<meta property="og:url" content="http://yoururl.com/2017/01/10/代码示例/index.html">
+<meta property="og:title" content="MySQL基本操作.md">
+<meta property="og:url" content="http://yoururl.com/2017/02/17/MySQL进阶-操作详解/index.html">
 <meta property="og:site_name" content="Welcome to Anakin's blog">
-<meta property="og:description" content="package com.dy.dyth.base;
-import android.graphics.Bitmap;import android.graphics.Canvas;import android.graphics.drawable.Drawable;import android.support.v7.widget.RecyclerView;import android.view.KeyE">
-<meta property="og:updated_time" content="2017-01-10T01:58:37.473Z">
+<meta property="og:description" content="MySQL基本操作
+打开数据库 sudo service mysql start;
+
+连接数据库 mysql -u root -p
+
+查看数据库 show dabases
+
+使用数据库 use 数据库名字
+
+创建数据库 create database 数据库名 eg : create database test
+
+创建表 create table 表名（列名 数据类型 约束）eg : create">
+<meta property="og:updated_time" content="2017-02-17T03:33:24.318Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="代码示例">
-<meta name="twitter:description" content="package com.dy.dyth.base;
-import android.graphics.Bitmap;import android.graphics.Canvas;import android.graphics.drawable.Drawable;import android.support.v7.widget.RecyclerView;import android.view.KeyE">
+<meta name="twitter:title" content="MySQL基本操作.md">
+<meta name="twitter:description" content="MySQL基本操作
+打开数据库 sudo service mysql start;
+
+连接数据库 mysql -u root -p
+
+查看数据库 show dabases
+
+使用数据库 use 数据库名字
+
+创建数据库 create database 数据库名 eg : create database test
+
+创建表 create table 表名（列名 数据类型 约束）eg : create">
   
     <link rel="alternative" href="/atom.xml" title="Welcome to Anakin&#39;s blog" type="application/atom+xml">
   
@@ -74,10 +104,10 @@ import android.graphics.Bitmap;import android.graphics.Canvas;import android.gra
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-代码示例" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-MySQL进阶-操作详解" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/10/代码示例/" class="article-date">
-  <time datetime="2017-01-10T01:57:30.000Z" itemprop="datePublished">2017-01-10</time>
+    <a href="/2017/02/17/MySQL进阶-操作详解/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
   </div>
@@ -88,7 +118,7 @@ import android.graphics.Bitmap;import android.graphics.Canvas;import android.gra
         
   
     <h1 class="article-title" itemprop="name">
-      代码示例
+      MySQL基本操作.md
     </h1>
   
 
@@ -96,168 +126,36 @@ import android.graphics.Bitmap;import android.graphics.Canvas;import android.gra
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code>package com.dy.dyth.base;
-</code></pre><p>import android.graphics.Bitmap;<br>import android.graphics.Canvas;<br>import android.graphics.drawable.Drawable;<br>import android.support.v7.widget.RecyclerView;<br>import android.view.KeyEvent;<br>import android.view.View;<br>import android.view.ViewGroup;</p>
-<p>import java.util.ArrayList;<br>import java.util.List;</p>
-<p>/**</p>
-<ul>
-<li>创建者     demo</li>
-<li>创建时间   2016/7/26 16:48</li>
-<li><p></p></li>
-<li>更新者     $Author$</li>
-<li><p>更新时间   $Date$<br>*/<br>public abstract class BaseAdapter<t> extends RecyclerView.Adapter {</t></p>
-<p> private static final String TAG = “BaseAdapter”;<br> public List<t> mDatas = new ArrayList&lt;&gt;();<br> public int layoutResId;<br> public int layoutResIdtwo;   //两种布局<br> public RecyclerView mRecyclerView;</t></p>
-<p> public BaseAdapter() {</p>
-<p> }</p>
-<p> public BaseAdapter(List<t> data, int layoutResId) {</t></p>
-<pre><code>this.mDatas = data;
-this.layoutResId = layoutResId;
-</code></pre><p> }</p>
-<p> /**</p>
-<ul>
-<li>两种布局<br>*</li>
-<li>@param data</li>
-<li>@param layoutResId</li>
-<li><p>@param layoutResIdtwo<br>*/<br>public BaseAdapter(List<t> data, int layoutResId, int layoutResIdtwo) {<br> this.mDatas = data;<br> this.layoutResId = layoutResId;<br> this.layoutResIdtwo = layoutResIdtwo;<br>}</t></p>
-<p>//设置回调监听<br>public interface OnFocusChange {<br> void onFocusChangeListener(View v, boolean hasFocus, int position);<br>}</p>
-<p>OnFocusChange mOnFocusChange;</p>
-<p>public void setOnFocusChange(OnFocusChange listener) {<br> this.mOnFocusChange = listener;<br>}</p>
+        <h3 id="MySQL基本操作"><a href="#MySQL基本操作" class="headerlink" title="MySQL基本操作"></a>MySQL基本操作</h3><ol>
+<li><p>打开数据库 sudo service mysql start;</p>
 </li>
-</ul>
+<li><p>连接数据库 mysql -u root -p</p>
 </li>
-</ul>
-<pre><code>//按键监听
-public interface OnKey {
-    void onKeyListener(View v, int keyCode, KeyEvent event, Object o, int position);
-}
-
-OnKey mOnKey;
-
-public void setOnKeyListener(OnKey listener) {
-    this.mOnKey = listener;
-}
-
-// 长按
-
-
-public interface OnLongClick {
-    void onLongClickListener(View v, int position, Object bean);
-}
-
-OnLongClick mOnLongClick;
-
-public void setOnLongClickListener(OnLongClick listener) {
-    this.mOnLongClick = listener;
-}
-
-//按下监听
-
-
-public interface OnClick {
-    void onClickListener(View v, int position, Object bean);
-}
-
-OnClick mOnClick;
-
-public void setOnClickListener(OnClick listener) {
-    this.mOnClick = listener;
-}
-
-
-@Override
-public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    return initCreateViewHolder(parent, viewType);
-}
-
-protected abstract RecyclerView.ViewHolder initCreateViewHolder(ViewGroup parent, int viewType);
-
-@Override
-public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-    final int itemPosition = holder.getLayoutPosition();
-    initBindViewHolder(holder, itemPosition);
-    final Object bean = mDatas.get(position);
-    //按下监听
-    if (mOnClick != null) {
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mOnClick.onClickListener(v, itemPosition, bean);
-            }
-        });
-    }
-
-    // 焦点监听
-    if (mOnFocusChange != null) {
-        holder.itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                mOnFocusChange.onFocusChangeListener(v, hasFocus, itemPosition);
-            }
-        });
-    }
-    //长按监听
-    if (mOnLongClick != null) {
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                mOnLongClick.onLongClickListener(v, itemPosition, bean);
-                return true;
-            }
-        });
-    }
-
-    //按键监听
-    if (mOnKey != null) {
-        holder.itemView.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                mOnKey.onKeyListener(v, keyCode, event, bean, position);
-                return false;
-            }
-        });
-    }
-}
-
-protected abstract void initBindViewHolder(RecyclerView.ViewHolder holder, int position);
-
-@Override
-public int getItemCount() {
-    if (mDatas != null) {
-        return mDatas.size();
-    }
-    return 0;
-}
-
-
-
-/**
- * 解决当显示两张相同资源图片的时候，发生抖动，提高图片质量为Bitmap.Config.ARGB_8888
- *
- * @param drawable 当前资源
- * @return bitmap对象
- */
-
-private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
-{
-    int width = drawable.getIntrinsicWidth();// 取drawable的长宽
-    int height = drawable.getIntrinsicHeight();
-    Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);// 建立对应bitmap
-    Canvas canvas = new Canvas(bitmap);// 建立对应bitmap的画布
-    drawable.setBounds(0, 0, width, height);
-    drawable.draw(canvas);// 把drawable内容画到画布中
-    return bitmap;
-}
-</code></pre><p>}</p>
+<li><p>查看数据库 show dabases</p>
+</li>
+<li><p>使用数据库 use 数据库名字</p>
+</li>
+<li><p>创建数据库 create database 数据库名 eg : create database test</p>
+</li>
+<li><p>创建表 create table 表名（列名 数据类型 约束）<br>eg : create table pet(name VARCHAR(20),owner VARCHAR(20),species VARCHAR(20),sex CHAR(1),birth DATE , death DATE);</p>
+</li>
+<li><p>查看创建的表 DESCRIBE pet;</p>
+</li>
+<li><p>插入数据 insert into test VALUES(‘tom’,’panda’,’hamster’,’f’,’2017-02-06’，NULL);</p>
+</li>
+<li><p>从表中检索数据 select * from pet;</p>
+</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/10/代码示例/" data-id="ciz9a8kb60007ekvvn927f92g" class="article-share-link" data-share="baidu" data-title="代码示例">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/MySQL进阶-操作详解/" data-id="ciz9a8kaw0005ekvvt7fem1i2" class="article-share-link" data-share="baidu" data-title="MySQL基本操作.md">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/01/10/代码示例/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://yoururl.com/2017/02/17/MySQL进阶-操作详解/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -267,19 +165,19 @@ private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
     
 <nav id="article-nav">
   
-    <a href="/2017/01/10/自学Python-Python基础/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/17/设计模式-观察者模式/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">
         
-          (no title)
+          观察者模式.md
         
       </div>
     </a>
   
   
-    <a href="/2017/01/09/日常笔记/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/02/17/设计模式-简单工厂模式/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">日常笔记</div>
+      <div class="article-nav-title">简单工厂模式.md</div>
     </a>
   
 </nav>
@@ -289,7 +187,7 @@ private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2017/01/10/代码示例/" data-title="代码示例" data-url="http://yoururl.com/2017/01/10/代码示例/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017/02/17/MySQL进阶-操作详解/" data-title="MySQL基本操作.md" data-url="http://yoururl.com/2017/02/17/MySQL进阶-操作详解/"></div>
   </section>
 </section>
       
