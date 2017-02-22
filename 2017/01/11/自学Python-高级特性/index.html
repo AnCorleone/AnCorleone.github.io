@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>自学Python-高级特性 | Welcome to Anakin&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="切片使用场景： 取一个list或者tuple的部分元素
+L = [&amp;apos;Michael&amp;apos;, &amp;apos;Sarah&amp;apos;, &amp;apos;Tracy&amp;apos;, &amp;apos;Bob&amp;apos;, &amp;apos;Jack&amp;apos;]
+r=L[0:3]
+print(r)
+[X:Y] X:代表开始的角标，Y:结束的角标，可以是负数，从后向前取
+tuple 与list 的区别是tup">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自学Python-高级特性">
+<meta property="og:url" content="http://yoururl.com/2017/01/11/自学Python-高级特性/index.html">
+<meta property="og:site_name" content="Welcome to Anakin's blog">
+<meta property="og:description" content="切片使用场景： 取一个list或者tuple的部分元素
+L = [&amp;apos;Michael&amp;apos;, &amp;apos;Sarah&amp;apos;, &amp;apos;Tracy&amp;apos;, &amp;apos;Bob&amp;apos;, &amp;apos;Jack&amp;apos;]
+r=L[0:3]
+print(r)
+[X:Y] X:代表开始的角标，Y:结束的角标，可以是负数，从后向前取
+tuple 与list 的区别是tup">
+<meta property="og:updated_time" content="2017-02-21T06:35:02.875Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自学Python-高级特性">
+<meta name="twitter:description" content="切片使用场景： 取一个list或者tuple的部分元素
+L = [&amp;apos;Michael&amp;apos;, &amp;apos;Sarah&amp;apos;, &amp;apos;Tracy&amp;apos;, &amp;apos;Bob&amp;apos;, &amp;apos;Jack&amp;apos;]
+r=L[0:3]
+print(r)
+[X:Y] X:代表开始的角标，Y:结束的角标，可以是负数，从后向前取
+tuple 与list 的区别是tup">
+  
+    <link rel="alternative" href="/atom.xml" title="Welcome to Anakin&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Welcome to Anakin&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Welcome to Anakin&#39;s blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">所有文章</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoururl.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-自学Python-高级特性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/11/自学Python-高级特性/" class="article-date">
+  <time datetime="2017-01-11T01:23:15.000Z" itemprop="datePublished">2017-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      自学Python-高级特性
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>使用场景： 取一个list或者tuple的部分元素</p>
+<pre><code>L = [&apos;Michael&apos;, &apos;Sarah&apos;, &apos;Tracy&apos;, &apos;Bob&apos;, &apos;Jack&apos;]
+r=L[0:3]
+print(r)
+</code></pre><p>[X:Y] X:代表开始的角标，Y:结束的角标，可以是负数，从后向前取</p>
+<p>tuple 与list 的区别是tuple是不可变的</p>
+<p>tupel也可以切片操作，只是结果仍然是tuple</p>
+<pre><code>T= (1,2,3,4,5)
+print(T)
+r= T[:3]
+print(r)
+print(T)
+
+结果：
+
+(1, 2, 3, 4, 5)
+(1, 2, 3)
+(1, 2, 3, 4, 5)
+</code></pre><p>字符串’xxxx’也可以看成是list,每个元素就是一个字符，字符串也可以切片操作，结果仍然是字符串</p>
+<pre><code>T= &apos;abcdefg&apos;
+print(T)
+r= T[:3]
+print(r)
+print(T)
+
+结果
+
+abcdefg
+abc
+abcdefg
+</code></pre><h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><p>通过<code>for in</code> 循环遍历list和tuple ,这种遍历称为迭代</p>
+<p>可以对字符串，tuple ,list ,dict进行迭代</p>
+<p><strong>迭代dict获取key:</strong></p>
+<pre><code>d={&apos;1&apos;:&apos;a&apos;,&apos;2&apos;:&apos;b&apos;,&apos;3&apos;:&apos;c&apos;}
+for x in d:
+    print(x)
+</code></pre><p><strong>迭代dict获取values</strong></p>
+<pre><code>d={&apos;1&apos;:&apos;a&apos;,&apos;2&apos;:&apos;b&apos;,&apos;3&apos;:&apos;c&apos;}
+for x in d.values():
+    print(x)
+</code></pre><p><strong>判断是否可以迭代</strong></p>
+<pre><code>from collections import Iterable
+r =isinstance(&apos;abc&apos;,Iterable)
+print(r)
+</code></pre><p><strong>迭代list 获取角标-元素对</strong></p>
+<pre><code>L = [&apos;A&apos;,&apos;B&apos;,&apos;C&apos;,&apos;D&apos;]
+for i,values in enumerate(L):
+    print(i,values)
+</code></pre><p><strong>python for 循环可以同时应用两个变量</strong></p>
+<pre><code>L = [(1,1),(2,4),(3,9)]
+for x,y in L:
+    print(x,y)
+结果
+(1, 1)
+(2, 4)
+(3, 9)
+</code></pre><h2 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h2><p>写列表生成式的时，把要生成的元素<code>x*x</code>放在前面，后面跟<code>for</code>循环，就可以创建list<br><strong>求偶数的平方和</strong></p>
+<pre><code>L = [x*x for x in range(1,11) if x%2==0]
+print (L)
+</code></pre><p><strong>双层循环，生成全排列</strong></p>
+<pre><code>L = [m+n for m in &apos;abc&apos; for n in &apos;xyz&apos;]
+print(L)
+[&apos;ax&apos;, &apos;ay&apos;, &apos;az&apos;, &apos;bx&apos;, &apos;by&apos;, &apos;bz&apos;, &apos;cx&apos;, &apos;cy&apos;, &apos;cz&apos;]
+</code></pre><p><strong>for循环同时可以使用两个或者更多的个变量</strong><br><code>dict</code>的<code>items()</code>可以同时迭代key和value</p>
+<pre><code>D = {1:&apos;A&apos;,2:&apos;B&apos;,3:&apos;C&apos;}
+for x, y in D.items() :
+    print(x,&apos;=&apos;,y)
+</code></pre><p><strong>把集合中的元素都变成小写</strong></p>
+<pre><code>L = [&apos;Hello&apos;, &apos;World&apos;, &apos;IBM&apos;, &apos;Apple&apos;]
+r= [s.lower() for s in L]
+print(r)
+</code></pre><h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><p>在Python中一边循环一边计算的机制，称为生成器：generator</p>
+<p>创建generator</p>
+<ul>
+<li><p>把列表生成器的<code>[]</code>改成<code>（）</code>，就可以创建genetator</p>
+<p>  g= (x for x in range(100))<br>  print(g)</p>
+</li>
+</ul>
+<p>获取生成器中的元素，使用迭代的方式</p>
+<pre><code>g= (x for x in range(100))
+for y in g:
+    print(y)
+</code></pre><p>斐波拉契数列</p>
+<pre><code>def fib(max):
+    a,b,n= 0,1,0;
+    while n &lt; max:
+        print(b)
+        a,b=b,a+b
+        n=n+1
+    return &apos;done&apos;
+fib(100）
+</code></pre><p>将打印斐波拉契数列改变成genetator 需要将<code>print</code>变成<code>yield</code></p>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p><strong>可以直接作用于for 循环的的数据类型</strong></p>
+<ol>
+<li>集合数据类型，如 <code>list,tuple,set,str</code></li>
+<li><code>generator</code>,包括生成器自带的<code>yield</code> 的generator funxtion</li>
+</ol>
+<p><strong>使用isinstance()判断对象是否是Iterable</strong></p>
+<pre><code>from collections import Iterable
+r =isinstance([],Iterable)
+print(r)
+</code></pre><blockquote>
+<p>生成器不但可以作用于<code>for</code>循环，还可以调用<code>next()</code>,获取下一个值<br>可以被<code>next()</code>调用，并不断返回下一个值的对象称为<strong>迭代器</strong></p>
+</blockquote>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><ul>
+<li>凡是可以用于<code>for</code>循环的对象都是<code>Iterable</code>类型；</li>
+<li>凡是可作用于<code>next()</code>函数的对象都是<code>Iterator</code>类型</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/01/11/自学Python-高级特性/" data-id="cizgf09x50015r8vvvg1rwgrh" class="article-share-link" data-share="baidu" data-title="自学Python-高级特性">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/01/11/自学Python-高级特性/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/01/11/自学Python-函数式编程/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          自学Python-函数式编程.md
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/10/自学Python-函数/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">自学Python- 函数</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017/01/11/自学Python-高级特性/" data-title="自学Python-高级特性" data-url="http://yoururl.com/2017/01/11/自学Python-高级特性/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 16.67px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/02/22/怎样选择基金/">怎样选择基金</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/22/Vim基本操作/">Vim基本操作</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/22/文件操作的工具类/">文件操作的工具类</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/17/设计模式-观察者模式/">观察者模式.md</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/17/Android基础知识-md/">Android基础知识.md</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="https://www.google.com.hk" target="_blank">Googel</a>
+          </li>
+        
+          <li>
+            <a href="http://developers.google.cn" target="_blank">developers</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Anakin<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">所有文章</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"AnCorleone.github.io.git"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

@@ -72,10 +72,10 @@
     <div class="outer">
       <section id="main">
   
-    <article id="post-读取XML中的配置参数" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-设计模式-单例模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/20/读取XML中的配置参数/" class="article-date">
-  <time datetime="2017-01-20T02:22:04.000Z" itemprop="datePublished">2017-01-20</time>
+    <a href="/2017/02/17/设计模式-单例模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
   </div>
@@ -86,7 +86,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/20/读取XML中的配置参数/">Android-读取XML中的配置参数工具类XMLUtil.md</a>
+      <a class="article-title" href="/2017/02/17/设计模式-单例模式/">单例设计模式.md</a>
     </h1>
   
 
@@ -94,48 +94,441 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一个读取xml文件中配置文件的工具类XMLUtil"><a href="#一个读取xml文件中配置文件的工具类XMLUtil" class="headerlink" title="一个读取xml文件中配置文件的工具类XMLUtil"></a>一个读取xml文件中配置文件的工具类XMLUtil</h2><h3 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h3><pre><code>import javax.xml.parsers.*;  
-import org.w3c.dom.*;  
-import org.xml.sax.SAXException;  
-import java.io.*;  
+        <h2 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>确保某一类只有一个实例，而且自行实例化并向整个系统提供这个实例</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景:"></a>使用场景:</h3><p>确保某个类只存在一个对象,当创建这个对象需要消耗过多的资源时,例如IO 的读取数据库等操作</p>
+<pre><code>/**
+ * 第二种方法
+ */
+private static CEO mInstance = null;
 
-public class XMLUtil {  
-    //该方法用于从XML配置文件中提取配置文件
-    public static String getChartType() {  
-        try {  
-            //创建文档对象  
-            DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();  
-            DocumentBuilder builder = dFactory.newDocumentBuilder();  
-            Document doc;                             
-            doc = builder.parse(new File(&quot;config.xml&quot;));   
-
-            //获取包含配置文件的文本节点  
-            NodeList nl = doc.getElementsByTagName(&quot;chartType&quot;);  
-            Node classNode = nl.item(0).getFirstChild();  
-            String chartType = classNode.getNodeValue().trim();  
-            return chartType;  
-        }     
-        catch(Exception e) {  
-            e.printStackTrace();  
-            return null;  
-        }  
-    }  
+private CEO() {
+}
+public static CEO getInstance() {
+    if (mInstance == null) {
+        synchronized (CEO.class){
+            if (mInstance == null) {
+                mInstance = new CEO();
+            }
+        }
+    }
+    return mInstance;
 }
 </code></pre><hr>
-<h3 id="XML-文件代码"><a href="#XML-文件代码" class="headerlink" title="XML 文件代码"></a>XML 文件代码</h3><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;  
-&lt;config&gt;  
-    &lt;chartType&gt;histogram&lt;/chartType&gt;  
-&lt;/config&gt;
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-单例模式/" data-id="cizgf09xg001ir8vv7wmtet80" class="article-share-link" data-share="baidu" data-title="单例设计模式.md">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/02/17/设计模式-单例模式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式-工厂方法模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/设计模式-工厂方法模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/设计模式-工厂方法模式/">工厂方法模式.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式　"></a>工厂方法模式　</h2><p>和简单工厂模式不同是,简单工厂模式,实例都由一个工厂类创建,工厂类的代码量会比较多,而且增加新的对象需要修改工厂类的代码,增加if else 的判断.</p>
+<p>工厂模式,创建产品的抽象类和实现类,以及工厂的抽象类和实现类.</p>
+<p>以打印log为例,log的存储方式可以是db也可以是file中,需要创建Logger的抽象类,具体是FileLogger实现类和DbLogger的实现类,工厂的抽象类LoggerFactory,和具体的实现类DbLoggerFactory,FileLoggerFactory</p>
+<ol>
+<li>在抽象Logger类中定义公共的抽象方法writeLog()</li>
+<li>在具体实现类DbLogger和FileLogger中实现各自的具体的writeLog方法</li>
+<li>在抽象的工厂类中定义抽象的创建对象的方法creatLogger()</li>
+<li>在具体的实类DbLoggerFactory,FileLoggerFactory中实现方法,创建DbLogger和FileLogger的实例,并返回其父类Logger</li>
+<li>客户端的使用 : 根据需要创建工厂的实例,调用实例中创建对象的方法creatLogger返回具体log存放的实例对象,在调用具体打印log的方法writeLog()</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-工厂方法模式/" data-id="cizgf09xe001fr8vvwjilugzg" class="article-share-link" data-share="baidu" data-title="工厂方法模式.md">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/02/17/设计模式-工厂方法模式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式-代理模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/设计模式-代理模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/设计模式-代理模式/">代理模式.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>代理模式是对象结构模式,代理模式给某个对象提供一个代理对象,并由代理对象控制控制原对象的引用.</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><h3 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h3><p>定义抽象类</p>
+<pre><code>package com.anakin.design_pattern_test.proxy_method;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public abstract class AbstractObject {
+
+    // 需要的操作
+    public abstract void operation();
+
+}
+</code></pre><hr>
+<p>定义真正的实现的类</p>
+<pre><code>package com.anakin.design_pattern_test.proxy_method;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class RealObject extends AbstractObject {
+    @Override
+    public void operation() {
+        System.out.println(&quot;  need to do something &gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
+    }
+}
+</code></pre><hr>
+<p>定义代理类</p>
+<pre><code>package com.anakin.design_pattern_test.proxy_method;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class ProxyObject extends AbstractObject {
+    @Override
+    public void operation() {
+        // 调用具体操作前可以做操作
+        AbstractObject real = new RealObject();
+        real.operation();
+        // 调用具体操作后可以做操作
+    }
+}
+</code></pre><hr>
+<p>测试</p>
+<pre><code>// 代理模式测试
+AbstractObject proxy =new ProxyObject();
+proxy.operation();
+</code></pre><hr>
+<p>测试结果</p>
+<pre><code>02-08 09:46:41.821 18278-18278/com.anakin.design_pattern_test I/System.out:   need to do something &gt;&gt;&gt;&gt;&gt;&gt;&gt;
 </code></pre>
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/20/读取XML中的配置参数/" data-id="cizdt1s3z000pmwvv6nq1ndxa" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-代理模式/" data-id="cizgf09xc001dr8vvzccem0lj" class="article-share-link" data-share="baidu" data-title="代理模式.md">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/01/20/读取XML中的配置参数/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://yoururl.com/2017/02/17/设计模式-代理模式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式-Builder模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/设计模式-Builder模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/设计模式-Builder模式/">Builder模式.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Builder模式"><a href="#Builder模式" class="headerlink" title="Builder模式"></a>Builder模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>将复杂的创建与他的表示分离,使同样的创建过程可以创建不同的表示</p>
+<h3 id="设计的步骤"><a href="#设计的步骤" class="headerlink" title="设计的步骤:"></a>设计的步骤:</h3><pre><code>Builder builder = new AppleBuilder();
+        Director director = new Director(builder);
+        director.construct(4,2,&quot;linux&quot;);
+        Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
+</code></pre><hr>
+<ol>
+<li><p>以组装电脑为例,创建电脑的抽象类,包含os ram,core定义,提供设置的抽象方法</p>
+</li>
+<li><p>创建要组装的具体电脑类AppleComputer,继承Computer类,实现所用方法</p>
+</li>
+<li><p>创建抽象的Builder类,提供builder的设置方法,另外提供返回Computer的create的抽象方法</p>
+</li>
+<li><p>创建具体的AppleBuilder类实现抽象方法,创建AppleComputer 实例对象,并设置数据,返回AppleComputer的实例</p>
+</li>
+<li><p>创建具体的Director类,构造方法中接受builder对象,提供接受数据的construct 方法,将参数传递给builder对象</p>
+</li>
+<li><p>传递的参数最终被AppleBuilder接收,并返回一个具体的AppleComputer对象</p>
+</li>
+</ol>
+<h3 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h3><pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public abstract class Computer {
+    protected int mCore = 1;
+    protected int mRam = 10;
+    protected String mOs = &quot;dos&quot;;
+
+    protected Computer() {
+
+    }
+
+    public abstract void setCore(int core);
+
+    public abstract void setRem(int rem);
+
+    public abstract void setOs(String os);
+
+    @Override
+    public String toString() {
+        return &quot;Computer{&quot; +
+                &quot;mCore=&quot; + mCore +
+                &quot;, mRam=&quot; + mRam +
+                &quot;, mOs=&apos;&quot; + mOs + &apos;\&apos;&apos; +
+                &apos;}&apos;;
+    }
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class AppleComputer extends Computer {
+
+
+    protected AppleComputer() {
+
+    }
+
+    @Override
+    public void setCore(int core) {
+        this.mCore = core;
+    }
+
+    @Override
+    public void setRem(int ram) {
+        this.mRam = ram;
+    }
+
+    @Override
+    public void setOs(String os) {
+        this.mOs = os;
+    }
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+* Created by demo on 2017/2/8 0008
+*/
+public class AppleBuilder extends Builder {
+
+private  Computer mApplePc =new AppleComputer();
+@Override
+public void buildCore(int core) {
+    mApplePc.setCore(core);
+}
+
+@Override
+public void buildRam(int ram) {
+    mApplePc.setRem(ram);
+}
+
+@Override
+public void buildOs(String os) {
+    mApplePc.setOs(os);
+}
+
+@Override
+public Computer create() {
+
+    return mApplePc;
+}
+
+
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public abstract class Builder {
+
+
+    public abstract void buildCore(int core);
+
+    public abstract void buildRam(int ram);
+
+    public abstract void buildOs(String os);
+
+    public abstract Computer create();
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class Director {
+    Builder mBuilder=null;
+
+    public Director(Builder builder) {
+        mBuilder = builder;
+    }
+
+    public void construct(int core,int ram, String os){
+        mBuilder.buildCore(core);
+        mBuilder.buildRam(ram);
+        mBuilder.buildOs(os);
+    }
+}
+</code></pre><hr>
+<p> 测试代码</p>
+<pre><code>// 测试运行效果
+      Builder builder = new AppleBuilder();
+      Director director = new Director(builder);
+      director.construct(4,2,&quot;linux&quot;);
+      Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
+</code></pre><hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-Builder模式/" data-id="cizgf09xa001ar8vvnulmsm2e" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/02/17/设计模式-Builder模式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/Java设计模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/Java设计模式/">Java设计模式.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><h3 id="1-单一职责原则"><a href="#1-单一职责原则" class="headerlink" title="1.单一职责原则 :"></a>1.单一职责原则 :</h3><blockquote>
+<p>一个类只负责一个功能领域中的相应职责</p>
+</blockquote>
+<h3 id="2-开闭原则"><a href="#2-开闭原则" class="headerlink" title="2. 开闭原则 :"></a>2. 开闭原则 :</h3><blockquote>
+<p>一个软件实体应当对扩展开放，对修改关闭</p>
+</blockquote>
+<h3 id="3-里氏代换原则"><a href="#3-里氏代换原则" class="headerlink" title="3. 里氏代换原则 :"></a>3. 里氏代换原则 :</h3><blockquote>
+<p>　所有应用基类（父类）的地方，必须能透明的使用其子类对象</p>
+</blockquote>
+<ol>
+<li>使用原则 : 在程序设计时,尽量使用基类类型对对象进行定义,而在运行时再确定子类类型,用子类对象替换父类对象</li>
+</ol>
+<h3 id="4-依赖倒转原则"><a href="#4-依赖倒转原则" class="headerlink" title="4. 依赖倒转原则"></a>4. 依赖倒转原则</h3><blockquote>
+<p>抽象不应该依赖于细节,细节应当依赖于抽象.换言之就是,要面向接口编程,而不是针对实现编程.</p>
+<p>程序代码中传递参数或关联关系时,尽量应用层次高的抽象层类,既使用抽象类,接口进行变量类型声明,参数声明,返回值类型声明,以及数据类型的转换等,而不要用具体的类来做这些事.</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/02/17/Java设计模式/" data-id="cizgf09vj0002r8vv9evcqq90" class="article-share-link" data-share="baidu" data-title="Java设计模式.md">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/02/17/Java设计模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -202,7 +595,7 @@ public class XMLUtil {
 <p>为了对结果排序,使用ORDER BY排序关键词,默认是升序,使用ASC的DESC可以指定升序或者降序,比如按salary降序排列</p>
 </blockquote>
 </li>
-<li>降序排列:SELECT name,age,salary,phone FROM employee ORDER BY salary DESC; </li>
+<li>降序排列:SELECT name,age,salary,phone FROM employee ORDER BY salary DESC;</li>
 </ol>
 <p>###SQL内置函数和计算###</p>
 <ol>
@@ -223,8 +616,8 @@ public class XMLUtil {
 <p>##约束##<br><strong>常见的约束</strong></p>
 <ol>
 <li>主键 PRIMARY KEY</li>
-<li>默认值 DEFAULT </li>
-<li>唯一UNIQUE </li>
+<li>默认值 DEFAULT</li>
+<li>唯一UNIQUE</li>
 <li>外键FOREIGN KEY</li>
 <li>非空 NOT NULL<br>###建立含约束的表###</li>
 </ol>
@@ -233,7 +626,7 @@ public class XMLUtil {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/20/MySQL使用/" data-id="cizdt1s2x0005mwvvb4he8u62" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/20/MySQL使用/" data-id="cizgf09vu0005r8vv1rt55qhf" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
       
 
       
@@ -241,6 +634,84 @@ public class XMLUtil {
       
 
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-读取XML中的配置参数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/20/读取XML中的配置参数/" class="article-date">
+  <time datetime="2017-01-20T02:22:04.000Z" itemprop="datePublished">2017-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/20/读取XML中的配置参数/">Android-读取XML中的配置参数工具类XMLUtil</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一个读取xml文件中配置文件的工具类XMLUtil"><a href="#一个读取xml文件中配置文件的工具类XMLUtil" class="headerlink" title="一个读取xml文件中配置文件的工具类XMLUtil"></a>一个读取xml文件中配置文件的工具类XMLUtil</h2><h3 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h3><pre><code>import javax.xml.parsers.*;  
+import org.w3c.dom.*;  
+import org.xml.sax.SAXException;  
+import java.io.*;  
+
+public class XMLUtil {  
+    //该方法用于从XML配置文件中提取配置文件
+    public static String getChartType() {  
+        try {  
+            //创建文档对象  
+            DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();  
+            DocumentBuilder builder = dFactory.newDocumentBuilder();  
+            Document doc;                             
+            doc = builder.parse(new File(&quot;config.xml&quot;));   
+
+            //获取包含配置文件的文本节点  
+            NodeList nl = doc.getElementsByTagName(&quot;chartType&quot;);  
+            Node classNode = nl.item(0).getFirstChild();  
+            String chartType = classNode.getNodeValue().trim();  
+            return chartType;  
+        }     
+        catch(Exception e) {  
+            e.printStackTrace();  
+            return null;  
+        }  
+    }  
+}
+</code></pre><hr>
+<h3 id="XML-文件代码"><a href="#XML-文件代码" class="headerlink" title="XML 文件代码"></a>XML 文件代码</h3><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;  
+&lt;config&gt;  
+    &lt;chartType&gt;histogram&lt;/chartType&gt;  
+&lt;/config&gt;
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/01/20/读取XML中的配置参数/" data-id="cizgf09xw001tr8vvhpwg2uvd" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/01/20/读取XML中的配置参数/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
     </footer>
   </div>
   
@@ -358,7 +829,7 @@ print (c)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/14/自学Python-常用内建模块/" data-id="cizdt1s3i000emwvvny3hm1pu" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/14/自学Python-常用内建模块/" data-id="cizgf09wy000zr8vvn98ewp96" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
       
 
       
@@ -366,6 +837,8 @@ print (c)
       
 
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
     </footer>
   </div>
   
@@ -401,9 +874,9 @@ print (c)
 <li>[a-zA-Z_][0-9a-zA-Z_]* 匹配以字母或者下划线开头，后面跟任意个字母或数字</li>
 <li>[a-zA-Z_][0-9a-zA-Z_]{0，19} 匹配一字母或者下划线开头，后面0到19个数字或者字母下划线</li>
 <li>A|B 可以匹配 A或者B ，（P\p)ython可以匹配python,或者Python</li>
-<li>^ 表示行的开头 </li>
+<li>^ 表示行的开头</li>
 <li>^\d表示以数字开头</li>
-<li>$ 表示行的末尾 </li>
+<li>$ 表示行的末尾</li>
 </ul>
 <h3 id="re模块"><a href="#re模块" class="headerlink" title="re模块"></a>re模块</h3><ul>
 <li><p>判断表达式是否匹配成功,如果成功,返回一个Match对象,失败返回None</p>
@@ -444,7 +917,7 @@ print (s)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/14/自学Python-正则表达式/" data-id="cizdt1s3n000gmwvv3rk6bk2s" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/14/自学Python-正则表达式/" data-id="cizgf09wx000wr8vv2ey3qq5f" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
       
 
       
@@ -452,6 +925,8 @@ print (s)
       
 
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
     </footer>
   </div>
   
@@ -620,7 +1095,7 @@ t2.join()
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/13/自学Python-线程和进程/" data-id="cizdt1s3q000imwvvmymdufoj" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/13/自学Python-线程和进程/" data-id="cizgf09x10010r8vvs35m0k7g" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
       
 
       
@@ -628,749 +1103,8 @@ t2.join()
       
 
       
-    </footer>
-  </div>
-  
-</article>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
 
-
-  
-    <article id="post-自学Python-IO编程" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/13/自学Python-IO编程/" class="article-date">
-  <time datetime="2017-01-13T01:30:18.000Z" itemprop="datePublished">2017-01-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/13/自学Python-IO编程/">自学Python-IO编程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h2><ul>
-<li>使用open(‘文件地址’，’标识符’)函数</li>
-<li>使用read()读取</li>
-<li>最后一步使用close(关闭)</li>
-</ul>
-<p>使用<strong><code>with</code></strong>读取，自动关闭</p>
-<pre><code># 使用with 读取，自动关闭
-with open(&apos;D:/pro/python/test.txt&apos;,&apos;r&apos;) as f:
-    print(f.read())
-</code></pre><ul>
-<li>调用readline() 可以一次读取一行内容</li>
-<li>调用readlines() 一次读取所有的内容，并返回一个list</li>
-<li><p>不能确定文件大小使用readlines()</p>
-<pre><code>with open(&apos;D:/pro/python/test.txt&apos;,&apos;r&apos;) as f:
-    for line in f.readlines():
-        print(line.strip())
-</code></pre></li>
-</ul>
-<h3 id="读取二进制文件"><a href="#读取二进制文件" class="headerlink" title="读取二进制文件"></a>读取二进制文件</h3><ul>
-<li><p>打开模式使用’rb’</p>
-<pre><code># 读取二进制文件
-with open(&apos;D:/pro/python/img.png&apos;,&apos;rb&apos;) as f:
-    for line in f.readlines():
-        print(line.strip())
-</code></pre></li>
-</ul>
-<h3 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h3><ul>
-<li><p>要读取非UTF-8编码的文本文件，需要给open()函数传入encoding参数</p>
-<pre><code>f = open(&apos;/Users/michael/gbk.txt&apos;, &apos;r&apos;, encoding=&apos;gbk&apos;)
-</code></pre></li>
-<li><p>遇到非法编码文件，open函数还接受一个errors参数，表示遇到编码错误后如何处理，最简单的方式就直接忽略</p>
-<pre><code>f = open(&apos;/Users/michael/gbk.txt&apos;, &apos;r&apos;, 
-encoding=&apos;gbk&apos;,errors = &apos;ignore&apos;)
-</code></pre></li>
-</ul>
-<h2 id="写文件"><a href="#写文件" class="headerlink" title="写文件"></a>写文件</h2><blockquote>
-<p>与读文件的区别open() 函数的的标识符，传入’w’,’wb’表示写文件和二进制文件</p>
-</blockquote>
-<ul>
-<li><p>写文件</p>
-<pre><code>with open(&apos;D:/pro/python/write.txt&apos;,&apos;w&apos;) as f:
-    f.write(&apos;hello write new file... &apos;)
-</code></pre></li>
-</ul>
-<h2 id="StringIO-和BytesIO"><a href="#StringIO-和BytesIO" class="headerlink" title="StringIO 和BytesIO"></a>StringIO 和BytesIO</h2><h3 id="StringIO"><a href="#StringIO" class="headerlink" title="StringIO"></a>StringIO</h3><p>很多时候，数据读写不一定是文件，也可以在内存中读写</p>
-<ul>
-<li><p>在内存中写str，使用<code>getvalue()</code>获取写入的内容</p>
-<pre><code> from io import StringIO
-f = StringIO()
-f.write(&apos;hello&apos;)
-f.write(&apos;hello&apos;)
-f.write(&apos;hello&apos;)
-print(f.getvalue())
-</code></pre></li>
-<li><p>读取StringIO</p>
-<pre><code>while True:
-    s =f.readline()
-    if s ==&apos;&apos;:
-        print(&apos;s ==&apos;+ s)
-        break
-    print(s.strip())
-</code></pre></li>
-</ul>
-<h3 id="BytesIO"><a href="#BytesIO" class="headerlink" title="BytesIO"></a>BytesIO</h3><ul>
-<li><p>内存中读写二进制文件</p>
-<pre><code># 写入二进制文件
-from io import BytesIO
-f = BytesIO()
-f.write(&apos;你好&apos;.encode(&apos;utf-8&apos;))
-s= f.getvalue()
-print(s)
-</code></pre></li>
-<li><p>读取二进制文件</p>
-<pre><code># 读取二进制文件
-from io import BytesIO
-f = BytesIO(b&apos;\xe4\xbd\xa0\xe5\xa5\xbd&apos;)
-s= f.read()
-print(s)
-</code></pre></li>
-</ul>
-<h3 id="操作文件和目录"><a href="#操作文件和目录" class="headerlink" title="操作文件和目录"></a>操作文件和目录</h3><ul>
-<li><p><strong>查看当前目录的绝对路径</strong></p>
-<pre><code>import os
-v= os.path.abspath(&apos;&apos;) # 查看当前目录的绝对路径
-print(v)
-</code></pre></li>
-<li><p>在某个路径下创建一个新目录,首页把新路径目录表示出来</p>
-<pre><code># 删除一个文件夹
-os.rmdir(&apos;D:/pro/python/testdir&apos;)
-
-# 对文章重命名
-a = os.rename(&apos;test.txt&apos;,&apos;test.py&apos;)
-
-#删除文件
-d = os.remove(&apos;test.py&apos;)
-</code></pre></li>
-<li><p>过滤文件</p>
-<pre><code># 过滤文件,比如列出当前目录下的所有文件夹
-s = [x for x in os.listdir(&apos;.&apos;) if os.path.isdir(x)]
-print(s)
-
-# 过滤文件 ,获得所有的.py文件
-s = [ x for x  in os.listdir(&apos;.&apos;) if os.path.isfile(x) and
-os.path.splitext(x)[1]==&apos;.py&apos;]
-print(s)
-</code></pre></li>
-</ul>
-<h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><blockquote>
-<p>我们把变量从内存中变成可存储的过程称为序列化<br>序列化后的内容可以写到磁盘上或者通过网络传输</p>
-</blockquote>
-<ul>
-<li><p>将对象序列化</p>
-<pre><code>import pickle
-d = dict(name=&apos;zhanghua&apos;,age=18,score=100)
-s =pickle.dumps(d)
-print(s)
-</code></pre></li>
-<li><p>将对象写入文件中</p>
-<pre><code>import pickle
-d = dict(name=&apos;zhanghua&apos;,age=18,score=100)
-s =pickle.dumps(d)
-print(s)
-f= open(&apos;dump.txt&apos;,&apos;wb&apos;)
-pickle.dump(d,f)
-f.close()
-</code></pre></li>
-<li><p>读取存储在文件中的对象</p>
-<pre><code># 读取存储的对象
-r= open(&apos;dump.txt&apos;,&apos;rb&apos;)
-o = pickle.load(r)
-r.close()
-print(o)
-</code></pre></li>
-</ul>
-<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><p>我们要在不同的编程语言中传递对象,就必须把对象序列化为标准格式,如xml 和json</p>
-<ul>
-<li><p>序列化json和反序列化json</p>
-<pre><code>import json
-# 序列化
-d = dict(name=&apos;Bob&apos;,age=20,score=88)
-j = json.dumps(d)
-print(j)
-
-# 反序列化
-json_str = &apos;{&quot;age&quot;: 20, &quot;score&quot;: 88, &quot;name&quot;: &quot;Bob&quot;}&apos;
-s =json.loads(json_str)
-print(s)
-</code></pre></li>
-<li><p>将实例对象序列化</p>
-<pre><code>class Student(object):
-    def __init__(self, name,age,score):
-        self.name = name
-        self.age = age
-        self.score = score
-s = Student(&apos;anakin&apos;,18,100)
-# 将实例转换为json
-j = json.dumps(s,default=lambda obj : obj.__dict__)
-print(j)
-</code></pre></li>
-<li><p>json反序列化成对象</p>
-<pre><code># json 反序列化成对象
-def dict2student(d):
-    return Student(d[&apos;name&apos;],d[&apos;age&apos;],d[&apos;score&apos;])
-json_str = &apos;{&quot;score&quot;: 100, &quot;name&quot;: &quot;anakin&quot;, &quot;age&quot;: 18}&apos;
-r = json.loads(json_str, object_hook=dict2student)
-print(r)
-</code></pre></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoururl.com/2017/01/13/自学Python-IO编程/" data-id="cizdt1s3e000cmwvv2p8ppuki" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
-      
-
-      
-        <a href="http://yoururl.com/2017/01/13/自学Python-IO编程/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-自学Python-面向对象编程" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/11/自学Python-面向对象编程/" class="article-date">
-  <time datetime="2017-01-11T11:38:56.000Z" itemprop="datePublished">2017-01-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/11/自学Python-面向对象编程/">自学Python-面向对象编程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><pre><code>class Student(object):
-    def __init__(self, name,score):
-        self.name = name
-        self.score = score
-    def print_score(self):
-        print(&apos;%s: %s&apos; % (self.name,self.score))
-s1 = Student(&apos;anakin&apos;,18)
-s2 = Student(&apos;anran&apos;,18)
-s1.print_score()
-s2.print_score()
-</code></pre><ul>
-<li>定义类以<code>class</code>开头,后买年跟类名,类名后面的括号中写继承的类(一般默认继承Object)</li>
-<li>和普通函数相比,在类中定义函数,第一个变量永远是实例变量<code>self</code>,但是调用的时候不用传入,Python解释器会自动把实例变量传进去</li>
-</ul>
-<h3 id="数据封装"><a href="#数据封装" class="headerlink" title="数据封装"></a>数据封装</h3><ul>
-<li>我们直接擦操作了对象内部数据,但无法知道方法内部的实现细节</li>
-</ul>
-<h3 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h3><ul>
-<li>在Class内部,有属性和方法,而外部代码通过直接调用实例变量的方法来操作数据,这样就隐藏了内部的复杂逻辑</li>
-<li>如果要想是内部属性不被外部访问,在属性名称前面加<strong>,在Python中如果变量名以</strong>开头,就变成了私有变量,只有内部可以访问,外部不能访问</li>
-</ul>
-<p>不能被直接访问</p>
-<pre><code>class Student(object):
-    def __init__(self, name,score):
-        self.__name = name
-        self.__score = score
-    def print_score(self):
-        print(&apos;%s: %s&apos; % (self.__name,self.__score))
-s1 = Student(&apos;anakin&apos;,18)
-
-print(s1.__name);
-</code></pre><ul>
-<li><p>外部如果想访问和修改实例的,可以通过get和set方法</p>
-<pre><code>class Student(object):
-def __init__(self, name,score):
-    self.__name = name
-    self.__score = score
-def print_score(self):
-    print(&apos;%s: %s&apos; % (self.__name,self.__score))
-def get_name(self):
-    return self.__name
-def set_name(self,name):
-    self.__name=name
-s1 = Student(&apos;anakin&apos;,18)
-print(s1.get_name())
-s1.set_name(&apos;change&apos;)
-print(s1.get_name());
-print(s1.print_score())
-</code></pre></li>
-</ul>
-<p><strong>注意 :</strong></p>
-<ul>
-<li><p>类似<strong>xxx_</strong> ,双下划线开头,双下划线结尾属于特殊变量,特殊变量可以直接访问,所以在命名变量名的时候不要使用<strong>xxx</strong> 这样的变量名</p>
-</li>
-<li><p>类似_name的实例变量,外部是可以访问的,但是按照约定俗成的固定,这样的实例看作是私有的</p>
-</li>
-</ul>
-<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ul>
-<li>继承的好处,子类可以获得父类的全部功能</li>
-<li><p>子类和父类存在同样的方法,这时我们说子类覆盖了父类的方法,运行时会调用子类的方法,这样我们就获得了继承的另外一个好处:<strong>多态</strong></p>
-<pre><code>class Animal(object):
-    def run(self):
-        print(&apos;aninmal is running....&apos;)
-
-class Dog(Animal):
-    def run(self):
-        print(&apos;Dog is running....&apos;)
-
-class Cat(Animal):
-        def run(self):
-            print(&apos;Cat is running....&apos;)
-
-d = Dog()
-c = Cat()
-d.run()
-c.run()
-</code></pre></li>
-</ul>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><ul>
-<li><p>对于静态语言像java ,如果需要传入Anima类型,则传入的对象必须是Animal类型或者它的子类,否则无法调用run方法</p>
-</li>
-<li><p>对于动态语言想Python,则不一定要传入Animal类型,只需要保证传入的对象有一个run方法就可以了</p>
-</li>
-</ul>
-<blockquote>
-<p>动态语言的的”鸭子类型”,比要求严格的继承体系,一个对象只要”看起来像鸭子”,那它就可以被看作是鸭子.</p>
-</blockquote>
-<h3 id="获取对象信息"><a href="#获取对象信息" class="headerlink" title="获取对象信息"></a>获取对象信息</h3><ul>
-<li><p>判断基本数据类型</p>
-<pre><code>s= type(&apos;123&apos;)
-print(s)
-</code></pre></li>
-<li><p>判断一个对象是否是函数,使用types提供的函数</p>
-<pre><code>import types
-&apos;判断对象是否是函数&apos;
-def fn():
-    pass
-s= types.FunctionType
-print(s)
-</code></pre></li>
-</ul>
-<pre><code>&apos;判断对象是否是函数&apos;
-def fn():
-    pass
-s= types.FunctionType
-s2 =types.BuiltinFunctionType
-s3 = type(abs)==s2
-print(s3)
-print(s)
-</code></pre><p> <strong>isinstance()函数</strong></p>
-<pre><code>&apos;isinstance()函数&apos;
-class Animal(object):
-    pass
-class Dog(Animal):
-    pass
-class Cat(Animal):
-    pass
-a =Animal()
-d =Dog()
-c = Cat()
-s = isinstance(d,Animal)
-print(s)
-</code></pre><ul>
-<li><p>判断是否是其中一种</p>
-<pre><code>s=isinstance([1,2,3],(list,tuple))
-print(s)
-</code></pre></li>
-</ul>
-<p><strong>使用dir()</strong></p>
-<ul>
-<li><p>获得一个对象的所有属性和方法使用<code>dir()</code></p>
-</li>
-<li><p>配合使用<code>getattr(),setattr(),hasattr()</code>,可以直接操作一个对象的状态</p>
-<pre><code>class Animal(object):
-    def __init__(self):
-        self.x= 9
-    def power(self):
-        return self.x*self.x
-a = Animal()
-s1 =hasattr(a,&apos;x&apos;)
-s2 =hasattr(a,&apos;y&apos;)
-s3 =getattr(a,&apos;x&apos;)
-s4 =setattr(a,&apos;x&apos;,4)
-s5= getattr(a,&apos;x&apos;)
-print(s1)
-print(s2)
-print(s3)
-print(s4)
-print(s5)
-</code></pre></li>
-</ul>
-<h3 id="实例属性和类属性"><a href="#实例属性和类属性" class="headerlink" title="实例属性和类属性"></a>实例属性和类属性</h3><ul>
-<li>Python是动态语言,根据类创建的实例可以绑定任意属性,可以删除</li>
-<li>如果类中存在这个属性,绑定新的属性,会得到新绑定的属性,如果删除就得到类的属性,绑定的属性只能通过类的实例调用,不能通过类名获取</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoururl.com/2017/01/11/自学Python-面向对象编程/" data-id="cizdt1s3o000hmwvvs1psrsnw" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象编程">分享到</a>
-      
-
-      
-        <a href="http://yoururl.com/2017/01/11/自学Python-面向对象编程/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-自学Python-Python基础" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/11/自学Python-Python基础/" class="article-date">
-  <time datetime="2017-01-11T11:38:56.000Z" itemprop="datePublished">2017-01-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/11/自学Python-Python基础/">自学Python-Python基础.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><ol>
-<li>以#开头作为注释右面的代码不会被执行</li>
-</ol>
-<h3 id="代码格式"><a href="#代码格式" class="headerlink" title="代码格式"></a>代码格式</h3><ul>
-<li>语法比较简单,不同于java以分号作为结束,Python采用缩进的方式,所以代码格式非常重要</li>
-</ul>
-<h2 id="数据类型和变量"><a href="#数据类型和变量" class="headerlink" title="数据类型和变量"></a>数据类型和变量</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><ul>
-<li>整数:可以处理任意大小的整数</li>
-<li><p>浮点数 : 1.11, -3.15,,对于很大和很小的浮点数需要用科学计数法</p>
-<blockquote>
-<p>注意:证书和浮点数在计算机内部存储方式是不同的,整数永远是精确的(除法也是精确的),浮点可能会四舍五入</p>
-</blockquote>
-</li>
-<li><p>字符串:以单引号或者双引号括起来的任意文本,”字符串”,’字符串’</p>
-</li>
-<li><p>boolean :一个布尔值只有True ,False两种值</p>
-<blockquote>
-<p>注意大小写</p>
-</blockquote>
-</li>
-<li><p>空值:一个特殊的值None,不能理解为0 ,0是有意义的,None是一个特殊的空值</p>
-</li>
-</ul>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><blockquote>
-<p>变量不仅可以是数字,可说是任意数据类型,变量在程序中使用一个变量名表示,变量名必须符号命名规范</p>
-</blockquote>
-<ul>
-<li>“=” 是赋值语句,表示把任意数据类型赋值给变量,同一个变量可以反复赋值,而且可以是不同类型的变量<br>  eg:a= 123, a=’abc’</li>
-</ul>
-<blockquote>
-<p>这种变量本身不固定的语言称为动态语言,与之对应的静态语言比如java,定义变量时必须指定变量的数据类型,并且,一旦指定就不能被其他类型的变量赋值</p>
-</blockquote>
-<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><ul>
-<li>常量是不能改变的变量,比如数学中的常数π,就是一个常量,通常用全部大学表示常量</li>
-</ul>
-<h4 id="Python中的除法"><a href="#Python中的除法" class="headerlink" title="Python中的除法"></a>Python中的除法</h4><ol>
-<li>/ 10/3 = 3.33333333整数相除得到的结果是浮点数</li>
-<li>// 10//3 =3  只取结果的整数部分</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoururl.com/2017/01/11/自学Python-Python基础/" data-id="cizdt1s37000amwvvw89opf6a" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础.md">分享到</a>
-      
-
-      
-        <a href="http://yoururl.com/2017/01/11/自学Python-Python基础/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-自学Python-模块" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/11/自学Python-模块/" class="article-date">
-  <time datetime="2017-01-11T09:35:35.000Z" itemprop="datePublished">2017-01-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/11/自学Python-模块/">自学Python-模块</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h3><p><strong>标准注释</strong></p>
-<pre><code>#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-</code></pre><ul>
-<li><p>test_1.py</p>
-<pre><code>#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-&apos;a test module&apos;
-___author__=&apos;anakin&apos;
-
-import sys
-
-def test():
-    args = sys.argv
-    if len(args)==1:
-        print(&apos;hello,world&apos;)
-    elif len(args)==2:
-        print(&apos;hello :&apos;+ args[1])
-    else:
-        print(&apos;too many argument!&apos;)
-
-if __name__==&apos;__main__&apos;:
-    test()
-</code></pre></li>
-</ul>
-<ul>
-<li><p>test_2.py</p>
-<pre><code>import test_1
-
-test_1.test()
-</code></pre></li>
-</ul>
-<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><ul>
-<li><p>外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。</p>
-<pre><code>#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-&apos;函数的作用域&apos;
-___author__=&apos;anakin&apos;
-
-def _private_1(name):
-    print(&apos;private 1 run&apos;)
-
-def _private_2(name):
-    print(&apos;private 2 run&apos;)
-
-def greeting(name):
-    if len(name)&gt;3:
-        return _private_1(name)
-    else :
-        return _private_2(name)
-</code></pre><h3 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h3></li>
-</ul>
-<p>安装Pillow </p>
-<pre><code>安装Pillow
-pip install Pillow
-
-from PIL import Image
-im = Image.open(&apos;img.png&apos;)
-print(im.format,im.size,im.mode)
-</code></pre><p>生成缩略图</p>
-<pre><code>im.thumbnail((200, 100))
-im.save(&apos;thmb.jpg&apos;,&apos;JPEG&apos;)
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoururl.com/2017/01/11/自学Python-模块/" data-id="cizdt1s3k000fmwvvj44spfrb" class="article-share-link" data-share="baidu" data-title="自学Python-模块">分享到</a>
-      
-
-      
-        <a href="http://yoururl.com/2017/01/11/自学Python-模块/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-自学Python-函数式编程" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/11/自学Python-函数式编程/" class="article-date">
-  <time datetime="2017-01-11T06:01:12.000Z" itemprop="datePublished">2017-01-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/11/自学Python-函数式编程/">自学Python-函数式编程.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><blockquote>
-<p>变量可以指向函数，函数的参数能接收变量，那么一个函数可以接收另一<br>个函数作为参数，这种函数就称为高阶函数</p>
-</blockquote>
-<ol>
-<li>变量可以指向函数</li>
-<li>函数也是变量</li>
-<li><p>传入函数</p>
-<pre><code>def add(x,y,f):
-    return f(x)+f(y)
-s= add(2,3,abs)
-print(s)
-</code></pre></li>
-</ol>
-<h3 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map/reduce"></a>map/reduce</h3><h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><blockquote>
-<p>map 接收两个参数，一个函数，一个<code>Iterabale</code>,map将传入的函数依<br>次祖作用到序列的每个元素，并把结果作为新的<code>Iterator</code>返回</p>
-</blockquote>
-<pre><code>def f(x):
-    return x*x
-L=[1,2,3,4,5]
-m=map(f,L)
-s=list(m)
-print(s)
-</code></pre><p>一个集合中的元素转换成字符串</p>
-<pre><code>m=map(str,[1,2,3,45])
-s=list(m)
-print(s)
-</code></pre><h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h3><blockquote>
-<p><code>reduce</code>的用法，把一个函数作用在一个序列[x1,x2,x3…],必须接&gt;收两个参数,<code>return</code>结果继续和序列的下一个元素做累积运算</p>
-</blockquote>
-<pre><code>from functools import reduce
-def fn(x,y):
-    return x*10+y
-s=reduce(fn,[1,2,3,4])
-print(s)
-</code></pre><h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><p>filter()函数用于过滤序列</p>
-<blockquote>
-<p>和<code>map()</code>不同的是<code>filter()</code>,接收两个参数,一个函数和一个序列, &gt; 依次将函数作用序列的每一个元素,根据返回值是<code>ture</code> 还是<code>false</code> 决定保留还是丢弃该元素</p>
-</blockquote>
-<p>筛选出奇数</p>
-<pre><code>def is_odd(n):
-    return n%2==1
-f =filter(is_odd,[1,2,3,4,5,6])
-s = list(f)
-print(s)
-</code></pre><h3 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h3><ul>
-<li><p>对list进行排序</p>
-<pre><code>s= sorted([1,2,3,53,21,0,3])
-print(s)
-</code></pre></li>
-<li><p>可以接收一个key进行自定义排序</p>
-<pre><code>s= sorted([1,-2,-3,-53,21,0,3],key=abs)
-print(s)
-</code></pre></li>
-<li><p>根据字母顺序排列</p>
-<pre><code>L =[&apos;bob&apos;, &apos;about&apos;, &apos;Zoo&apos;, &apos;Credit&apos;]
-s =sorted(L,key=str.lower)
-print(s)
-</code></pre></li>
-</ul>
-<h2 id="返回函数"><a href="#返回函数" class="headerlink" title="返回函数"></a>返回函数</h2><p>返回一个函数</p>
-<pre><code>def lazy_sum(*arg):
-    def sum():
-        temp =0
-        for i in arg:
-            temp = i+ temp
-        return temp
-    return sum
-f= lazy_sum(1,2,3,4)
-print(f)
-s = f()
-print(s)
-</code></pre><p><strong>总结</strong></p>
-<ul>
-<li>函数可以返回一个结果,也可以返回一个函数</li>
-<li>返回函数时,函数并未执行,返回函数中不要应用任何可能会变化的变量</li>
-</ul>
-<h3 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h3><p>匿名函数使用Lambda 表达式</p>
-<pre><code>L = [1,2,3,4]
-m = map(lambda x : x*x,L)
-s = list(m)
-print(s)
-</code></pre><ul>
-<li>关键字lambda表示匿名函数,冒号前面的x就是参数</li>
-<li>限制:只能有一个表达式,不用写retuen ,结果就为返回值</li>
-<li>好处:不用担心命名冲突,可以把匿名函数赋值给一个变量,通过变量调用函数</li>
-<li><p>同样,匿名函数也可以作为返回值返回</p>
-<pre><code>def build(x,y):
-    return lambda:x*x+y*y
-f = build(1,2);
-print(f)
-</code></pre></li>
-</ul>
-<h3 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h3><p>代码中<code>*arg</code>可变参数,<code>**kw</code> 关键字参数</p>
-<pre><code>def log(func):
-    def wrapper(*arg,**kw):
-        print(&apos;call :&apos;+func.__name__)
-        return func(*arg,**kw)
-    return wrapper
-@log
-def now():
-    print(&apos;print log&apos;)
-now()
-</code></pre><h3 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h3><pre><code>import functools
-int2 = functools.partial(int,base=2)
-s =int2(&apos;10000&apos;)
-print(s)
-</code></pre><ul>
-<li>当函数的参数太多需要简化时,<code>functools.partial()</code>创建一个新的函数,这个函数可以固定原函数的部分参数,是函数调用更简单</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoururl.com/2017/01/11/自学Python-函数式编程/" data-id="cizdt1s3g000dmwvvpzbng3hd" class="article-share-link" data-share="baidu" data-title="自学Python-函数式编程.md">分享到</a>
-      
-
-      
-        <a href="http://yoururl.com/2017/01/11/自学Python-函数式编程/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
     </footer>
   </div>
   
@@ -1381,7 +1115,7 @@ print(s)
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
   </nav>
 </section>
       
@@ -1393,7 +1127,7 @@ print(s)
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -1402,7 +1136,7 @@ print(s)
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 10px;">Android</a>
+      <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 16.67px;">设计模式</a>
     </div>
   </div>
 
@@ -1411,7 +1145,7 @@ print(s)
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">13</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
     </div>
   </div>
 
@@ -1423,15 +1157,15 @@ print(s)
       <ul>
         
           <li>
-            <a href="/2017/02/17/Android基础知识-md/">Android基础知识.md</a>
+            <a href="/2017/02/22/怎样选择基金/">怎样选择基金</a>
           </li>
         
           <li>
-            <a href="/2017/02/17/Java设计模式/">Java设计模式.md</a>
+            <a href="/2017/02/22/Vim基本操作/">Vim基本操作</a>
           </li>
         
           <li>
-            <a href="/2017/02/17/MySQL进阶-操作详解/">MySQL基本操作.md</a>
+            <a href="/2017/02/22/文件操作的工具类/">文件操作的工具类</a>
           </li>
         
           <li>
@@ -1439,7 +1173,7 @@ print(s)
           </li>
         
           <li>
-            <a href="/2017/02/17/设计模式-简单工厂模式/">简单工厂模式.md</a>
+            <a href="/2017/02/17/Android基础知识-md/">Android基础知识.md</a>
           </li>
         
       </ul>
