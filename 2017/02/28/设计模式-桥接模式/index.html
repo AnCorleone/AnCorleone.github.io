@@ -6,25 +6,31 @@
   
   <title>桥接模式.md | Write the code. Change the world.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="桥接模式使用实例以两个程序绘制圆形和方形为例
+  <meta name="description" content="桥接模式桥接是用于把抽象化和实例化解耦，使二者可以独立变化。这种类型的设计模式属于结构型模式，它通过提供抽象化和实例化之间的桥接结构，来实现二者解耦。
+使用实例
+画不同圆形，包括半径和x,y,可以添加不同的实现类定制圆形的颜色,在调用方法传入不同的参数,定制圆形的半径和其他坐标参数
 
-定义两个绘图程序类 DP1,DP2,定义绘制方法
-抽象两个形状的派生类 shape">
+实现过程:
+定义一个画图的接口DrawApi，包含一个drawCircle(int radius,int x,in">
 <meta property="og:type" content="article">
 <meta property="og:title" content="桥接模式.md">
-<meta property="og:url" content="http://yoururl.com/2017/02/17/设计模式-桥接模式/index.html">
+<meta property="og:url" content="http://yoururl.com/2017/02/28/设计模式-桥接模式/index.html">
 <meta property="og:site_name" content="Write the code. Change the world.">
-<meta property="og:description" content="桥接模式使用实例以两个程序绘制圆形和方形为例
+<meta property="og:description" content="桥接模式桥接是用于把抽象化和实例化解耦，使二者可以独立变化。这种类型的设计模式属于结构型模式，它通过提供抽象化和实例化之间的桥接结构，来实现二者解耦。
+使用实例
+画不同圆形，包括半径和x,y,可以添加不同的实现类定制圆形的颜色,在调用方法传入不同的参数,定制圆形的半径和其他坐标参数
 
-定义两个绘图程序类 DP1,DP2,定义绘制方法
-抽象两个形状的派生类 shape">
-<meta property="og:updated_time" content="2017-02-21T06:37:13.695Z">
+实现过程:
+定义一个画图的接口DrawApi，包含一个drawCircle(int radius,int x,in">
+<meta property="og:updated_time" content="2017-02-28T07:20:53.226Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="桥接模式.md">
-<meta name="twitter:description" content="桥接模式使用实例以两个程序绘制圆形和方形为例
+<meta name="twitter:description" content="桥接模式桥接是用于把抽象化和实例化解耦，使二者可以独立变化。这种类型的设计模式属于结构型模式，它通过提供抽象化和实例化之间的桥接结构，来实现二者解耦。
+使用实例
+画不同圆形，包括半径和x,y,可以添加不同的实现类定制圆形的颜色,在调用方法传入不同的参数,定制圆形的半径和其他坐标参数
 
-定义两个绘图程序类 DP1,DP2,定义绘制方法
-抽象两个形状的派生类 shape">
+实现过程:
+定义一个画图的接口DrawApi，包含一个drawCircle(int radius,int x,in">
   
     <link rel="alternative" href="/atom.xml" title="Write the code. Change the world." type="application/atom+xml">
   
@@ -84,8 +90,8 @@
     <div class="outer">
       <section id="main"><article id="post-设计模式-桥接模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/17/设计模式-桥接模式/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+    <a href="/2017/02/28/设计模式-桥接模式/" class="article-date">
+  <time datetime="2017-02-28T06:27:59.000Z" itemprop="datePublished">2017-02-28</time>
 </a>
     
   </div>
@@ -104,21 +110,83 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h2><h3 id="使用实例"><a href="#使用实例" class="headerlink" title="使用实例"></a>使用实例</h3><p>以两个程序绘制圆形和方形为例</p>
-<ol>
-<li>定义两个绘图程序类 DP1,DP2,定义绘制方法</li>
-<li>抽象两个形状的派生类 shape</li>
+        <h2 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h2><p>桥接是用于把抽象化和实例化解耦，使二者可以独立变化。这种类型的设计模式属于结构型模式，它通过提供抽象化和实例化之间的桥接结构，来实现二者解耦。</p>
+<h3 id="使用实例"><a href="#使用实例" class="headerlink" title="使用实例"></a>使用实例</h3><blockquote>
+<p>画不同圆形，包括半径和x,y,可以添加不同的实现类定制圆形的颜色,在调用方法传入不同的参数,定制圆形的半径和其他坐标参数</p>
+</blockquote>
+<h3 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程:"></a>实现过程:</h3><ol>
+<li>定义一个画图的接口<code>DrawApi</code>，包含一个<code>drawCircle(int radius,int x,int y)</code>方法</li>
+<li>定义一个Shape的抽象类,包含一个<code>draw()</code>方法,构造函数接受<code>DrawApi</code>的实例</li>
+<li>分别定义一个画<code>RedCircle</code>和<code>GreenCircle</code>的类,实现<code>DrawApi</code>接口</li>
+<li>定义一个<code>Circle</code>类,继承<code>shape</code>类,构造函数接受<code>drawCircle(int radius,int x,int y)</code>需要的参数,<br>实现<code>draw()</code>方法,在方法中调用<code>drawCircle()</code>方法</li>
+<li>最后new Circle(),接受<code>DrawApi</code>的实例,传入所需参数</li>
 </ol>
+<hr>
+<h3 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h3><p>只要解决一种事物的多种可能性,如实例图形的形状,颜色,半径,实例中要画两种不同的圆形,首先在圆形具体类Circle中继承Shape类,在Shape类中获取操作图形参数的接口DrawApi实例,并在draw 方法中调用DrawApi的方法,所需参数需要DrawApi的实例,和具体的并在draw 的参数,由调用者传入具体的参数</p>
+<h3 id="调用过程"><a href="#调用过程" class="headerlink" title="调用过程"></a>调用过程</h3><p>DrawApi的实例(如:不同颜色的圆形 ) –Shape的实例(构造方法传入半径,坐标) –&gt;实例中调用DrawApi的方法,传入获得的参数,实际调用的DrawApi实例的方法,参数在Shape中传入</p>
+<blockquote>
+<p>　在一个特性中获取另一个特性的实例，并把这个实例的参数传入到另一特性中</p>
+</blockquote>
+<h3 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下:"></a>代码如下:</h3><p>定义DrawApi接口</p>
+<pre><code>public interface DrawApi {
+ void  drawCircle(int radius,int x,int y);
+}
+</code></pre><p>定义Shape抽象类</p>
+<pre><code>public abstract class Shape {
+    DrawApi mDrawApi;
 
+    public Shape(DrawApi drawApi) {
+        mDrawApi = drawApi;
+    }
+
+    public abstract void  draw();
+}
+</code></pre><p>定义不同颜色圆形的实现类,实现DrawApi接口</p>
+<pre><code>public class GreenCircle implements DrawApi {
+    @Override
+    public void drawCircle(int radius, int x, int y) {
+        System.out.println(&quot; 画一个绿色的圆形 &quot;+&quot;radius:&quot;+radius+&quot;x :: &quot;+ x+&quot;  y ::&quot;+y);
+    }
+}
+</code></pre><p>定义Circle继承Shape类</p>
+<pre><code>public class Circle extends Shape {
+    private  int radius;
+    private  int x;
+    private  int y ;
+
+    public Circle(DrawApi drawApi, int radius, int x, int y) {
+        super(drawApi);
+        this.radius = radius;
+        this.x = x;
+        this.y = y;
+    }
+
+    @Override
+    public void draw() {
+        mDrawApi.drawCircle(radius,x,y);
+    }
+}
+</code></pre><p>测试调用</p>
+<pre><code>DrawApi gc,rc;
+    gc = new GreenCircle();  // 画绿色的圆
+    rc =new RedCircle();     // 画红色的圆
+    Shape circle = new Circle(gc, 10, 3, 4); //绿色的圆 设置半径和坐标参数
+    circle.draw();  // 作图
+    Shape circle2= new Circle(rc,20,6,8);    //红色的圆 设置半径和坐标参数
+    circle2.draw(); // 作图
+</code></pre><p>测试结果</p>
+<pre><code>02-28 05:22:51.529 28053-28053/com.anakin.design_pattern_test I/System.out:  画一个绿色的圆形 radius:10x :: 3  y ::4
+02-28 05:22:51.530 28053-28053/com.anakin.design_pattern_test I/System.out:  画一个红色的圆形 radius:20x :: 6  y ::8
+</code></pre>
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/设计模式-桥接模式/" data-id="cizjisb0p001ksovvwtkjdctk" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/28/设计模式-桥接模式/" data-id="cizp7ght4001d9cvvg20vlsit" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/02/17/设计模式-桥接模式/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://yoururl.com/2017/02/28/设计模式-桥接模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -130,19 +198,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/02/17/设计模式-模版模式/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          模版模式.md
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/02/17/设计模式-工厂方法模式/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/02/22/怎样选择基金/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">工厂方法模式.md</div>
+      <div class="article-nav-title">怎样选择基金</div>
     </a>
   
 </nav>
@@ -152,7 +211,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2017/02/17/设计模式-桥接模式/" data-title="桥接模式.md" data-url="http://yoururl.com/2017/02/17/设计模式-桥接模式/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017/02/28/设计模式-桥接模式/" data-title="桥接模式.md" data-url="http://yoururl.com/2017/02/28/设计模式-桥接模式/"></div>
   </section>
 </section>
       
@@ -194,6 +253,10 @@
       <ul>
         
           <li>
+            <a href="/2017/02/28/设计模式-桥接模式/">桥接模式.md</a>
+          </li>
+        
+          <li>
             <a href="/2017/02/22/怎样选择基金/">怎样选择基金</a>
           </li>
         
@@ -207,10 +270,6 @@
         
           <li>
             <a href="/2017/02/17/Android基础知识-md/">Android基础知识.md</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/17/设计模式-观察者模式/">观察者模式.md</a>
           </li>
         
       </ul>
