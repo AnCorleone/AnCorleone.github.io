@@ -74,121 +74,6 @@
     <div class="outer">
       <section id="main">
   
-    <article id="post-设计模式-单例模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/设计模式-单例模式/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-单例模式/">单例设计模式.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>确保某一类只有一个实例，而且自行实例化并向整个系统提供这个实例</p>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景:"></a>使用场景:</h3><p>确保某个类只存在一个对象,当创建这个对象需要消耗过多的资源时,例如IO 的读取数据库等操作</p>
-<pre><code>/**
- * 第二种方法
- */
-private static CEO mInstance = null;
-
-private CEO() {
-}
-public static CEO getInstance() {
-    if (mInstance == null) {
-        synchronized (CEO.class){
-            if (mInstance == null) {
-                mInstance = new CEO();
-            }
-        }
-    }
-    return mInstance;
-}
-</code></pre><hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoururl.com/2017/02/17/设计模式-单例模式/" data-id="cizrsneqn001scsvvdy5peqpy" class="article-share-link" data-share="baidu" data-title="单例设计模式.md">分享到</a>
-      
-
-      
-        <a href="http://yoururl.com/2017/02/17/设计模式-单例模式/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-设计模式-简单工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/设计模式-简单工厂模式/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-简单工厂模式/">简单工厂模式.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##　简单工厂模式</p>
-<ol>
-<li>定义抽象的工厂类</li>
-<li>工厂类包定义公共的方法实现，和不同实现的抽象方法</li>
-<li>定义根据参数创建实例对象，返回抽象类的静态方法</li>
-<li>使用静态方法传入要获取对象的tag,获取对象的实例，调用实例的方法</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoururl.com/2017/02/17/设计模式-简单工厂模式/" data-id="cizrsneqk001qcsvvftls42w2" class="article-share-link" data-share="baidu" data-title="简单工厂模式.md">分享到</a>
-      
-
-      
-        <a href="http://yoururl.com/2017/02/17/设计模式-简单工厂模式/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-设计模式-模版模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/02/17/设计模式-模版模式/" class="article-date">
@@ -316,7 +201,7 @@ public class MilitaryComputer extends OpenComputer {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/设计模式-模版模式/" data-id="cizrsneqt001ucsvv5hiianph" class="article-share-link" data-share="baidu" data-title="模版模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-模版模式/" data-id="cizrsz5rd001rxcvva3d2ppbq" class="article-share-link" data-share="baidu" data-title="模版模式.md">分享到</a>
       
 
       
@@ -380,7 +265,7 @@ public class MilitaryComputer extends OpenComputer {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/MySQL进阶-操作详解/" data-id="cizrsneo90005csvv97axdmfa" class="article-share-link" data-share="baidu" data-title="MySQL基本操作.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/MySQL进阶-操作详解/" data-id="cizrsz5p40006xcvvvih20yrh" class="article-share-link" data-share="baidu" data-title="MySQL基本操作.md">分享到</a>
       
 
       
@@ -389,6 +274,145 @@ public class MilitaryComputer extends OpenComputer {
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式-观察者模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/设计模式-观察者模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/设计模式-观察者模式/">观察者模式.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><h3 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h3><ol>
+<li>观察者模式基本组成是，观察者Observer和被观察者（观察目标）Subject,当目标发生改变的时候，观察者会随之改变</li>
+<li>一个被观察者可以被多个观察者观察</li>
+<li>被观察者一般提供一个集合保存观察者，提供对观察者的管理，删除和增加观察者，提供一个抽象的notify方法，由具体的被观察者实现，实现方式为，遍历观察者的集合，调用观察者的update()方法，通知每一个观察者</li>
+<li>观察者申明为一个接口，一般提供update()方法，由不同的观察者去实现，具体的观察者在接收到观察者的notify()后做出相应的更新</li>
+</ol>
+<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><ol>
+<li>观察者提供update()方法，在update()方法中变量观察者的集合，调用观察者的update()方法</li>
+<li>一般定义被观察者为抽象类提供管理观察者的方法，和抽象的notify()方法</li>
+<li>一般将观察者声明为接口，提供update()方法，由具体的观察者去实现，根据需要对被观察者的改变做出不同的实现</li>
+</ol>
+<hr>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p><strong> 背景：</strong></p>
+<p>以游戏为例，多人组队玩一个游戏，当有一个人遭受攻击时向控制中心发消息，控制中心收到消息通知每个队友，队友收到消息过来支援</p>
+<ul>
+<li>每个队员都作为观察者，被观察者为控制中心</li>
+<li>当有队员Player受到攻击时，调用控制中心的notifyObsever() 方法，在notifyObsever()方法中遍历观察者也就是所有队员，会调用所有队友的help() 方法</li>
+</ul>
+<h3 id="代码过程"><a href="#代码过程" class="headerlink" title="代码过程"></a>代码过程</h3><ol>
+<li><p>观察者的接口 ：观察者的接口Observer 申明了help（），beAttached()方法</p>
+</li>
+<li><p>具体的观察者 ：具体的观察者Player类，实现接口中的方法</p>
+</li>
+<li><p>被观察者抽象类 ：被观察者抽象类AllyControlCenter,包括对观察的管理的集合和join()和quit()方法，和通知每个观察者的抽象方法notifyObsever()方法，</p>
+</li>
+<li><p>被观察者 ：被观察者的实现类ConcreteAllyControlCenter ，是先notifyObsever()方法，遍历观察者集合，调用每个人观察者对象的help()方法</p>
+</li>
+<li><p>客户端 ：创建观察者对象Observer player = new Player()，创建被观察者实例AllyControlCenter ally = new ConcreteAllyControlCenter();，将观察者加入到集合中， all.join(Player),player调用beAttached(),所有观察者收到消息调用help()方法，（当被观察者触发beAttached() 方法时候，在beAttached()中调用notifyObsever() 方法通知每个观察者调用help()方法）</p>
+</li>
+</ol>
+<h3 id="代码调用流程"><a href="#代码调用流程" class="headerlink" title="代码调用流程"></a>代码调用流程</h3><p> player.beAttached()—–&gt; AllyControlCenter.notifyObsever()—-&gt; player.help()</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-观察者模式/" data-id="cizrsz5rh001vxcvvgv28msvm" class="article-share-link" data-share="baidu" data-title="观察者模式.md">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/02/17/设计模式-观察者模式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式-单例模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/设计模式-单例模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/设计模式-单例模式/">单例设计模式.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>确保某一类只有一个实例，而且自行实例化并向整个系统提供这个实例</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景:"></a>使用场景:</h3><p>确保某个类只存在一个对象,当创建这个对象需要消耗过多的资源时,例如IO 的读取数据库等操作</p>
+<pre><code>/**
+ * 第二种方法
+ */
+private static CEO mInstance = null;
+
+private CEO() {
+}
+public static CEO getInstance() {
+    if (mInstance == null) {
+        synchronized (CEO.class){
+            if (mInstance == null) {
+                mInstance = new CEO();
+            }
+        }
+    }
+    return mInstance;
+}
+</code></pre><hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-单例模式/" data-id="cizrsz5r2001lxcvv85w7nxx5" class="article-share-link" data-share="baidu" data-title="单例设计模式.md">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/02/17/设计模式-单例模式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
 
     </footer>
   </div>
@@ -474,7 +498,7 @@ proxy.operation();
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/设计模式-代理模式/" data-id="cizrsneq6001icsvv1wi1nkfx" class="article-share-link" data-share="baidu" data-title="代理模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-代理模式/" data-id="cizrsz5qw001ixcvvl9p35bd9" class="article-share-link" data-share="baidu" data-title="代理模式.md">分享到</a>
       
 
       
@@ -534,7 +558,7 @@ proxy.operation();
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/Java设计模式/" data-id="cizrsneny0001csvvywssj2n0" class="article-share-link" data-share="baidu" data-title="Java设计模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/Java设计模式/" data-id="cizrsz5oq0002xcvvvbz8bc80" class="article-share-link" data-share="baidu" data-title="Java设计模式.md">分享到</a>
       
 
       
@@ -729,7 +753,7 @@ public class Director {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/设计模式-Builder模式/" data-id="cizrsneq1001dcsvvja7d6imm" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-Builder模式/" data-id="cizrsz5qu001gxcvv5gswqj8g" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
       
 
       
@@ -877,11 +901,87 @@ public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistent
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/Android基础知识-md/" data-id="cizrsnens0000csvvdelo3h6c" class="article-share-link" data-share="baidu" data-title="Android基础知识.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/Android基础知识-md/" data-id="cizrsz5om0001xcvvgfk2gexk" class="article-share-link" data-share="baidu" data-title="Android基础知识.md">分享到</a>
       
 
       
         <a href="http://yoururl.com/2017/02/17/Android基础知识-md/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-读取XML中的配置参数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/20/读取XML中的配置参数/" class="article-date">
+  <time datetime="2017-01-20T02:22:04.000Z" itemprop="datePublished">2017-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/20/读取XML中的配置参数/">Android-读取XML中的配置参数工具类XMLUtil</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一个读取xml文件中配置文件的工具类XMLUtil"><a href="#一个读取xml文件中配置文件的工具类XMLUtil" class="headerlink" title="一个读取xml文件中配置文件的工具类XMLUtil"></a>一个读取xml文件中配置文件的工具类XMLUtil</h2><h3 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h3><pre><code>import javax.xml.parsers.*;  
+import org.w3c.dom.*;  
+import org.xml.sax.SAXException;  
+import java.io.*;  
+
+public class XMLUtil {  
+    //该方法用于从XML配置文件中提取配置文件
+    public static String getChartType() {  
+        try {  
+            //创建文档对象  
+            DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();  
+            DocumentBuilder builder = dFactory.newDocumentBuilder();  
+            Document doc;                             
+            doc = builder.parse(new File(&quot;config.xml&quot;));   
+
+            //获取包含配置文件的文本节点  
+            NodeList nl = doc.getElementsByTagName(&quot;chartType&quot;);  
+            Node classNode = nl.item(0).getFirstChild();  
+            String chartType = classNode.getNodeValue().trim();  
+            return chartType;  
+        }     
+        catch(Exception e) {  
+            e.printStackTrace();  
+            return null;  
+        }  
+    }  
+}
+</code></pre><hr>
+<h3 id="XML-文件代码"><a href="#XML-文件代码" class="headerlink" title="XML 文件代码"></a>XML 文件代码</h3><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;  
+&lt;config&gt;  
+    &lt;chartType&gt;histogram&lt;/chartType&gt;  
+&lt;/config&gt;
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/01/20/读取XML中的配置参数/" data-id="cizrsz5rj001xxcvvrhmlnxbc" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/01/20/读取XML中的配置参数/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -981,7 +1081,7 @@ public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistent
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/20/MySQL使用/" data-id="cizrsneo40003csvvopfchzv9" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/20/MySQL使用/" data-id="cizrsz5p10005xcvvk40ngc11" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
       
 
       
@@ -990,82 +1090,6 @@ public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistent
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-读取XML中的配置参数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/20/读取XML中的配置参数/" class="article-date">
-  <time datetime="2017-01-20T02:22:04.000Z" itemprop="datePublished">2017-01-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/20/读取XML中的配置参数/">Android-读取XML中的配置参数工具类XMLUtil</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一个读取xml文件中配置文件的工具类XMLUtil"><a href="#一个读取xml文件中配置文件的工具类XMLUtil" class="headerlink" title="一个读取xml文件中配置文件的工具类XMLUtil"></a>一个读取xml文件中配置文件的工具类XMLUtil</h2><h3 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h3><pre><code>import javax.xml.parsers.*;  
-import org.w3c.dom.*;  
-import org.xml.sax.SAXException;  
-import java.io.*;  
-
-public class XMLUtil {  
-    //该方法用于从XML配置文件中提取配置文件
-    public static String getChartType() {  
-        try {  
-            //创建文档对象  
-            DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();  
-            DocumentBuilder builder = dFactory.newDocumentBuilder();  
-            Document doc;                             
-            doc = builder.parse(new File(&quot;config.xml&quot;));   
-
-            //获取包含配置文件的文本节点  
-            NodeList nl = doc.getElementsByTagName(&quot;chartType&quot;);  
-            Node classNode = nl.item(0).getFirstChild();  
-            String chartType = classNode.getNodeValue().trim();  
-            return chartType;  
-        }     
-        catch(Exception e) {  
-            e.printStackTrace();  
-            return null;  
-        }  
-    }  
-}
-</code></pre><hr>
-<h3 id="XML-文件代码"><a href="#XML-文件代码" class="headerlink" title="XML 文件代码"></a>XML 文件代码</h3><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;  
-&lt;config&gt;  
-    &lt;chartType&gt;histogram&lt;/chartType&gt;  
-&lt;/config&gt;
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoururl.com/2017/01/20/读取XML中的配置参数/" data-id="cizrsnerm002hcsvvspsz4drw" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
-      
-
-      
-        <a href="http://yoururl.com/2017/01/20/读取XML中的配置参数/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
 
     </footer>
   </div>
