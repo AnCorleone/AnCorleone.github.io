@@ -74,6 +74,149 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-自学Python-函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/10/自学Python-函数/" class="article-date">
+  <time datetime="2017-01-10T08:30:36.000Z" itemprop="datePublished">2017-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/10/自学Python-函数/">自学Python- 函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h3><p>Python内置了很多有用的函数，我们可以直接调用。</p>
+<p>要调用一个函数，需要知道函数的名称和参数，比如求绝对值的函数abs，只有一个参数</p>
+<p>调用函数的要传入正确的参数个数和参数类型</p>
+<h4 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h4><ul>
+<li>比如int() 把其他类型转换为整数</li>
+</ul>
+<h3 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h3><p>定义函数使用 <code>def</code> 后面依次跟 函数名 括号() 冒号: 然后在缩进语句块中写函数体,函数返回值用<code>retun</code>返回</p>
+<p><strong>导入函数</strong></p>
+<ul>
+<li>定义函数run保存为functions.py ,在test.py 中调用run函数,需要使用<code>from functions import run</code>导入函数run()</li>
+</ul>
+<h3 id="空函数"><a href="#空函数" class="headerlink" title="空函数"></a>空函数</h3><p>定意一个函数什么也不做</p>
+<p><code>def nullFun():
+    pres</code></p>
+<h3 id="参数检查"><a href="#参数检查" class="headerlink" title="参数检查"></a>参数检查</h3><ul>
+<li>调用函数时如果参数的个数不对,会抛出异常</li>
+<li>如果参数类型不对,不会被检查出来</li>
+</ul>
+<p>检查参数:</p>
+<pre><code>def my_abs(x):
+if not isinstance (x,(int,float)):
+    raise TypeError(&apos;bad operand type&apos;)
+if x&gt;0:
+    return x
+else :
+    return -x
+print(my_abs(4))
+</code></pre><h3 id="返回多个值"><a href="#返回多个值" class="headerlink" title="返回多个值"></a>返回多个值</h3><pre><code>import math
+def move(x, y, step, angle=0):
+    nx = x + step * math.cos(angle)
+    ny = y - step * math.sin(angle)
+    return nx, ny
+x,y = move(100,100,60,math.pi/6)
+print(x,y)
+</code></pre><p>实质是返回了一个tuple</p>
+<h2 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h2><p>Python 可以使用默认参数,可变参数,关键字参数</p>
+<h3 id="位置参数"><a href="#位置参数" class="headerlink" title="位置参数"></a>位置参数</h3><pre><code>def power(x):
+    return x*x
+print(power(2))
+</code></pre><h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><ul>
+<li><p>必选参数在前面,默认参数在后面</p>
+</li>
+<li><p>函数有多个函数时,把变化大的放在前面,变化小的放在后面</p>
+</li>
+</ul>
+<pre><code>def power(x, n=2):
+    s = 1
+    while n &gt; 0:
+        n = n - 1
+        s = s * x
+    return s
+print(power(6))  # 36
+print(power(6,2))# 36
+print(power(2,3))# 8
+</code></pre><ul>
+<li><p>添加一个list 并在最后加上”END”,默认参数初始赋值为None</p>
+<pre><code>def add_end(L=None):
+    L.append(&apos;END&apos;)
+    return L
+
+print(add_end([1,2,3]))
+</code></pre></li>
+</ul>
+<h3 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h3><p>定义可变参数在参数前面加一个*</p>
+<pre><code>def calc(*number):
+    sum =0
+    for n in number:
+        sum = sum+n*n
+    return sum
+print(calc(1,2,3,4))
+print(calc(1,2))
+
+#传入一个集合,在集合前面加上一个*
+nums =[1,2,3]
+print(calc(*nums))
+</code></pre><h3 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h3><ul>
+<li>可变参数允许传入0个或者任意个参数,这些可变参数在函数中会自动组装为一个tuple</li>
+<li>关键字参数允许你传入0个或者任意个参数名的参数,这些关键字参数在函数内部自动组装为一个dict</li>
+</ul>
+<p>当有多个参数时使用dict 进行组合,作为参数</p>
+<pre><code>def person(name,age,**kw):
+    print(&apos;name&apos;,name,&apos;age&apos;,age,&apos;other&apos;,kw)
+
+extra ={&apos;city&apos;:&apos;beijing&apos;,&apos;job&apos;:&apos;enginner&apos;}
+person(&apos;ankin&apos;,24)
+person(&apos;ankin&apos;,24,city=extra[&apos;city&apos;],job=extra[&apos;job&apos;])
+</code></pre><h3 id="命名关键字参数"><a href="#命名关键字参数" class="headerlink" title="命名关键字参数"></a>命名关键字参数</h3><ul>
+<li>关键字参数,函数的调用者可以传入任意不受限制的关键字参数,至于传入哪些,需要再函数的内部通过<code>kw</code> 检查</li>
+<li><p>命名关键字必须传入参数名</p>
+<pre><code>def person(name, age, *, city, job):
+    print(name, age, city, job)
+person(&apos;Jack&apos;, 24, city=&apos;Beijing&apos;, job=&apos;Engineer&apos;)
+</code></pre></li>
+</ul>
+<h2 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h2><p>以调用其他函数。如果一个函数在内部调用自身本身，这个函数就是递归函数。</p>
+<pre><code>def fact(n):
+    if n==1:
+        return 1
+    return n * fact(n - 1)
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/01/10/自学Python-函数/" data-id="cizxghzq1000w1gvvofs6gpvv" class="article-share-link" data-share="baidu" data-title="自学Python- 函数">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/01/10/自学Python-函数/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-自学Python-Python基础二" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/10/自学Python-Python基础二/" class="article-date">
@@ -186,7 +329,7 @@ print(map[&apos;xiaoming&apos;])
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/10/自学Python-Python基础二/" data-id="cizt5ly8r000q60vv5sx13fey" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础二">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/10/自学Python-Python基础二/" data-id="cizxghzq0000v1gvvsxf0a9s4" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础二">分享到</a>
       
 
       
@@ -414,7 +557,7 @@ private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/10/代码示例/" data-id="cizt5ly89000g60vv0hj3sztn" class="article-share-link" data-share="baidu" data-title="代码示例">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/10/代码示例/" data-id="cizxghzph000h1gvvxl46jusx" class="article-share-link" data-share="baidu" data-title="代码示例">分享到</a>
       
 
       
@@ -441,7 +584,7 @@ private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg" rel="gallery_cizt5ly8f000i60vvn5n4s8pl">
+      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg" rel="gallery_cizxghzpt000o1gvvdvo1lgf9">
         <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg" itemprop="image">
       </a>
     
@@ -961,7 +1104,7 @@ hexo d // 更新到github
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/09/日常笔记/" data-id="cizt5ly8f000i60vvn5n4s8pl" class="article-share-link" data-share="baidu" data-title="日常笔记.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/09/日常笔记/" data-id="cizxghzpt000o1gvvdvo1lgf9" class="article-share-link" data-share="baidu" data-title="日常笔记.md">分享到</a>
       
 
       
@@ -1014,7 +1157,7 @@ hexo d // 更新到github
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/09/hello-world/" data-id="cizt5ly86000e60vvygiwowg0" class="article-share-link" data-share="baidu" data-title="Hello World">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/09/hello-world/" data-id="cizxghzp4000a1gvv7t34dacq" class="article-share-link" data-share="baidu" data-title="Hello World">分享到</a>
       
 
       
@@ -1045,7 +1188,7 @@ hexo d // 更新到github
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1054,7 +1197,7 @@ hexo d // 更新到github
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 17.5px;">设计模式</a> <a href="/tags/随想/" style="font-size: 12.5px;">随想</a>
+      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 17.5px;">设计模式</a> <a href="/tags/随想/" style="font-size: 12.5px;">随想</a>
     </div>
   </div>
 
@@ -1063,7 +1206,7 @@ hexo d // 更新到github
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
     </div>
   </div>
 
@@ -1073,6 +1216,10 @@ hexo d // 更新到github
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/03/06/Atom插件打造PHP开发平台/">Atom插件打造PHP开发平台</a>
+          </li>
         
           <li>
             <a href="/2017/03/02/不忘初心/">不忘初心</a>
@@ -1088,10 +1235,6 @@ hexo d // 更新到github
         
           <li>
             <a href="/2017/02/22/怎样选择基金/">怎样选择基金</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/22/Vim基本操作/">Vim基本操作</a>
           </li>
         
       </ul>
