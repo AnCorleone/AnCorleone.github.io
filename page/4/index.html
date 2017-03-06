@@ -74,6 +74,158 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-自学Python-高级特性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/11/自学Python-高级特性/" class="article-date">
+  <time datetime="2017-01-11T01:23:15.000Z" itemprop="datePublished">2017-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/11/自学Python-高级特性/">自学Python-高级特性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>使用场景： 取一个list或者tuple的部分元素</p>
+<pre><code>L = [&apos;Michael&apos;, &apos;Sarah&apos;, &apos;Tracy&apos;, &apos;Bob&apos;, &apos;Jack&apos;]
+r=L[0:3]
+print(r)
+</code></pre><p>[X:Y] X:代表开始的角标，Y:结束的角标，可以是负数，从后向前取</p>
+<p>tuple 与list 的区别是tuple是不可变的</p>
+<p>tupel也可以切片操作，只是结果仍然是tuple</p>
+<pre><code>T= (1,2,3,4,5)
+print(T)
+r= T[:3]
+print(r)
+print(T)
+
+结果：
+
+(1, 2, 3, 4, 5)
+(1, 2, 3)
+(1, 2, 3, 4, 5)
+</code></pre><p>字符串’xxxx’也可以看成是list,每个元素就是一个字符，字符串也可以切片操作，结果仍然是字符串</p>
+<pre><code>T= &apos;abcdefg&apos;
+print(T)
+r= T[:3]
+print(r)
+print(T)
+
+结果
+
+abcdefg
+abc
+abcdefg
+</code></pre><h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><p>通过<code>for in</code> 循环遍历list和tuple ,这种遍历称为迭代</p>
+<p>可以对字符串，tuple ,list ,dict进行迭代</p>
+<p><strong>迭代dict获取key:</strong></p>
+<pre><code>d={&apos;1&apos;:&apos;a&apos;,&apos;2&apos;:&apos;b&apos;,&apos;3&apos;:&apos;c&apos;}
+for x in d:
+    print(x)
+</code></pre><p><strong>迭代dict获取values</strong></p>
+<pre><code>d={&apos;1&apos;:&apos;a&apos;,&apos;2&apos;:&apos;b&apos;,&apos;3&apos;:&apos;c&apos;}
+for x in d.values():
+    print(x)
+</code></pre><p><strong>判断是否可以迭代</strong></p>
+<pre><code>from collections import Iterable
+r =isinstance(&apos;abc&apos;,Iterable)
+print(r)
+</code></pre><p><strong>迭代list 获取角标-元素对</strong></p>
+<pre><code>L = [&apos;A&apos;,&apos;B&apos;,&apos;C&apos;,&apos;D&apos;]
+for i,values in enumerate(L):
+    print(i,values)
+</code></pre><p><strong>python for 循环可以同时应用两个变量</strong></p>
+<pre><code>L = [(1,1),(2,4),(3,9)]
+for x,y in L:
+    print(x,y)
+结果
+(1, 1)
+(2, 4)
+(3, 9)
+</code></pre><h2 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h2><p>写列表生成式的时，把要生成的元素<code>x*x</code>放在前面，后面跟<code>for</code>循环，就可以创建list<br><strong>求偶数的平方和</strong></p>
+<pre><code>L = [x*x for x in range(1,11) if x%2==0]
+print (L)
+</code></pre><p><strong>双层循环，生成全排列</strong></p>
+<pre><code>L = [m+n for m in &apos;abc&apos; for n in &apos;xyz&apos;]
+print(L)
+[&apos;ax&apos;, &apos;ay&apos;, &apos;az&apos;, &apos;bx&apos;, &apos;by&apos;, &apos;bz&apos;, &apos;cx&apos;, &apos;cy&apos;, &apos;cz&apos;]
+</code></pre><p><strong>for循环同时可以使用两个或者更多的个变量</strong><br><code>dict</code>的<code>items()</code>可以同时迭代key和value</p>
+<pre><code>D = {1:&apos;A&apos;,2:&apos;B&apos;,3:&apos;C&apos;}
+for x, y in D.items() :
+    print(x,&apos;=&apos;,y)
+</code></pre><p><strong>把集合中的元素都变成小写</strong></p>
+<pre><code>L = [&apos;Hello&apos;, &apos;World&apos;, &apos;IBM&apos;, &apos;Apple&apos;]
+r= [s.lower() for s in L]
+print(r)
+</code></pre><h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><p>在Python中一边循环一边计算的机制，称为生成器：generator</p>
+<p>创建generator</p>
+<ul>
+<li><p>把列表生成器的<code>[]</code>改成<code>（）</code>，就可以创建genetator</p>
+<p>  g= (x for x in range(100))<br>  print(g)</p>
+</li>
+</ul>
+<p>获取生成器中的元素，使用迭代的方式</p>
+<pre><code>g= (x for x in range(100))
+for y in g:
+    print(y)
+</code></pre><p>斐波拉契数列</p>
+<pre><code>def fib(max):
+    a,b,n= 0,1,0;
+    while n &lt; max:
+        print(b)
+        a,b=b,a+b
+        n=n+1
+    return &apos;done&apos;
+fib(100）
+</code></pre><p>将打印斐波拉契数列改变成genetator 需要将<code>print</code>变成<code>yield</code></p>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p><strong>可以直接作用于for 循环的的数据类型</strong></p>
+<ol>
+<li>集合数据类型，如 <code>list,tuple,set,str</code></li>
+<li><code>generator</code>,包括生成器自带的<code>yield</code> 的generator funxtion</li>
+</ol>
+<p><strong>使用isinstance()判断对象是否是Iterable</strong></p>
+<pre><code>from collections import Iterable
+r =isinstance([],Iterable)
+print(r)
+</code></pre><blockquote>
+<p>生成器不但可以作用于<code>for</code>循环，还可以调用<code>next()</code>,获取下一个值<br>可以被<code>next()</code>调用，并不断返回下一个值的对象称为<strong>迭代器</strong></p>
+</blockquote>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><ul>
+<li>凡是可以用于<code>for</code>循环的对象都是<code>Iterable</code>类型；</li>
+<li>凡是可作用于<code>next()</code>函数的对象都是<code>Iterator</code>类型</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/01/11/自学Python-高级特性/" data-id="cizxx96r2001fswvv40aj3fto" class="article-share-link" data-share="baidu" data-title="自学Python-高级特性">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/01/11/自学Python-高级特性/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-自学Python-函数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/10/自学Python-函数/" class="article-date">
@@ -200,7 +352,7 @@ person(&apos;Jack&apos;, 24, city=&apos;Beijing&apos;, job=&apos;Engineer&apos;)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/10/自学Python-函数/" data-id="cizxh1kee000w3kvv4wo31g3u" class="article-share-link" data-share="baidu" data-title="自学Python- 函数">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/10/自学Python-函数/" data-id="cizxx96qi0010swvv0no78vyh" class="article-share-link" data-share="baidu" data-title="自学Python- 函数">分享到</a>
       
 
       
@@ -329,7 +481,7 @@ print(map[&apos;xiaoming&apos;])
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/10/自学Python-Python基础二/" data-id="cizxh1keb000s3kvv1m6uve2j" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础二">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/10/自学Python-Python基础二/" data-id="cizxx96qg000xswvvp9txoz3q" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础二">分享到</a>
       
 
       
@@ -557,7 +709,7 @@ private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/10/代码示例/" data-id="cizxh1kdz000h3kvvh769flli" class="article-share-link" data-share="baidu" data-title="代码示例">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/10/代码示例/" data-id="cizxx96pl000iswvvxrofltc7" class="article-share-link" data-share="baidu" data-title="代码示例">分享到</a>
       
 
       
@@ -584,7 +736,7 @@ private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg" rel="gallery_cizxh1kea000q3kvvd7g1so8m">
+      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg" rel="gallery_cizxx96qc000rswvvno222kj2">
         <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg" itemprop="image">
       </a>
     
@@ -1104,7 +1256,7 @@ hexo d // 更新到github
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/09/日常笔记/" data-id="cizxh1kea000q3kvvd7g1so8m" class="article-share-link" data-share="baidu" data-title="日常笔记.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/09/日常笔记/" data-id="cizxx96qc000rswvvno222kj2" class="article-share-link" data-share="baidu" data-title="日常笔记.md">分享到</a>
       
 
       
@@ -1157,7 +1309,7 @@ hexo d // 更新到github
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/09/hello-world/" data-id="cizxh1kdt000c3kvvzizymj0k" class="article-share-link" data-share="baidu" data-title="Hello World">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/09/hello-world/" data-id="cizxx96pf000cswvvjh2wftsu" class="article-share-link" data-share="baidu" data-title="Hello World">分享到</a>
       
 
       
@@ -1188,7 +1340,7 @@ hexo d // 更新到github
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1197,7 +1349,7 @@ hexo d // 更新到github
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 17.5px;">设计模式</a> <a href="/tags/随想/" style="font-size: 12.5px;">随想</a>
+      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 18px;">设计模式</a> <a href="/tags/随想/" style="font-size: 12px;">随想</a>
     </div>
   </div>
 
@@ -1206,7 +1358,7 @@ hexo d // 更新到github
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
     </div>
   </div>
 
@@ -1216,6 +1368,10 @@ hexo d // 更新到github
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/03/06/RxJava-简单使用/">RxJava-简单使用</a>
+          </li>
         
           <li>
             <a href="/2017/03/06/Atom插件打造PHP开发平台/">Atom插件打造PHP开发平台</a>
@@ -1231,10 +1387,6 @@ hexo d // 更新到github
         
           <li>
             <a href="/2017/02/28/设计模式-桥接模式/">桥接模式.md</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/22/怎样选择基金/">怎样选择基金</a>
           </li>
         
       </ul>

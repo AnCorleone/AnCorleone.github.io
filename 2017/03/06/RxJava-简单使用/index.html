@@ -4,36 +4,38 @@
 <head>
   <meta charset="utf-8">
   
-  <title>代码示例 | Write the code. Change the world.</title>
+  <title>RxJava-简单使用 | Write the code. Change the world.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="package com.dy.dyth.base;
-
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView;
-import android.view">
+  <meta name="description" content="异步:Rxjava 是一个实现异步操作的库
+优点:随着逻辑的越来越复杂,他依然能够保持简洁
+基于观察者模式
+Observer(观察者,订阅者)Rxjava 提供的观察者接口:
+(一). observerObserver  observer = new Observer() {
+            @Override
+            public void onCompleted() {">
 <meta property="og:type" content="article">
-<meta property="og:title" content="代码示例">
-<meta property="og:url" content="http://yoururl.com/2017/01/10/代码示例/index.html">
+<meta property="og:title" content="RxJava-简单使用">
+<meta property="og:url" content="http://yoururl.com/2017/03/06/RxJava-简单使用/index.html">
 <meta property="og:site_name" content="Write the code. Change the world.">
-<meta property="og:description" content="package com.dy.dyth.base;
-
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView;
-import android.view">
-<meta property="og:updated_time" content="2017-02-21T06:39:07.564Z">
+<meta property="og:description" content="异步:Rxjava 是一个实现异步操作的库
+优点:随着逻辑的越来越复杂,他依然能够保持简洁
+基于观察者模式
+Observer(观察者,订阅者)Rxjava 提供的观察者接口:
+(一). observerObserver  observer = new Observer() {
+            @Override
+            public void onCompleted() {">
+<meta property="og:image" content="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg">
+<meta property="og:updated_time" content="2017-03-06T09:56:02.999Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="代码示例">
-<meta name="twitter:description" content="package com.dy.dyth.base;
-
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView;
-import android.view">
+<meta name="twitter:title" content="RxJava-简单使用">
+<meta name="twitter:description" content="异步:Rxjava 是一个实现异步操作的库
+优点:随着逻辑的越来越复杂,他依然能够保持简洁
+基于观察者模式
+Observer(观察者,订阅者)Rxjava 提供的观察者接口:
+(一). observerObserver  observer = new Observer() {
+            @Override
+            public void onCompleted() {">
+<meta name="twitter:image" content="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Write the code. Change the world." type="application/atom+xml">
   
@@ -91,21 +93,31 @@ import android.view">
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-代码示例" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-RxJava-简单使用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/10/代码示例/" class="article-date">
-  <time datetime="2017-01-10T01:57:30.000Z" itemprop="datePublished">2017-01-10</time>
+    <a href="/2017/03/06/RxJava-简单使用/" class="article-date">
+  <time datetime="2017-03-06T09:00:27.000Z" itemprop="datePublished">2017-03-06</time>
 </a>
     
   </div>
   <div class="article-inner">
     
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cizxx96pd000aswvvno16c85m">
+        <img src="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      代码示例
+      RxJava-简单使用
     </h1>
   
 
@@ -113,222 +125,157 @@ import android.view">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code>package com.dy.dyth.base;
-
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.ViewGroup;
-
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * 创建者     demo
- * 创建时间   2016/7/26 16:48
- * &lt;p&gt;
- * 更新者     $Author$
- * 更新时间   $Date$
- */
-public abstract class BaseAdapter&lt;T&gt; extends RecyclerView.Adapter {
-
-private static final String TAG = &quot;BaseAdapter&quot;;
-public List&lt;T&gt; mDatas = new ArrayList&lt;&gt;();
-public int layoutResId;
-public int layoutResIdtwo;   //两种布局
-public RecyclerView mRecyclerView;
-
-public BaseAdapter() {
-
-}
-
-public BaseAdapter(List&lt;T&gt; data, int layoutResId) {
-    this.mDatas = data;
-    this.layoutResId = layoutResId;
-}
-
-/**
- * 两种布局
- *
- * @param data
- * @param layoutResId
- * @param layoutResIdtwo
- */
-public BaseAdapter(List&lt;T&gt; data, int layoutResId, int layoutResIdtwo) {
-    this.mDatas = data;
-    this.layoutResId = layoutResId;
-    this.layoutResIdtwo = layoutResIdtwo;
-}
-
-//设置回调监听
-public interface OnFocusChange {
-    void onFocusChangeListener(View v, boolean hasFocus, int position);
-}
-
-OnFocusChange mOnFocusChange;
-
-public void setOnFocusChange(OnFocusChange listener) {
-    this.mOnFocusChange = listener;
-}
-
-
-//按键监听
-public interface OnKey {
-    void onKeyListener(View v, int keyCode, KeyEvent event, Object o, int position);
-}
-
-OnKey mOnKey;
-
-public void setOnKeyListener(OnKey listener) {
-    this.mOnKey = listener;
-}
-
-// 长按
-
-
-public interface OnLongClick {
-    void onLongClickListener(View v, int position, Object bean);
-}
-
-OnLongClick mOnLongClick;
-
-public void setOnLongClickListener(OnLongClick listener) {
-    this.mOnLongClick = listener;
-}
-
-//按下监听
-
-
-public interface OnClick {
-    void onClickListener(View v, int position, Object bean);
-}
-
-OnClick mOnClick;
-
-public void setOnClickListener(OnClick listener) {
-    this.mOnClick = listener;
-}
-
-
-@Override
-public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    return initCreateViewHolder(parent, viewType);
-}
-
-protected abstract RecyclerView.ViewHolder initCreateViewHolder(ViewGroup parent, int viewType);
-
-@Override
-public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-    final int itemPosition = holder.getLayoutPosition();
-    initBindViewHolder(holder, itemPosition);
-    final Object bean = mDatas.get(position);
-    //按下监听
-    if (mOnClick != null) {
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        <p>异步:Rxjava 是一个实现异步操作的库</p>
+<p>优点:随着逻辑的越来越复杂,他依然能够保持简洁</p>
+<p>基于观察者模式</p>
+<h3 id="Observer-观察者-订阅者"><a href="#Observer-观察者-订阅者" class="headerlink" title="Observer(观察者,订阅者)"></a>Observer(观察者,订阅者)</h3><p>Rxjava 提供的观察者接口:</p>
+<h3 id="一-observer"><a href="#一-observer" class="headerlink" title="(一). observer"></a>(一). observer</h3><pre><code>Observer  observer = new Observer() {
             @Override
-            public void onClick(View v) {
-                mOnClick.onClickListener(v, itemPosition, bean);
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(Object o) {
+
+            }
+        };
+</code></pre><h3 id="二-subscriber"><a href="#二-subscriber" class="headerlink" title="(二). subscriber"></a>(二). subscriber</h3><pre><code>Subscriber  subscriber = new Subscriber() {
+         @Override
+         public void onCompleted() {
+
+         }
+
+         @Override
+         public void onError(Throwable e) {
+
+         }
+
+         @Override
+         public void onNext(Object o) {
+
+         }
+     };
+</code></pre><h3 id="三-还支持不完整回调"><a href="#三-还支持不完整回调" class="headerlink" title="(三). 还支持不完整回调"></a>(三). 还支持不完整回调</h3><pre><code>Action1&lt;String&gt; onNext = new Action1&lt;String&gt;() {
+      @Override
+      public void call(String s) {
+
+      }
+  };
+
+Action1&lt;Throwable&gt; onError = new Action1&lt;Throwable&gt;() {
+      @Override
+      public void call(Throwable throwable) {
+
+      }
+  };
+
+Action0 onComplete = new Action0() {
+      @Override
+      public void call() {
+
+      }
+  };
+
+
+  Observable observable = Observable.just(&quot;test&quot;);
+
+  /**
+   * 重载的方法
+   * 接收参数:
+   * subscribe(final Action1&lt;? super T&gt; onNext,
+   * final Action1&lt;Throwable&gt; onError,
+   * final Action0 onComplete)
+   */
+
+  observable.subscribe(onNext);
+  observable.subscribe(onNext, onError);
+  observable.subscribe(onNext, onError, onComplete);
+</code></pre><hr>
+<h3 id="Observable-被观察者"><a href="#Observable-被观察者" class="headerlink" title="Observable (被观察者)"></a>Observable (被观察者)</h3><h3 id="创建方式"><a href="#创建方式" class="headerlink" title="创建方式"></a>创建方式</h3><ul>
+<li><p>常规创建</p>
+<pre><code>Observable.create(new Observable.OnSubscribe&lt;String&gt;() {
+           @Override
+           public void call(Subscriber&lt;? super String&gt; subscriber) {
+
+           }
+       });
+</code></pre></li>
+<li><p>快速创建时间队,如:</p>
+<pre><code>String [] items ={&quot;hello&quot;,&quot;RxJava&quot;};
+Observable.from(items);
+Observable.just(&quot;接受&quot;,&quot;多个&quot;,&quot;参数&quot;);
+</code></pre></li>
+</ul>
+<h3 id="subscribe-订阅"><a href="#subscribe-订阅" class="headerlink" title="subscribe()  (订阅)"></a>subscribe()  (订阅)</h3><pre><code>observable.subscribe(observer);
+// 或者：
+observable.subscribe(subscriber);
+</code></pre><h3 id="Schedduler-线程控制"><a href="#Schedduler-线程控制" class="headerlink" title="Schedduler (线程控制)"></a>Schedduler (线程控制)</h3><blockquote>
+<p>Schedduler 相当于线程控制器 ,指定每段代码运行在哪一个线程</p>
+</blockquote>
+<p><strong>内置的线程 </strong></p>
+<ul>
+<li>Schedulers.immediate(): 直接在当前线程运行，相当于不指定线程。这是默认的 Scheduler。</li>
+<li>Schedulers.newThread(): 总是启用新线程，并在新线程执行操作。</li>
+<li>Schedulers.io(): I/O 操作（读写文件、读写数据库、网络信息交互等）所使用的 Scheduler。行为模式和 newThread() 差不多，区别在于 io() 的内部实现是是用一个无数量上限的线程池，可以重用空闲的线程，因此多数情况下 io() 比 newThread() 更有效率。不要把计算工作放在 io() 中，可以避免创建不必要的线程。</li>
+<li>Schedulers.computation(): 计算所使用的 Scheduler。这个计算指的是 CPU 密集型计算，即不会被 I/O 等操作限制性能的操作，例如图形的计算。这个 Scheduler 使用的固定的线程池，大小为 CPU 核数。不要把 I/O 操作放在 computation() 中，否则 I/O 操作的等待时间会浪费 CPU。</li>
+<li>另外， Android 还有一个专用的 AndroidSchedulers.mainThread()，它指定的操作将在 Android 主线程运行。</li>
+</ul>
+<h3 id="使用实例"><a href="#使用实例" class="headerlink" title="使用实例"></a>使用实例</h3><blockquote>
+<p>以在io线程获取图片,并在ui线程显示图片</p>
+</blockquote>
+<pre><code>Observable.create(new Observable.OnSubscribe&lt;Drawable&gt;() {
+    @Override
+    public void call(Subscriber&lt;? super Drawable&gt; subscriber) {
+        Drawable drawable = getResources().getDrawable(R.mipmap.pic
+        subscriber.onNext(drawable);
+        subscriber.onCompleted();
+    }
+}).subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Observer&lt;Drawable&gt;() {
+            @Override
+            public void onCompleted() {
+            }
+            @Override
+            public void onError(Throwable e) {
+                img.setImageResource(R.mipmap.ic_launcher);
+            }
+            @Override
+            public void onNext(Drawable drawable) {
+                img.setImageDrawable(drawable);
             }
         });
-    }
-
-    // 焦点监听
-    if (mOnFocusChange != null) {
-        holder.itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                mOnFocusChange.onFocusChangeListener(v, hasFocus, itemPosition);
-            }
-        });
-    }
-    //长按监听
-    if (mOnLongClick != null) {
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                mOnLongClick.onLongClickListener(v, itemPosition, bean);
-                return true;
-            }
-        });
-    }
-
-    //按键监听
-    if (mOnKey != null) {
-        holder.itemView.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                mOnKey.onKeyListener(v, keyCode, event, bean, position);
-                return false;
-            }
-        });
-    }
-}
-
-protected abstract void initBindViewHolder(RecyclerView.ViewHolder holder, int position);
-
-@Override
-public int getItemCount() {
-    if (mDatas != null) {
-        return mDatas.size();
-    }
-    return 0;
-}
-
-
-
-/**
- * 解决当显示两张相同资源图片的时候，发生抖动，提高图片质量为Bitmap.Config.ARGB_8888
- *
- * @param drawable 当前资源
- * @return bitmap对象
- */
-
-private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
-{
-    int width = drawable.getIntrinsicWidth();// 取drawable的长宽
-    int height = drawable.getIntrinsicHeight();
-    Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);// 建立对应bitmap
-    Canvas canvas = new Canvas(bitmap);// 建立对应bitmap的画布
-    drawable.setBounds(0, 0, width, height);
-    drawable.draw(canvas);// 把drawable内容画到画布中
-    return bitmap;
-}
-</code></pre><p>}</p>
-
+</code></pre>
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/10/代码示例/" data-id="cizxx96pl000iswvvxrofltc7" class="article-share-link" data-share="baidu" data-title="代码示例">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/06/RxJava-简单使用/" data-id="cizxx96pd000aswvvno16c85m" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/01/10/代码示例/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://yoururl.com/2017/03/06/RxJava-简单使用/#ds-thread" class="article-comment-link">评论</a>
       
 
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2017/01/10/自学Python-Python基础二/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          自学Python-Python基础二
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/01/09/日常笔记/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/03/06/Atom插件打造PHP开发平台/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">日常笔记.md</div>
+      <div class="article-nav-title">Atom插件打造PHP开发平台</div>
     </a>
   
 </nav>
@@ -338,7 +285,7 @@ private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2017/01/10/代码示例/" data-title="代码示例" data-url="http://yoururl.com/2017/01/10/代码示例/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017/03/06/RxJava-简单使用/" data-title="RxJava-简单使用" data-url="http://yoururl.com/2017/03/06/RxJava-简单使用/"></div>
   </section>
 </section>
       
