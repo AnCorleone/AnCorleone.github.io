@@ -86,7 +86,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cizxx96pd000aswvvno16c85m">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cizzdk5n600035ovvwlcgvf1e">
         <img src="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -232,12 +232,66 @@ observable.subscribe(subscriber);
                 img.setImageDrawable(drawable);
             }
         });
-</code></pre>
+</code></pre><h3 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h3><blockquote>
+<p>所谓变换就是将事件序列中的对象也可以是整个事件序列,进行加工处理,转换成不同的事件或者事件序列</p>
+</blockquote>
+<h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><ul>
+<li><p>使用实例，使用map对数据类型进行转换</p>
+<p>  Observable.just(R.mipmap.pic062)</p>
+<pre><code>/**
+ * 参数1:转换前数据类型
+ * 参数２：转换后的数据类型
+ */
+.map(new Func1&lt;Integer, Drawable&gt;() {
+    @Override
+    public Drawable call(Integer integer) {
+        return getResources().getDrawable(integer);
+    }
+})
+/**
+ * 接收转换后的数据类型
+ */
+.subscribe(new Action1&lt;Drawable&gt;() {
+    @Override
+    public void call(Drawable drawable) {
+        img.setImageDrawable(drawable);
+    }
+</code></pre></li>
+</ul>
+<hr>
+<h3 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap"></a>flatMap</h3><p>使用flatMap打印Student中的每个学生的选课的list元素</p>
+<pre><code>Observable.from(students)
+        .flatMap(new Func1&lt;Student, Observable&lt;Course&gt;&gt;() {
+            @Override
+            public Observable&lt;Course&gt; call(Student student) {
+                return Observable.from(student.getCourses());
+            }
+        })
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Action1&lt;Course&gt;() {
+            @Override
+            public void call(Course course) {
+                System.out.println(&quot; call : &quot; +course.toString());
+                tv.setText(course.toString());
+            }
+        });
+</code></pre><h3 id="打印结果"><a href="#打印结果" class="headerlink" title="打印结果"></a>打印结果</h3><pre><code>03-07 09:54:00.034 31125-31125/com.anakin.design_pattern_test I/System.out:  call : Course{c_name=&apos;语文&apos;, id=111}
+03-07 09:54:00.035 31125-31125/com.anakin.design_pattern_test I/System.out:  call : Course{c_name=&apos;数学&apos;, id=222}
+</code></pre><h3 id="其他操作符"><a href="#其他操作符" class="headerlink" title="其他操作符"></a>其他操作符</h3><ul>
+<li><code>filter</code> :集合进行过滤</li>
+<li><code>each</code> :遍历集合</li>
+<li><code>take</code> : take 取出集合中的前几个元素</li>
+<li><code>skip</code> : 跳过前几个元素</li>
+<li><code>unique</code> : 相当于数学中的集合去重</li>
+<li><a href="https://www.zhihu.com/question/32209660" target="_blank" rel="external">其他</a></li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/03/06/RxJava-简单使用/" data-id="cizxx96pd000aswvvno16c85m" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/06/RxJava-简单使用/" data-id="cizzdk5n600035ovvwlcgvf1e" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
       
 
       
@@ -266,7 +320,7 @@ observable.subscribe(subscriber);
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" rel="gallery_cizxx96oh0002swvvz8bhvcun">
+      <a class="article-gallery-img fancybox" href="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" rel="gallery_cizzdk5nb00055ovv82fwn3ni">
         <img src="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" itemprop="image">
       </a>
     
@@ -309,7 +363,7 @@ observable.subscribe(subscriber);
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/03/06/Atom插件打造PHP开发平台/" data-id="cizxx96oh0002swvvz8bhvcun" class="article-share-link" data-share="baidu" data-title="Atom插件打造PHP开发平台">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/06/Atom插件打造PHP开发平台/" data-id="cizzdk5nb00055ovv82fwn3ni" class="article-share-link" data-share="baidu" data-title="Atom插件打造PHP开发平台">分享到</a>
       
 
       
@@ -338,7 +392,7 @@ observable.subscribe(subscriber);
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" rel="gallery_cizxx96pj000gswvvmh21abx1">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" rel="gallery_cizzdk5nr000b5ovv4zkgh18j">
         <img src="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -368,7 +422,7 @@ observable.subscribe(subscriber);
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/03/02/不忘初心/" data-id="cizxx96pj000gswvvmh21abx1" class="article-share-link" data-share="baidu" data-title="不忘初心">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/02/不忘初心/" data-id="cizzdk5nr000b5ovv4zkgh18j" class="article-share-link" data-share="baidu" data-title="不忘初心">分享到</a>
       
 
       
@@ -397,7 +451,7 @@ observable.subscribe(subscriber);
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cizxx96pz000lswvvd7kttcqr">
+      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cizzdk5o0000g5ovv2a7l7o73">
         <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" itemprop="image">
       </a>
     
@@ -427,7 +481,7 @@ observable.subscribe(subscriber);
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/03/01/三月/" data-id="cizxx96pz000lswvvd7kttcqr" class="article-share-link" data-share="baidu" data-title="三月">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/01/三月/" data-id="cizzdk5o0000g5ovv2a7l7o73" class="article-share-link" data-share="baidu" data-title="三月">分享到</a>
       
 
       
@@ -538,7 +592,7 @@ observable.subscribe(subscriber);
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/28/设计模式-桥接模式/" data-id="cizxx96rn001qswvvsuto2fan" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/28/设计模式-桥接模式/" data-id="cizzdk5pb001h5ovvbglu38vc" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
       
 
       
@@ -600,7 +654,7 @@ observable.subscribe(subscriber);
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/22/怎样选择基金/" data-id="cizxx96q5000nswvv0j4s3g3q" class="article-share-link" data-share="baidu" data-title="怎样选择基金">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/22/怎样选择基金/" data-id="cizzdk5o7000l5ovv389ylsvh" class="article-share-link" data-share="baidu" data-title="怎样选择基金">分享到</a>
       
 
       
@@ -692,7 +746,7 @@ observable.subscribe(subscriber);
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/22/Vim基本操作/" data-id="cizxx96ph000eswvvi8ij8ide" class="article-share-link" data-share="baidu" data-title="Vim基本操作">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/22/Vim基本操作/" data-id="cizzdk5n800045ovvykczqms7" class="article-share-link" data-share="baidu" data-title="Vim基本操作">分享到</a>
       
 
       
@@ -852,7 +906,7 @@ import java.io.File;
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/22/文件操作的工具类/" data-id="cizxx96q9000pswvvl9ocjdna" class="article-share-link" data-share="baidu" data-title="文件操作的工具类">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/22/文件操作的工具类/" data-id="cizzdk5o3000i5ovvrcpwqvmb" class="article-share-link" data-share="baidu" data-title="文件操作的工具类">分享到</a>
       
 
       
@@ -861,57 +915,6 @@ import java.io.File;
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-设计模式-简单工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/设计模式-简单工厂模式/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-简单工厂模式/">简单工厂模式.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##　简单工厂模式</p>
-<ol>
-<li>定义抽象的工厂类</li>
-<li>工厂类包定义公共的方法实现，和不同实现的抽象方法</li>
-<li>定义根据参数创建实例对象，返回抽象类的静态方法</li>
-<li>使用静态方法传入要获取对象的tag,获取对象的实例，调用实例的方法</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoururl.com/2017/02/17/设计模式-简单工厂模式/" data-id="cizxx96rp001tswvvxh8401ov" class="article-share-link" data-share="baidu" data-title="简单工厂模式.md">分享到</a>
-      
-
-      
-        <a href="http://yoururl.com/2017/02/17/设计模式-简单工厂模式/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
 
     </footer>
   </div>
@@ -963,7 +966,7 @@ import java.io.File;
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/Java设计模式/" data-id="cizxx96or0004swvvaef9urzs" class="article-share-link" data-share="baidu" data-title="Java设计模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/Java设计模式/" data-id="cizzdk5nf00085ovvb52rzd4k" class="article-share-link" data-share="baidu" data-title="Java设计模式.md">分享到</a>
       
 
       
@@ -971,6 +974,70 @@ import java.io.File;
       
 
       
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MySQL进阶-操作详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/MySQL进阶-操作详解/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/MySQL进阶-操作详解/">MySQL基本操作.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="MySQL基本操作"><a href="#MySQL基本操作" class="headerlink" title="MySQL基本操作"></a>MySQL基本操作</h3><ol>
+<li><p>打开数据库 sudo service mysql start;</p>
+</li>
+<li><p>连接数据库 mysql -u root -p</p>
+</li>
+<li><p>查看数据库 show dabases</p>
+</li>
+<li><p>使用数据库 use 数据库名字</p>
+</li>
+<li><p>创建数据库 create database 数据库名 eg : create database test</p>
+</li>
+<li><p>创建表 create table 表名（列名 数据类型 约束）<br>eg : create table pet(name VARCHAR(20),owner VARCHAR(20),species VARCHAR(20),sex CHAR(1),birth DATE , death DATE);</p>
+</li>
+<li><p>查看创建的表 DESCRIBE pet;</p>
+</li>
+<li><p>插入数据 insert into test VALUES(‘tom’,’panda’,’hamster’,’f’,’2017-02-06’，NULL);</p>
+</li>
+<li><p>从表中检索数据 select * from pet;</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/02/17/MySQL进阶-操作详解/" data-id="cizzdk5ni00095ovv9pxj6sbu" class="article-share-link" data-share="baidu" data-title="MySQL基本操作.md">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/02/17/MySQL进阶-操作详解/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+
     </footer>
   </div>
   
