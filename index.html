@@ -74,6 +74,161 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-RxJave和Retrofits的实现网络请求" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/08/RxJave和Retrofits的实现网络请求/" class="article-date">
+  <time datetime="2017-03-08T06:14:32.000Z" itemprop="datePublished">2017-03-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg" rel="gallery_cj00otd37000cxovv31i9os8i">
+        <img src="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/08/RxJave和Retrofits的实现网络请求/">RxJave和Retrofits的实现网络请求</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Retrifit的使用"><a href="#Retrifit的使用" class="headerlink" title="Retrifit的使用"></a>Retrifit的使用</h3><blockquote>
+<p>以获取豆瓣电影top250为例，使用Retrifit进行网络请求</p>
+<p>网址 ： <a href="https://api.douban.com/v2/movie/top250?start=0&amp;count=10" target="_blank" rel="external">https://api.douban.com/v2/movie/top250?start=0&amp;count=10</a></p>
+</blockquote>
+<ul>
+<li><p>添加依赖</p>
+<pre><code>compile &apos;com.squareup.retrofit2:retrofit:2.0.0-beta4&apos;
+compile &apos;com.squareup.retrofit2:converter-gson:2.0.0-beta4&apos;
+compile &apos;com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4&apos;
+compile &apos;com.google.code.gson:gson:2.6.2&apos;
+compile &apos;com.jakewharton:butterknife:7.0.1&apos;
+</code></pre></li>
+<li><p>网络权限</p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+</code></pre></li>
+<li><p>网络请求的接口</p>
+<pre><code>public interface MovieService {
+    @GET(&quot;top250&quot;)
+    Call&lt;MovieEntity&gt; getTopMovie(@Query(&quot;start&quot;) int start,@Query(&quot;count&quot;) int count);
+}
+</code></pre></li>
+<li><p>数据entity</p>
+</li>
+</ul>
+<p>创建数据对应的entity <code>MovieEntity.class</code>,部分代码</p>
+<pre><code>public class MovieEntity {
+    public int total;
+    public List&lt;SubjectsEntity&gt; subjects;
+    public int count;
+    public int start;
+    public String title;
+
+    ....
+}
+</code></pre><ul>
+<li><p>retrofit请求网络</p>
+<pre><code>String baseUrl = &quot;https://api.douban.com/v2/movie/&quot;;
+Retrofit retrofit = new Retrofit.Builder()
+        .baseUrl(baseUrl)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build();
+MovieService movieService = retrofit.create(MovieService.class);
+Call&lt;MovieEntity&gt; topMovie = movieService.getTopMovie(1, 10);
+topMovie.enqueue(new Callback&lt;MovieEntity&gt;() {
+    @Override
+    public void onResponse(Call&lt;MovieEntity&gt; call, Response&lt;MovieEntity&gt; response) {
+            System.out.println(&quot;onResponse : &quot;+response.body().toString());
+    }
+    @Override
+    public void onFailure(Call&lt;MovieEntity&gt; call, Throwable t) {
+            System.out.println(&quot;onFailure : &quot;+t.toString());
+    }
+});
+</code></pre></li>
+<li><p>运行结果</p>
+<pre><code>MovieEntity{total=250, subjects=[SubjectsEntity{images=ImagesEntity{small=&apos;https://img3.doubanio.com/view/movie_poster_cover/ipst/public/p511118051.jpg&apos;, large=&apos;https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p511118051.jpg&apos;, medium=&apos;https://img3.doubanio.com/view/movie_poster_cover/spst/public/p511118051.jpg&apos;}, casts=[CastsEntity{alt=&apos;https://movie.douban.com/celebrity/1025182/&apos;, name=&apos;让·雷诺&apos;, id=&apos;1025182&apos;, avatars=AvatarsEntity{small=&apos;https://img3.doubanio.com/img/celebrity/small/8833.jpg&apos;, large=&apos;https://img3.doubanio.com/img/celebrity/large/8833.jpg&apos;, medium=&apos;https://img3.doubanio
+</code></pre></li>
+</ul>
+<hr>
+<h3 id="RxJava和Retrofit实现网络请求"><a href="#RxJava和Retrofit实现网络请求" class="headerlink" title="RxJava和Retrofit实现网络请求"></a>RxJava和Retrofit实现网络请求</h3><ul>
+<li><p>RxJava的使用可以参考上一篇文章<a href="http://anranz.com/2017/03/06/RxJava-%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" target="_blank" rel="external">RxJava-简单使用</a></p>
+</li>
+<li><p>首先还是添加依赖</p>
+<pre><code>compile &apos;io.reactivex:rxjava:1.1.0&apos;
+compile &apos;io.reactivex:rxandroid:1.1.0&apos;
+</code></pre></li>
+<li><p>修改<code>gerMovieServer()</code>代码<br>将<code>call</code>改为<code>observer</code></p>
+<pre><code>@GET(&quot;top250&quot;)
+Observable&lt;MovieEntity&gt; getTopMovie(@Query(&quot;start&quot;) int start, @Query(&quot;count&quot;) int count);
+</code></pre></li>
+<li><p>修改网络请求的代码</p>
+<pre><code>String baseUrl = &quot;https://api.douban.com/v2/movie/&quot;;
+Retrofit retrofit = new Retrofit.Builder()
+        .baseUrl(baseUrl)
+        .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+        .build();
+MovieService service = retrofit.create(MovieService.class);
+service.getTopMovie(1,1)
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Subscriber&lt;MovieEntity&gt;() {
+            @Override
+            public void onCompleted() {
+                System.out.println(&quot; onCompleted&quot;);
+            }
+            @Override
+            public void onError(Throwable e) {
+                info.setText(e.toString());
+            }
+            @Override
+            public void onNext(MovieEntity movieEntity) {
+                info.setText(movieEntity.toString());
+            }
+        });
+</code></pre></li>
+</ul>
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="http://oje0bp1nb.bkt.clouddn.com/device-2017-03-08-160823.png" alt="运行结果"></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考:"></a>参考:</h3><ul>
+<li><a href="http://gank.io/post/56e80c2c677659311bed9841" target="_blank" rel="external">参考地址</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/03/08/RxJave和Retrofits的实现网络请求/" data-id="cj00otd37000cxovv31i9os8i" class="article-share-link" data-share="baidu" data-title="RxJave和Retrofits的实现网络请求">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/03/08/RxJave和Retrofits的实现网络请求/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-RxJava-简单使用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/06/RxJava-简单使用/" class="article-date">
@@ -86,7 +241,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cj00cutrn0009skvvsh6banrp">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cj00otd34000axovv82zhh7xz">
         <img src="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -366,7 +521,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/03/06/RxJava-简单使用/" data-id="cj00cutrn0009skvvsh6banrp" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/06/RxJava-简单使用/" data-id="cj00otd34000axovv82zhh7xz" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
       
 
       
@@ -395,7 +550,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" rel="gallery_cj00cutqh0000skvvvs4d1lxm">
+      <a class="article-gallery-img fancybox" href="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" rel="gallery_cj00otd280002xovvdx2f16qy">
         <img src="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" itemprop="image">
       </a>
     
@@ -438,7 +593,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/03/06/Atom插件打造PHP开发平台/" data-id="cj00cutqh0000skvvvs4d1lxm" class="article-share-link" data-share="baidu" data-title="Atom插件打造PHP开发平台">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/06/Atom插件打造PHP开发平台/" data-id="cj00otd280002xovvdx2f16qy" class="article-share-link" data-share="baidu" data-title="Atom插件打造PHP开发平台">分享到</a>
       
 
       
@@ -467,7 +622,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" rel="gallery_cj00cuts4000iskvvyusq9bs2">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" rel="gallery_cj00otd3k000mxovv1936mg0d">
         <img src="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -497,7 +652,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/03/02/不忘初心/" data-id="cj00cuts4000iskvvyusq9bs2" class="article-share-link" data-share="baidu" data-title="不忘初心">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/02/不忘初心/" data-id="cj00otd3k000mxovv1936mg0d" class="article-share-link" data-share="baidu" data-title="不忘初心">分享到</a>
       
 
       
@@ -526,7 +681,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cj00cuts0000gskvvizv235gu">
+      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cj00otd3h000jxovvhciz7dnb">
         <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" itemprop="image">
       </a>
     
@@ -556,7 +711,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/03/01/三月/" data-id="cj00cuts0000gskvvizv235gu" class="article-share-link" data-share="baidu" data-title="三月">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/01/三月/" data-id="cj00otd3h000jxovvhciz7dnb" class="article-share-link" data-share="baidu" data-title="三月">分享到</a>
       
 
       
@@ -667,7 +822,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/28/设计模式-桥接模式/" data-id="cj00cuttu001oskvv6dv33qhx" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/28/设计模式-桥接模式/" data-id="cj00otd610022xovv76g8bt2e" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
       
 
       
@@ -729,7 +884,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/22/怎样选择基金/" data-id="cj00cutsd000mskvv9mc8uwor" class="article-share-link" data-share="baidu" data-title="怎样选择基金">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/22/怎样选择基金/" data-id="cj00otd3u000qxovvog1xuqmx" class="article-share-link" data-share="baidu" data-title="怎样选择基金">分享到</a>
       
 
       
@@ -821,7 +976,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/22/Vim基本操作/" data-id="cj00cutrr000bskvvvk9auxav" class="article-share-link" data-share="baidu" data-title="Vim基本操作">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/22/Vim基本操作/" data-id="cj00otd39000exovvhl4kdymg" class="article-share-link" data-share="baidu" data-title="Vim基本操作">分享到</a>
       
 
       
@@ -981,7 +1136,7 @@ import java.io.File;
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/22/文件操作的工具类/" data-id="cj00cutsf000oskvvxe76uvfk" class="article-share-link" data-share="baidu" data-title="文件操作的工具类">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/22/文件操作的工具类/" data-id="cj00otd3w000sxovva7mclbsk" class="article-share-link" data-share="baidu" data-title="文件操作的工具类">分享到</a>
       
 
       
@@ -998,9 +1153,9 @@ import java.io.File;
 
 
   
-    <article id="post-设计模式-Builder模式" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-设计模式-简单工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/17/设计模式-Builder模式/" class="article-date">
+    <a href="/2017/02/17/设计模式-简单工厂模式/" class="article-date">
   <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
@@ -1012,7 +1167,7 @@ import java.io.File;
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-Builder模式/">Builder模式.md</a>
+      <a class="article-title" href="/2017/02/17/设计模式-简单工厂模式/">简单工厂模式.md</a>
     </h1>
   
 
@@ -1020,232 +1175,28 @@ import java.io.File;
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Builder模式"><a href="#Builder模式" class="headerlink" title="Builder模式"></a>Builder模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>将复杂的创建与他的表示分离,使同样的创建过程可以创建不同的表示</p>
-<h3 id="设计的步骤"><a href="#设计的步骤" class="headerlink" title="设计的步骤:"></a>设计的步骤:</h3><pre><code>Builder builder = new AppleBuilder();
-        Director director = new Director(builder);
-        director.construct(4,2,&quot;linux&quot;);
-        Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
-</code></pre><hr>
+        <p>##　简单工厂模式</p>
 <ol>
-<li><p>以组装电脑为例,创建电脑的抽象类,包含os ram,core定义,提供设置的抽象方法</p>
-</li>
-<li><p>创建要组装的具体电脑类AppleComputer,继承Computer类,实现所用方法</p>
-</li>
-<li><p>创建抽象的Builder类,提供builder的设置方法,另外提供返回Computer的create的抽象方法</p>
-</li>
-<li><p>创建具体的AppleBuilder类实现抽象方法,创建AppleComputer 实例对象,并设置数据,返回AppleComputer的实例</p>
-</li>
-<li><p>创建具体的Director类,构造方法中接受builder对象,提供接受数据的construct 方法,将参数传递给builder对象</p>
-</li>
-<li><p>传递的参数最终被AppleBuilder接收,并返回一个具体的AppleComputer对象</p>
-</li>
+<li>定义抽象的工厂类</li>
+<li>工厂类包定义公共的方法实现，和不同实现的抽象方法</li>
+<li>定义根据参数创建实例对象，返回抽象类的静态方法</li>
+<li>使用静态方法传入要获取对象的tag,获取对象的实例，调用实例的方法</li>
 </ol>
-<h3 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h3><pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public abstract class Computer {
-    protected int mCore = 1;
-    protected int mRam = 10;
-    protected String mOs = &quot;dos&quot;;
-
-    protected Computer() {
-
-    }
-
-    public abstract void setCore(int core);
-
-    public abstract void setRem(int rem);
-
-    public abstract void setOs(String os);
-
-    @Override
-    public String toString() {
-        return &quot;Computer{&quot; +
-                &quot;mCore=&quot; + mCore +
-                &quot;, mRam=&quot; + mRam +
-                &quot;, mOs=&apos;&quot; + mOs + &apos;\&apos;&apos; +
-                &apos;}&apos;;
-    }
-}
-</code></pre><hr>
-<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public class AppleComputer extends Computer {
-
-
-    protected AppleComputer() {
-
-    }
-
-    @Override
-    public void setCore(int core) {
-        this.mCore = core;
-    }
-
-    @Override
-    public void setRem(int ram) {
-        this.mRam = ram;
-    }
-
-    @Override
-    public void setOs(String os) {
-        this.mOs = os;
-    }
-}
-</code></pre><hr>
-<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
-
-/**
-* Created by demo on 2017/2/8 0008
-*/
-public class AppleBuilder extends Builder {
-
-private  Computer mApplePc =new AppleComputer();
-@Override
-public void buildCore(int core) {
-    mApplePc.setCore(core);
-}
-
-@Override
-public void buildRam(int ram) {
-    mApplePc.setRem(ram);
-}
-
-@Override
-public void buildOs(String os) {
-    mApplePc.setOs(os);
-}
-
-@Override
-public Computer create() {
-
-    return mApplePc;
-}
-
-
-}
-</code></pre><hr>
-<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public abstract class Builder {
-
-
-    public abstract void buildCore(int core);
-
-    public abstract void buildRam(int ram);
-
-    public abstract void buildOs(String os);
-
-    public abstract Computer create();
-}
-</code></pre><hr>
-<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public class Director {
-    Builder mBuilder=null;
-
-    public Director(Builder builder) {
-        mBuilder = builder;
-    }
-
-    public void construct(int core,int ram, String os){
-        mBuilder.buildCore(core);
-        mBuilder.buildRam(ram);
-        mBuilder.buildOs(os);
-    }
-}
-</code></pre><hr>
-<p> 测试代码</p>
-<pre><code>// 测试运行效果
-      Builder builder = new AppleBuilder();
-      Director director = new Director(builder);
-      director.construct(4,2,&quot;linux&quot;);
-      Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
-</code></pre><hr>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/设计模式-Builder模式/" data-id="cj00cuttf001gskvvq7tzob1n" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-简单工厂模式/" data-id="cj00otd660027xovv62h6kdua" class="article-share-link" data-share="baidu" data-title="简单工厂模式.md">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/02/17/设计模式-Builder模式/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://yoururl.com/2017/02/17/设计模式-简单工厂模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java设计模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/Java设计模式/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/Java设计模式/">Java设计模式.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><h3 id="1-单一职责原则"><a href="#1-单一职责原则" class="headerlink" title="1.单一职责原则 :"></a>1.单一职责原则 :</h3><blockquote>
-<p>一个类只负责一个功能领域中的相应职责</p>
-</blockquote>
-<h3 id="2-开闭原则"><a href="#2-开闭原则" class="headerlink" title="2. 开闭原则 :"></a>2. 开闭原则 :</h3><blockquote>
-<p>一个软件实体应当对扩展开放，对修改关闭</p>
-</blockquote>
-<h3 id="3-里氏代换原则"><a href="#3-里氏代换原则" class="headerlink" title="3. 里氏代换原则 :"></a>3. 里氏代换原则 :</h3><blockquote>
-<p>　所有应用基类（父类）的地方，必须能透明的使用其子类对象</p>
-</blockquote>
-<ol>
-<li>使用原则 : 在程序设计时,尽量使用基类类型对对象进行定义,而在运行时再确定子类类型,用子类对象替换父类对象</li>
-</ol>
-<h3 id="4-依赖倒转原则"><a href="#4-依赖倒转原则" class="headerlink" title="4. 依赖倒转原则"></a>4. 依赖倒转原则</h3><blockquote>
-<p>抽象不应该依赖于细节,细节应当依赖于抽象.换言之就是,要面向接口编程,而不是针对实现编程.</p>
-<p>程序代码中传递参数或关联关系时,尽量应用层次高的抽象层类,既使用抽象类,接口进行变量类型声明,参数声明,返回值类型声明,以及数据类型的转换等,而不要用具体的类来做这些事.</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoururl.com/2017/02/17/Java设计模式/" data-id="cj00cutr10004skvvparjefoh" class="article-share-link" data-share="baidu" data-title="Java设计模式.md">分享到</a>
-      
-
-      
-        <a href="http://yoururl.com/2017/02/17/Java设计模式/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
     </footer>
   </div>
   
@@ -1269,7 +1220,7 @@ public class Director {
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1287,7 +1238,7 @@ public class Director {
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
     </div>
   </div>
 
@@ -1297,6 +1248,10 @@ public class Director {
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/03/08/RxJave和Retrofits的实现网络请求/">RxJave和Retrofits的实现网络请求</a>
+          </li>
         
           <li>
             <a href="/2017/03/06/RxJava-简单使用/">RxJava-简单使用</a>
@@ -1312,10 +1267,6 @@ public class Director {
         
           <li>
             <a href="/2017/03/01/三月/">三月</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/28/设计模式-桥接模式/">桥接模式.md</a>
           </li>
         
       </ul>
