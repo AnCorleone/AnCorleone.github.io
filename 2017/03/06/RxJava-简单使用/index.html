@@ -25,7 +25,7 @@ Observer(观察者,订阅者)Rxjava 提供的观察者接口:
             @Override
             public void onCompleted() {">
 <meta property="og:image" content="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg">
-<meta property="og:updated_time" content="2017-03-07T10:09:00.061Z">
+<meta property="og:updated_time" content="2017-03-08T02:29:47.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxJava-简单使用">
 <meta name="twitter:description" content="异步:Rxjava 是一个实现异步操作的库
@@ -105,7 +105,7 @@ Observer(观察者,订阅者)Rxjava 提供的观察者接口:
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cizzdk5n600035ovvwlcgvf1e">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cj00clayo0003k8vvxv5gf2dx">
         <img src="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -297,6 +297,52 @@ observable.subscribe(subscriber);
         });
 </code></pre><h3 id="打印结果"><a href="#打印结果" class="headerlink" title="打印结果"></a>打印结果</h3><pre><code>03-07 09:54:00.034 31125-31125/com.anakin.design_pattern_test I/System.out:  call : Course{c_name=&apos;语文&apos;, id=111}
 03-07 09:54:00.035 31125-31125/com.anakin.design_pattern_test I/System.out:  call : Course{c_name=&apos;数学&apos;, id=222}
+</code></pre><h3 id="scan-函数叠加器"><a href="#scan-函数叠加器" class="headerlink" title="scan 函数叠加器"></a>scan 函数叠加器</h3><blockquote>
+<p>操作符对Observable发射的第一项数据应用一个函数，然后将函数的结果作为自己的第一项数据发射</p>
+</blockquote>
+<h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3><pre><code>private void useScan() {
+    Observable.just(1,2,3,4)
+            .scan(new Func2&lt;Integer, Integer, Integer&gt;() {
+                @Override
+                public Integer call(Integer integer, Integer integer2) {
+                    return integer+integer2;
+                }
+            })
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Action1&lt;Integer&gt;() {
+                @Override
+                public void call(Integer integer) {
+                    System.out.println(&quot; this is the result :&quot;+integer);
+                }
+            });
+}
+</code></pre><h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><pre><code>03-08 01:43:27.493 3674-3674/com.anakin.design_pattern_test I/System.out:  this is the result :1
+03-08 01:43:27.494 3674-3674/com.anakin.design_pattern_test I/System.out:  this is the result :3
+03-08 01:43:27.494 3674-3674/com.anakin.design_pattern_test I/System.out:  this is the result :6
+03-08 01:43:27.494 3674-3674/com.anakin.design_pattern_test I/System.out:  this is the result :10
+</code></pre><h3 id="filter-过滤"><a href="#filter-过滤" class="headerlink" title="filter 过滤"></a>filter 过滤</h3><blockquote>
+<p>符合条件的数据会被发射到subscriber</p>
+</blockquote>
+<pre><code>private void useFilter() {
+    Observable.just(1,2,3,4,5,6)
+            .filter(new Func1&lt;Integer, Boolean&gt;() {
+                @Override
+                public Boolean call(Integer integer) {
+                    return integer&gt;2&amp;&amp;integer&lt;5;
+                }
+            })
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Action1&lt;Integer&gt;() {
+                @Override
+                public void call(Integer integer) {
+                    System.out.println(&quot; filter result :&quot;+integer);
+                }
+            });
+}
+</code></pre><h3 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h3><pre><code>03-08 02:00:20.529 18136-18136/com.anakin.design_pattern_test I/System.out:  filter result :3
+03-08 02:00:20.529 18136-18136/com.anakin.design_pattern_test I/System.out:  filter result :4
 </code></pre><h3 id="其他操作符"><a href="#其他操作符" class="headerlink" title="其他操作符"></a>其他操作符</h3><ul>
 <li><code>filter</code> :集合进行过滤</li>
 <li><code>each</code> :遍历集合</li>
@@ -305,12 +351,33 @@ observable.subscribe(subscriber);
 <li><code>unique</code> : 相当于数学中的集合去重</li>
 <li><a href="https://www.zhihu.com/question/32209660" target="_blank" rel="external">其他</a></li>
 </ul>
+<h3 id="添加到订阅和取消订阅"><a href="#添加到订阅和取消订阅" class="headerlink" title="添加到订阅和取消订阅"></a>添加到订阅和取消订阅</h3><ul>
+<li>添加到订阅的方法</li>
+</ul>
+<p>传入Observable 对象</p>
+<pre><code>private void addSubscription(Subscription subscribe) {
+        if (mSubscription==null){
+            mSubscription=new CompositeSubscription();
+        }
+        mSubscription.add(subscribe);
+}
+</code></pre><ul>
+<li><p>取消订阅</p>
+<pre><code>@Override
+protected void onDestroy() {
+    super.onDestroy();
+    if(mSubscription!=null){
+        mSubscription.unsubscribe();
+    }
+}
+</code></pre></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/03/06/RxJava-简单使用/" data-id="cizzdk5n600035ovvwlcgvf1e" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/06/RxJava-简单使用/" data-id="cj00clayo0003k8vvxv5gf2dx" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
       
 
       

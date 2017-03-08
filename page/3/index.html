@@ -74,9 +74,9 @@
     <div class="outer">
       <section id="main">
   
-    <article id="post-MySQL使用" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-读取XML中的配置参数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/20/MySQL使用/" class="article-date">
+    <a href="/2017/01/20/读取XML中的配置参数/" class="article-date">
   <time datetime="2017-01-20T02:22:04.000Z" itemprop="datePublished">2017-01-20</time>
 </a>
     
@@ -88,7 +88,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/20/MySQL使用/">MySQL使用.md</a>
+      <a class="article-title" href="/2017/01/20/读取XML中的配置参数/">Android-读取XML中的配置参数工具类XMLUtil</a>
     </h1>
   
 
@@ -96,80 +96,52 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##ubuntu下使用MySQL##</p>
-<p>###安装MySQL###</p>
-<ul>
-<li>安装核心服务 sudo apt-get install mysql-server</li>
-<li>安装客户端   sudo apt-get install mysql-client</li>
-</ul>
-<p>###创蚩菘獾幕静僮?##</p>
-<ol>
-<li>打开MySQL :sudo service mysql start</li>
-<li>使用root:mysql -u root -p</li>
-<li>查看数据库 :show databases;</li>
-<li>连接数据库:use&lt;数据库名&gt;</li>
-<li>查看表:show tables;</li>
-<li>退出:quit 或者exit</li>
-</ol>
-<p>###创建数据库和表###</p>
-<ol>
-<li>创建数据库: CREATE DATABASES &lt;数据库名?</li>
-<li>创建表 : CAEATE TABLE &lt;表名&gt;(?…);</li>
-</ol>
-<p>###查询表###</p>
-<ol>
-<li>查询全部select * from 表名</li>
-<li>条件查询: select 要查询的列名 from where 限制条件</li>
-</ol>
-<p>###条件查询###</p>
-<ol>
-<li>where后面限制条件可以有数学符号= ,&lt;,&gt;,&gt;=,&lt;=</li>
-<li>and or : select * from employee where age<25 or="">30;</25></li>
-<li>in 和not in:表示在或者不在某个范围内的结果,select name,age,in_dpt FROM employee WHERE in_dpt IN(‘dpt3,dpt4’);</li>
-<li>LIKE 通配符 ‘<em>‘ 匹配任意字符一个’</em>‘匹配一个字符,’%’匹配不定个字符eg: select name,age FROM employee WHERE phone LIKE ‘11%’<br>###对结果排序###<blockquote>
-<p>为了对结果排序,使用ORDER BY排序关键词,默认是升序,使用ASC的DESC可以指定升序或者降序,比如按salary降序排列</p>
-</blockquote>
-</li>
-<li>降序排列:SELECT name,age,salary,phone FROM employee ORDER BY salary DESC;</li>
-</ol>
-<p>###SQL内置函数和计算###</p>
-<ol>
-<li>COUNT SUM AVG MAX MIN 分别为计数 求和 求平均 最大值 最小值</li>
-<li>使用AS关键字给值重命名<br>eg :</li>
-<li>select max(salary),min(salary) from employee;</li>
-<li>select count(sum) as salary_count from emplary;</li>
-</ol>
-<p>###子查询###</p>
-<ol>
-<li>处理多个表才能获取信息,如获取name =’Tom’所在的in_dpt,做了几个project<br>eg: select count(proj_name) from project where of_dpt in(select in_dpt from employee where name =’Tom’)</li>
-</ol>
-<p>###插入语句###</p>
-<ol>
-<li>insert into 表名(键名) values(值)</li>
-<li>insert into 表名 values(值)</li>
-</ol>
-<p>##约束##<br><strong>常见的约束</strong></p>
-<ol>
-<li>主键 PRIMARY KEY</li>
-<li>默认值 DEFAULT</li>
-<li>唯一UNIQUE</li>
-<li>外键FOREIGN KEY</li>
-<li>非空 NOT NULL<br>###建立含约束的表###</li>
-</ol>
+        <h2 id="一个读取xml文件中配置文件的工具类XMLUtil"><a href="#一个读取xml文件中配置文件的工具类XMLUtil" class="headerlink" title="一个读取xml文件中配置文件的工具类XMLUtil"></a>一个读取xml文件中配置文件的工具类XMLUtil</h2><h3 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h3><pre><code>import javax.xml.parsers.*;  
+import org.w3c.dom.*;  
+import org.xml.sax.SAXException;  
+import java.io.*;  
 
+public class XMLUtil {  
+    //该方法用于从XML配置文件中提取配置文件
+    public static String getChartType() {  
+        try {  
+            //创建文档对象  
+            DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();  
+            DocumentBuilder builder = dFactory.newDocumentBuilder();  
+            Document doc;                             
+            doc = builder.parse(new File(&quot;config.xml&quot;));   
+
+            //获取包含配置文件的文本节点  
+            NodeList nl = doc.getElementsByTagName(&quot;chartType&quot;);  
+            Node classNode = nl.item(0).getFirstChild();  
+            String chartType = classNode.getNodeValue().trim();  
+            return chartType;  
+        }     
+        catch(Exception e) {  
+            e.printStackTrace();  
+            return null;  
+        }  
+    }  
+}
+</code></pre><hr>
+<h3 id="XML-文件代码"><a href="#XML-文件代码" class="headerlink" title="XML 文件代码"></a>XML 文件代码</h3><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;  
+&lt;config&gt;  
+    &lt;chartType&gt;histogram&lt;/chartType&gt;  
+&lt;/config&gt;
+</code></pre>
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/20/MySQL使用/" data-id="cizzdk5nw000d5ovvkyxrmfki" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/20/读取XML中的配置参数/" data-id="cj00clb37002rk8vv9508aymc" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/01/20/MySQL使用/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://yoururl.com/2017/01/20/读取XML中的配置参数/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
 
     </footer>
   </div>
@@ -288,7 +260,7 @@ print (c)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/14/自学Python-常用内建模块/" data-id="cizzdk5ov00155ovv8gzsa9vs" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/14/自学Python-常用内建模块/" data-id="cj00clb0l0015k8vv2nc5gm5e" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
       
 
       
@@ -376,7 +348,7 @@ print (s)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/14/自学Python-正则表达式/" data-id="cizzdk5or00115ovv0qc0qsuk" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/14/自学Python-正则表达式/" data-id="cj00clb0j0013k8vvhyxkdp4i" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
       
 
       
@@ -554,7 +526,7 @@ t2.join()
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/13/自学Python-线程和进程/" data-id="cizzdk5p400195ovv08lohrc7" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/13/自学Python-线程和进程/" data-id="cj00clb0s0017k8vv5isibo26" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
       
 
       
@@ -766,7 +738,7 @@ print(r)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/13/自学Python-IO编程/" data-id="cizzdk5oq000z5ovv94vpd15z" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/13/自学Python-IO编程/" data-id="cj00clazw000pk8vvpxayduhe" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
       
 
       
@@ -1019,7 +991,7 @@ s()
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/12/自学Python-面向对象高级编程/" data-id="cizzdk5p6001c5ovv9hi595gi" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象高级编程">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/12/自学Python-面向对象高级编程/" data-id="cj00clb0z001bk8vv5cdyksy4" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象高级编程">分享到</a>
       
 
       
@@ -1218,7 +1190,7 @@ print(s5)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/11/自学Python-面向对象编程/" data-id="cizzdk5p9001e5ovv2w9iko7c" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象编程">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/11/自学Python-面向对象编程/" data-id="cj00clb0v0019k8vvhcbrojtp" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象编程">分享到</a>
       
 
       
@@ -1301,7 +1273,7 @@ print(s5)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/11/自学Python-Python基础/" data-id="cizzdk5oj000s5ovvpqm3vdz1" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/11/自学Python-Python基础/" data-id="cj00clb04000uk8vvf82anerd" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础.md">分享到</a>
       
 
       
@@ -1407,7 +1379,7 @@ im.save(&apos;thmb.jpg&apos;,&apos;JPEG&apos;)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/11/自学Python-模块/" data-id="cizzdk5oy00175ovvu6v8b01w" class="article-share-link" data-share="baidu" data-title="自学Python-模块">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/11/自学Python-模块/" data-id="cj00clb0f0012k8vvhagko4hb" class="article-share-link" data-share="baidu" data-title="自学Python-模块">分享到</a>
       
 
       
@@ -1560,7 +1532,7 @@ print(s)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/11/自学Python-函数式编程/" data-id="cizzdk5ot00135ovvtlh5kwtm" class="article-share-link" data-share="baidu" data-title="自学Python-函数式编程.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/11/自学Python-函数式编程/" data-id="cj00clb0b000zk8vvnx6suxos" class="article-share-link" data-share="baidu" data-title="自学Python-函数式编程.md">分享到</a>
       
 
       
