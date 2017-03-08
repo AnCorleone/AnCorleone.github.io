@@ -6,35 +6,47 @@
   
   <title>RxJava-简单使用 | Write the code. Change the world.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="异步:Rxjava 是一个实现异步操作的库
+  <meta name="description" content="初识
+异步:Rxjava 是一个实现异步操作的库
+
 优点:随着逻辑的越来越复杂,他依然能够保持简洁
+
 基于观察者模式
-Observer(观察者,订阅者)Rxjava 提供的观察者接口:
-(一). observerObserver  observer = new Observer() {
+
+
+Observer(观察者,订阅者)Rxjava 提供的观察者接口:(一). observerObserver  observer = new Observer() {
             @Override
-            public void onCompleted() {">
+            public void onComplet">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RxJava-简单使用">
 <meta property="og:url" content="http://yoururl.com/2017/03/06/RxJava-简单使用/index.html">
 <meta property="og:site_name" content="Write the code. Change the world.">
-<meta property="og:description" content="异步:Rxjava 是一个实现异步操作的库
+<meta property="og:description" content="初识
+异步:Rxjava 是一个实现异步操作的库
+
 优点:随着逻辑的越来越复杂,他依然能够保持简洁
+
 基于观察者模式
-Observer(观察者,订阅者)Rxjava 提供的观察者接口:
-(一). observerObserver  observer = new Observer() {
+
+
+Observer(观察者,订阅者)Rxjava 提供的观察者接口:(一). observerObserver  observer = new Observer() {
             @Override
-            public void onCompleted() {">
+            public void onComplet">
 <meta property="og:image" content="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg">
-<meta property="og:updated_time" content="2017-03-08T02:29:47.896Z">
+<meta property="og:updated_time" content="2017-03-08T02:37:59.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxJava-简单使用">
-<meta name="twitter:description" content="异步:Rxjava 是一个实现异步操作的库
+<meta name="twitter:description" content="初识
+异步:Rxjava 是一个实现异步操作的库
+
 优点:随着逻辑的越来越复杂,他依然能够保持简洁
+
 基于观察者模式
-Observer(观察者,订阅者)Rxjava 提供的观察者接口:
-(一). observerObserver  observer = new Observer() {
+
+
+Observer(观察者,订阅者)Rxjava 提供的观察者接口:(一). observerObserver  observer = new Observer() {
             @Override
-            public void onCompleted() {">
+            public void onComplet">
 <meta name="twitter:image" content="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Write the code. Change the world." type="application/atom+xml">
@@ -105,7 +117,7 @@ Observer(观察者,订阅者)Rxjava 提供的观察者接口:
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cj00clayo0003k8vvxv5gf2dx">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cj00cutrn0009skvvsh6banrp">
         <img src="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -125,11 +137,15 @@ Observer(观察者,订阅者)Rxjava 提供的观察者接口:
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>异步:Rxjava 是一个实现异步操作的库</p>
-<p>优点:随着逻辑的越来越复杂,他依然能够保持简洁</p>
-<p>基于观察者模式</p>
-<h3 id="Observer-观察者-订阅者"><a href="#Observer-观察者-订阅者" class="headerlink" title="Observer(观察者,订阅者)"></a>Observer(观察者,订阅者)</h3><p>Rxjava 提供的观察者接口:</p>
-<h3 id="一-observer"><a href="#一-observer" class="headerlink" title="(一). observer"></a>(一). observer</h3><pre><code>Observer  observer = new Observer() {
+        <h3 id="初识"><a href="#初识" class="headerlink" title="初识"></a>初识</h3><ul>
+<li><p>异步:Rxjava 是一个实现异步操作的库</p>
+</li>
+<li><p>优点:随着逻辑的越来越复杂,他依然能够保持简洁</p>
+</li>
+<li><p>基于观察者模式</p>
+</li>
+</ul>
+<h2 id="Observer-观察者-订阅者"><a href="#Observer-观察者-订阅者" class="headerlink" title="Observer(观察者,订阅者)"></a>Observer(观察者,订阅者)</h2><h3 id="Rxjava-提供的观察者接口"><a href="#Rxjava-提供的观察者接口" class="headerlink" title="Rxjava 提供的观察者接口:"></a>Rxjava 提供的观察者接口:</h3><h3 id="一-observer"><a href="#一-observer" class="headerlink" title="(一). observer"></a>(一). observer</h3><pre><code>Observer  observer = new Observer() {
             @Override
             public void onCompleted() {
 
@@ -197,7 +213,7 @@ Action0 onComplete = new Action0() {
   observable.subscribe(onNext, onError);
   observable.subscribe(onNext, onError, onComplete);
 </code></pre><hr>
-<h3 id="Observable-被观察者"><a href="#Observable-被观察者" class="headerlink" title="Observable (被观察者)"></a>Observable (被观察者)</h3><h3 id="创建方式"><a href="#创建方式" class="headerlink" title="创建方式"></a>创建方式</h3><ul>
+<h2 id="Observable-被观察者"><a href="#Observable-被观察者" class="headerlink" title="Observable (被观察者)"></a>Observable (被观察者)</h2><h3 id="创建方式"><a href="#创建方式" class="headerlink" title="创建方式"></a>创建方式</h3><ul>
 <li><p>常规创建</p>
 <pre><code>Observable.create(new Observable.OnSubscribe&lt;String&gt;() {
            @Override
@@ -372,12 +388,16 @@ protected void onDestroy() {
 }
 </code></pre></li>
 </ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="http://gank.io/post/560e15be2dca930e00da1083" target="_blank" rel="external">给 Android 开发者的 RxJava 详解</a></li>
+<li><a href="http://wuxiaolong.me/2016/01/18/rxjava/" target="_blank" rel="external">吴小龙同学RxJava</a></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/03/06/RxJava-简单使用/" data-id="cj00clayo0003k8vvxv5gf2dx" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/06/RxJava-简单使用/" data-id="cj00cutrn0009skvvsh6banrp" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
       
 
       

@@ -86,7 +86,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cj00clayo0003k8vvxv5gf2dx">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cj00cutrn0009skvvsh6banrp">
         <img src="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -106,11 +106,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>异步:Rxjava 是一个实现异步操作的库</p>
-<p>优点:随着逻辑的越来越复杂,他依然能够保持简洁</p>
-<p>基于观察者模式</p>
-<h3 id="Observer-观察者-订阅者"><a href="#Observer-观察者-订阅者" class="headerlink" title="Observer(观察者,订阅者)"></a>Observer(观察者,订阅者)</h3><p>Rxjava 提供的观察者接口:</p>
-<h3 id="一-observer"><a href="#一-observer" class="headerlink" title="(一). observer"></a>(一). observer</h3><pre><code>Observer  observer = new Observer() {
+        <h3 id="初识"><a href="#初识" class="headerlink" title="初识"></a>初识</h3><ul>
+<li><p>异步:Rxjava 是一个实现异步操作的库</p>
+</li>
+<li><p>优点:随着逻辑的越来越复杂,他依然能够保持简洁</p>
+</li>
+<li><p>基于观察者模式</p>
+</li>
+</ul>
+<h2 id="Observer-观察者-订阅者"><a href="#Observer-观察者-订阅者" class="headerlink" title="Observer(观察者,订阅者)"></a>Observer(观察者,订阅者)</h2><h3 id="Rxjava-提供的观察者接口"><a href="#Rxjava-提供的观察者接口" class="headerlink" title="Rxjava 提供的观察者接口:"></a>Rxjava 提供的观察者接口:</h3><h3 id="一-observer"><a href="#一-observer" class="headerlink" title="(一). observer"></a>(一). observer</h3><pre><code>Observer  observer = new Observer() {
             @Override
             public void onCompleted() {
 
@@ -178,7 +182,7 @@ Action0 onComplete = new Action0() {
   observable.subscribe(onNext, onError);
   observable.subscribe(onNext, onError, onComplete);
 </code></pre><hr>
-<h3 id="Observable-被观察者"><a href="#Observable-被观察者" class="headerlink" title="Observable (被观察者)"></a>Observable (被观察者)</h3><h3 id="创建方式"><a href="#创建方式" class="headerlink" title="创建方式"></a>创建方式</h3><ul>
+<h2 id="Observable-被观察者"><a href="#Observable-被观察者" class="headerlink" title="Observable (被观察者)"></a>Observable (被观察者)</h2><h3 id="创建方式"><a href="#创建方式" class="headerlink" title="创建方式"></a>创建方式</h3><ul>
 <li><p>常规创建</p>
 <pre><code>Observable.create(new Observable.OnSubscribe&lt;String&gt;() {
            @Override
@@ -353,12 +357,16 @@ protected void onDestroy() {
 }
 </code></pre></li>
 </ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="http://gank.io/post/560e15be2dca930e00da1083" target="_blank" rel="external">给 Android 开发者的 RxJava 详解</a></li>
+<li><a href="http://wuxiaolong.me/2016/01/18/rxjava/" target="_blank" rel="external">吴小龙同学RxJava</a></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/03/06/RxJava-简单使用/" data-id="cj00clayo0003k8vvxv5gf2dx" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/06/RxJava-简单使用/" data-id="cj00cutrn0009skvvsh6banrp" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
       
 
       
@@ -387,7 +395,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" rel="gallery_cj00clayg0001k8vvreblie3k">
+      <a class="article-gallery-img fancybox" href="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" rel="gallery_cj00cutqh0000skvvvs4d1lxm">
         <img src="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" itemprop="image">
       </a>
     
@@ -430,7 +438,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/03/06/Atom插件打造PHP开发平台/" data-id="cj00clayg0001k8vvreblie3k" class="article-share-link" data-share="baidu" data-title="Atom插件打造PHP开发平台">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/06/Atom插件打造PHP开发平台/" data-id="cj00cutqh0000skvvvs4d1lxm" class="article-share-link" data-share="baidu" data-title="Atom插件打造PHP开发平台">分享到</a>
       
 
       
@@ -459,7 +467,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" rel="gallery_cj00claz40009k8vvu5a7gx34">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" rel="gallery_cj00cuts4000iskvvyusq9bs2">
         <img src="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -489,7 +497,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/03/02/不忘初心/" data-id="cj00claz40009k8vvu5a7gx34" class="article-share-link" data-share="baidu" data-title="不忘初心">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/02/不忘初心/" data-id="cj00cuts4000iskvvyusq9bs2" class="article-share-link" data-share="baidu" data-title="不忘初心">分享到</a>
       
 
       
@@ -518,7 +526,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cj00clazi000ek8vv7h1ub091">
+      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cj00cuts0000gskvvizv235gu">
         <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" itemprop="image">
       </a>
     
@@ -548,7 +556,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/03/01/三月/" data-id="cj00clazi000ek8vv7h1ub091" class="article-share-link" data-share="baidu" data-title="三月">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/01/三月/" data-id="cj00cuts0000gskvvizv235gu" class="article-share-link" data-share="baidu" data-title="三月">分享到</a>
       
 
       
@@ -659,7 +667,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/28/设计模式-桥接模式/" data-id="cj00clb1b001ik8vvwcuxnhxn" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/28/设计模式-桥接模式/" data-id="cj00cuttu001oskvv6dv33qhx" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
       
 
       
@@ -721,7 +729,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/22/怎样选择基金/" data-id="cj00clazn000jk8vva5eokl1z" class="article-share-link" data-share="baidu" data-title="怎样选择基金">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/22/怎样选择基金/" data-id="cj00cutsd000mskvv9mc8uwor" class="article-share-link" data-share="baidu" data-title="怎样选择基金">分享到</a>
       
 
       
@@ -813,7 +821,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/22/Vim基本操作/" data-id="cj00clazg000ck8vv73xhqsx4" class="article-share-link" data-share="baidu" data-title="Vim基本操作">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/22/Vim基本操作/" data-id="cj00cutrr000bskvvvk9auxav" class="article-share-link" data-share="baidu" data-title="Vim基本操作">分享到</a>
       
 
       
@@ -973,7 +981,7 @@ import java.io.File;
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/22/文件操作的工具类/" data-id="cj00clazs000nk8vvy8da3gng" class="article-share-link" data-share="baidu" data-title="文件操作的工具类">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/22/文件操作的工具类/" data-id="cj00cutsf000oskvvxe76uvfk" class="article-share-link" data-share="baidu" data-title="文件操作的工具类">分享到</a>
       
 
       
@@ -990,9 +998,9 @@ import java.io.File;
 
 
   
-    <article id="post-设计模式-观察者模式" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-设计模式-Builder模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/17/设计模式-观察者模式/" class="article-date">
+    <a href="/2017/02/17/设计模式-Builder模式/" class="article-date">
   <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
@@ -1004,7 +1012,7 @@ import java.io.File;
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-观察者模式/">观察者模式.md</a>
+      <a class="article-title" href="/2017/02/17/设计模式-Builder模式/">Builder模式.md</a>
     </h1>
   
 
@@ -1012,47 +1020,169 @@ import java.io.File;
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><h3 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h3><ol>
-<li>观察者模式基本组成是，观察者Observer和被观察者（观察目标）Subject,当目标发生改变的时候，观察者会随之改变</li>
-<li>一个被观察者可以被多个观察者观察</li>
-<li>被观察者一般提供一个集合保存观察者，提供对观察者的管理，删除和增加观察者，提供一个抽象的notify方法，由具体的被观察者实现，实现方式为，遍历观察者的集合，调用观察者的update()方法，通知每一个观察者</li>
-<li>观察者申明为一个接口，一般提供update()方法，由不同的观察者去实现，具体的观察者在接收到观察者的notify()后做出相应的更新</li>
-</ol>
-<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><ol>
-<li>观察者提供update()方法，在update()方法中变量观察者的集合，调用观察者的update()方法</li>
-<li>一般定义被观察者为抽象类提供管理观察者的方法，和抽象的notify()方法</li>
-<li>一般将观察者声明为接口，提供update()方法，由具体的观察者去实现，根据需要对被观察者的改变做出不同的实现</li>
-</ol>
-<hr>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p><strong> 背景：</strong></p>
-<p>以游戏为例，多人组队玩一个游戏，当有一个人遭受攻击时向控制中心发消息，控制中心收到消息通知每个队友，队友收到消息过来支援</p>
-<ul>
-<li>每个队员都作为观察者，被观察者为控制中心</li>
-<li>当有队员Player受到攻击时，调用控制中心的notifyObsever() 方法，在notifyObsever()方法中遍历观察者也就是所有队员，会调用所有队友的help() 方法</li>
-</ul>
-<h3 id="代码过程"><a href="#代码过程" class="headerlink" title="代码过程"></a>代码过程</h3><ol>
-<li><p>观察者的接口 ：观察者的接口Observer 申明了help（），beAttached()方法</p>
+        <h2 id="Builder模式"><a href="#Builder模式" class="headerlink" title="Builder模式"></a>Builder模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>将复杂的创建与他的表示分离,使同样的创建过程可以创建不同的表示</p>
+<h3 id="设计的步骤"><a href="#设计的步骤" class="headerlink" title="设计的步骤:"></a>设计的步骤:</h3><pre><code>Builder builder = new AppleBuilder();
+        Director director = new Director(builder);
+        director.construct(4,2,&quot;linux&quot;);
+        Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
+</code></pre><hr>
+<ol>
+<li><p>以组装电脑为例,创建电脑的抽象类,包含os ram,core定义,提供设置的抽象方法</p>
 </li>
-<li><p>具体的观察者 ：具体的观察者Player类，实现接口中的方法</p>
+<li><p>创建要组装的具体电脑类AppleComputer,继承Computer类,实现所用方法</p>
 </li>
-<li><p>被观察者抽象类 ：被观察者抽象类AllyControlCenter,包括对观察的管理的集合和join()和quit()方法，和通知每个观察者的抽象方法notifyObsever()方法，</p>
+<li><p>创建抽象的Builder类,提供builder的设置方法,另外提供返回Computer的create的抽象方法</p>
 </li>
-<li><p>被观察者 ：被观察者的实现类ConcreteAllyControlCenter ，是先notifyObsever()方法，遍历观察者集合，调用每个人观察者对象的help()方法</p>
+<li><p>创建具体的AppleBuilder类实现抽象方法,创建AppleComputer 实例对象,并设置数据,返回AppleComputer的实例</p>
 </li>
-<li><p>客户端 ：创建观察者对象Observer player = new Player()，创建被观察者实例AllyControlCenter ally = new ConcreteAllyControlCenter();，将观察者加入到集合中， all.join(Player),player调用beAttached(),所有观察者收到消息调用help()方法，（当被观察者触发beAttached() 方法时候，在beAttached()中调用notifyObsever() 方法通知每个观察者调用help()方法）</p>
+<li><p>创建具体的Director类,构造方法中接受builder对象,提供接受数据的construct 方法,将参数传递给builder对象</p>
+</li>
+<li><p>传递的参数最终被AppleBuilder接收,并返回一个具体的AppleComputer对象</p>
 </li>
 </ol>
-<h3 id="代码调用流程"><a href="#代码调用流程" class="headerlink" title="代码调用流程"></a>代码调用流程</h3><p> player.beAttached()—–&gt; AllyControlCenter.notifyObsever()—-&gt; player.help()</p>
+<h3 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h3><pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public abstract class Computer {
+    protected int mCore = 1;
+    protected int mRam = 10;
+    protected String mOs = &quot;dos&quot;;
+
+    protected Computer() {
+
+    }
+
+    public abstract void setCore(int core);
+
+    public abstract void setRem(int rem);
+
+    public abstract void setOs(String os);
+
+    @Override
+    public String toString() {
+        return &quot;Computer{&quot; +
+                &quot;mCore=&quot; + mCore +
+                &quot;, mRam=&quot; + mRam +
+                &quot;, mOs=&apos;&quot; + mOs + &apos;\&apos;&apos; +
+                &apos;}&apos;;
+    }
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class AppleComputer extends Computer {
+
+
+    protected AppleComputer() {
+
+    }
+
+    @Override
+    public void setCore(int core) {
+        this.mCore = core;
+    }
+
+    @Override
+    public void setRem(int ram) {
+        this.mRam = ram;
+    }
+
+    @Override
+    public void setOs(String os) {
+        this.mOs = os;
+    }
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+* Created by demo on 2017/2/8 0008
+*/
+public class AppleBuilder extends Builder {
+
+private  Computer mApplePc =new AppleComputer();
+@Override
+public void buildCore(int core) {
+    mApplePc.setCore(core);
+}
+
+@Override
+public void buildRam(int ram) {
+    mApplePc.setRem(ram);
+}
+
+@Override
+public void buildOs(String os) {
+    mApplePc.setOs(os);
+}
+
+@Override
+public Computer create() {
+
+    return mApplePc;
+}
+
+
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public abstract class Builder {
+
+
+    public abstract void buildCore(int core);
+
+    public abstract void buildRam(int ram);
+
+    public abstract void buildOs(String os);
+
+    public abstract Computer create();
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class Director {
+    Builder mBuilder=null;
+
+    public Director(Builder builder) {
+        mBuilder = builder;
+    }
+
+    public void construct(int core,int ram, String os){
+        mBuilder.buildCore(core);
+        mBuilder.buildRam(ram);
+        mBuilder.buildOs(os);
+    }
+}
+</code></pre><hr>
+<p> 测试代码</p>
+<pre><code>// 测试运行效果
+      Builder builder = new AppleBuilder();
+      Director director = new Director(builder);
+      director.construct(4,2,&quot;linux&quot;);
+      Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
+</code></pre><hr>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/设计模式-观察者模式/" data-id="cj00clb1x001tk8vv476fl2ee" class="article-share-link" data-share="baidu" data-title="观察者模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-Builder模式/" data-id="cj00cuttf001gskvvq7tzob1n" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/02/17/设计模式-观察者模式/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://yoururl.com/2017/02/17/设计模式-Builder模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -1065,9 +1195,9 @@ import java.io.File;
 
 
   
-    <article id="post-Android基础知识-md" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Java设计模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/17/Android基础知识-md/" class="article-date">
+    <a href="/2017/02/17/Java设计模式/" class="article-date">
   <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
@@ -1079,7 +1209,7 @@ import java.io.File;
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/Android基础知识-md/">Android基础知识.md</a>
+      <a class="article-title" href="/2017/02/17/Java设计模式/">Java设计模式.md</a>
     </h1>
   
 
@@ -1087,125 +1217,35 @@ import java.io.File;
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p><a href="https://github.com/GeniusVJR/LearningNotes" target="_blank" rel="external">Android学习笔记</a></p>
+        <h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><h3 id="1-单一职责原则"><a href="#1-单一职责原则" class="headerlink" title="1.单一职责原则 :"></a>1.单一职责原则 :</h3><blockquote>
+<p>一个类只负责一个功能领域中的相应职责</p>
 </blockquote>
-<h2 id="五种布局"><a href="#五种布局" class="headerlink" title="五种布局"></a>五种布局</h2><h3 id="LinearLayout-线性布局"><a href="#LinearLayout-线性布局" class="headerlink" title="LinearLayout(线性布局)"></a>LinearLayout(线性布局)</h3><ol>
-<li>一行或者一列值放置一个控件的布局,可以设置方向,垂直排列或者水平排列,适用于简单的布局</li>
-<li>适用场景:水平或者垂直的简单排列,如登录界面</li>
-</ol>
-<h3 id="RelativeLayout-相对布局"><a href="#RelativeLayout-相对布局" class="headerlink" title="RelativeLayout(相对布局)"></a>RelativeLayout(相对布局)</h3><ol>
-<li>是一个相对自由的布局, 由一个view作为参照,来定位下一个view的摆放位置,可以实现比较复杂的布局</li>
-<li>应用场景:适合比较复杂的布局,LinearLayouy能实现的它也能实现</li>
-</ol>
-<h3 id="FrameLayout-框架布局"><a href="#FrameLayout-框架布局" class="headerlink" title="FrameLayout(框架布局)"></a>FrameLayout(框架布局)</h3><ol>
-<li>所有的子view都会放在左上角,无法指定位置,后面的子view会放在前一个view上.</li>
-<li>使用场景: 放置单一的view,如放置Fragment,显示一张图片</li>
-</ol>
-<h3 id="TableLayout-表格布局"><a href="#TableLayout-表格布局" class="headerlink" title="TableLayout(表格布局)"></a>TableLayout(表格布局)</h3><ol>
-<li>类似HTML中的table,使用tableRow来布局,tableRow代表一行,其中的每个视图组件代表一个单元格</li>
-<li>使用场景:空间之间存在相应关系</li>
-</ol>
-<h3 id="AbsoluteLayout-绝对布局"><a href="#AbsoluteLayout-绝对布局" class="headerlink" title="AbsoluteLayout (绝对布局)"></a>AbsoluteLayout (绝对布局)</h3><ol>
-<li>采用坐标轴的方式来定位view,左上角坐标为(0,0),x轴向右递增,y轴向下递增</li>
-<li>使用场景:准确定位控件位置,但是Android设备的屏幕尺寸,分辨率差别很大,无法解决适配问题,该布局已经过时</li>
-</ol>
-<h2 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h2><h3 id="Activity的生命周期"><a href="#Activity的生命周期" class="headerlink" title="- Activity的生命周期"></a>- Activity的生命周期</h3><ol>
-<li>正常的生命周期:onCreate -&gt; onStart -&gt; onResume -&gt; onPause -&gt; onStop -&gt; onDestory  </li>
-<li>转到其他Activity或者按下home键 执行onPause() -&gt; onStop 进入停滞状态</li>
-<li>Activity返回前台:onRestart() -&gt; onStart() -&gt; onResume()</li>
-<li>当系统内存不足会将后台的Activity杀死,此时这个Activity任然在任务栈中只是引用指向的对象已经为空,若再次回到这个Activity会重新走一遍生命周期</li>
-<li>锁屏: onPause -&gt; onStop</li>
-<li>解锁: onStart -&gt; onResume</li>
-</ol>
-<p><img src="http://oje1oqb9c.bkt.clouddn.com/activity_life.pngactivity_life.png" alt="生命周期图"></p>
-<h3 id="Activty任务栈"><a href="#Activty任务栈" class="headerlink" title="Activty任务栈"></a>Activty任务栈</h3><blockquote>
-<p>任务栈是一种先进后出的结构,每个app默认只有一个任务栈以包名命名,位于栈顶的Activity处于焦点状态,当按下back键时,栈内的Activity会一个一个出栈,调用onDestory()方法,如果栈内没有Activity,系统就会回收这个栈.</p>
+<h3 id="2-开闭原则"><a href="#2-开闭原则" class="headerlink" title="2. 开闭原则 :"></a>2. 开闭原则 :</h3><blockquote>
+<p>一个软件实体应当对扩展开放，对修改关闭</p>
 </blockquote>
-<h3 id="启动模式"><a href="#启动模式" class="headerlink" title="启动模式:"></a>启动模式:</h3><ul>
-<li><p>standard :默认的启动模式,每次创建一个新的Activity实例,将其压入任务栈栈顶,不管栈内是否存在这个Activity.Activity启动三次就会调用三次Activity的生命周期.</p>
-</li>
-<li><p>singleTop:栈顶复用模式,启动一个Activity,如果栈顶存在这个Activity的实例,就不在创建新的Activity实例,启动多次也不会创建新的实例,会调用Activity的newIntance()方法,如果栈内存在这个Activity的实例,但不是在栈顶,作用与standard模式一样</p>
-</li>
-<li><p>singleTask:栈内复用模式,创建Activity的时候,系统会确认它需要的任务栈是否已经创建,否则再创建任务栈,然后放入Activity,如果栈内有一个Activity实例,那么这个Activity会被调到栈顶,调用newInstance()方法,并且会清理这个实例上面的所有Activity</p>
-</li>
-<li><p>singleInstance:加强版的singleTask模式,这种模式Activity实例会单独存在一个任务栈中,由于栈内复用的特性,以后不会再创建新的实例,除非任务栈被销毁</p>
-</li>
-</ul>
-<blockquote>
-<p>Activity的堆栈管理是以ActivityRecord为单位的,所有的ActivityRecord都放在一个list中,可以认为一个ActivityRecord就是一个Activity栈</p>
+<h3 id="3-里氏代换原则"><a href="#3-里氏代换原则" class="headerlink" title="3. 里氏代换原则 :"></a>3. 里氏代换原则 :</h3><blockquote>
+<p>　所有应用基类（父类）的地方，必须能透明的使用其子类对象</p>
 </blockquote>
-<hr>
-<h3 id="Activity的缓存"><a href="#Activity的缓存" class="headerlink" title="Activity的缓存"></a>Activity的缓存</h3><ul>
-<li><p>有两个Activity A,B ,从A进入B,一段时间后,系统可能叫A回收,这时在按back键回到A,会重新走A的生命周期方法onCreate -&gt; onStart -&gt; onResume ,A被重新创建了一次,这时A中保存的数据和状态就会丢失</p>
-</li>
-<li><p>为了恢复状态,使用onSaveInstanceState()方法保存临时数据和状态,此方法会在Activity销毁前调用,方法中有Bundle参数保存,putString(),putInt()等方法,方法中传入一个参数好一个值,数据保存后会在onCreate()中恢复</p>
-</li>
-<li><p>onSaveInstanceState调用时机:即系统未经你允许销毁了你的Activity,这是系统的责任，因为它必须要提供一个机会让你保存你的数据</p>
-</li>
-<li><p>onSaveInstanceState() 会在onStop()前执行,但不保证是在onPause之前还是之后触发</p>
-</li>
-</ul>
-<p><strong> 代码 </strong></p>
-<pre><code>private static final String TAG = &quot;MainActivity&quot;;
-private static final String SAVE_KEY =&quot;save_key&quot; ;
+<ol>
+<li>使用原则 : 在程序设计时,尽量使用基类类型对对象进行定义,而在运行时再确定子类类型,用子类对象替换父类对象</li>
+</ol>
+<h3 id="4-依赖倒转原则"><a href="#4-依赖倒转原则" class="headerlink" title="4. 依赖倒转原则"></a>4. 依赖倒转原则</h3><blockquote>
+<p>抽象不应该依赖于细节,细节应当依赖于抽象.换言之就是,要面向接口编程,而不是针对实现编程.</p>
+<p>程序代码中传递参数或关联关系时,尽量应用层次高的抽象层类,既使用抽象类,接口进行变量类型声明,参数声明,返回值类型声明,以及数据类型的转换等,而不要用具体的类来做这些事.</p>
+</blockquote>
 
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
-   if(savedInstanceState!=null){
-       // 恢复保存的内容
-       String save = savedInstanceState.getString(SAVE_KEY);
-       Log.d(TAG,&quot;=== 恢复保存的内容 ==&quot;+save);
-   }
-    initEvent();
-}
-
-/**
- * 保存Activity的状态
- * @param outState
- * @param outPersistentState
- */
-@Override
-public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-    super.onSaveInstanceState(outState, outPersistentState);
-    outState.putString(SAVE_KEY,&quot;保存字符串&quot;);
-}
-</code></pre><hr>
-<h3 id="Intent"><a href="#Intent" class="headerlink" title="Intent"></a>Intent</h3><ul>
-<li>Intent可以传递的数据类型:<br>可以传递基本数据类型好基本数据类型的数组,以及实现需序列化接口的飞基本数据类型</li>
-</ul>
-<h2 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment"></a>Fragment</h2><h3 id="Fragment的生命周期和Activity的关系"><a href="#Fragment的生命周期和Activity的关系" class="headerlink" title="Fragment的生命周期和Activity的关系"></a>Fragment的生命周期和Activity的关系</h3><p>onAttach() -&gt; onCreate() -&gt; onCreateView() -&gt; onViewCreatd() -&gt; Activity onCreated() …..</p>
-<p><img src="http://oje1oqb9c.bkt.clouddn.com/image/fragment_and_activity.jpg" alt="Fragment的生命周期和Activity的关系"></p>
-<h3 id="Fragment的生命周期"><a href="#Fragment的生命周期" class="headerlink" title="Fragment的生命周期"></a>Fragment的生命周期</h3><p><img src="http://oje1oqb9c.bkt.clouddn.com/image/fragment_life.png" alt="Fragment的生命周期图"></p>
-<h2 id="Broadcast-Receiver"><a href="#Broadcast-Receiver" class="headerlink" title="Broadcast Receiver"></a>Broadcast Receiver</h2><h3 id="的两种动态注册和静态注册有什么区别"><a href="#的两种动态注册和静态注册有什么区别" class="headerlink" title="的两种动态注册和静态注册有什么区别"></a>的两种动态注册和静态注册有什么区别</h3><ul>
-<li>动态注册: 在代码中注册,app退出就不能接收到广播</li>
-<li>静态注册: 在清单文件中注册,app退出依旧可以接受到广播</li>
-</ul>
-<h2 id="ContentProvider"><a href="#ContentProvider" class="headerlink" title="ContentProvider"></a>ContentProvider</h2><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><h3 id="为什么在Service中创建子线程"><a href="#为什么在Service中创建子线程" class="headerlink" title="为什么在Service中创建子线程"></a>为什么在Service中创建子线程</h3><ul>
-<li>在Activity中创建一个子线程,但Activity被销毁后,就不能获取子线程的实例,而且在在其他Activity中无法对其操作</li>
-<li>在Service创建中就不同,所有的Activity都可以对其进行操作,即使Activity 被销毁后,重新与Service进行关联,就可以获取Binder的实例.因此使用Service做后台处理,Activity可以放心的finish ,不用担心对后台任务无法控制的情况</li>
-</ul>
-<h3 id="Service的两种启动方法-有什么区别"><a href="#Service的两种启动方法-有什么区别" class="headerlink" title="Service的两种启动方法,有什么区别"></a>Service的两种启动方法,有什么区别</h3><ul>
-<li>Context bindService 启动Service 生命周期好Context 绑定在一起</li>
-<li>Context startService 启动Service 生命周期和context 无关</li>
-</ul>
-<h3 id="如何保证Service不被杀死"><a href="#如何保证Service不被杀死" class="headerlink" title="如何保证Service不被杀死"></a>如何保证Service不被杀死</h3><h2 id="动画有哪几类-各有什么特点-有什么区别"><a href="#动画有哪几类-各有什么特点-有什么区别" class="headerlink" title="动画有哪几类,各有什么特点,有什么区别"></a>动画有哪几类,各有什么特点,有什么区别</h2><h2 id="Android的数据存储形式"><a href="#Android的数据存储形式" class="headerlink" title="Android的数据存储形式"></a>Android的数据存储形式</h2><h2 id="Sqlite的基本操作"><a href="#Sqlite的基本操作" class="headerlink" title="Sqlite的基本操作"></a>Sqlite的基本操作</h2><h2 id="如何判断应用被强杀"><a href="#如何判断应用被强杀" class="headerlink" title="如何判断应用被强杀"></a>如何判断应用被强杀</h2><h2 id="Json有什么优劣势"><a href="#Json有什么优劣势" class="headerlink" title="Json有什么优劣势"></a>Json有什么优劣势</h2><h2 id="Asset目录与res目录的区别"><a href="#Asset目录与res目录的区别" class="headerlink" title="Asset目录与res目录的区别"></a>Asset目录与res目录的区别</h2><h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><h3 id="Android怎么加速启动Activity"><a href="#Android怎么加速启动Activity" class="headerlink" title="Android怎么加速启动Activity"></a>Android怎么加速启动Activity</h3><h3 id="Android内存优化方法"><a href="#Android内存优化方法" class="headerlink" title="Android内存优化方法"></a>Android内存优化方法</h3><h2 id="自定义View的流程"><a href="#自定义View的流程" class="headerlink" title="自定义View的流程"></a>自定义View的流程</h2><h2 id="Android长连接-怎样处理心跳机制"><a href="#Android长连接-怎样处理心跳机制" class="headerlink" title="Android长连接,怎样处理心跳机制"></a>Android长连接,怎样处理心跳机制</h2><h2 id="View的绘制流程"><a href="#View的绘制流程" class="headerlink" title="View的绘制流程"></a>View的绘制流程</h2><h2 id="下拉刷新的实现原理"><a href="#下拉刷新的实现原理" class="headerlink" title="下拉刷新的实现原理"></a>下拉刷新的实现原理</h2><h2 id="常用框架和源码分析，底层原理"><a href="#常用框架和源码分析，底层原理" class="headerlink" title="常用框架和源码分析，底层原理"></a>常用框架和源码分析，底层原理</h2><h2 id="Android新特性"><a href="#Android新特性" class="headerlink" title="Android新特性"></a>Android新特性</h2><h3 id="5-0"><a href="#5-0" class="headerlink" title="5.0"></a>5.0</h3><h3 id="6-0"><a href="#6-0" class="headerlink" title="6.0"></a>6.0</h3><h3 id="7-0"><a href="#7-0" class="headerlink" title="7.0"></a>7.0</h3><h2 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h2><h2 id="IntenService"><a href="#IntenService" class="headerlink" title="IntenService"></a>IntenService</h2><h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><h2 id="图片缓存"><a href="#图片缓存" class="headerlink" title="图片缓存"></a>图片缓存</h2><h3 id="查看程序可用最高内存"><a href="#查看程序可用最高内存" class="headerlink" title="查看程序可用最高内存"></a>查看程序可用最高内存</h3><h2 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h2><h3 id="构建工具"><a href="#构建工具" class="headerlink" title="构建工具"></a>构建工具</h3>
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/Android基础知识-md/" data-id="cj00clay90000k8vvt3fbrx1q" class="article-share-link" data-share="baidu" data-title="Android基础知识.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/Java设计模式/" data-id="cj00cutr10004skvvparjefoh" class="article-share-link" data-share="baidu" data-title="Java设计模式.md">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/02/17/Android基础知识-md/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://yoururl.com/2017/02/17/Java设计模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
     </footer>
   </div>
   
