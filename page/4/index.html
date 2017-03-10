@@ -74,6 +74,112 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-自学Python-模块" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/11/自学Python-模块/" class="article-date">
+  <time datetime="2017-01-11T09:35:35.000Z" itemprop="datePublished">2017-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/11/自学Python-模块/">自学Python-模块</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h3><p><strong>标准注释</strong></p>
+<pre><code>#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+</code></pre><ul>
+<li><p>test_1.py</p>
+<pre><code>#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+&apos;a test module&apos;
+___author__=&apos;anakin&apos;
+
+import sys
+
+def test():
+    args = sys.argv
+    if len(args)==1:
+        print(&apos;hello,world&apos;)
+    elif len(args)==2:
+        print(&apos;hello :&apos;+ args[1])
+    else:
+        print(&apos;too many argument!&apos;)
+
+if __name__==&apos;__main__&apos;:
+    test()
+</code></pre></li>
+</ul>
+<ul>
+<li><p>test_2.py</p>
+<pre><code>import test_1
+
+test_1.test()
+</code></pre></li>
+</ul>
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><ul>
+<li><p>外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。</p>
+<pre><code>#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+&apos;函数的作用域&apos;
+___author__=&apos;anakin&apos;
+
+def _private_1(name):
+    print(&apos;private 1 run&apos;)
+
+def _private_2(name):
+    print(&apos;private 2 run&apos;)
+
+def greeting(name):
+    if len(name)&gt;3:
+        return _private_1(name)
+    else :
+        return _private_2(name)
+</code></pre><h3 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h3></li>
+</ul>
+<p>安装Pillow</p>
+<pre><code>安装Pillow
+pip install Pillow
+
+from PIL import Image
+im = Image.open(&apos;img.png&apos;)
+print(im.format,im.size,im.mode)
+</code></pre><p>生成缩略图</p>
+<pre><code>im.thumbnail((200, 100))
+im.save(&apos;thmb.jpg&apos;,&apos;JPEG&apos;)
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/01/11/自学Python-模块/" data-id="cj03lcv9o0019mgvv3s6jy5kv" class="article-share-link" data-share="baidu" data-title="自学Python-模块">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/01/11/自学Python-模块/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-自学Python-函数式编程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/11/自学Python-函数式编程/" class="article-date">
@@ -210,7 +316,7 @@ print(s)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/11/自学Python-函数式编程/" data-id="cj00otd52001gxovv3fgr8znm" class="article-share-link" data-share="baidu" data-title="自学Python-函数式编程.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/11/自学Python-函数式编程/" data-id="cj03lcv9m0017mgvv6smbdssj" class="article-share-link" data-share="baidu" data-title="自学Python-函数式编程.md">分享到</a>
       
 
       
@@ -362,7 +468,7 @@ print(r)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/11/自学Python-高级特性/" data-id="cj00otd5r001uxovvsqj8u6ir" class="article-share-link" data-share="baidu" data-title="自学Python-高级特性">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/11/自学Python-高级特性/" data-id="cj03lcvag001jmgvv0uv7ask4" class="article-share-link" data-share="baidu" data-title="自学Python-高级特性">分享到</a>
       
 
       
@@ -505,7 +611,7 @@ person(&apos;Jack&apos;, 24, city=&apos;Beijing&apos;, job=&apos;Engineer&apos;)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/10/自学Python-函数/" data-id="cj00otd50001fxovvj0sjro6x" class="article-share-link" data-share="baidu" data-title="自学Python- 函数">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/10/自学Python-函数/" data-id="cj03lcv9f0014mgvvqicolvs9" class="article-share-link" data-share="baidu" data-title="自学Python- 函数">分享到</a>
       
 
       
@@ -634,7 +740,7 @@ print(map[&apos;xiaoming&apos;])
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/10/自学Python-Python基础二/" data-id="cj00otd470011xovv055zjh73" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础二">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/10/自学Python-Python基础二/" data-id="cj03lcv9c0010mgvvgotdb56w" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础二">分享到</a>
       
 
       
@@ -862,7 +968,7 @@ private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/10/代码示例/" data-id="cj00otd3s000oxovvj98xcbd8" class="article-share-link" data-share="baidu" data-title="代码示例">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/10/代码示例/" data-id="cj03lcv90000rmgvv8899c63x" class="article-share-link" data-share="baidu" data-title="代码示例">分享到</a>
       
 
       
@@ -889,7 +995,7 @@ private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg" rel="gallery_cj00otd3y000uxovvpzvyby8v">
+      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg" rel="gallery_cj03lcv94000vmgvvtd8fbdue">
         <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg" itemprop="image">
       </a>
     
@@ -1409,7 +1515,7 @@ hexo d // 更新到github
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/09/日常笔记/" data-id="cj00otd3y000uxovvpzvyby8v" class="article-share-link" data-share="baidu" data-title="日常笔记.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/09/日常笔记/" data-id="cj03lcv94000vmgvvtd8fbdue" class="article-share-link" data-share="baidu" data-title="日常笔记.md">分享到</a>
       
 
       
@@ -1462,7 +1568,7 @@ hexo d // 更新到github
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/09/hello-world/" data-id="cj00otd3d000hxovvkj6mtvad" class="article-share-link" data-share="baidu" data-title="Hello World">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/09/hello-world/" data-id="cj03lcv8v000mmgvvujoz3r4y" class="article-share-link" data-share="baidu" data-title="Hello World">分享到</a>
       
 
       
@@ -1493,7 +1599,7 @@ hexo d // 更新到github
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1511,7 +1617,7 @@ hexo d // 更新到github
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
     </div>
   </div>
 
@@ -1521,6 +1627,10 @@ hexo d // 更新到github
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/03/10/RxJava-简单使用（二）/">RxJava--简单使用（二）</a>
+          </li>
         
           <li>
             <a href="/2017/03/08/RxJave和Retrofits的实现网络请求/">RxJave和Retrofits的实现网络请求</a>
@@ -1536,10 +1646,6 @@ hexo d // 更新到github
         
           <li>
             <a href="/2017/03/02/不忘初心/">不忘初心</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/01/三月/">三月</a>
           </li>
         
       </ul>

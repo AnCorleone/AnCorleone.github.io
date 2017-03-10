@@ -74,6 +74,121 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-RxJava-简单使用（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/10/RxJava-简单使用（二）/" class="article-date">
+  <time datetime="2017-03-10T08:17:44.000Z" itemprop="datePublished">2017-03-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg" rel="gallery_cj03lcv7x0007mgvvookucbni">
+        <img src="http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/10/RxJava-简单使用（二）/">RxJava--简单使用（二）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="subscribeOn-和-observeOn"><a href="#subscribeOn-和-observeOn" class="headerlink" title="subscribeOn 和 observeOn"></a><code>subscribeOn</code> 和 <code>observeOn</code></h3><ul>
+<li>observeOn 可以调用多次进行线程的切换</li>
+<li><p>一般情况下 subscribeOn 只能调用一次，可以在<code>doOnSubscribe</code>后调用，<code>doOnSubscribe</code>将运行在subscribeOn指定的线程</p>
+</li>
+<li><p>代码片段</p>
+<pre><code>.doOnSubscribe(new Action0() {
+    @Override
+    public void call() {
+        // 运行在主线程
+        mProgressBar.setVisibility(View.VISIBLE);
+    }
+})
+.subscribeOn(AndroidSchedulers.mainThread())
+</code></pre></li>
+</ul>
+<h3 id="使用RxJava读取数据显示进度条"><a href="#使用RxJava读取数据显示进度条" class="headerlink" title="使用RxJava读取数据显示进度条"></a>使用RxJava读取数据显示进度条</h3><ul>
+<li>代码实现<pre><code>mSubscription = Observable.from(list)
+        .flatMap(new Func1&lt;Integer, Observable&lt;Integer&gt;&gt;() {
+            @Override
+            public Observable&lt;Integer&gt; call(Integer integer) {
+                return Observable.just(integer);
+            }
+        }).filter(new Func1&lt;Integer, Boolean&gt;() {
+            @Override
+            public Boolean call(Integer integer) {
+                // 模拟数据处理耗时
+                SystemClock.sleep(1000);
+                int i = integer.intValue();
+                return i &gt; 222;
+            }
+        })
+        .map(new Func1&lt;Integer, String&gt;() {
+            @Override
+            public String call(Integer integer) {
+                return integer.toString();
+            }
+        })
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Subscriber&lt;String&gt;() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                mProgressBar.setVisibility(View.VISIBLE);
+            }
+            @Override
+            public void onCompleted() {
+                mProgressBar.setVisibility(View.INVISIBLE);
+                tv.setText(result.toString());
+            }
+            @Override
+            public void onError(Throwable e) {
+                System.out.println(&quot;Throwable::::&quot;+e.toString());
+            }
+            @Override
+            public void onNext(String s) {
+                result.add(s);
+            }
+        });
+</code></pre></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/03/10/RxJava-简单使用（二）/" data-id="cj03lcv7x0007mgvvookucbni" class="article-share-link" data-share="baidu" data-title="RxJava--简单使用（二）">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/03/10/RxJava-简单使用（二）/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-RxJave和Retrofits的实现网络请求" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/08/RxJave和Retrofits的实现网络请求/" class="article-date">
@@ -86,7 +201,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg" rel="gallery_cj00otd37000cxovv31i9os8i">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg" rel="gallery_cj03lcv8b000cmgvvhqkjha0h">
         <img src="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -212,7 +327,7 @@ service.getTopMovie(1,1)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/03/08/RxJave和Retrofits的实现网络请求/" data-id="cj00otd37000cxovv31i9os8i" class="article-share-link" data-share="baidu" data-title="RxJave和Retrofits的实现网络请求">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/08/RxJave和Retrofits的实现网络请求/" data-id="cj03lcv8b000cmgvvhqkjha0h" class="article-share-link" data-share="baidu" data-title="RxJave和Retrofits的实现网络请求">分享到</a>
       
 
       
@@ -241,7 +356,7 @@ service.getTopMovie(1,1)
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cj00otd34000axovv82zhh7xz">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cj03lcv89000amgvvdf5b0ph1">
         <img src="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -521,7 +636,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/03/06/RxJava-简单使用/" data-id="cj00otd34000axovv82zhh7xz" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/06/RxJava-简单使用/" data-id="cj03lcv89000amgvvdf5b0ph1" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
       
 
       
@@ -550,7 +665,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" rel="gallery_cj00otd280002xovvdx2f16qy">
+      <a class="article-gallery-img fancybox" href="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" rel="gallery_cj03lcv730000mgvvdtj703a9">
         <img src="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" itemprop="image">
       </a>
     
@@ -593,7 +708,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/03/06/Atom插件打造PHP开发平台/" data-id="cj00otd280002xovvdx2f16qy" class="article-share-link" data-share="baidu" data-title="Atom插件打造PHP开发平台">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/06/Atom插件打造PHP开发平台/" data-id="cj03lcv730000mgvvdtj703a9" class="article-share-link" data-share="baidu" data-title="Atom插件打造PHP开发平台">分享到</a>
       
 
       
@@ -622,7 +737,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" rel="gallery_cj00otd3k000mxovv1936mg0d">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" rel="gallery_cj03lcv8r000kmgvvdakqnrj7">
         <img src="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -652,7 +767,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/03/02/不忘初心/" data-id="cj00otd3k000mxovv1936mg0d" class="article-share-link" data-share="baidu" data-title="不忘初心">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/02/不忘初心/" data-id="cj03lcv8r000kmgvvdakqnrj7" class="article-share-link" data-share="baidu" data-title="不忘初心">分享到</a>
       
 
       
@@ -681,7 +796,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cj00otd3h000jxovvhciz7dnb">
+      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cj03lcv8j000hmgvvknnhyqtr">
         <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" itemprop="image">
       </a>
     
@@ -711,7 +826,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/03/01/三月/" data-id="cj00otd3h000jxovvhciz7dnb" class="article-share-link" data-share="baidu" data-title="三月">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/01/三月/" data-id="cj03lcv8j000hmgvvknnhyqtr" class="article-share-link" data-share="baidu" data-title="三月">分享到</a>
       
 
       
@@ -822,7 +937,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/28/设计模式-桥接模式/" data-id="cj00otd610022xovv76g8bt2e" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/28/设计模式-桥接模式/" data-id="cj03lcvar001pmgvvdjz6m46n" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
       
 
       
@@ -884,7 +999,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/22/怎样选择基金/" data-id="cj00otd3u000qxovvog1xuqmx" class="article-share-link" data-share="baidu" data-title="怎样选择基金">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/22/怎样选择基金/" data-id="cj03lcv8x000pmgvvevc9fg46" class="article-share-link" data-share="baidu" data-title="怎样选择基金">分享到</a>
       
 
       
@@ -976,7 +1091,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/22/Vim基本操作/" data-id="cj00otd39000exovvhl4kdymg" class="article-share-link" data-share="baidu" data-title="Vim基本操作">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/22/Vim基本操作/" data-id="cj03lcv8f000fmgvveilcid76" class="article-share-link" data-share="baidu" data-title="Vim基本操作">分享到</a>
       
 
       
@@ -1136,7 +1251,7 @@ import java.io.File;
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/22/文件操作的工具类/" data-id="cj00otd3w000sxovva7mclbsk" class="article-share-link" data-share="baidu" data-title="文件操作的工具类">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/22/文件操作的工具类/" data-id="cj03lcv93000tmgvvyzg1q9ux" class="article-share-link" data-share="baidu" data-title="文件操作的工具类">分享到</a>
       
 
       
@@ -1145,57 +1260,6 @@ import java.io.File;
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-设计模式-简单工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/设计模式-简单工厂模式/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-简单工厂模式/">简单工厂模式.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##　简单工厂模式</p>
-<ol>
-<li>定义抽象的工厂类</li>
-<li>工厂类包定义公共的方法实现，和不同实现的抽象方法</li>
-<li>定义根据参数创建实例对象，返回抽象类的静态方法</li>
-<li>使用静态方法传入要获取对象的tag,获取对象的实例，调用实例的方法</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoururl.com/2017/02/17/设计模式-简单工厂模式/" data-id="cj00otd660027xovv62h6kdua" class="article-share-link" data-share="baidu" data-title="简单工厂模式.md">分享到</a>
-      
-
-      
-        <a href="http://yoururl.com/2017/02/17/设计模式-简单工厂模式/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
 
     </footer>
   </div>
@@ -1220,7 +1284,7 @@ import java.io.File;
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1238,7 +1302,7 @@ import java.io.File;
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
     </div>
   </div>
 
@@ -1248,6 +1312,10 @@ import java.io.File;
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/03/10/RxJava-简单使用（二）/">RxJava--简单使用（二）</a>
+          </li>
         
           <li>
             <a href="/2017/03/08/RxJave和Retrofits的实现网络请求/">RxJave和Retrofits的实现网络请求</a>
@@ -1263,10 +1331,6 @@ import java.io.File;
         
           <li>
             <a href="/2017/03/02/不忘初心/">不忘初心</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/01/三月/">三月</a>
           </li>
         
       </ul>

@@ -4,39 +4,41 @@
 <head>
   <meta charset="utf-8">
   
-  <title>自学Python-线程和进程 | Write the code. Change the world.</title>
+  <title>RxJava--简单使用（二） | Write the code. Change the world.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="multiprocessingwindows 创建多线程使用 multiprocessinglinux unix 使用fork()
+  <meta name="description" content="subscribeOn 和 observeOn
+observeOn 可以调用多次进行线程的切换
+一般情况下 subscribeOn 只能调用一次，可以在doOnSubscribe后调用，doOnSubscribe将运行在subscribeOn指定的线程
 
-创建子线程的时候,只需要传入一个函数,和一个参数,创建一个Process实例,用start()方法启动,这样创建进程比fork()简单
-
-from multiprocessing import Process
-import os
-# 子进程要执行的代码
-def ru">
+代码片段
+.doOnSubscribe(new Action0() {
+    @Override
+    public void call()">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自学Python-线程和进程">
-<meta property="og:url" content="http://yoururl.com/2017/01/13/自学Python-线程和进程/index.html">
+<meta property="og:title" content="RxJava--简单使用（二）">
+<meta property="og:url" content="http://yoururl.com/2017/03/10/RxJava-简单使用（二）/index.html">
 <meta property="og:site_name" content="Write the code. Change the world.">
-<meta property="og:description" content="multiprocessingwindows 创建多线程使用 multiprocessinglinux unix 使用fork()
+<meta property="og:description" content="subscribeOn 和 observeOn
+observeOn 可以调用多次进行线程的切换
+一般情况下 subscribeOn 只能调用一次，可以在doOnSubscribe后调用，doOnSubscribe将运行在subscribeOn指定的线程
 
-创建子线程的时候,只需要传入一个函数,和一个参数,创建一个Process实例,用start()方法启动,这样创建进程比fork()简单
-
-from multiprocessing import Process
-import os
-# 子进程要执行的代码
-def ru">
-<meta property="og:updated_time" content="2017-02-21T06:35:35.922Z">
+代码片段
+.doOnSubscribe(new Action0() {
+    @Override
+    public void call()">
+<meta property="og:image" content="http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg">
+<meta property="og:updated_time" content="2017-03-10T08:59:20.643Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="自学Python-线程和进程">
-<meta name="twitter:description" content="multiprocessingwindows 创建多线程使用 multiprocessinglinux unix 使用fork()
+<meta name="twitter:title" content="RxJava--简单使用（二）">
+<meta name="twitter:description" content="subscribeOn 和 observeOn
+observeOn 可以调用多次进行线程的切换
+一般情况下 subscribeOn 只能调用一次，可以在doOnSubscribe后调用，doOnSubscribe将运行在subscribeOn指定的线程
 
-创建子线程的时候,只需要传入一个函数,和一个参数,创建一个Process实例,用start()方法启动,这样创建进程比fork()简单
-
-from multiprocessing import Process
-import os
-# 子进程要执行的代码
-def ru">
+代码片段
+.doOnSubscribe(new Action0() {
+    @Override
+    public void call()">
+<meta name="twitter:image" content="http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Write the code. Change the world." type="application/atom+xml">
   
@@ -94,21 +96,31 @@ def ru">
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-自学Python-线程和进程" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-RxJava-简单使用（二）" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/13/自学Python-线程和进程/" class="article-date">
-  <time datetime="2017-01-13T07:05:52.000Z" itemprop="datePublished">2017-01-13</time>
+    <a href="/2017/03/10/RxJava-简单使用（二）/" class="article-date">
+  <time datetime="2017-03-10T08:17:44.000Z" itemprop="datePublished">2017-03-10</time>
 </a>
     
   </div>
   <div class="article-inner">
     
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg" rel="gallery_cj03lcv7x0007mgvvookucbni">
+        <img src="http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      自学Python-线程和进程
+      RxJava--简单使用（二）
     </h1>
   
 
@@ -116,154 +128,81 @@ def ru">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="multiprocessing"><a href="#multiprocessing" class="headerlink" title="multiprocessing"></a>multiprocessing</h3><p>windows 创建多线程使用 <code>multiprocessing</code><br>linux unix 使用<code>fork()</code></p>
-<ul>
-<li>创建子线程的时候,只需要传入一个函数,和一个参数,创建一个<code>Process</code>实例,用<code>start()</code>方法启动,这样创建进程比<code>fork()</code>简单</li>
-</ul>
-<pre><code>from multiprocessing import Process
-import os
-# 子进程要执行的代码
-def run_proc(name):
-    print(os.getpid())
-    print(name)
-
-print(__name__)
-if __name__ == &apos;__main__&apos;:
-    print(&apos;prent process %s&apos;%os.getpid() )
-    # 创建一个子线程
-    p = Process(target = run_proc,args = (&apos;test&apos;,))
-    print(&apos; child process will start &apos;)
-    # 开始子线程
-    p.start()
-    # 放如线程队列
-    p.join()
-    print(&apos; child process end &apos;)
-</code></pre><h3 id="Pool"><a href="#Pool" class="headerlink" title="Pool"></a>Pool</h3><p>如果要开启大量子线程,可以用线程池批量化创建子线程</p>
-<pre><code>from multiprocessing import Pool
-import os,time,random
-
-def long_time_task(name):
-    print(&apos; 开启新的任务...&apos;+name)
-    start = time.time()
-    time.sleep(random.random() * 3)
-    end = time.time()
-    s = end - start
-    print(s)
-    print(name)
-
-if __name__==&apos;__main__&apos;:
-    p = Pool(4)
-    for i in range(5):
-        print(&apos;------------&gt;&gt;&gt;&gt; &apos;)
-        p.apply_async(long_time_task, args=(i,))
-
-    print(&apos; wait for process done...&apos;)
-    p.close()
-    p.join()
-    print(&apos;all progress done ..&apos;)
-</code></pre><h3 id="子进程"><a href="#子进程" class="headerlink" title="子进程"></a>子进程</h3><ul>
-<li><p>启动一个子进程</p>
-<pre><code>import subprocess
-
-print(&apos;$ nslookup www.python.org&apos;)
-r = subprocess.call([&apos;nslookup&apos;,&apos;www.python.org&apos;])
-print(&apos;exit code &apos;, r)
+        <h3 id="subscribeOn-和-observeOn"><a href="#subscribeOn-和-observeOn" class="headerlink" title="subscribeOn 和 observeOn"></a><code>subscribeOn</code> 和 <code>observeOn</code></h3><ul>
+<li>observeOn 可以调用多次进行线程的切换</li>
+<li><p>一般情况下 subscribeOn 只能调用一次，可以在<code>doOnSubscribe</code>后调用，<code>doOnSubscribe</code>将运行在subscribeOn指定的线程</p>
+</li>
+<li><p>代码片段</p>
+<pre><code>.doOnSubscribe(new Action0() {
+    @Override
+    public void call() {
+        // 运行在主线程
+        mProgressBar.setVisibility(View.VISIBLE);
+    }
+})
+.subscribeOn(AndroidSchedulers.mainThread())
 </code></pre></li>
 </ul>
-<h3 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h3><ul>
-<li><p>进程间传递数据</p>
-<pre><code>from multiprocessing import Process,Queue
-import os,time,random
-
-# 写数据进程间执行代码
-def write_data(q):
-    print(&apos;  pid  :%s&apos; %os.getpid())
-    for value in [&apos;q&apos;,&apos;w&apos;,&apos;e&apos;,&apos;r&apos;]:
-        print(value)
-        q.put(value)
-        time.sleep(random.random())
-
-# 读数据进程间执行代码
-def read_data(q):
-    print(&apos; read pid : %s&apos; %os.getpid())
-    while True:
-        value =q.get(True)
-        print(&apos; 读取的数据 : &apos;+ value)
-
-if __name__ == &apos;__main__&apos;:
-    # 父进程创建Quenu,并传递给子进程
-    q = Queue()
-    pw = Process(target = write_data,args = (q,))
-    pr = Process(target = read_data,args =(q,))
-    pw.start()
-    pr.start()
-    pw.join()
-    # pr 是死循环 无法等待其结束,只能强行终止
-    pr.terminate()
+<h3 id="使用RxJava读取数据显示进度条"><a href="#使用RxJava读取数据显示进度条" class="headerlink" title="使用RxJava读取数据显示进度条"></a>使用RxJava读取数据显示进度条</h3><ul>
+<li>代码实现<pre><code>mSubscription = Observable.from(list)
+        .flatMap(new Func1&lt;Integer, Observable&lt;Integer&gt;&gt;() {
+            @Override
+            public Observable&lt;Integer&gt; call(Integer integer) {
+                return Observable.just(integer);
+            }
+        }).filter(new Func1&lt;Integer, Boolean&gt;() {
+            @Override
+            public Boolean call(Integer integer) {
+                // 模拟数据处理耗时
+                SystemClock.sleep(1000);
+                int i = integer.intValue();
+                return i &gt; 222;
+            }
+        })
+        .map(new Func1&lt;Integer, String&gt;() {
+            @Override
+            public String call(Integer integer) {
+                return integer.toString();
+            }
+        })
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Subscriber&lt;String&gt;() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                mProgressBar.setVisibility(View.VISIBLE);
+            }
+            @Override
+            public void onCompleted() {
+                mProgressBar.setVisibility(View.INVISIBLE);
+                tv.setText(result.toString());
+            }
+            @Override
+            public void onError(Throwable e) {
+                System.out.println(&quot;Throwable::::&quot;+e.toString());
+            }
+            @Override
+            public void onNext(String s) {
+                result.add(s);
+            }
+        });
 </code></pre></li>
 </ul>
-<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><ul>
-<li>启动一个线程就是把一个函数传入并创建<code>Thread</code>实例,然后调用<code>start()</code>开始执行</li>
-</ul>
-<pre><code># 创建一个线程,并执行
-import time,threading
 
-# 新线程的代码
-def loop():
-    print(&apos;线程%s is running ....&apos;%threading.current_thread().name)
-    n =0
-    while n&lt;5:
-        n=n+1
-        print(&apos;thread %s &gt;&gt;&gt; %s&apos;%(threading.current_thread().name,n))
-        time.sleep(1)
-    print(&apos;线程%s is running ....&apos;%threading.current_thread().name)
-
-t =threading.Thread(target= loop,name= &apos;LoopThread&apos;)
-t.start()
-t.join()
-</code></pre><h3 id="Lock"><a href="#Lock" class="headerlink" title="Lock"></a>Lock</h3><ul>
-<li>任何一个线程启动一个子线程,我们把该线程称为主线程</li>
-<li>当多个线程共享一个变量并操作,导致内容错乱</li>
-<li>使用lock.acquire(),当多个线程同时执行lock.acquire(),只有一个线程能成功获取锁,然后继续执行代码,其他线程就继续等待直到获得锁为止,获得锁的线程用完后一定要释放锁,否则会出现其他线程一直等待,成为死线程,所有使用try … finally 确保锁一定会被释放</li>
-</ul>
-<h3 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h3><ul>
-<li>ThreadLocal 变量虽然是全局变量，但是每个线程都能读写自己线程的独立副本，互不干扰。ThreadLocal解决了参数在一个线程中各个参数之间互相传递的问题</li>
-</ul>
-<pre><code>import threading
-# 获取全局的ThreadLocal对象
-local_school = threading.local()
-
-def process_student():
-    # 获取线程相关的student
-    std = local_school.student
-    print(&apos;hello ,%s(in %s)&apos;%(std,threading.current_thread().name))
-
-def process_thread(name):
-    # 绑定ThreadLocal的student
-    local_school.student= name
-    process_student()
-
-# 开启两个线程
-t1 =threading.Thread(target= process_thread,args = (&apos;anakin&apos;,),name=&apos;Thread -a&apos;)
-t2 =threading.Thread(target= process_thread,args = (&apos;hahha&apos;,),name =&apos;Thread -b &apos;)
-t1.start()
-t2.start()
-t1.join()
-t2.join()
-</code></pre>
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/13/自学Python-线程和进程/" data-id="cj03lcva0001dmgvvat897bjz" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
+        <a data-url="http://yoururl.com/2017/03/10/RxJava-简单使用（二）/" data-id="cj03lcv7x0007mgvvookucbni" class="article-share-link" data-share="baidu" data-title="RxJava--简单使用（二）">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/01/13/自学Python-线程和进程/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://yoururl.com/2017/03/10/RxJava-简单使用（二）/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
 
     </footer>
   </div>
@@ -271,19 +210,10 @@ t2.join()
     
 <nav id="article-nav">
   
-    <a href="/2017/01/14/自学Python-正则表达式/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          自学Python-正则表达式
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/01/13/自学Python-IO编程/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/03/08/RxJave和Retrofits的实现网络请求/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">自学Python-IO编程</div>
+      <div class="article-nav-title">RxJave和Retrofits的实现网络请求</div>
     </a>
   
 </nav>
@@ -293,7 +223,7 @@ t2.join()
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2017/01/13/自学Python-线程和进程/" data-title="自学Python-线程和进程" data-url="http://yoururl.com/2017/01/13/自学Python-线程和进程/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017/03/10/RxJava-简单使用（二）/" data-title="RxJava--简单使用（二）" data-url="http://yoururl.com/2017/03/10/RxJava-简单使用（二）/"></div>
   </section>
 </section>
       
