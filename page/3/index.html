@@ -258,7 +258,7 @@ public class Director {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/设计模式-Builder模式/" data-id="cj0aq05il001nucvvyno8rc8x" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/02/17/设计模式-Builder模式/" data-id="cj0ar74k4001lq4vvjfymf64t" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
       
 
       
@@ -267,82 +267,6 @@ public class Director {
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-读取XML中的配置参数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/20/读取XML中的配置参数/" class="article-date">
-  <time datetime="2017-01-20T02:22:04.000Z" itemprop="datePublished">2017-01-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/20/读取XML中的配置参数/">Android-读取XML中的配置参数工具类XMLUtil</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一个读取xml文件中配置文件的工具类XMLUtil"><a href="#一个读取xml文件中配置文件的工具类XMLUtil" class="headerlink" title="一个读取xml文件中配置文件的工具类XMLUtil"></a>一个读取xml文件中配置文件的工具类XMLUtil</h2><h3 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h3><pre><code>import javax.xml.parsers.*;  
-import org.w3c.dom.*;  
-import org.xml.sax.SAXException;  
-import java.io.*;  
-
-public class XMLUtil {  
-    //该方法用于从XML配置文件中提取配置文件
-    public static String getChartType() {  
-        try {  
-            //创建文档对象  
-            DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();  
-            DocumentBuilder builder = dFactory.newDocumentBuilder();  
-            Document doc;                             
-            doc = builder.parse(new File(&quot;config.xml&quot;));   
-
-            //获取包含配置文件的文本节点  
-            NodeList nl = doc.getElementsByTagName(&quot;chartType&quot;);  
-            Node classNode = nl.item(0).getFirstChild();  
-            String chartType = classNode.getNodeValue().trim();  
-            return chartType;  
-        }     
-        catch(Exception e) {  
-            e.printStackTrace();  
-            return null;  
-        }  
-    }  
-}
-</code></pre><hr>
-<h3 id="XML-文件代码"><a href="#XML-文件代码" class="headerlink" title="XML 文件代码"></a>XML 文件代码</h3><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;  
-&lt;config&gt;  
-    &lt;chartType&gt;histogram&lt;/chartType&gt;  
-&lt;/config&gt;
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoururl.com/2017/01/20/读取XML中的配置参数/" data-id="cj0aq05j90025ucvvxkuytbea" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
-      
-
-      
-        <a href="http://yoururl.com/2017/01/20/读取XML中的配置参数/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
 
     </footer>
   </div>
@@ -438,7 +362,7 @@ public class XMLUtil {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/20/MySQL使用/" data-id="cj0aq05go0006ucvvha45c3mz" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/20/MySQL使用/" data-id="cj0ar74ga000pq4vvc1vcm8te" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
       
 
       
@@ -447,6 +371,82 @@ public class XMLUtil {
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-读取XML中的配置参数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/20/读取XML中的配置参数/" class="article-date">
+  <time datetime="2017-01-20T02:22:04.000Z" itemprop="datePublished">2017-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/20/读取XML中的配置参数/">Android-读取XML中的配置参数工具类XMLUtil</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一个读取xml文件中配置文件的工具类XMLUtil"><a href="#一个读取xml文件中配置文件的工具类XMLUtil" class="headerlink" title="一个读取xml文件中配置文件的工具类XMLUtil"></a>一个读取xml文件中配置文件的工具类XMLUtil</h2><h3 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h3><pre><code>import javax.xml.parsers.*;  
+import org.w3c.dom.*;  
+import org.xml.sax.SAXException;  
+import java.io.*;  
+
+public class XMLUtil {  
+    //该方法用于从XML配置文件中提取配置文件
+    public static String getChartType() {  
+        try {  
+            //创建文档对象  
+            DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();  
+            DocumentBuilder builder = dFactory.newDocumentBuilder();  
+            Document doc;                             
+            doc = builder.parse(new File(&quot;config.xml&quot;));   
+
+            //获取包含配置文件的文本节点  
+            NodeList nl = doc.getElementsByTagName(&quot;chartType&quot;);  
+            Node classNode = nl.item(0).getFirstChild();  
+            String chartType = classNode.getNodeValue().trim();  
+            return chartType;  
+        }     
+        catch(Exception e) {  
+            e.printStackTrace();  
+            return null;  
+        }  
+    }  
+}
+</code></pre><hr>
+<h3 id="XML-文件代码"><a href="#XML-文件代码" class="headerlink" title="XML 文件代码"></a>XML 文件代码</h3><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;  
+&lt;config&gt;  
+    &lt;chartType&gt;histogram&lt;/chartType&gt;  
+&lt;/config&gt;
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoururl.com/2017/01/20/读取XML中的配置参数/" data-id="cj0ar74m30021q4vvg0dlgact" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
+      
+
+      
+        <a href="http://yoururl.com/2017/01/20/读取XML中的配置参数/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
 
     </footer>
   </div>
@@ -565,7 +565,7 @@ print (c)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/14/自学Python-常用内建模块/" data-id="cj0aq05i00019ucvvaaizv2rd" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/14/自学Python-常用内建模块/" data-id="cj0ar74il001aq4vv7znqaqs1" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
       
 
       
@@ -653,7 +653,7 @@ print (s)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/14/自学Python-正则表达式/" data-id="cj0aq05i5001ducvvc9jrupc6" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/14/自学Python-正则表达式/" data-id="cj0ar74lc001sq4vv3b3qfdhs" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
       
 
       
@@ -831,7 +831,7 @@ t2.join()
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/13/自学Python-线程和进程/" data-id="cj0aq05i9001fucvvhyffkted" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/13/自学Python-线程和进程/" data-id="cj0ar74j3001cq4vv44d189hk" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
       
 
       
@@ -1043,7 +1043,7 @@ print(r)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/13/自学Python-IO编程/" data-id="cj0aq05hq000zucvvlx9h5jvc" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/13/自学Python-IO编程/" data-id="cj0ar74gu000wq4vv3rfrx04u" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
       
 
       
@@ -1296,7 +1296,7 @@ s()
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/12/自学Python-面向对象高级编程/" data-id="cj0aq05if001jucvvahvz0no8" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象高级编程">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/12/自学Python-面向对象高级编程/" data-id="cj0ar74jh001gq4vvf32l63ax" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象高级编程">分享到</a>
       
 
       
@@ -1495,7 +1495,7 @@ print(s5)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/11/自学Python-面向对象编程/" data-id="cj0aq05ic001hucvvbar8y0pk" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象编程">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/11/自学Python-面向对象编程/" data-id="cj0ar74jw001iq4vv04k2jtmf" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象编程">分享到</a>
       
 
       
@@ -1578,7 +1578,7 @@ print(s5)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/11/自学Python-Python基础/" data-id="cj0aq05ht0012ucvvx1envldp" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础.md">分享到</a>
+        <a data-url="http://yoururl.com/2017/01/11/自学Python-Python基础/" data-id="cj0ar74h1000zq4vvfcgdgqzr" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础.md">分享到</a>
       
 
       
