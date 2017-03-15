@@ -9,7 +9,7 @@
   <meta name="description" content="曾万般觉难，一朝回收，一渡万水千山。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Write the code. Change the world.">
-<meta property="og:url" content="http://yoururl.com/page/3/index.html">
+<meta property="og:url" content="http://anranz.com/page/3/index.html">
 <meta property="og:site_name" content="Write the code. Change the world.">
 <meta property="og:description" content="曾万般觉难，一朝回收，一渡万水千山。">
 <meta name="twitter:card" content="summary">
@@ -69,7 +69,7 @@
           <input name=tn type=hidden value="bds">
           <input name=cl type=hidden value="3">
           <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="yoururl.com">
+          <input type="hidden" name="si" value="anranz.com">
         </form>
       </div>
     </div>
@@ -78,9 +78,9 @@
     <div class="outer">
       <section id="main">
   
-    <article id="post-设计模式-Builder模式" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-设计模式-单例模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/17/设计模式-Builder模式/" class="article-date">
+    <a href="/2017/02/17/设计模式-单例模式/" class="article-date">
   <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
@@ -92,7 +92,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-Builder模式/">Builder模式.md</a>
+      <a class="article-title" href="/2017/02/17/设计模式-单例模式/">单例设计模式.md</a>
     </h1>
   
 
@@ -100,169 +100,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Builder模式"><a href="#Builder模式" class="headerlink" title="Builder模式"></a>Builder模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>将复杂的创建与他的表示分离,使同样的创建过程可以创建不同的表示</p>
-<h3 id="设计的步骤"><a href="#设计的步骤" class="headerlink" title="设计的步骤:"></a>设计的步骤:</h3><pre><code>Builder builder = new AppleBuilder();
-        Director director = new Director(builder);
-        director.construct(4,2,&quot;linux&quot;);
-        Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
-</code></pre><hr>
-<ol>
-<li><p>以组装电脑为例,创建电脑的抽象类,包含os ram,core定义,提供设置的抽象方法</p>
-</li>
-<li><p>创建要组装的具体电脑类AppleComputer,继承Computer类,实现所用方法</p>
-</li>
-<li><p>创建抽象的Builder类,提供builder的设置方法,另外提供返回Computer的create的抽象方法</p>
-</li>
-<li><p>创建具体的AppleBuilder类实现抽象方法,创建AppleComputer 实例对象,并设置数据,返回AppleComputer的实例</p>
-</li>
-<li><p>创建具体的Director类,构造方法中接受builder对象,提供接受数据的construct 方法,将参数传递给builder对象</p>
-</li>
-<li><p>传递的参数最终被AppleBuilder接收,并返回一个具体的AppleComputer对象</p>
-</li>
-</ol>
-<h3 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h3><pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
-
-/**
- * Created by demo on 2017/2/8 0008
+        <h2 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>确保某一类只有一个实例，而且自行实例化并向整个系统提供这个实例</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景:"></a>使用场景:</h3><p>确保某个类只存在一个对象,当创建这个对象需要消耗过多的资源时,例如IO 的读取数据库等操作</p>
+<pre><code>/**
+ * 第二种方法
  */
-public abstract class Computer {
-    protected int mCore = 1;
-    protected int mRam = 10;
-    protected String mOs = &quot;dos&quot;;
+private static CEO mInstance = null;
 
-    protected Computer() {
-
+private CEO() {
+}
+public static CEO getInstance() {
+    if (mInstance == null) {
+        synchronized (CEO.class){
+            if (mInstance == null) {
+                mInstance = new CEO();
+            }
+        }
     }
-
-    public abstract void setCore(int core);
-
-    public abstract void setRem(int rem);
-
-    public abstract void setOs(String os);
-
-    @Override
-    public String toString() {
-        return &quot;Computer{&quot; +
-                &quot;mCore=&quot; + mCore +
-                &quot;, mRam=&quot; + mRam +
-                &quot;, mOs=&apos;&quot; + mOs + &apos;\&apos;&apos; +
-                &apos;}&apos;;
-    }
+    return mInstance;
 }
-</code></pre><hr>
-<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public class AppleComputer extends Computer {
-
-
-    protected AppleComputer() {
-
-    }
-
-    @Override
-    public void setCore(int core) {
-        this.mCore = core;
-    }
-
-    @Override
-    public void setRem(int ram) {
-        this.mRam = ram;
-    }
-
-    @Override
-    public void setOs(String os) {
-        this.mOs = os;
-    }
-}
-</code></pre><hr>
-<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
-
-/**
-* Created by demo on 2017/2/8 0008
-*/
-public class AppleBuilder extends Builder {
-
-private  Computer mApplePc =new AppleComputer();
-@Override
-public void buildCore(int core) {
-    mApplePc.setCore(core);
-}
-
-@Override
-public void buildRam(int ram) {
-    mApplePc.setRem(ram);
-}
-
-@Override
-public void buildOs(String os) {
-    mApplePc.setOs(os);
-}
-
-@Override
-public Computer create() {
-
-    return mApplePc;
-}
-
-
-}
-</code></pre><hr>
-<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public abstract class Builder {
-
-
-    public abstract void buildCore(int core);
-
-    public abstract void buildRam(int ram);
-
-    public abstract void buildOs(String os);
-
-    public abstract Computer create();
-}
-</code></pre><hr>
-<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public class Director {
-    Builder mBuilder=null;
-
-    public Director(Builder builder) {
-        mBuilder = builder;
-    }
-
-    public void construct(int core,int ram, String os){
-        mBuilder.buildCore(core);
-        mBuilder.buildRam(ram);
-        mBuilder.buildOs(os);
-    }
-}
-</code></pre><hr>
-<p> 测试代码</p>
-<pre><code>// 测试运行效果
-      Builder builder = new AppleBuilder();
-      Director director = new Director(builder);
-      director.construct(4,2,&quot;linux&quot;);
-      Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
 </code></pre><hr>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/02/17/设计模式-Builder模式/" data-id="cj0atm76s001m8svvmuowsj2f" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-单例模式/" data-id="cj0atzwdy001ngwvvzk98uk4c" class="article-share-link" data-share="baidu" data-title="单例设计模式.md">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/02/17/设计模式-Builder模式/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/02/17/设计模式-单例模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -334,11 +201,11 @@ public class XMLUtil {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/20/读取XML中的配置参数/" data-id="cj0atm78w00228svvugluvwgo" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
+        <a data-url="http://anranz.com/2017/01/20/读取XML中的配置参数/" data-id="cj0atzwgn0025gwvv8yupc9jv" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/01/20/读取XML中的配置参数/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/01/20/读取XML中的配置参数/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -438,11 +305,11 @@ public class XMLUtil {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/20/MySQL使用/" data-id="cj0atm70h00068svvsmhzgjby" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
+        <a data-url="http://anranz.com/2017/01/20/MySQL使用/" data-id="cj0atzw650006gwvvvgwjp18w" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/01/20/MySQL使用/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/01/20/MySQL使用/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -565,11 +432,11 @@ print (c)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/14/自学Python-常用内建模块/" data-id="cj0atm74n00168svv9t2wbtut" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
+        <a data-url="http://anranz.com/2017/01/14/自学Python-常用内建模块/" data-id="cj0atzwca0019gwvvqinlzn94" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/01/14/自学Python-常用内建模块/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/01/14/自学Python-常用内建模块/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -653,11 +520,11 @@ print (s)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/14/自学Python-正则表达式/" data-id="cj0atm75h001c8svv7d7w21vh" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
+        <a data-url="http://anranz.com/2017/01/14/自学Python-正则表达式/" data-id="cj0atzwcy001fgwvvhus34f02" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/01/14/自学Python-正则表达式/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/01/14/自学Python-正则表达式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -831,11 +698,11 @@ t2.join()
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/13/自学Python-线程和进程/" data-id="cj0atm75q001e8svv9tm99wx5" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/13/自学Python-线程和进程/" data-id="cj0atzwcs001dgwvv8ra4cz6h" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/01/13/自学Python-线程和进程/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/01/13/自学Python-线程和进程/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -1043,11 +910,11 @@ print(r)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/13/自学Python-IO编程/" data-id="cj0atm73y000z8svvyacl797q" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/13/自学Python-IO编程/" data-id="cj0atzwba000zgwvvurinst6n" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/01/13/自学Python-IO编程/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/01/13/自学Python-IO编程/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -1296,11 +1163,11 @@ s()
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/12/自学Python-面向对象高级编程/" data-id="cj0atm75w001g8svvvf3hvq2l" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象高级编程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/" data-id="cj0atzwdn001kgwvvrvyexnex" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象高级编程">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/01/12/自学Python-面向对象高级编程/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -1495,11 +1362,11 @@ print(s5)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/11/自学Python-面向对象编程/" data-id="cj0atm76o001k8svvq7jjptmz" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象编程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/11/自学Python-面向对象编程/" data-id="cj0atzwd5001hgwvvylxtoflg" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象编程">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/01/11/自学Python-面向对象编程/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/01/11/自学Python-面向对象编程/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -1578,11 +1445,11 @@ print(s5)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoururl.com/2017/01/11/自学Python-Python基础/" data-id="cj0atm74500118svvpzgpjruk" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础.md">分享到</a>
+        <a data-url="http://anranz.com/2017/01/11/自学Python-Python基础/" data-id="cj0atzwbg0012gwvvpbghrfmn" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础.md">分享到</a>
       
 
       
-        <a href="http://yoururl.com/2017/01/11/自学Python-Python基础/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/01/11/自学Python-Python基础/#ds-thread" class="article-comment-link">评论</a>
       
 
       
