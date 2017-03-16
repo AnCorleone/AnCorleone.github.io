@@ -78,9 +78,9 @@
     <div class="outer">
       <section id="main">
   
-    <article id="post-设计模式-单例模式" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-设计模式-代理模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/17/设计模式-单例模式/" class="article-date">
+    <a href="/2017/02/17/设计模式-代理模式/" class="article-date">
   <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
@@ -92,7 +92,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-单例模式/">单例设计模式.md</a>
+      <a class="article-title" href="/2017/02/17/设计模式-代理模式/">代理模式.md</a>
     </h1>
   
 
@@ -100,36 +100,66 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>确保某一类只有一个实例，而且自行实例化并向整个系统提供这个实例</p>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景:"></a>使用场景:</h3><p>确保某个类只存在一个对象,当创建这个对象需要消耗过多的资源时,例如IO 的读取数据库等操作</p>
-<pre><code>/**
- * 第二种方法
- */
-private static CEO mInstance = null;
+        <h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>代理模式是对象结构模式,代理模式给某个对象提供一个代理对象,并由代理对象控制控制原对象的引用.</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><h3 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h3><p>定义抽象类</p>
+<pre><code>package com.anakin.design_pattern_test.proxy_method;
 
-private CEO() {
-}
-public static CEO getInstance() {
-    if (mInstance == null) {
-        synchronized (CEO.class){
-            if (mInstance == null) {
-                mInstance = new CEO();
-            }
-        }
-    }
-    return mInstance;
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public abstract class AbstractObject {
+
+    // 需要的操作
+    public abstract void operation();
+
 }
 </code></pre><hr>
+<p>定义真正的实现的类</p>
+<pre><code>package com.anakin.design_pattern_test.proxy_method;
 
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class RealObject extends AbstractObject {
+    @Override
+    public void operation() {
+        System.out.println(&quot;  need to do something &gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
+    }
+}
+</code></pre><hr>
+<p>定义代理类</p>
+<pre><code>package com.anakin.design_pattern_test.proxy_method;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class ProxyObject extends AbstractObject {
+    @Override
+    public void operation() {
+        // 调用具体操作前可以做操作
+        AbstractObject real = new RealObject();
+        real.operation();
+        // 调用具体操作后可以做操作
+    }
+}
+</code></pre><hr>
+<p>测试</p>
+<pre><code>// 代理模式测试
+AbstractObject proxy =new ProxyObject();
+proxy.operation();
+</code></pre><hr>
+<p>测试结果</p>
+<pre><code>02-08 09:46:41.821 18278-18278/com.anakin.design_pattern_test I/System.out:   need to do something &gt;&gt;&gt;&gt;&gt;&gt;&gt;
+</code></pre>
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/设计模式-单例模式/" data-id="cj0atzwdy001ngwvvzk98uk4c" class="article-share-link" data-share="baidu" data-title="单例设计模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-代理模式/" data-id="cj0c2vqa6001w5kvvfloj38q4" class="article-share-link" data-share="baidu" data-title="代理模式.md">分享到</a>
       
 
       
-        <a href="http://anranz.com/2017/02/17/设计模式-单例模式/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/02/17/设计模式-代理模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -142,10 +172,10 @@ public static CEO getInstance() {
 
 
   
-    <article id="post-读取XML中的配置参数" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-设计模式-Builder模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/20/读取XML中的配置参数/" class="article-date">
-  <time datetime="2017-01-20T02:22:04.000Z" itemprop="datePublished">2017-01-20</time>
+    <a href="/2017/02/17/设计模式-Builder模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
   </div>
@@ -156,7 +186,7 @@ public static CEO getInstance() {
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/20/读取XML中的配置参数/">Android-读取XML中的配置参数工具类XMLUtil</a>
+      <a class="article-title" href="/2017/02/17/设计模式-Builder模式/">Builder模式.md</a>
     </h1>
   
 
@@ -164,52 +194,173 @@ public static CEO getInstance() {
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一个读取xml文件中配置文件的工具类XMLUtil"><a href="#一个读取xml文件中配置文件的工具类XMLUtil" class="headerlink" title="一个读取xml文件中配置文件的工具类XMLUtil"></a>一个读取xml文件中配置文件的工具类XMLUtil</h2><h3 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h3><pre><code>import javax.xml.parsers.*;  
-import org.w3c.dom.*;  
-import org.xml.sax.SAXException;  
-import java.io.*;  
+        <h2 id="Builder模式"><a href="#Builder模式" class="headerlink" title="Builder模式"></a>Builder模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>将复杂的创建与他的表示分离,使同样的创建过程可以创建不同的表示</p>
+<h3 id="设计的步骤"><a href="#设计的步骤" class="headerlink" title="设计的步骤:"></a>设计的步骤:</h3><pre><code>Builder builder = new AppleBuilder();
+        Director director = new Director(builder);
+        director.construct(4,2,&quot;linux&quot;);
+        Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
+</code></pre><hr>
+<ol>
+<li><p>以组装电脑为例,创建电脑的抽象类,包含os ram,core定义,提供设置的抽象方法</p>
+</li>
+<li><p>创建要组装的具体电脑类AppleComputer,继承Computer类,实现所用方法</p>
+</li>
+<li><p>创建抽象的Builder类,提供builder的设置方法,另外提供返回Computer的create的抽象方法</p>
+</li>
+<li><p>创建具体的AppleBuilder类实现抽象方法,创建AppleComputer 实例对象,并设置数据,返回AppleComputer的实例</p>
+</li>
+<li><p>创建具体的Director类,构造方法中接受builder对象,提供接受数据的construct 方法,将参数传递给builder对象</p>
+</li>
+<li><p>传递的参数最终被AppleBuilder接收,并返回一个具体的AppleComputer对象</p>
+</li>
+</ol>
+<h3 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h3><pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
 
-public class XMLUtil {  
-    //该方法用于从XML配置文件中提取配置文件
-    public static String getChartType() {  
-        try {  
-            //创建文档对象  
-            DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();  
-            DocumentBuilder builder = dFactory.newDocumentBuilder();  
-            Document doc;                             
-            doc = builder.parse(new File(&quot;config.xml&quot;));   
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public abstract class Computer {
+    protected int mCore = 1;
+    protected int mRam = 10;
+    protected String mOs = &quot;dos&quot;;
 
-            //获取包含配置文件的文本节点  
-            NodeList nl = doc.getElementsByTagName(&quot;chartType&quot;);  
-            Node classNode = nl.item(0).getFirstChild();  
-            String chartType = classNode.getNodeValue().trim();  
-            return chartType;  
-        }     
-        catch(Exception e) {  
-            e.printStackTrace();  
-            return null;  
-        }  
-    }  
+    protected Computer() {
+
+    }
+
+    public abstract void setCore(int core);
+
+    public abstract void setRem(int rem);
+
+    public abstract void setOs(String os);
+
+    @Override
+    public String toString() {
+        return &quot;Computer{&quot; +
+                &quot;mCore=&quot; + mCore +
+                &quot;, mRam=&quot; + mRam +
+                &quot;, mOs=&apos;&quot; + mOs + &apos;\&apos;&apos; +
+                &apos;}&apos;;
+    }
 }
 </code></pre><hr>
-<h3 id="XML-文件代码"><a href="#XML-文件代码" class="headerlink" title="XML 文件代码"></a>XML 文件代码</h3><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;  
-&lt;config&gt;  
-    &lt;chartType&gt;histogram&lt;/chartType&gt;  
-&lt;/config&gt;
-</code></pre>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class AppleComputer extends Computer {
+
+
+    protected AppleComputer() {
+
+    }
+
+    @Override
+    public void setCore(int core) {
+        this.mCore = core;
+    }
+
+    @Override
+    public void setRem(int ram) {
+        this.mRam = ram;
+    }
+
+    @Override
+    public void setOs(String os) {
+        this.mOs = os;
+    }
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+* Created by demo on 2017/2/8 0008
+*/
+public class AppleBuilder extends Builder {
+
+private  Computer mApplePc =new AppleComputer();
+@Override
+public void buildCore(int core) {
+    mApplePc.setCore(core);
+}
+
+@Override
+public void buildRam(int ram) {
+    mApplePc.setRem(ram);
+}
+
+@Override
+public void buildOs(String os) {
+    mApplePc.setOs(os);
+}
+
+@Override
+public Computer create() {
+
+    return mApplePc;
+}
+
+
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public abstract class Builder {
+
+
+    public abstract void buildCore(int core);
+
+    public abstract void buildRam(int ram);
+
+    public abstract void buildOs(String os);
+
+    public abstract Computer create();
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class Director {
+    Builder mBuilder=null;
+
+    public Director(Builder builder) {
+        mBuilder = builder;
+    }
+
+    public void construct(int core,int ram, String os){
+        mBuilder.buildCore(core);
+        mBuilder.buildRam(ram);
+        mBuilder.buildOs(os);
+    }
+}
+</code></pre><hr>
+<p> 测试代码</p>
+<pre><code>// 测试运行效果
+      Builder builder = new AppleBuilder();
+      Director director = new Director(builder);
+      director.construct(4,2,&quot;linux&quot;);
+      Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
+</code></pre><hr>
+
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/20/读取XML中的配置参数/" data-id="cj0atzwgn0025gwvv8yupc9jv" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-Builder模式/" data-id="cj0c2vqa3001t5kvv572x4enp" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
       
 
       
-        <a href="http://anranz.com/2017/01/20/读取XML中的配置参数/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/02/17/设计模式-Builder模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
 
     </footer>
   </div>
@@ -305,7 +456,7 @@ public class XMLUtil {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/20/MySQL使用/" data-id="cj0atzw650006gwvvvgwjp18w" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
+        <a data-url="http://anranz.com/2017/01/20/MySQL使用/" data-id="cj0c2vq8x000q5kvvn30qdxb4" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
       
 
       
@@ -314,6 +465,82 @@ public class XMLUtil {
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-读取XML中的配置参数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/20/读取XML中的配置参数/" class="article-date">
+  <time datetime="2017-01-20T02:22:04.000Z" itemprop="datePublished">2017-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/20/读取XML中的配置参数/">Android-读取XML中的配置参数工具类XMLUtil</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一个读取xml文件中配置文件的工具类XMLUtil"><a href="#一个读取xml文件中配置文件的工具类XMLUtil" class="headerlink" title="一个读取xml文件中配置文件的工具类XMLUtil"></a>一个读取xml文件中配置文件的工具类XMLUtil</h2><h3 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h3><pre><code>import javax.xml.parsers.*;  
+import org.w3c.dom.*;  
+import org.xml.sax.SAXException;  
+import java.io.*;  
+
+public class XMLUtil {  
+    //该方法用于从XML配置文件中提取配置文件
+    public static String getChartType() {  
+        try {  
+            //创建文档对象  
+            DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();  
+            DocumentBuilder builder = dFactory.newDocumentBuilder();  
+            Document doc;                             
+            doc = builder.parse(new File(&quot;config.xml&quot;));   
+
+            //获取包含配置文件的文本节点  
+            NodeList nl = doc.getElementsByTagName(&quot;chartType&quot;);  
+            Node classNode = nl.item(0).getFirstChild();  
+            String chartType = classNode.getNodeValue().trim();  
+            return chartType;  
+        }     
+        catch(Exception e) {  
+            e.printStackTrace();  
+            return null;  
+        }  
+    }  
+}
+</code></pre><hr>
+<h3 id="XML-文件代码"><a href="#XML-文件代码" class="headerlink" title="XML 文件代码"></a>XML 文件代码</h3><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;  
+&lt;config&gt;  
+    &lt;chartType&gt;histogram&lt;/chartType&gt;  
+&lt;/config&gt;
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/01/20/读取XML中的配置参数/" data-id="cj0c2vqah002c5kvvhir6or0d" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/01/20/读取XML中的配置参数/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
 
     </footer>
   </div>
@@ -432,7 +659,7 @@ print (c)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/14/自学Python-常用内建模块/" data-id="cj0atzwca0019gwvvqinlzn94" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
+        <a data-url="http://anranz.com/2017/01/14/自学Python-常用内建模块/" data-id="cj0c2vq9i001e5kvvfnmr9hwe" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
       
 
       
@@ -520,7 +747,7 @@ print (s)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/14/自学Python-正则表达式/" data-id="cj0atzwcy001fgwvvhus34f02" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
+        <a data-url="http://anranz.com/2017/01/14/自学Python-正则表达式/" data-id="cj0c2vq9m001i5kvvsngljiyv" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
       
 
       
@@ -698,7 +925,7 @@ t2.join()
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/13/自学Python-线程和进程/" data-id="cj0atzwcs001dgwvv8ra4cz6h" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/13/自学Python-线程和进程/" data-id="cj0c2vq9n001j5kvvtprxi65q" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
       
 
       
@@ -910,7 +1137,7 @@ print(r)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/13/自学Python-IO编程/" data-id="cj0atzwba000zgwvvurinst6n" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/13/自学Python-IO编程/" data-id="cj0c2vq9900145kvvuwmxb90m" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
       
 
       
@@ -1163,210 +1390,11 @@ s()
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/" data-id="cj0atzwdn001kgwvvrvyexnex" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象高级编程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/" data-id="cj0c2vq9v001o5kvvkvx5yacr" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象高级编程">分享到</a>
       
 
       
         <a href="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-自学Python-面向对象编程" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/11/自学Python-面向对象编程/" class="article-date">
-  <time datetime="2017-01-11T11:38:56.000Z" itemprop="datePublished">2017-01-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/11/自学Python-面向对象编程/">自学Python-面向对象编程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><pre><code>class Student(object):
-    def __init__(self, name,score):
-        self.name = name
-        self.score = score
-    def print_score(self):
-        print(&apos;%s: %s&apos; % (self.name,self.score))
-s1 = Student(&apos;anakin&apos;,18)
-s2 = Student(&apos;anran&apos;,18)
-s1.print_score()
-s2.print_score()
-</code></pre><ul>
-<li>定义类以<code>class</code>开头,后买年跟类名,类名后面的括号中写继承的类(一般默认继承Object)</li>
-<li>和普通函数相比,在类中定义函数,第一个变量永远是实例变量<code>self</code>,但是调用的时候不用传入,Python解释器会自动把实例变量传进去</li>
-</ul>
-<h3 id="数据封装"><a href="#数据封装" class="headerlink" title="数据封装"></a>数据封装</h3><ul>
-<li>我们直接擦操作了对象内部数据,但无法知道方法内部的实现细节</li>
-</ul>
-<h3 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h3><ul>
-<li>在Class内部,有属性和方法,而外部代码通过直接调用实例变量的方法来操作数据,这样就隐藏了内部的复杂逻辑</li>
-<li>如果要想是内部属性不被外部访问,在属性名称前面加<strong>,在Python中如果变量名以</strong>开头,就变成了私有变量,只有内部可以访问,外部不能访问</li>
-</ul>
-<p>不能被直接访问</p>
-<pre><code>class Student(object):
-    def __init__(self, name,score):
-        self.__name = name
-        self.__score = score
-    def print_score(self):
-        print(&apos;%s: %s&apos; % (self.__name,self.__score))
-s1 = Student(&apos;anakin&apos;,18)
-
-print(s1.__name);
-</code></pre><ul>
-<li><p>外部如果想访问和修改实例的,可以通过get和set方法</p>
-<pre><code>class Student(object):
-def __init__(self, name,score):
-    self.__name = name
-    self.__score = score
-def print_score(self):
-    print(&apos;%s: %s&apos; % (self.__name,self.__score))
-def get_name(self):
-    return self.__name
-def set_name(self,name):
-    self.__name=name
-s1 = Student(&apos;anakin&apos;,18)
-print(s1.get_name())
-s1.set_name(&apos;change&apos;)
-print(s1.get_name());
-print(s1.print_score())
-</code></pre></li>
-</ul>
-<p><strong>注意 :</strong></p>
-<ul>
-<li><p>类似<strong>xxx_</strong> ,双下划线开头,双下划线结尾属于特殊变量,特殊变量可以直接访问,所以在命名变量名的时候不要使用<strong>xxx</strong> 这样的变量名</p>
-</li>
-<li><p>类似_name的实例变量,外部是可以访问的,但是按照约定俗成的固定,这样的实例看作是私有的</p>
-</li>
-</ul>
-<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ul>
-<li>继承的好处,子类可以获得父类的全部功能</li>
-<li><p>子类和父类存在同样的方法,这时我们说子类覆盖了父类的方法,运行时会调用子类的方法,这样我们就获得了继承的另外一个好处:<strong>多态</strong></p>
-<pre><code>class Animal(object):
-    def run(self):
-        print(&apos;aninmal is running....&apos;)
-
-class Dog(Animal):
-    def run(self):
-        print(&apos;Dog is running....&apos;)
-
-class Cat(Animal):
-        def run(self):
-            print(&apos;Cat is running....&apos;)
-
-d = Dog()
-c = Cat()
-d.run()
-c.run()
-</code></pre></li>
-</ul>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><ul>
-<li><p>对于静态语言像java ,如果需要传入Anima类型,则传入的对象必须是Animal类型或者它的子类,否则无法调用run方法</p>
-</li>
-<li><p>对于动态语言想Python,则不一定要传入Animal类型,只需要保证传入的对象有一个run方法就可以了</p>
-</li>
-</ul>
-<blockquote>
-<p>动态语言的的”鸭子类型”,比要求严格的继承体系,一个对象只要”看起来像鸭子”,那它就可以被看作是鸭子.</p>
-</blockquote>
-<h3 id="获取对象信息"><a href="#获取对象信息" class="headerlink" title="获取对象信息"></a>获取对象信息</h3><ul>
-<li><p>判断基本数据类型</p>
-<pre><code>s= type(&apos;123&apos;)
-print(s)
-</code></pre></li>
-<li><p>判断一个对象是否是函数,使用types提供的函数</p>
-<pre><code>import types
-&apos;判断对象是否是函数&apos;
-def fn():
-    pass
-s= types.FunctionType
-print(s)
-</code></pre></li>
-</ul>
-<pre><code>&apos;判断对象是否是函数&apos;
-def fn():
-    pass
-s= types.FunctionType
-s2 =types.BuiltinFunctionType
-s3 = type(abs)==s2
-print(s3)
-print(s)
-</code></pre><p> <strong>isinstance()函数</strong></p>
-<pre><code>&apos;isinstance()函数&apos;
-class Animal(object):
-    pass
-class Dog(Animal):
-    pass
-class Cat(Animal):
-    pass
-a =Animal()
-d =Dog()
-c = Cat()
-s = isinstance(d,Animal)
-print(s)
-</code></pre><ul>
-<li><p>判断是否是其中一种</p>
-<pre><code>s=isinstance([1,2,3],(list,tuple))
-print(s)
-</code></pre></li>
-</ul>
-<p><strong>使用dir()</strong></p>
-<ul>
-<li><p>获得一个对象的所有属性和方法使用<code>dir()</code></p>
-</li>
-<li><p>配合使用<code>getattr(),setattr(),hasattr()</code>,可以直接操作一个对象的状态</p>
-<pre><code>class Animal(object):
-    def __init__(self):
-        self.x= 9
-    def power(self):
-        return self.x*self.x
-a = Animal()
-s1 =hasattr(a,&apos;x&apos;)
-s2 =hasattr(a,&apos;y&apos;)
-s3 =getattr(a,&apos;x&apos;)
-s4 =setattr(a,&apos;x&apos;,4)
-s5= getattr(a,&apos;x&apos;)
-print(s1)
-print(s2)
-print(s3)
-print(s4)
-print(s5)
-</code></pre></li>
-</ul>
-<h3 id="实例属性和类属性"><a href="#实例属性和类属性" class="headerlink" title="实例属性和类属性"></a>实例属性和类属性</h3><ul>
-<li>Python是动态语言,根据类创建的实例可以绑定任意属性,可以删除</li>
-<li>如果类中存在这个属性,绑定新的属性,会得到新绑定的属性,如果删除就得到类的属性,绑定的属性只能通过类的实例调用,不能通过类名获取</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/01/11/自学Python-面向对象编程/" data-id="cj0atzwd5001hgwvvylxtoflg" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象编程">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/01/11/自学Python-面向对象编程/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -1445,7 +1473,7 @@ print(s5)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/11/自学Python-Python基础/" data-id="cj0atzwbg0012gwvvpbghrfmn" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础.md">分享到</a>
+        <a data-url="http://anranz.com/2017/01/11/自学Python-Python基础/" data-id="cj0c2vq9b00165kvvjqvcr7xf" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础.md">分享到</a>
       
 
       
@@ -1478,7 +1506,7 @@ print(s5)
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1496,7 +1524,7 @@ print(s5)
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
     </div>
   </div>
 
@@ -1506,6 +1534,10 @@ print(s5)
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/03/16/Ubuntu16-04下载编译Android6-0源码/">Ubuntu16.04下载编译Android6.0源码</a>
+          </li>
         
           <li>
             <a href="/2017/03/10/RxJava-简单使用（二）/">RxJava--简单使用（二）</a>
@@ -1521,10 +1553,6 @@ print(s5)
         
           <li>
             <a href="/2017/03/06/Atom插件打造PHP开发平台/">Atom插件打造PHP开发平台</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/02/不忘初心/">不忘初心</a>
           </li>
         
       </ul>
