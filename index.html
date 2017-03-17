@@ -78,6 +78,162 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-使用RxJava实现EventBus-事件总线）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/17/使用RxJava实现EventBus-事件总线）/" class="article-date">
+  <time datetime="2017-03-17T02:12:22.000Z" itemprop="datePublished">2017-03-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://oje1oqb9c.bkt.clouddn.com/image/bus.jpg" rel="gallery_cj0dhiua2000sp0vvdzvqstme">
+        <img src="http://oje1oqb9c.bkt.clouddn.com/image/bus.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/17/使用RxJava实现EventBus-事件总线）/">使用RxJava实现EventBus(事件总线）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>口是心非的人，总是在夜里翻来覆去的。from 《电车计划》</p>
+</blockquote>
+<p>使用事件总线可以使各组件的通信变的简单，实现功能代码的解耦，Android中流行的事件总线框架有<code>otto</code>和<code>EventBus</code>,当我们的工程中有使用RxJava的时候,可以使用RxJava实现EventBus,避免依赖过多的框架.</p>
+<h3 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h3><ol>
+<li><p>创建一个<code>RxBus类</code>，编写单例方法</p>
+</li>
+<li><p>在构造函数中初始化<code>Subject</code></p>
+</li>
+<li><p>创建发送事件的方法<code>post(Object o)</code></p>
+</li>
+<li><p>创建接受事件的方法<code>toObservable(Class klass)</code>,返回<code>Observable</code></p>
+</li>
+</ol>
+<h3 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h3><pre><code>package com.anakin.design_pattern_test.rxbus_test;
+
+import rx.Observable;
+import rx.subjects.PublishSubject;
+import rx.subjects.SerializedSubject;
+import rx.subjects.Subject;
+
+/**
+ * Created by demo on 2017/3/16 0016
+ */
+public class RxBus {
+    private static RxBus instance;
+    private final Subject&lt;Object, Object&gt; bus;
+
+    // 初始化Subject,PublishSubject只会把订阅的时间发生之后来自原始Observable的数据发送给观察者
+    // Subject 即是观察者也是被观察者
+    public RxBus() {
+        bus =new SerializedSubject&lt;&gt;(PublishSubject.create());
+    }
+
+    /**
+     *  单例
+     * @return RxBus
+     */
+    public static RxBus getInstance(){
+        if(instance==null){
+            synchronized (RxBus.class){
+                if(instance==null){
+                    instance =new RxBus();
+                }
+            }
+        }
+        return  instance;
+    }
+
+    // 发送一个新事件
+    public void post(Object o){
+        bus.onNext(o);
+    }
+
+    /**
+     * 接收事件
+     * @param klass 封装数据的实体类
+     * @param &lt;T&gt;
+     * @return Observable
+     */
+    public &lt;T&gt; Observable&lt;T&gt; toObservable(Class&lt;T&gt; klass){
+       return bus.ofType(klass);
+    }
+}
+</code></pre><hr>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><pre><code>// 接收事件
+subscription= RxBus.getInstance().toObservable(EventBean.class)
+        .subscribe(new Action1&lt;EventBean&gt;() {
+                       @Override
+                       public void call(EventBean eventBean) {
+                           Log.d(TAG,eventBean.toString());
+                          // mResult.setText(eventBean.toString());
+                       }
+                   }
+                , new Action1&lt;Throwable&gt;() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        // 接收异常
+                        Log.d(TAG,throwable.toString());
+                        //mResult.setText(throwable.toString());
+                    }
+                }
+        );
+</code></pre><h3 id="取消订阅事件"><a href="#取消订阅事件" class="headerlink" title="取消订阅事件"></a>取消订阅事件</h3><p>注意一定要在生命周期被销毁的时候取消订阅事件,防止RxJava引起的内存泄露问题</p>
+<pre><code>@Override
+protected void onDestroy() {
+    super.onDestroy();
+    // 取消订阅事件
+    if(!subscription.isUnsubscribed()) {
+        subscription.unsubscribe();
+    }
+}
+</code></pre><h3 id="注"><a href="#注" class="headerlink" title="注"></a>注</h3><ul>
+<li><p><code>Subject</code>既是观察者,也是被观察者</p>
+</li>
+<li><p><code>Subject</code>是非线程安全的,所以要转换成<code>SerializedSubject</code>线程安全的</p>
+</li>
+<li><p><code>ofType()</code>只发送符合类型的数据</p>
+</li>
+<li><p>PublishSubject只会把在订阅发生的时间点之后来自原始Observale的数据发送给观察者</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/03/17/使用RxJava实现EventBus-事件总线）/" data-id="cj0dhiua2000sp0vvdzvqstme" class="article-share-link" data-share="baidu" data-title="使用RxJava实现EventBus(事件总线）">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/03/17/使用RxJava实现EventBus-事件总线）/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Ubuntu16-04下载编译Android6-0源码" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/16/Ubuntu16-04下载编译Android6-0源码/" class="article-date">
@@ -90,7 +246,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://oje1oqb9c.bkt.clouddn.com/image/android6.0bg.png" rel="gallery_cj0c2vq8n000g5kvvd2chohaz">
+      <a class="article-gallery-img fancybox" href="http://oje1oqb9c.bkt.clouddn.com/image/android6.0bg.png" rel="gallery_cj0dhiu9o000kp0vv4d4vcvo4">
         <img src="http://oje1oqb9c.bkt.clouddn.com/image/android6.0bg.png" itemprop="image">
       </a>
     
@@ -123,7 +279,7 @@ $ PATH=~/bin:$PATH
 $ curl https://storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo
 $ chmod a+x ~/bin/repo
 </code></pre><h3 id="同步代码"><a href="#同步代码" class="headerlink" title="同步代码"></a>同步代码</h3><ul>
-<li><p>创建源码目录：<br><code>mkdir android-6.0.1_r46</code><br><code>cd android-6.0.1_r46</code></p>
+<li><p>创建存放源码目录：<br><code>mkdir android-6.0.1_r46</code><br><code>cd android-6.0.1_r46</code></p>
 </li>
 <li><p>使用repo init指定要同步的代码版本。你可以在这里找到目前所有android源码的版本 :  <a href="https://source.android.com/source/build-numbers.html" target="_blank" rel="external">选择源码版本</a></p>
 </li>
@@ -148,7 +304,7 @@ $ chmod a+x ~/bin/repo
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/16/Ubuntu16-04下载编译Android6-0源码/" data-id="cj0c2vq8n000g5kvvd2chohaz" class="article-share-link" data-share="baidu" data-title="Ubuntu16.04下载编译Android6.0源码">分享到</a>
+        <a data-url="http://anranz.com/2017/03/16/Ubuntu16-04下载编译Android6-0源码/" data-id="cj0dhiu9o000kp0vv4d4vcvo4" class="article-share-link" data-share="baidu" data-title="Ubuntu16.04下载编译Android6.0源码">分享到</a>
       
 
       
@@ -177,7 +333,7 @@ $ chmod a+x ~/bin/repo
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg" rel="gallery_cj0c2vq8h000c5kvvnvcchhns">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg" rel="gallery_cj0dhiu9r000mp0vvak1fkn3g">
         <img src="http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -263,7 +419,7 @@ $ chmod a+x ~/bin/repo
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/10/RxJava-简单使用（二）/" data-id="cj0c2vq8h000c5kvvnvcchhns" class="article-share-link" data-share="baidu" data-title="RxJava--简单使用（二）">分享到</a>
+        <a data-url="http://anranz.com/2017/03/10/RxJava-简单使用（二）/" data-id="cj0dhiu9r000mp0vvak1fkn3g" class="article-share-link" data-share="baidu" data-title="RxJava--简单使用（二）">分享到</a>
       
 
       
@@ -292,7 +448,7 @@ $ chmod a+x ~/bin/repo
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg" rel="gallery_cj0c2vq8l000e5kvvaiewpt6s">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg" rel="gallery_cj0dhiu9c000cp0vvn0kc92ya">
         <img src="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -418,7 +574,7 @@ service.getTopMovie(1,1)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/08/RxJave和Retrofits的实现网络请求/" data-id="cj0c2vq8l000e5kvvaiewpt6s" class="article-share-link" data-share="baidu" data-title="RxJave和Retrofits的实现网络请求">分享到</a>
+        <a data-url="http://anranz.com/2017/03/08/RxJave和Retrofits的实现网络请求/" data-id="cj0dhiu9c000cp0vvn0kc92ya" class="article-share-link" data-share="baidu" data-title="RxJave和Retrofits的实现网络请求">分享到</a>
       
 
       
@@ -447,7 +603,7 @@ service.getTopMovie(1,1)
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cj0c2vq8400075kvv3imblrbq">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cj0dhiu9g000ep0vv1t66rx7g">
         <img src="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -727,7 +883,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/06/RxJava-简单使用/" data-id="cj0c2vq8400075kvv3imblrbq" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
+        <a data-url="http://anranz.com/2017/03/06/RxJava-简单使用/" data-id="cj0dhiu9g000ep0vv1t66rx7g" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
       
 
       
@@ -756,7 +912,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" rel="gallery_cj0c2vq7i00035kvv4mjq9bbw">
+      <a class="article-gallery-img fancybox" href="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" rel="gallery_cj0dhiu7a0003p0vv1sbhhm4i">
         <img src="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" itemprop="image">
       </a>
     
@@ -799,7 +955,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/06/Atom插件打造PHP开发平台/" data-id="cj0c2vq7i00035kvv4mjq9bbw" class="article-share-link" data-share="baidu" data-title="Atom插件打造PHP开发平台">分享到</a>
+        <a data-url="http://anranz.com/2017/03/06/Atom插件打造PHP开发平台/" data-id="cj0dhiu7a0003p0vv1sbhhm4i" class="article-share-link" data-share="baidu" data-title="Atom插件打造PHP开发平台">分享到</a>
       
 
       
@@ -828,7 +984,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" rel="gallery_cj0c2vq8z000t5kvvkybgdmzk">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" rel="gallery_cj0dhiua4000up0vvhvyvrkrc">
         <img src="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -858,7 +1014,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/02/不忘初心/" data-id="cj0c2vq8z000t5kvvkybgdmzk" class="article-share-link" data-share="baidu" data-title="不忘初心">分享到</a>
+        <a data-url="http://anranz.com/2017/03/02/不忘初心/" data-id="cj0dhiua4000up0vvhvyvrkrc" class="article-share-link" data-share="baidu" data-title="不忘初心">分享到</a>
       
 
       
@@ -887,7 +1043,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cj0c2vq8u000o5kvvqtj5suuu">
+      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cj0dhiuab0011p0vvslsr37qb">
         <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" itemprop="image">
       </a>
     
@@ -917,7 +1073,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/01/三月/" data-id="cj0c2vq8u000o5kvvqtj5suuu" class="article-share-link" data-share="baidu" data-title="三月">分享到</a>
+        <a data-url="http://anranz.com/2017/03/01/三月/" data-id="cj0dhiuab0011p0vvslsr37qb" class="article-share-link" data-share="baidu" data-title="三月">分享到</a>
       
 
       
@@ -1028,7 +1184,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/28/设计模式-桥接模式/" data-id="cj0c2vqaa00235kvv1bqhej2a" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/28/设计模式-桥接模式/" data-id="cj0dhiubn001wp0vvgriq98b5" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
       
 
       
@@ -1090,7 +1246,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/22/怎样选择基金/" data-id="cj0c2vq9700125kvv2vaouaef" class="article-share-link" data-share="baidu" data-title="怎样选择基金">分享到</a>
+        <a data-url="http://anranz.com/2017/02/22/怎样选择基金/" data-id="cj0dhiu9x000qp0vvw403xfk6" class="article-share-link" data-share="baidu" data-title="怎样选择基金">分享到</a>
       
 
       
@@ -1099,98 +1255,6 @@ protected void onDestroy() {
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/理财/">理财</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Vim基本操作" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/22/Vim基本操作/" class="article-date">
-  <time datetime="2017-02-22T03:33:14.000Z" itemprop="datePublished">2017-02-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/22/Vim基本操作/">Vim基本操作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="vim的基本操作"><a href="#vim的基本操作" class="headerlink" title="vim的基本操作"></a>vim的基本操作</h2><ul>
-<li>在普通模式.重复上一次操作</li>
-<li>执行制定次数相同的命令</li>
-</ul>
-<h3 id="游标的快速跳转"><a href="#游标的快速跳转" class="headerlink" title="游标的快速跳转"></a>游标的快速跳转</h3><p><strong> 行间跳转 :</strong></p>
-<ol>
-<li>nG表示跳转到地n行</li>
-<li>gg游标移动到第一行</li>
-<li>G跳转到行尾</li>
-<li>ctrl 回到游标跳转前的位置</li>
-</ol>
-<h3 id="复制粘贴和剪切"><a href="#复制粘贴和剪切" class="headerlink" title="复制粘贴和剪切"></a>复制粘贴和剪切</h3><ul>
-<li>复制和粘贴文本<ol>
-<li>yy表示复制整行</li>
-<li>yw：复制一个单词</li>
-<li>y$复制到行尾</li>
-<li>y^复制到行头</li>
-<li>y^复制到行头</li>
-</ol>
-</li>
-</ul>
-<h3 id="字符替换及撤销操作"><a href="#字符替换及撤销操作" class="headerlink" title="字符替换及撤销操作"></a>字符替换及撤销操作</h3><ol>
-<li>r替换光标所在的字母</li>
-<li>R 连续替换，直到按下esc</li>
-<li>cc替换整行,进入插入模式</li>
-<li>cw替换一个单词，进入插入模式</li>
-<li>u{n}撤销一次或者n次操作</li>
-<li>ctrl+r恢复撤销的操作</li>
-</ol>
-<h3 id="快速缩进"><a href="#快速缩进" class="headerlink" title="快速缩进"></a>快速缩进</h3><ol>
-<li><code>&gt;&gt;</code> 整行向右缩进</li>
-<li><code>&lt;&lt;</code> 整行向左缩进</li>
-<li>命令行模式输入ce是选中的行的内容居中</li>
-</ol>
-<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><ol>
-<li>普通模式使用/向下查找</li>
-<li>?向上查找</li>
-<li>n 表示继续查找</li>
-</ol>
-<h3 id="使用vim编辑多个文件"><a href="#使用vim编辑多个文件" class="headerlink" title="使用vim编辑多个文件"></a>使用vim编辑多个文件</h3><ol>
-<li>命令模式输入n编辑下一个文件</li>
-<li>N编辑上一个文件，加! 强制进行切换</li>
-<li>进入vim打开新文件，同时编辑多个文件，在命令模式下输入e：文件名</li>
-<li>e#回到前一个打开的文件</li>
-<li>ls可以列出编辑过的文档</li>
-<li>恢复文件 使用vim -r 打开文件 输入:ewcover 文件名来恢复</li>
-<li>打开新窗口 命令模式下输: <code>new</code></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/02/22/Vim基本操作/" data-id="cj0c2vq8q000j5kvv7pzjfaao" class="article-share-link" data-share="baidu" data-title="Vim基本操作">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/02/22/Vim基本操作/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vim/">Vim</a></li></ul>
 
     </footer>
   </div>
@@ -1215,7 +1279,7 @@ protected void onDestroy() {
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1224,7 +1288,7 @@ protected void onDestroy() {
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 18px;">设计模式</a> <a href="/tags/随想/" style="font-size: 12px;">随想</a>
+      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 17.5px;">设计模式</a> <a href="/tags/随想/" style="font-size: 12.5px;">随想</a>
     </div>
   </div>
 
@@ -1233,7 +1297,7 @@ protected void onDestroy() {
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
     </div>
   </div>
 
@@ -1243,6 +1307,10 @@ protected void onDestroy() {
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/03/17/使用RxJava实现EventBus-事件总线）/">使用RxJava实现EventBus(事件总线）</a>
+          </li>
         
           <li>
             <a href="/2017/03/16/Ubuntu16-04下载编译Android6-0源码/">Ubuntu16.04下载编译Android6.0源码</a>
@@ -1258,10 +1326,6 @@ protected void onDestroy() {
         
           <li>
             <a href="/2017/03/06/RxJava-简单使用/">RxJava-简单使用</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/06/Atom插件打造PHP开发平台/">Atom插件打造PHP开发平台</a>
           </li>
         
       </ul>

@@ -4,41 +4,44 @@
 <head>
   <meta charset="utf-8">
   
-  <title>RxJave和Retrofits的实现网络请求 | Write the code. Change the world.</title>
+  <title>使用RxJava实现EventBus(事件总线） | Write the code. Change the world.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Retrifit的使用
-以获取豆瓣电影top250为例，使用Retrifit进行网络请求
-网址 ： https://api.douban.com/v2/movie/top250?start=0&amp;amp;count=10
+  <meta name="description" content="口是心非的人，总是在夜里翻来覆去的。from 《电车计划》
 
+使用事件总线可以使各组件的通信变的简单，实现功能代码的解耦，Android中流行的事件总线框架有otto和EventBus,当我们的工程中有使用RxJava的时候,可以使用RxJava实现EventBus,避免依赖过多的框架.
+实现过程
+创建一个RxBus类，编写单例方法
 
-添加依赖
-compile &amp;apos;com.squareup.retrofit2:retrofit:2.0.0-beta4&amp;apos;
-compile &amp;apos;com.s">
+在构造函数中初始化Subject
+
+创建发送事件的方法pos">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RxJave和Retrofits的实现网络请求">
-<meta property="og:url" content="http://anranz.com/2017/03/08/RxJave和Retrofits的实现网络请求/index.html">
+<meta property="og:title" content="使用RxJava实现EventBus(事件总线）">
+<meta property="og:url" content="http://anranz.com/2017/03/17/使用RxJava实现EventBus-事件总线）/index.html">
 <meta property="og:site_name" content="Write the code. Change the world.">
-<meta property="og:description" content="Retrifit的使用
-以获取豆瓣电影top250为例，使用Retrifit进行网络请求
-网址 ： https://api.douban.com/v2/movie/top250?start=0&amp;amp;count=10
+<meta property="og:description" content="口是心非的人，总是在夜里翻来覆去的。from 《电车计划》
 
+使用事件总线可以使各组件的通信变的简单，实现功能代码的解耦，Android中流行的事件总线框架有otto和EventBus,当我们的工程中有使用RxJava的时候,可以使用RxJava实现EventBus,避免依赖过多的框架.
+实现过程
+创建一个RxBus类，编写单例方法
 
-添加依赖
-compile &amp;apos;com.squareup.retrofit2:retrofit:2.0.0-beta4&amp;apos;
-compile &amp;apos;com.s">
-<meta property="og:image" content="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg">
-<meta property="og:updated_time" content="2017-03-10T09:32:49.293Z">
+在构造函数中初始化Subject
+
+创建发送事件的方法pos">
+<meta property="og:image" content="http://oje1oqb9c.bkt.clouddn.com/image/bus.jpg">
+<meta property="og:updated_time" content="2017-03-17T07:19:04.879Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RxJave和Retrofits的实现网络请求">
-<meta name="twitter:description" content="Retrifit的使用
-以获取豆瓣电影top250为例，使用Retrifit进行网络请求
-网址 ： https://api.douban.com/v2/movie/top250?start=0&amp;amp;count=10
+<meta name="twitter:title" content="使用RxJava实现EventBus(事件总线）">
+<meta name="twitter:description" content="口是心非的人，总是在夜里翻来覆去的。from 《电车计划》
 
+使用事件总线可以使各组件的通信变的简单，实现功能代码的解耦，Android中流行的事件总线框架有otto和EventBus,当我们的工程中有使用RxJava的时候,可以使用RxJava实现EventBus,避免依赖过多的框架.
+实现过程
+创建一个RxBus类，编写单例方法
 
-添加依赖
-compile &amp;apos;com.squareup.retrofit2:retrofit:2.0.0-beta4&amp;apos;
-compile &amp;apos;com.s">
-<meta name="twitter:image" content="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg">
+在构造函数中初始化Subject
+
+创建发送事件的方法pos">
+<meta name="twitter:image" content="http://oje1oqb9c.bkt.clouddn.com/image/bus.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Write the code. Change the world." type="application/atom+xml">
   
@@ -100,10 +103,10 @@ compile &amp;apos;com.s">
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-RxJave和Retrofits的实现网络请求" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-使用RxJava实现EventBus-事件总线）" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/03/08/RxJave和Retrofits的实现网络请求/" class="article-date">
-  <time datetime="2017-03-08T06:14:32.000Z" itemprop="datePublished">2017-03-08</time>
+    <a href="/2017/03/17/使用RxJava实现EventBus-事件总线）/" class="article-date">
+  <time datetime="2017-03-17T02:12:22.000Z" itemprop="datePublished">2017-03-17</time>
 </a>
     
   </div>
@@ -112,8 +115,8 @@ compile &amp;apos;com.s">
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg" rel="gallery_cj0dhiu9c000cp0vvn0kc92ya">
-        <img src="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://oje1oqb9c.bkt.clouddn.com/image/bus.jpg" rel="gallery_cj0dhiua2000sp0vvdzvqstme">
+        <img src="http://oje1oqb9c.bkt.clouddn.com/image/bus.jpg" itemprop="image">
       </a>
     
   </div>
@@ -124,7 +127,7 @@ compile &amp;apos;com.s">
         
   
     <h1 class="article-title" itemprop="name">
-      RxJave和Retrofits的实现网络请求
+      使用RxJava实现EventBus(事件总线）
     </h1>
   
 
@@ -132,117 +135,118 @@ compile &amp;apos;com.s">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Retrifit的使用"><a href="#Retrifit的使用" class="headerlink" title="Retrifit的使用"></a>Retrifit的使用</h3><blockquote>
-<p>以获取豆瓣电影top250为例，使用Retrifit进行网络请求</p>
-<p>网址 ： <a href="https://api.douban.com/v2/movie/top250?start=0&amp;count=10" target="_blank" rel="external">https://api.douban.com/v2/movie/top250?start=0&amp;count=10</a></p>
+        <blockquote>
+<p>口是心非的人，总是在夜里翻来覆去的。from 《电车计划》</p>
 </blockquote>
-<ul>
-<li><p>添加依赖</p>
-<pre><code>compile &apos;com.squareup.retrofit2:retrofit:2.0.0-beta4&apos;
-compile &apos;com.squareup.retrofit2:converter-gson:2.0.0-beta4&apos;
-compile &apos;com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4&apos;
-compile &apos;com.google.code.gson:gson:2.6.2&apos;
-compile &apos;com.jakewharton:butterknife:7.0.1&apos;
-</code></pre></li>
-<li><p>网络权限</p>
-<pre><code>&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
-</code></pre></li>
-<li><p>网络请求的接口</p>
-<pre><code>public interface MovieService {
-    @GET(&quot;top250&quot;)
-    Call&lt;MovieEntity&gt; getTopMovie(@Query(&quot;start&quot;) int start,@Query(&quot;count&quot;) int count);
-}
-</code></pre></li>
-<li><p>数据entity</p>
+<p>使用事件总线可以使各组件的通信变的简单，实现功能代码的解耦，Android中流行的事件总线框架有<code>otto</code>和<code>EventBus</code>,当我们的工程中有使用RxJava的时候,可以使用RxJava实现EventBus,避免依赖过多的框架.</p>
+<h3 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h3><ol>
+<li><p>创建一个<code>RxBus类</code>，编写单例方法</p>
 </li>
-</ul>
-<p>创建数据对应的entity <code>MovieEntity.class</code>,部分代码</p>
-<pre><code>public class MovieEntity {
-    public int total;
-    public List&lt;SubjectsEntity&gt; subjects;
-    public int count;
-    public int start;
-    public String title;
+<li><p>在构造函数中初始化<code>Subject</code></p>
+</li>
+<li><p>创建发送事件的方法<code>post(Object o)</code></p>
+</li>
+<li><p>创建接受事件的方法<code>toObservable(Class klass)</code>,返回<code>Observable</code></p>
+</li>
+</ol>
+<h3 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h3><pre><code>package com.anakin.design_pattern_test.rxbus_test;
 
-    ....
+import rx.Observable;
+import rx.subjects.PublishSubject;
+import rx.subjects.SerializedSubject;
+import rx.subjects.Subject;
+
+/**
+ * Created by demo on 2017/3/16 0016
+ */
+public class RxBus {
+    private static RxBus instance;
+    private final Subject&lt;Object, Object&gt; bus;
+
+    // 初始化Subject,PublishSubject只会把订阅的时间发生之后来自原始Observable的数据发送给观察者
+    // Subject 即是观察者也是被观察者
+    public RxBus() {
+        bus =new SerializedSubject&lt;&gt;(PublishSubject.create());
+    }
+
+    /**
+     *  单例
+     * @return RxBus
+     */
+    public static RxBus getInstance(){
+        if(instance==null){
+            synchronized (RxBus.class){
+                if(instance==null){
+                    instance =new RxBus();
+                }
+            }
+        }
+        return  instance;
+    }
+
+    // 发送一个新事件
+    public void post(Object o){
+        bus.onNext(o);
+    }
+
+    /**
+     * 接收事件
+     * @param klass 封装数据的实体类
+     * @param &lt;T&gt;
+     * @return Observable
+     */
+    public &lt;T&gt; Observable&lt;T&gt; toObservable(Class&lt;T&gt; klass){
+       return bus.ofType(klass);
+    }
 }
-</code></pre><ul>
-<li><p>retrofit请求网络</p>
-<pre><code>String baseUrl = &quot;https://api.douban.com/v2/movie/&quot;;
-Retrofit retrofit = new Retrofit.Builder()
-        .baseUrl(baseUrl)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build();
-MovieService movieService = retrofit.create(MovieService.class);
-Call&lt;MovieEntity&gt; topMovie = movieService.getTopMovie(1, 10);
-topMovie.enqueue(new Callback&lt;MovieEntity&gt;() {
-    @Override
-    public void onResponse(Call&lt;MovieEntity&gt; call, Response&lt;MovieEntity&gt; response) {
-            System.out.println(&quot;onResponse : &quot;+response.body().toString());
+</code></pre><hr>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><pre><code>// 接收事件
+subscription= RxBus.getInstance().toObservable(EventBean.class)
+        .subscribe(new Action1&lt;EventBean&gt;() {
+                       @Override
+                       public void call(EventBean eventBean) {
+                           Log.d(TAG,eventBean.toString());
+                          // mResult.setText(eventBean.toString());
+                       }
+                   }
+                , new Action1&lt;Throwable&gt;() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        // 接收异常
+                        Log.d(TAG,throwable.toString());
+                        //mResult.setText(throwable.toString());
+                    }
+                }
+        );
+</code></pre><h3 id="取消订阅事件"><a href="#取消订阅事件" class="headerlink" title="取消订阅事件"></a>取消订阅事件</h3><p>注意一定要在生命周期被销毁的时候取消订阅事件,防止RxJava引起的内存泄露问题</p>
+<pre><code>@Override
+protected void onDestroy() {
+    super.onDestroy();
+    // 取消订阅事件
+    if(!subscription.isUnsubscribed()) {
+        subscription.unsubscribe();
     }
-    @Override
-    public void onFailure(Call&lt;MovieEntity&gt; call, Throwable t) {
-            System.out.println(&quot;onFailure : &quot;+t.toString());
-    }
-});
-</code></pre></li>
-<li><p>运行结果</p>
-<pre><code>MovieEntity{total=250, subjects=[SubjectsEntity{images=ImagesEntity{small=&apos;https://img3.doubanio.com/view/movie_poster_cover/ipst/public/p511118051.jpg&apos;, large=&apos;https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p511118051.jpg&apos;, medium=&apos;https://img3.doubanio.com/view/movie_poster_cover/spst/public/p511118051.jpg&apos;}, casts=[CastsEntity{alt=&apos;https://movie.douban.com/celebrity/1025182/&apos;, name=&apos;让·雷诺&apos;, id=&apos;1025182&apos;, avatars=AvatarsEntity{small=&apos;https://img3.doubanio.com/img/celebrity/small/8833.jpg&apos;, large=&apos;https://img3.doubanio.com/img/celebrity/large/8833.jpg&apos;, medium=&apos;https://img3.doubanio
-</code></pre></li>
-</ul>
-<hr>
-<h3 id="RxJava和Retrofit实现网络请求"><a href="#RxJava和Retrofit实现网络请求" class="headerlink" title="RxJava和Retrofit实现网络请求"></a>RxJava和Retrofit实现网络请求</h3><ul>
-<li><p>RxJava的使用可以参考上一篇文章<a href="http://anranz.com/2017/03/06/RxJava-%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">RxJava-简单使用</a></p>
+}
+</code></pre><h3 id="注"><a href="#注" class="headerlink" title="注"></a>注</h3><ul>
+<li><p><code>Subject</code>既是观察者,也是被观察者</p>
 </li>
-<li><p>首先还是添加依赖</p>
-<pre><code>compile &apos;io.reactivex:rxjava:1.1.0&apos;
-compile &apos;io.reactivex:rxandroid:1.1.0&apos;
-</code></pre></li>
-<li><p>修改<code>gerMovieServer()</code>代码<br>将<code>call</code>改为<code>observer</code></p>
-<pre><code>@GET(&quot;top250&quot;)
-Observable&lt;MovieEntity&gt; getTopMovie(@Query(&quot;start&quot;) int start, @Query(&quot;count&quot;) int count);
-</code></pre></li>
-<li><p>修改网络请求的代码</p>
-<pre><code>String baseUrl = &quot;https://api.douban.com/v2/movie/&quot;;
-Retrofit retrofit = new Retrofit.Builder()
-        .baseUrl(baseUrl)
-        .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-        .build();
-MovieService service = retrofit.create(MovieService.class);
-service.getTopMovie(1,1)
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Subscriber&lt;MovieEntity&gt;() {
-            @Override
-            public void onCompleted() {
-                System.out.println(&quot; onCompleted&quot;);
-            }
-            @Override
-            public void onError(Throwable e) {
-                info.setText(e.toString());
-            }
-            @Override
-            public void onNext(MovieEntity movieEntity) {
-                info.setText(movieEntity.toString());
-            }
-        });
-</code></pre></li>
-</ul>
-<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="http://oje0bp1nb.bkt.clouddn.com/device-2017-03-08-160823.png" alt="运行结果"></p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考:"></a>参考:</h3><ul>
-<li><a href="http://gank.io/post/56e80c2c677659311bed9841" target="_blank" rel="external">参考地址</a></li>
+<li><p><code>Subject</code>是非线程安全的,所以要转换成<code>SerializedSubject</code>线程安全的</p>
+</li>
+<li><p><code>ofType()</code>只发送符合类型的数据</p>
+</li>
+<li><p>PublishSubject只会把在订阅发生的时间点之后来自原始Observale的数据发送给观察者</p>
+</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/08/RxJave和Retrofits的实现网络请求/" data-id="cj0dhiu9c000cp0vvn0kc92ya" class="article-share-link" data-share="baidu" data-title="RxJave和Retrofits的实现网络请求">分享到</a>
+        <a data-url="http://anranz.com/2017/03/17/使用RxJava实现EventBus-事件总线）/" data-id="cj0dhiua2000sp0vvdzvqstme" class="article-share-link" data-share="baidu" data-title="使用RxJava实现EventBus(事件总线）">分享到</a>
       
 
       
-        <a href="http://anranz.com/2017/03/08/RxJave和Retrofits的实现网络请求/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/03/17/使用RxJava实现EventBus-事件总线）/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -254,19 +258,10 @@ service.getTopMovie(1,1)
     
 <nav id="article-nav">
   
-    <a href="/2017/03/10/RxJava-简单使用（二）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          RxJava--简单使用（二）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/06/RxJava-简单使用/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/03/16/Ubuntu16-04下载编译Android6-0源码/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">RxJava-简单使用</div>
+      <div class="article-nav-title">Ubuntu16.04下载编译Android6.0源码</div>
     </a>
   
 </nav>
@@ -276,7 +271,7 @@ service.getTopMovie(1,1)
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2017/03/08/RxJave和Retrofits的实现网络请求/" data-title="RxJave和Retrofits的实现网络请求" data-url="http://anranz.com/2017/03/08/RxJave和Retrofits的实现网络请求/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017/03/17/使用RxJava实现EventBus-事件总线）/" data-title="使用RxJava实现EventBus(事件总线）" data-url="http://anranz.com/2017/03/17/使用RxJava实现EventBus-事件总线）/"></div>
   </section>
 </section>
       

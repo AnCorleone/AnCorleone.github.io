@@ -78,6 +78,98 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-Vim基本操作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/22/Vim基本操作/" class="article-date">
+  <time datetime="2017-02-22T03:33:14.000Z" itemprop="datePublished">2017-02-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/22/Vim基本操作/">Vim基本操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="vim的基本操作"><a href="#vim的基本操作" class="headerlink" title="vim的基本操作"></a>vim的基本操作</h2><ul>
+<li>在普通模式.重复上一次操作</li>
+<li>执行制定次数相同的命令</li>
+</ul>
+<h3 id="游标的快速跳转"><a href="#游标的快速跳转" class="headerlink" title="游标的快速跳转"></a>游标的快速跳转</h3><p><strong> 行间跳转 :</strong></p>
+<ol>
+<li>nG表示跳转到地n行</li>
+<li>gg游标移动到第一行</li>
+<li>G跳转到行尾</li>
+<li>ctrl 回到游标跳转前的位置</li>
+</ol>
+<h3 id="复制粘贴和剪切"><a href="#复制粘贴和剪切" class="headerlink" title="复制粘贴和剪切"></a>复制粘贴和剪切</h3><ul>
+<li>复制和粘贴文本<ol>
+<li>yy表示复制整行</li>
+<li>yw：复制一个单词</li>
+<li>y$复制到行尾</li>
+<li>y^复制到行头</li>
+<li>y^复制到行头</li>
+</ol>
+</li>
+</ul>
+<h3 id="字符替换及撤销操作"><a href="#字符替换及撤销操作" class="headerlink" title="字符替换及撤销操作"></a>字符替换及撤销操作</h3><ol>
+<li>r替换光标所在的字母</li>
+<li>R 连续替换，直到按下esc</li>
+<li>cc替换整行,进入插入模式</li>
+<li>cw替换一个单词，进入插入模式</li>
+<li>u{n}撤销一次或者n次操作</li>
+<li>ctrl+r恢复撤销的操作</li>
+</ol>
+<h3 id="快速缩进"><a href="#快速缩进" class="headerlink" title="快速缩进"></a>快速缩进</h3><ol>
+<li><code>&gt;&gt;</code> 整行向右缩进</li>
+<li><code>&lt;&lt;</code> 整行向左缩进</li>
+<li>命令行模式输入ce是选中的行的内容居中</li>
+</ol>
+<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><ol>
+<li>普通模式使用/向下查找</li>
+<li>?向上查找</li>
+<li>n 表示继续查找</li>
+</ol>
+<h3 id="使用vim编辑多个文件"><a href="#使用vim编辑多个文件" class="headerlink" title="使用vim编辑多个文件"></a>使用vim编辑多个文件</h3><ol>
+<li>命令模式输入n编辑下一个文件</li>
+<li>N编辑上一个文件，加! 强制进行切换</li>
+<li>进入vim打开新文件，同时编辑多个文件，在命令模式下输入e：文件名</li>
+<li>e#回到前一个打开的文件</li>
+<li>ls可以列出编辑过的文档</li>
+<li>恢复文件 使用vim -r 打开文件 输入:ewcover 文件名来恢复</li>
+<li>打开新窗口 命令模式下输: <code>new</code></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/02/22/Vim基本操作/" data-id="cj0dhiua6000wp0vv950f41z5" class="article-share-link" data-share="baidu" data-title="Vim基本操作">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/02/22/Vim基本操作/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vim/">Vim</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-文件操作的工具类" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/02/22/文件操作的工具类/" class="article-date">
@@ -221,7 +313,7 @@ import java.io.File;
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/22/文件操作的工具类/" data-id="cj0c2vq94000x5kvvoxhsqcu5" class="article-share-link" data-share="baidu" data-title="文件操作的工具类">分享到</a>
+        <a data-url="http://anranz.com/2017/02/22/文件操作的工具类/" data-id="cj0dhiuaa0010p0vv3k5i6iae" class="article-share-link" data-share="baidu" data-title="文件操作的工具类">分享到</a>
       
 
       
@@ -281,7 +373,7 @@ import java.io.File;
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/Java设计模式/" data-id="cj0c2vq7u00055kvvvqk8n76e" class="article-share-link" data-share="baidu" data-title="Java设计模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/Java设计模式/" data-id="cj0dhiu740001p0vvpgedhti6" class="article-share-link" data-share="baidu" data-title="Java设计模式.md">分享到</a>
       
 
       
@@ -296,9 +388,9 @@ import java.io.File;
 
 
   
-    <article id="post-设计模式-简单工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-设计模式-工厂方法模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/17/设计模式-简单工厂模式/" class="article-date">
+    <a href="/2017/02/17/设计模式-工厂方法模式/" class="article-date">
   <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
@@ -310,7 +402,7 @@ import java.io.File;
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-简单工厂模式/">简单工厂模式.md</a>
+      <a class="article-title" href="/2017/02/17/设计模式-工厂方法模式/">工厂方法模式.md</a>
     </h1>
   
 
@@ -318,23 +410,26 @@ import java.io.File;
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##　简单工厂模式</p>
+        <h2 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式　"></a>工厂方法模式　</h2><p>和简单工厂模式不同是,简单工厂模式,实例都由一个工厂类创建,工厂类的代码量会比较多,而且增加新的对象需要修改工厂类的代码,增加if else 的判断.</p>
+<p>工厂模式,创建产品的抽象类和实现类,以及工厂的抽象类和实现类.</p>
+<p>以打印log为例,log的存储方式可以是db也可以是file中,需要创建Logger的抽象类,具体是FileLogger实现类和DbLogger的实现类,工厂的抽象类LoggerFactory,和具体的实现类DbLoggerFactory,FileLoggerFactory</p>
 <ol>
-<li>定义抽象的工厂类</li>
-<li>工厂类包定义公共的方法实现，和不同实现的抽象方法</li>
-<li>定义根据参数创建实例对象，返回抽象类的静态方法</li>
-<li>使用静态方法传入要获取对象的tag,获取对象的实例，调用实例的方法</li>
+<li>在抽象Logger类中定义公共的抽象方法writeLog()</li>
+<li>在具体实现类DbLogger和FileLogger中实现各自的具体的writeLog方法</li>
+<li>在抽象的工厂类中定义抽象的创建对象的方法creatLogger()</li>
+<li>在具体的实类DbLoggerFactory,FileLoggerFactory中实现方法,创建DbLogger和FileLogger的实例,并返回其父类Logger</li>
+<li>客户端的使用 : 根据需要创建工厂的实例,调用实例中创建对象的方法creatLogger返回具体log存放的实例对象,在调用具体打印log的方法writeLog()</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/设计模式-简单工厂模式/" data-id="cj0c2vqad00285kvvpl0bwlze" class="article-share-link" data-share="baidu" data-title="简单工厂模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-工厂方法模式/" data-id="cj0dhiuc2002ap0vv896zcc8e" class="article-share-link" data-share="baidu" data-title="工厂方法模式.md">分享到</a>
       
 
       
-        <a href="http://anranz.com/2017/02/17/设计模式-简单工厂模式/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/02/17/设计模式-工厂方法模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -347,9 +442,9 @@ import java.io.File;
 
 
   
-    <article id="post-MySQL进阶-操作详解" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-MYSQL的修改和删除" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/17/MySQL进阶-操作详解/" class="article-date">
+    <a href="/2017/02/17/MYSQL的修改和删除/" class="article-date">
   <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
@@ -361,7 +456,7 @@ import java.io.File;
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/MySQL进阶-操作详解/">MySQL基本操作.md</a>
+      <a class="article-title" href="/2017/02/17/MYSQL的修改和删除/">MySql的修改和删除.md</a>
     </h1>
   
 
@@ -369,24 +464,56 @@ import java.io.File;
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="MySQL基本操作"><a href="#MySQL基本操作" class="headerlink" title="MySQL基本操作"></a>MySQL基本操作</h3><ol>
-<li><p>打开数据库 sudo service mysql start;</p>
+        <h3 id="数据库的修改和删除"><a href="#数据库的修改和删除" class="headerlink" title="数据库的修改和删除"></a>数据库的修改和删除</h3><ol>
+<li>打开数据库 ‘sudo service mysql start’</li>
+<li>登录数据库 ‘mysql -u root -p’</li>
+<li>查看数据卡 show databsaes</li>
+<li>删除数据库 drop databsaes 数据库名</li>
+<li>连接数据库 use 数据库名</li>
+<li>显示数据库中的表 show tables</li>
+<li>查看表中的类容 select * from 表名</li>
+<li>修改表的名字 rename table 旧表名 to 新表名</li>
+<li>删除一张表 drop table 表名</li>
+<li>增加列 alter table 表名 add column 列名字 数据类型 约束 eg: alter table employee add height int(4) default 170  (给employee 表增加height列 )</li>
+<li>增加列并指定新增列的位置 使用after  eg: alter table employee add height int(4) dafault 170 after age ; 新增加列放在第一个使用 first</li>
+<li>删除一列 alter table 表名 drop column 列名字</li>
+<li>修改表中的某个值 update 表名 set 列1=值1，列2=值2 where 条件 eg: update employee set age=24,salary=300 where name = ‘Tom’</li>
+<li>根据条件删除一列 delete table from employee where name=’Tom’;</li>
+</ol>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><ol>
+<li>增加索引 create index 索引名字 on 表名（列名）<br>eg : create index idx_id on employee(id)</li>
+</ol>
+<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>视图是从一个或多个表中取出数据在窗口中展示，可以看作一张表，但数据依赖原表</p>
+<ol>
+<li>创建视图的语句: create view 视图名字（列a,列b，列c) as select 列1,列2,列3 from 表名<br>eg : create view v_emp(v_name,v_age,v_salary) as select name,age,salary from employee;</li>
+</ol>
+<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><blockquote>
+<p>把文件中的数据导入表中</p>
+</blockquote>
+<ol>
+<li>导入语句格式 load data infile ‘文件路径’ to 表名<br>eg: load data infile ‘/home/anakin/MySql/SQL6/in.txt’ to employee</li>
+</ol>
+<h3 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h3><blockquote>
+<p>将表中的数据导出到文本中</p>
+</blockquote>
+<ol>
+<li>导出的语句格式：select name,age into outfile ‘文件路径和文件名’ from 表名<br>eg : select * into outfile ‘/tmp/out.txt’ from employee</li>
+</ol>
+<h3 id="数据库备份"><a href="#数据库备份" class="headerlink" title="数据库备份"></a>数据库备份</h3><blockquote>
+<p>使用mysqldump备份数据库，生成sql脚本文件</p>
+</blockquote>
+<ol>
+<li><p>备份整个数据库 mysqldump -u root 数据库名&gt;备份文件名</p>
 </li>
-<li><p>连接数据库 mysql -u root -p</p>
+<li><p>备份数据表 mysqldump -u root 数据库名 表名&gt;备份文件名</p>
 </li>
-<li><p>查看数据库 show dabases</p>
-</li>
-<li><p>使用数据库 use 数据库名字</p>
-</li>
-<li><p>创建数据库 create database 数据库名 eg : create database test</p>
-</li>
-<li><p>创建表 create table 表名（列名 数据类型 约束）<br>eg : create table pet(name VARCHAR(20),owner VARCHAR(20),species VARCHAR(20),sex CHAR(1),birth DATE , death DATE);</p>
-</li>
-<li><p>查看创建的表 DESCRIBE pet;</p>
-</li>
-<li><p>插入数据 insert into test VALUES(‘tom’,’panda’,’hamster’,’f’,’2017-02-06’，NULL);</p>
-</li>
-<li><p>从表中检索数据 select * from pet;</p>
+</ol>
+<p>eg : mysqldump -u root -p mysql_shiyanlou&gt;bak.sql;</p>
+<h3 id="数据库恢复"><a href="#数据库恢复" class="headerlink" title="数据库恢复"></a>数据库恢复</h3><ol>
+<li>恢复数据的语句：<ol>
+<li>使用source sql 脚本</li>
+<li>新建一个数据库 create database test;  恢复数据 mysqldump -u root -p test&lt;bak.sqp</li>
+</ol>
 </li>
 </ol>
 
@@ -394,11 +521,11 @@ import java.io.File;
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/MySQL进阶-操作详解/" data-id="cj0c2vq8c000a5kvv0hcq8lpu" class="article-share-link" data-share="baidu" data-title="MySQL基本操作.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/MYSQL的修改和删除/" data-id="cj0dhiu8b000bp0vv0wyyvl5j" class="article-share-link" data-share="baidu" data-title="MySql的修改和删除.md">分享到</a>
       
 
       
-        <a href="http://anranz.com/2017/02/17/MySQL进阶-操作详解/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/02/17/MYSQL的修改和删除/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -538,7 +665,7 @@ public class MilitaryComputer extends OpenComputer {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/设计模式-模版模式/" data-id="cj0c2vqab00265kvv3ta0zht7" class="article-share-link" data-share="baidu" data-title="模版模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-模版模式/" data-id="cj0dhiuby0026p0vvtdjrt8fx" class="article-share-link" data-share="baidu" data-title="模版模式.md">分享到</a>
       
 
       
@@ -547,102 +674,6 @@ public class MilitaryComputer extends OpenComputer {
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-MYSQL的修改和删除" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/MYSQL的修改和删除/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/MYSQL的修改和删除/">MySql的修改和删除.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="数据库的修改和删除"><a href="#数据库的修改和删除" class="headerlink" title="数据库的修改和删除"></a>数据库的修改和删除</h3><ol>
-<li>打开数据库 ‘sudo service mysql start’</li>
-<li>登录数据库 ‘mysql -u root -p’</li>
-<li>查看数据卡 show databsaes</li>
-<li>删除数据库 drop databsaes 数据库名</li>
-<li>连接数据库 use 数据库名</li>
-<li>显示数据库中的表 show tables</li>
-<li>查看表中的类容 select * from 表名</li>
-<li>修改表的名字 rename table 旧表名 to 新表名</li>
-<li>删除一张表 drop table 表名</li>
-<li>增加列 alter table 表名 add column 列名字 数据类型 约束 eg: alter table employee add height int(4) default 170  (给employee 表增加height列 )</li>
-<li>增加列并指定新增列的位置 使用after  eg: alter table employee add height int(4) dafault 170 after age ; 新增加列放在第一个使用 first</li>
-<li>删除一列 alter table 表名 drop column 列名字</li>
-<li>修改表中的某个值 update 表名 set 列1=值1，列2=值2 where 条件 eg: update employee set age=24,salary=300 where name = ‘Tom’</li>
-<li>根据条件删除一列 delete table from employee where name=’Tom’;</li>
-</ol>
-<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><ol>
-<li>增加索引 create index 索引名字 on 表名（列名）<br>eg : create index idx_id on employee(id)</li>
-</ol>
-<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>视图是从一个或多个表中取出数据在窗口中展示，可以看作一张表，但数据依赖原表</p>
-<ol>
-<li>创建视图的语句: create view 视图名字（列a,列b，列c) as select 列1,列2,列3 from 表名<br>eg : create view v_emp(v_name,v_age,v_salary) as select name,age,salary from employee;</li>
-</ol>
-<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><blockquote>
-<p>把文件中的数据导入表中</p>
-</blockquote>
-<ol>
-<li>导入语句格式 load data infile ‘文件路径’ to 表名<br>eg: load data infile ‘/home/anakin/MySql/SQL6/in.txt’ to employee</li>
-</ol>
-<h3 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h3><blockquote>
-<p>将表中的数据导出到文本中</p>
-</blockquote>
-<ol>
-<li>导出的语句格式：select name,age into outfile ‘文件路径和文件名’ from 表名<br>eg : select * into outfile ‘/tmp/out.txt’ from employee</li>
-</ol>
-<h3 id="数据库备份"><a href="#数据库备份" class="headerlink" title="数据库备份"></a>数据库备份</h3><blockquote>
-<p>使用mysqldump备份数据库，生成sql脚本文件</p>
-</blockquote>
-<ol>
-<li><p>备份整个数据库 mysqldump -u root 数据库名&gt;备份文件名</p>
-</li>
-<li><p>备份数据表 mysqldump -u root 数据库名 表名&gt;备份文件名</p>
-</li>
-</ol>
-<p>eg : mysqldump -u root -p mysql_shiyanlou&gt;bak.sql;</p>
-<h3 id="数据库恢复"><a href="#数据库恢复" class="headerlink" title="数据库恢复"></a>数据库恢复</h3><ol>
-<li>恢复数据的语句：<ol>
-<li>使用source sql 脚本</li>
-<li>新建一个数据库 create database test;  恢复数据 mysqldump -u root -p test&lt;bak.sqp</li>
-</ol>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/02/17/MYSQL的修改和删除/" data-id="cj0c2vq7z00065kvvmexq1x5k" class="article-share-link" data-share="baidu" data-title="MySql的修改和删除.md">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/02/17/MYSQL的修改和删除/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
 
     </footer>
   </div>
@@ -709,213 +740,11 @@ public class MilitaryComputer extends OpenComputer {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/设计模式-观察者模式/" data-id="cj0c2vqaf002b5kvvcgo2oihi" class="article-share-link" data-share="baidu" data-title="观察者模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-观察者模式/" data-id="cj0dhiucg002hp0vv3lduk4rh" class="article-share-link" data-share="baidu" data-title="观察者模式.md">分享到</a>
       
 
       
         <a href="http://anranz.com/2017/02/17/设计模式-观察者模式/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Android基础知识-md" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/Android基础知识-md/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/Android基础知识-md/">Android基础知识.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><a href="https://github.com/GeniusVJR/LearningNotes" target="_blank" rel="external">Android学习笔记</a></p>
-</blockquote>
-<h2 id="五种布局"><a href="#五种布局" class="headerlink" title="五种布局"></a>五种布局</h2><h3 id="LinearLayout-线性布局"><a href="#LinearLayout-线性布局" class="headerlink" title="LinearLayout(线性布局)"></a>LinearLayout(线性布局)</h3><ol>
-<li>一行或者一列值放置一个控件的布局,可以设置方向,垂直排列或者水平排列,适用于简单的布局</li>
-<li>适用场景:水平或者垂直的简单排列,如登录界面</li>
-</ol>
-<h3 id="RelativeLayout-相对布局"><a href="#RelativeLayout-相对布局" class="headerlink" title="RelativeLayout(相对布局)"></a>RelativeLayout(相对布局)</h3><ol>
-<li>是一个相对自由的布局, 由一个view作为参照,来定位下一个view的摆放位置,可以实现比较复杂的布局</li>
-<li>应用场景:适合比较复杂的布局,LinearLayouy能实现的它也能实现</li>
-</ol>
-<h3 id="FrameLayout-框架布局"><a href="#FrameLayout-框架布局" class="headerlink" title="FrameLayout(框架布局)"></a>FrameLayout(框架布局)</h3><ol>
-<li>所有的子view都会放在左上角,无法指定位置,后面的子view会放在前一个view上.</li>
-<li>使用场景: 放置单一的view,如放置Fragment,显示一张图片</li>
-</ol>
-<h3 id="TableLayout-表格布局"><a href="#TableLayout-表格布局" class="headerlink" title="TableLayout(表格布局)"></a>TableLayout(表格布局)</h3><ol>
-<li>类似HTML中的table,使用tableRow来布局,tableRow代表一行,其中的每个视图组件代表一个单元格</li>
-<li>使用场景:空间之间存在相应关系</li>
-</ol>
-<h3 id="AbsoluteLayout-绝对布局"><a href="#AbsoluteLayout-绝对布局" class="headerlink" title="AbsoluteLayout (绝对布局)"></a>AbsoluteLayout (绝对布局)</h3><ol>
-<li>采用坐标轴的方式来定位view,左上角坐标为(0,0),x轴向右递增,y轴向下递增</li>
-<li>使用场景:准确定位控件位置,但是Android设备的屏幕尺寸,分辨率差别很大,无法解决适配问题,该布局已经过时</li>
-</ol>
-<h2 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h2><h3 id="Activity的生命周期"><a href="#Activity的生命周期" class="headerlink" title="- Activity的生命周期"></a>- Activity的生命周期</h3><ol>
-<li>正常的生命周期:onCreate -&gt; onStart -&gt; onResume -&gt; onPause -&gt; onStop -&gt; onDestory  </li>
-<li>转到其他Activity或者按下home键 执行onPause() -&gt; onStop 进入停滞状态</li>
-<li>Activity返回前台:onRestart() -&gt; onStart() -&gt; onResume()</li>
-<li>当系统内存不足会将后台的Activity杀死,此时这个Activity任然在任务栈中只是引用指向的对象已经为空,若再次回到这个Activity会重新走一遍生命周期</li>
-<li>锁屏: onPause -&gt; onStop</li>
-<li>解锁: onStart -&gt; onResume</li>
-</ol>
-<p><img src="http://oje1oqb9c.bkt.clouddn.com/activity_life.pngactivity_life.png" alt="生命周期图"></p>
-<h3 id="Activty任务栈"><a href="#Activty任务栈" class="headerlink" title="Activty任务栈"></a>Activty任务栈</h3><blockquote>
-<p>任务栈是一种先进后出的结构,每个app默认只有一个任务栈以包名命名,位于栈顶的Activity处于焦点状态,当按下back键时,栈内的Activity会一个一个出栈,调用onDestory()方法,如果栈内没有Activity,系统就会回收这个栈.</p>
-</blockquote>
-<h3 id="启动模式"><a href="#启动模式" class="headerlink" title="启动模式:"></a>启动模式:</h3><ul>
-<li><p>standard :默认的启动模式,每次创建一个新的Activity实例,将其压入任务栈栈顶,不管栈内是否存在这个Activity.Activity启动三次就会调用三次Activity的生命周期.</p>
-</li>
-<li><p>singleTop:栈顶复用模式,启动一个Activity,如果栈顶存在这个Activity的实例,就不在创建新的Activity实例,启动多次也不会创建新的实例,会调用Activity的newIntance()方法,如果栈内存在这个Activity的实例,但不是在栈顶,作用与standard模式一样</p>
-</li>
-<li><p>singleTask:栈内复用模式,创建Activity的时候,系统会确认它需要的任务栈是否已经创建,否则再创建任务栈,然后放入Activity,如果栈内有一个Activity实例,那么这个Activity会被调到栈顶,调用newInstance()方法,并且会清理这个实例上面的所有Activity</p>
-</li>
-<li><p>singleInstance:加强版的singleTask模式,这种模式Activity实例会单独存在一个任务栈中,由于栈内复用的特性,以后不会再创建新的实例,除非任务栈被销毁</p>
-</li>
-</ul>
-<blockquote>
-<p>Activity的堆栈管理是以ActivityRecord为单位的,所有的ActivityRecord都放在一个list中,可以认为一个ActivityRecord就是一个Activity栈</p>
-</blockquote>
-<hr>
-<h3 id="Activity的缓存"><a href="#Activity的缓存" class="headerlink" title="Activity的缓存"></a>Activity的缓存</h3><ul>
-<li><p>有两个Activity A,B ,从A进入B,一段时间后,系统可能叫A回收,这时在按back键回到A,会重新走A的生命周期方法onCreate -&gt; onStart -&gt; onResume ,A被重新创建了一次,这时A中保存的数据和状态就会丢失</p>
-</li>
-<li><p>为了恢复状态,使用onSaveInstanceState()方法保存临时数据和状态,此方法会在Activity销毁前调用,方法中有Bundle参数保存,putString(),putInt()等方法,方法中传入一个参数好一个值,数据保存后会在onCreate()中恢复</p>
-</li>
-<li><p>onSaveInstanceState调用时机:即系统未经你允许销毁了你的Activity,这是系统的责任，因为它必须要提供一个机会让你保存你的数据</p>
-</li>
-<li><p>onSaveInstanceState() 会在onStop()前执行,但不保证是在onPause之前还是之后触发</p>
-</li>
-</ul>
-<p><strong> 代码 </strong></p>
-<pre><code>private static final String TAG = &quot;MainActivity&quot;;
-private static final String SAVE_KEY =&quot;save_key&quot; ;
-
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
-   if(savedInstanceState!=null){
-       // 恢复保存的内容
-       String save = savedInstanceState.getString(SAVE_KEY);
-       Log.d(TAG,&quot;=== 恢复保存的内容 ==&quot;+save);
-   }
-    initEvent();
-}
-
-/**
- * 保存Activity的状态
- * @param outState
- * @param outPersistentState
- */
-@Override
-public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-    super.onSaveInstanceState(outState, outPersistentState);
-    outState.putString(SAVE_KEY,&quot;保存字符串&quot;);
-}
-</code></pre><hr>
-<h3 id="Intent"><a href="#Intent" class="headerlink" title="Intent"></a>Intent</h3><ul>
-<li>Intent可以传递的数据类型:<br>可以传递基本数据类型好基本数据类型的数组,以及实现需序列化接口的飞基本数据类型</li>
-</ul>
-<h2 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment"></a>Fragment</h2><h3 id="Fragment的生命周期和Activity的关系"><a href="#Fragment的生命周期和Activity的关系" class="headerlink" title="Fragment的生命周期和Activity的关系"></a>Fragment的生命周期和Activity的关系</h3><p>onAttach() -&gt; onCreate() -&gt; onCreateView() -&gt; onViewCreatd() -&gt; Activity onCreated() …..</p>
-<p><img src="http://oje1oqb9c.bkt.clouddn.com/image/fragment_and_activity.jpg" alt="Fragment的生命周期和Activity的关系"></p>
-<h3 id="Fragment的生命周期"><a href="#Fragment的生命周期" class="headerlink" title="Fragment的生命周期"></a>Fragment的生命周期</h3><p><img src="http://oje1oqb9c.bkt.clouddn.com/image/fragment_life.png" alt="Fragment的生命周期图"></p>
-<h2 id="Broadcast-Receiver"><a href="#Broadcast-Receiver" class="headerlink" title="Broadcast Receiver"></a>Broadcast Receiver</h2><h3 id="的两种动态注册和静态注册有什么区别"><a href="#的两种动态注册和静态注册有什么区别" class="headerlink" title="的两种动态注册和静态注册有什么区别"></a>的两种动态注册和静态注册有什么区别</h3><ul>
-<li>动态注册: 在代码中注册,app退出就不能接收到广播</li>
-<li>静态注册: 在清单文件中注册,app退出依旧可以接受到广播</li>
-</ul>
-<h2 id="ContentProvider"><a href="#ContentProvider" class="headerlink" title="ContentProvider"></a>ContentProvider</h2><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><h3 id="为什么在Service中创建子线程"><a href="#为什么在Service中创建子线程" class="headerlink" title="为什么在Service中创建子线程"></a>为什么在Service中创建子线程</h3><ul>
-<li>在Activity中创建一个子线程,但Activity被销毁后,就不能获取子线程的实例,而且在在其他Activity中无法对其操作</li>
-<li>在Service创建中就不同,所有的Activity都可以对其进行操作,即使Activity 被销毁后,重新与Service进行关联,就可以获取Binder的实例.因此使用Service做后台处理,Activity可以放心的finish ,不用担心对后台任务无法控制的情况</li>
-</ul>
-<h3 id="Service的两种启动方法-有什么区别"><a href="#Service的两种启动方法-有什么区别" class="headerlink" title="Service的两种启动方法,有什么区别"></a>Service的两种启动方法,有什么区别</h3><ul>
-<li>Context bindService 启动Service 生命周期好Context 绑定在一起</li>
-<li>Context startService 启动Service 生命周期和context 无关</li>
-</ul>
-<h3 id="如何保证Service不被杀死"><a href="#如何保证Service不被杀死" class="headerlink" title="如何保证Service不被杀死"></a>如何保证Service不被杀死</h3><h2 id="动画有哪几类-各有什么特点-有什么区别"><a href="#动画有哪几类-各有什么特点-有什么区别" class="headerlink" title="动画有哪几类,各有什么特点,有什么区别"></a>动画有哪几类,各有什么特点,有什么区别</h2><h2 id="Android的数据存储形式"><a href="#Android的数据存储形式" class="headerlink" title="Android的数据存储形式"></a>Android的数据存储形式</h2><h2 id="Sqlite的基本操作"><a href="#Sqlite的基本操作" class="headerlink" title="Sqlite的基本操作"></a>Sqlite的基本操作</h2><h2 id="如何判断应用被强杀"><a href="#如何判断应用被强杀" class="headerlink" title="如何判断应用被强杀"></a>如何判断应用被强杀</h2><h2 id="Json有什么优劣势"><a href="#Json有什么优劣势" class="headerlink" title="Json有什么优劣势"></a>Json有什么优劣势</h2><h2 id="Asset目录与res目录的区别"><a href="#Asset目录与res目录的区别" class="headerlink" title="Asset目录与res目录的区别"></a>Asset目录与res目录的区别</h2><h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><h3 id="Android怎么加速启动Activity"><a href="#Android怎么加速启动Activity" class="headerlink" title="Android怎么加速启动Activity"></a>Android怎么加速启动Activity</h3><h3 id="Android内存优化方法"><a href="#Android内存优化方法" class="headerlink" title="Android内存优化方法"></a>Android内存优化方法</h3><h2 id="自定义View的流程"><a href="#自定义View的流程" class="headerlink" title="自定义View的流程"></a>自定义View的流程</h2><h2 id="Android长连接-怎样处理心跳机制"><a href="#Android长连接-怎样处理心跳机制" class="headerlink" title="Android长连接,怎样处理心跳机制"></a>Android长连接,怎样处理心跳机制</h2><h2 id="View的绘制流程"><a href="#View的绘制流程" class="headerlink" title="View的绘制流程"></a>View的绘制流程</h2><h2 id="下拉刷新的实现原理"><a href="#下拉刷新的实现原理" class="headerlink" title="下拉刷新的实现原理"></a>下拉刷新的实现原理</h2><h2 id="常用框架和源码分析，底层原理"><a href="#常用框架和源码分析，底层原理" class="headerlink" title="常用框架和源码分析，底层原理"></a>常用框架和源码分析，底层原理</h2><h2 id="Android新特性"><a href="#Android新特性" class="headerlink" title="Android新特性"></a>Android新特性</h2><h3 id="5-0"><a href="#5-0" class="headerlink" title="5.0"></a>5.0</h3><h3 id="6-0"><a href="#6-0" class="headerlink" title="6.0"></a>6.0</h3><h3 id="7-0"><a href="#7-0" class="headerlink" title="7.0"></a>7.0</h3><h2 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h2><h2 id="IntenService"><a href="#IntenService" class="headerlink" title="IntenService"></a>IntenService</h2><h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><h2 id="图片缓存"><a href="#图片缓存" class="headerlink" title="图片缓存"></a>图片缓存</h2><h3 id="查看程序可用最高内存"><a href="#查看程序可用最高内存" class="headerlink" title="查看程序可用最高内存"></a>查看程序可用最高内存</h3><h2 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h2><h3 id="构建工具"><a href="#构建工具" class="headerlink" title="构建工具"></a>构建工具</h3>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/02/17/Android基础知识-md/" data-id="cj0c2vq7b00015kvvyu4vin8v" class="article-share-link" data-share="baidu" data-title="Android基础知识.md">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/02/17/Android基础知识-md/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-设计模式-工厂方法模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/设计模式-工厂方法模式/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-工厂方法模式/">工厂方法模式.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式　"></a>工厂方法模式　</h2><p>和简单工厂模式不同是,简单工厂模式,实例都由一个工厂类创建,工厂类的代码量会比较多,而且增加新的对象需要修改工厂类的代码,增加if else 的判断.</p>
-<p>工厂模式,创建产品的抽象类和实现类,以及工厂的抽象类和实现类.</p>
-<p>以打印log为例,log的存储方式可以是db也可以是file中,需要创建Logger的抽象类,具体是FileLogger实现类和DbLogger的实现类,工厂的抽象类LoggerFactory,和具体的实现类DbLoggerFactory,FileLoggerFactory</p>
-<ol>
-<li>在抽象Logger类中定义公共的抽象方法writeLog()</li>
-<li>在具体实现类DbLogger和FileLogger中实现各自的具体的writeLog方法</li>
-<li>在抽象的工厂类中定义抽象的创建对象的方法creatLogger()</li>
-<li>在具体的实类DbLoggerFactory,FileLoggerFactory中实现方法,创建DbLogger和FileLogger的实例,并返回其父类Logger</li>
-<li>客户端的使用 : 根据需要创建工厂的实例,调用实例中创建对象的方法creatLogger返回具体log存放的实例对象,在调用具体打印log的方法writeLog()</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/02/17/设计模式-工厂方法模式/" data-id="cj0c2vqa800215kvv0a90solc" class="article-share-link" data-share="baidu" data-title="工厂方法模式.md">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/02/17/设计模式-工厂方法模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -975,11 +804,156 @@ public static CEO getInstance() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/设计模式-单例模式/" data-id="cj0c2vqa7001y5kvv85iwpfgu" class="article-share-link" data-share="baidu" data-title="单例设计模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-单例模式/" data-id="cj0dhiuc00028p0vvr0hz0fm2" class="article-share-link" data-share="baidu" data-title="单例设计模式.md">分享到</a>
       
 
       
         <a href="http://anranz.com/2017/02/17/设计模式-单例模式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式-代理模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/设计模式-代理模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/设计模式-代理模式/">代理模式.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>代理模式是对象结构模式,代理模式给某个对象提供一个代理对象,并由代理对象控制控制原对象的引用.</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><h3 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h3><p>定义抽象类</p>
+<pre><code>package com.anakin.design_pattern_test.proxy_method;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public abstract class AbstractObject {
+
+    // 需要的操作
+    public abstract void operation();
+
+}
+</code></pre><hr>
+<p>定义真正的实现的类</p>
+<pre><code>package com.anakin.design_pattern_test.proxy_method;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class RealObject extends AbstractObject {
+    @Override
+    public void operation() {
+        System.out.println(&quot;  need to do something &gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
+    }
+}
+</code></pre><hr>
+<p>定义代理类</p>
+<pre><code>package com.anakin.design_pattern_test.proxy_method;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class ProxyObject extends AbstractObject {
+    @Override
+    public void operation() {
+        // 调用具体操作前可以做操作
+        AbstractObject real = new RealObject();
+        real.operation();
+        // 调用具体操作后可以做操作
+    }
+}
+</code></pre><hr>
+<p>测试</p>
+<pre><code>// 代理模式测试
+AbstractObject proxy =new ProxyObject();
+proxy.operation();
+</code></pre><hr>
+<p>测试结果</p>
+<pre><code>02-08 09:46:41.821 18278-18278/com.anakin.design_pattern_test I/System.out:   need to do something &gt;&gt;&gt;&gt;&gt;&gt;&gt;
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/02/17/设计模式-代理模式/" data-id="cj0dhiubt0023p0vvzr123fq0" class="article-share-link" data-share="baidu" data-title="代理模式.md">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/02/17/设计模式-代理模式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式-简单工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/设计模式-简单工厂模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/设计模式-简单工厂模式/">简单工厂模式.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##　简单工厂模式</p>
+<ol>
+<li>定义抽象的工厂类</li>
+<li>工厂类包定义公共的方法实现，和不同实现的抽象方法</li>
+<li>定义根据参数创建实例对象，返回抽象类的静态方法</li>
+<li>使用静态方法传入要获取对象的tag,获取对象的实例，调用实例的方法</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/02/17/设计模式-简单工厂模式/" data-id="cj0dhiubr0021p0vv853a5mc3" class="article-share-link" data-share="baidu" data-title="简单工厂模式.md">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/02/17/设计模式-简单工厂模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -1008,7 +982,7 @@ public static CEO getInstance() {
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1017,7 +991,7 @@ public static CEO getInstance() {
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 18px;">设计模式</a> <a href="/tags/随想/" style="font-size: 12px;">随想</a>
+      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 17.5px;">设计模式</a> <a href="/tags/随想/" style="font-size: 12.5px;">随想</a>
     </div>
   </div>
 
@@ -1026,7 +1000,7 @@ public static CEO getInstance() {
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
     </div>
   </div>
 
@@ -1036,6 +1010,10 @@ public static CEO getInstance() {
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/03/17/使用RxJava实现EventBus-事件总线）/">使用RxJava实现EventBus(事件总线）</a>
+          </li>
         
           <li>
             <a href="/2017/03/16/Ubuntu16-04下载编译Android6-0源码/">Ubuntu16.04下载编译Android6.0源码</a>
@@ -1051,10 +1029,6 @@ public static CEO getInstance() {
         
           <li>
             <a href="/2017/03/06/RxJava-简单使用/">RxJava-简单使用</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/06/Atom插件打造PHP开发平台/">Atom插件打造PHP开发平台</a>
           </li>
         
       </ul>
