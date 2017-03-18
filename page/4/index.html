@@ -78,6 +78,259 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-自学Python-面向对象高级编程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/12/自学Python-面向对象高级编程/" class="article-date">
+  <time datetime="2017-01-12T06:30:26.000Z" itemprop="datePublished">2017-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/12/自学Python-面向对象高级编程/">自学Python-面向对象高级编程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="使用slots"><a href="#使用slots" class="headerlink" title="使用slots"></a>使用<strong>slots</strong></h2><ul>
+<li>正常情况下定义一个class,创建class实例后,我们可以给实例绑定任何属性和方法,这就是动态语言的灵活性</li>
+</ul>
+<ul>
+<li><p>绑定属性</p>
+<pre><code>class Student(object):
+    def __init__(self, name):
+        super(Student, self).__init__()
+        self.name = name
+
+s = Student(&apos;anakin&apos;)
+s.age = 10
+print(s.age)  # 给对象绑定属性
+print(s)
+</code></pre></li>
+</ul>
+<p><strong>绑定方法</strong></p>
+<ul>
+<li><p>这样给实例绑定一个方法,对另外一个实例是不起作用的</p>
+<pre><code>class Student(object):
+    def __init__(self, name):
+        super(Student, self).__init__()
+        self.name = name
+
+# 给实例绑定一个方法
+s = Student(&apos;anakin&apos;)
+def set_age(self,age):
+    self.age= age
+from types import MethodType
+s.set_age= MethodType(set_age,s)
+s.set_age(25)
+print(s.age) # 25
+</code></pre></li>
+<li><p>为了给所有实例绑定方法,可以给class绑定方法</p>
+<pre><code>def set_score(self,score):
+    self.score=score
+
+Student.set_score =set_score  # 给类绑定方法
+s.set_score(&apos;abc&apos;)
+print(s.score)
+</code></pre></li>
+<li><p>使用<strong>slots</strong> 限制绑定的属性</p>
+</li>
+</ul>
+<pre><code>class Student(object):
+    __slots__ = (&apos;name&apos;,&apos;age&apos;) # 限制绑定的属性
+
+s  = Student()
+s.name= &apos;anakin&apos;
+print(s.name)
+# s.score =&apos;abc&apos;   #  绑定score会报错,因为限制了绑定的属性
+# print(s.score)
+</code></pre><blockquote>
+<p>注意: <strong>slots</strong> 只对当前的类起作用,对子类没有作用</p>
+</blockquote>
+<h3 id="使用-property"><a href="#使用-property" class="headerlink" title="使用@property"></a>使用@property</h3><ul>
+<li><p>通过提供set和get方法,检查参数</p>
+<p>  class Student(object):</p>
+<pre><code># 提供getScore和setScore方法
+def get_Score(self):
+    return self._score
+
+def set_Score(self,value):
+    if not isinstance(value,int):
+        print(&apos;输入数据类型错误&apos;)
+    if value&lt; 0 or value &gt; 100:
+        print(&apos;数据超出范围&apos;)
+    self._score= value
+</code></pre><p>  s = Student()<br>  s.set_Score(105)</p>
+</li>
+<li><p>使用<code>@property</code> 对设置的属性进行检查<code>s.score=109</code> 相当于<code>s.set_score(109)``,s.score</code> 相当于<code>s.get_score()</code></p>
+<pre><code>class Student(object):
+    @property
+    def score(self):
+        return self._score
+
+    @score.setter
+    def score(self,value):
+        if not isinstance (value,int):
+            print(&apos;数据类型不合法&apos;)
+        if value &lt; 0 or value &gt; 100:
+            print(&apos;数据超出范围&apos;)
+        self._score =value
+s= Student()
+s.score=109
+print(s.score)
+</code></pre></li>
+<li><p>定义只读属性，提供get方法，不提供set方法</p>
+<pre><code>class People(object):
+
+    @property
+    def birth(self):
+        return self._birth
+
+    @birth.setter
+    def birth(self, value):
+        self._birth = value
+
+    @property
+    def age(self):
+        return 2015 - self._birth
+
+p = People()
+p.birth=1993
+print(p.birth)
+print(p.age)
+</code></pre></li>
+</ul>
+<h3 id="多重继承"><a href="#多重继承" class="headerlink" title="多重继承"></a>多重继承</h3><ul>
+<li>Python支持多继承</li>
+</ul>
+<h3 id="定制类"><a href="#定制类" class="headerlink" title="定制类"></a>定制类</h3><p> Python 中有很多特殊用途的函数，帮助我们定制类</p>
+<h4 id="str"><a href="#str" class="headerlink" title="__str__()"></a><code>__str__()</code></h4><ul>
+<li><p>作用：返回自定义的字符串</p>
+<pre><code># 定制函数
+class Student(object):
+    &quot;&quot;&quot;docstring forStudent.&quot;&quot;&quot;
+    def __init__(self, name):
+        self._name = name
+    def __str__(self):
+        return &apos;Student name :&apos;+self._name
+s =Student(&apos;anakin&apos;)
+print(s)
+</code></pre></li>
+<li><p>让用户看到的字符串和程序开发者看到的字符串是一样的使用<code>__repr__</code></p>
+<pre><code># 定制函数
+class Student(object):
+    def __init__(self, name):
+        self._name = name
+    def __str__(self):
+        return &apos;Student name :&apos;+self._name
+    __repr__ =__str__
+s =Student(&apos;anakin&apos;)
+print(s)
+</code></pre></li>
+</ul>
+<h3 id="iter"><a href="#iter" class="headerlink" title="__iter__"></a><code>__iter__</code></h3><ul>
+<li><p>如果一个对象想被<code>for..in ...</code>循环 ，就要实现<code>__iter__</code>函数 ，返回self</p>
+<pre><code>class Fib(object):
+    def __init__(self):
+        self.a,self.b = 0,1
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self.a ,self.b = self.b,self.a+self.b
+        if self.a&gt;10000:
+            raise StopIteration();
+        return self.a
+
+for x in Fib():
+    print(x)
+</code></pre></li>
+</ul>
+<h3 id="getitem"><a href="#getitem" class="headerlink" title="__getitem__"></a><code>__getitem__</code></h3><ul>
+<li><p>实现<code>__iter__</code> 方法可以使类<code>for.. in..</code>循环，实现<code>getitem</code>可以通过角标获取元素</p>
+<pre><code>class Fib(object):
+    def __init__(self):
+        self.a,self.b = 0,1
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self.a ,self.b = self.b,self.a+self.b
+        if self.a&gt;10000:
+            raise StopIteration();
+        return self.a
+
+    def __getitem__(self,n):
+        a,b =1,1
+        for x in range(n):
+            a,b =b,a+b
+        return a
+</code></pre></li>
+</ul>
+<pre><code>for x in Fib():
+    print(x)
+f= Fib()
+print(f[20])
+</code></pre><h3 id="getattr"><a href="#getattr" class="headerlink" title="__getattr__"></a><code>__getattr__</code></h3><ul>
+<li><p>那就是写一个<strong>getattr</strong>()方法，动态返回一个属性</p>
+<pre><code>class Student(object):
+    def __init__(self):
+            self.name =&quot;anakin&quot;
+    def __getattr__(self,attr):
+        if attr == &apos;age&apos;:
+            return 18
+s= Student()
+print(s.name)
+print(s.age)
+</code></pre></li>
+</ul>
+<ul>
+<li><code>__getattr__()</code>方法 也可以返回一个方法，调用方式对象.方法（）</li>
+</ul>
+<h3 id="call"><a href="#call" class="headerlink" title="__call__"></a><code>__call__</code></h3><ul>
+<li><p>调用类中的方法</p>
+<pre><code>class Student(object):
+    &quot;&quot;&quot;docstring forStudent.&quot;&quot;&quot;
+    def __init__(self):
+        self.name =&apos;anakin&apos;
+    def __call__(self):
+        print(&apos;调用自己的方法。。。。&apos;)
+s= Student()
+s()
+</code></pre></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/" data-id="cj0f397ra001p54vvq2qp41uq" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象高级编程">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-自学Python-Python基础" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/11/自学Python-Python基础/" class="article-date">
@@ -144,7 +397,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/11/自学Python-Python基础/" data-id="cj0f336d1001e7kvvrlqdenft" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础.md">分享到</a>
+        <a data-url="http://anranz.com/2017/01/11/自学Python-Python基础/" data-id="cj0f397nc001854vv4lkd9lyb" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础.md">分享到</a>
       
 
       
@@ -343,7 +596,7 @@ print(s5)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/11/自学Python-面向对象编程/" data-id="cj0f336dx001l7kvv9ahm222g" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象编程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/11/自学Python-面向对象编程/" data-id="cj0f397qv001n54vvvxbo06cy" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象编程">分享到</a>
       
 
       
@@ -449,7 +702,7 @@ im.save(&apos;thmb.jpg&apos;,&apos;JPEG&apos;)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/11/自学Python-模块/" data-id="cj0f336go00227kvvogqyp8nn" class="article-share-link" data-share="baidu" data-title="自学Python-模块">分享到</a>
+        <a data-url="http://anranz.com/2017/01/11/自学Python-模块/" data-id="cj0f397pv001h54vv5k9f5xoi" class="article-share-link" data-share="baidu" data-title="自学Python-模块">分享到</a>
       
 
       
@@ -602,7 +855,7 @@ print(s)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/11/自学Python-函数式编程/" data-id="cj0f336cx001c7kvv7ienbq42" class="article-share-link" data-share="baidu" data-title="自学Python-函数式编程.md">分享到</a>
+        <a data-url="http://anranz.com/2017/01/11/自学Python-函数式编程/" data-id="cj0f397oi001d54vv20onpucl" class="article-share-link" data-share="baidu" data-title="自学Python-函数式编程.md">分享到</a>
       
 
       
@@ -754,7 +1007,7 @@ print(r)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/11/自学Python-高级特性/" data-id="cj0f336f4001p7kvv3rffga4v" class="article-share-link" data-share="baidu" data-title="自学Python-高级特性">分享到</a>
+        <a data-url="http://anranz.com/2017/01/11/自学Python-高级特性/" data-id="cj0f397s9001v54vv8ff698bu" class="article-share-link" data-share="baidu" data-title="自学Python-高级特性">分享到</a>
       
 
       
@@ -897,7 +1150,7 @@ person(&apos;Jack&apos;, 24, city=&apos;Beijing&apos;, job=&apos;Engineer&apos;)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/10/自学Python-函数/" data-id="cj0f336c800197kvvijy00kfq" class="article-share-link" data-share="baidu" data-title="自学Python- 函数">分享到</a>
+        <a data-url="http://anranz.com/2017/01/10/自学Python-函数/" data-id="cj0f397o6001b54vv18g9f0kv" class="article-share-link" data-share="baidu" data-title="自学Python- 函数">分享到</a>
       
 
       
@@ -1026,7 +1279,7 @@ print(map[&apos;xiaoming&apos;])
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/10/自学Python-Python基础二/" data-id="cj0f336cc001a7kvvw2gsdux0" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础二">分享到</a>
+        <a data-url="http://anranz.com/2017/01/10/自学Python-Python基础二/" data-id="cj0f397np001954vvx78dyhck" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础二">分享到</a>
       
 
       
@@ -1254,7 +1507,7 @@ private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/10/代码示例/" data-id="cj0f336as000u7kvvr40svjf2" class="article-share-link" data-share="baidu" data-title="代码示例">分享到</a>
+        <a data-url="http://anranz.com/2017/01/10/代码示例/" data-id="cj0f397lc000t54vvx7few95s" class="article-share-link" data-share="baidu" data-title="代码示例">分享到</a>
       
 
       
@@ -1281,7 +1534,7 @@ private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg" rel="gallery_cj0f336c100167kvviw0n2b5l">
+      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg" rel="gallery_cj0f397mt001354vvi2hjanxf">
         <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg" itemprop="image">
       </a>
     
@@ -1801,7 +2054,7 @@ hexo d // 更新到github
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/09/日常笔记/" data-id="cj0f336c100167kvviw0n2b5l" class="article-share-link" data-share="baidu" data-title="日常笔记.md">分享到</a>
+        <a data-url="http://anranz.com/2017/01/09/日常笔记/" data-id="cj0f397mt001354vvi2hjanxf" class="article-share-link" data-share="baidu" data-title="日常笔记.md">分享到</a>
       
 
       
@@ -1818,61 +2071,10 @@ hexo d // 更新到github
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/09/hello-world/" class="article-date">
-  <time datetime="2017-01-09T03:05:39.368Z" itemprop="datePublished">2017-01-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/09/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/01/09/hello-world/" data-id="cj0f336ad000p7kvvwg6zy71z" class="article-share-link" data-share="baidu" data-title="Hello World">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/01/09/hello-world/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -1885,7 +2087,7 @@ hexo d // 更新到github
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -1894,7 +2096,7 @@ hexo d // 更新到github
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 17.5px;">设计模式</a> <a href="/tags/随想/" style="font-size: 12.5px;">随想</a>
+      <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 16.67px;">设计模式</a> <a href="/tags/随想/" style="font-size: 13.33px;">随想</a>
     </div>
   </div>
 
@@ -1903,7 +2105,7 @@ hexo d // 更新到github
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
     </div>
   </div>
 
@@ -1913,6 +2115,10 @@ hexo d // 更新到github
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/03/18/焦虑/">焦虑</a>
+          </li>
         
           <li>
             <a href="/2017/03/17/使用RxJava实现EventBus-事件总线）/">使用RxJava实现EventBus(事件总线）</a>
@@ -1928,10 +2134,6 @@ hexo d // 更新到github
         
           <li>
             <a href="/2017/03/08/RxJave和Retrofits的实现网络请求/">RxJave和Retrofits的实现网络请求</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/06/RxJava-简单使用/">RxJava-简单使用</a>
           </li>
         
       </ul>

@@ -78,6 +78,188 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-MySQL进阶-操作详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/MySQL进阶-操作详解/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/MySQL进阶-操作详解/">MySQL基本操作.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="MySQL基本操作"><a href="#MySQL基本操作" class="headerlink" title="MySQL基本操作"></a>MySQL基本操作</h3><ol>
+<li><p>打开数据库 sudo service mysql start;</p>
+</li>
+<li><p>连接数据库 mysql -u root -p</p>
+</li>
+<li><p>查看数据库 show dabases</p>
+</li>
+<li><p>使用数据库 use 数据库名字</p>
+</li>
+<li><p>创建数据库 create database 数据库名 eg : create database test</p>
+</li>
+<li><p>创建表 create table 表名（列名 数据类型 约束）<br>eg : create table pet(name VARCHAR(20),owner VARCHAR(20),species VARCHAR(20),sex CHAR(1),birth DATE , death DATE);</p>
+</li>
+<li><p>查看创建的表 DESCRIBE pet;</p>
+</li>
+<li><p>插入数据 insert into test VALUES(‘tom’,’panda’,’hamster’,’f’,’2017-02-06’，NULL);</p>
+</li>
+<li><p>从表中检索数据 select * from pet;</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/02/17/MySQL进阶-操作详解/" data-id="cj0f397gg000954vvsxp92qo4" class="article-share-link" data-share="baidu" data-title="MySQL基本操作.md">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/02/17/MySQL进阶-操作详解/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式-工厂方法模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/设计模式-工厂方法模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/设计模式-工厂方法模式/">工厂方法模式.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式　"></a>工厂方法模式　</h2><p>和简单工厂模式不同是,简单工厂模式,实例都由一个工厂类创建,工厂类的代码量会比较多,而且增加新的对象需要修改工厂类的代码,增加if else 的判断.</p>
+<p>工厂模式,创建产品的抽象类和实现类,以及工厂的抽象类和实现类.</p>
+<p>以打印log为例,log的存储方式可以是db也可以是file中,需要创建Logger的抽象类,具体是FileLogger实现类和DbLogger的实现类,工厂的抽象类LoggerFactory,和具体的实现类DbLoggerFactory,FileLoggerFactory</p>
+<ol>
+<li>在抽象Logger类中定义公共的抽象方法writeLog()</li>
+<li>在具体实现类DbLogger和FileLogger中实现各自的具体的writeLog方法</li>
+<li>在抽象的工厂类中定义抽象的创建对象的方法creatLogger()</li>
+<li>在具体的实类DbLoggerFactory,FileLoggerFactory中实现方法,创建DbLogger和FileLogger的实例,并返回其父类Logger</li>
+<li>客户端的使用 : 根据需要创建工厂的实例,调用实例中创建对象的方法creatLogger返回具体log存放的实例对象,在调用具体打印log的方法writeLog()</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/02/17/设计模式-工厂方法模式/" data-id="cj0f397su002054vv5iq94d12" class="article-share-link" data-share="baidu" data-title="工厂方法模式.md">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/02/17/设计模式-工厂方法模式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式-单例模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/设计模式-单例模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/设计模式-单例模式/">单例设计模式.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>确保某一类只有一个实例，而且自行实例化并向整个系统提供这个实例</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景:"></a>使用场景:</h3><p>确保某个类只存在一个对象,当创建这个对象需要消耗过多的资源时,例如IO 的读取数据库等操作</p>
+<pre><code>/**
+ * 第二种方法
+ */
+private static CEO mInstance = null;
+
+private CEO() {
+}
+public static CEO getInstance() {
+    if (mInstance == null) {
+        synchronized (CEO.class){
+            if (mInstance == null) {
+                mInstance = new CEO();
+            }
+        }
+    }
+    return mInstance;
+}
+</code></pre><hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/02/17/设计模式-单例模式/" data-id="cj0f397sm001y54vvz7k8b09y" class="article-share-link" data-share="baidu" data-title="单例设计模式.md">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/02/17/设计模式-单例模式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-设计模式-Builder模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/02/17/设计模式-Builder模式/" class="article-date">
@@ -258,169 +440,11 @@ public class Director {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/设计模式-Builder模式/" data-id="cj0f336gb001z7kvvsbukbqqy" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-Builder模式/" data-id="cj0f397ru001q54vvh7ll042v" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
       
 
       
         <a href="http://anranz.com/2017/02/17/设计模式-Builder模式/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-设计模式-代理模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/设计模式-代理模式/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-代理模式/">代理模式.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>代理模式是对象结构模式,代理模式给某个对象提供一个代理对象,并由代理对象控制控制原对象的引用.</p>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><h3 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h3><p>定义抽象类</p>
-<pre><code>package com.anakin.design_pattern_test.proxy_method;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public abstract class AbstractObject {
-
-    // 需要的操作
-    public abstract void operation();
-
-}
-</code></pre><hr>
-<p>定义真正的实现的类</p>
-<pre><code>package com.anakin.design_pattern_test.proxy_method;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public class RealObject extends AbstractObject {
-    @Override
-    public void operation() {
-        System.out.println(&quot;  need to do something &gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
-    }
-}
-</code></pre><hr>
-<p>定义代理类</p>
-<pre><code>package com.anakin.design_pattern_test.proxy_method;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public class ProxyObject extends AbstractObject {
-    @Override
-    public void operation() {
-        // 调用具体操作前可以做操作
-        AbstractObject real = new RealObject();
-        real.operation();
-        // 调用具体操作后可以做操作
-    }
-}
-</code></pre><hr>
-<p>测试</p>
-<pre><code>// 代理模式测试
-AbstractObject proxy =new ProxyObject();
-proxy.operation();
-</code></pre><hr>
-<p>测试结果</p>
-<pre><code>02-08 09:46:41.821 18278-18278/com.anakin.design_pattern_test I/System.out:   need to do something &gt;&gt;&gt;&gt;&gt;&gt;&gt;
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/02/17/设计模式-代理模式/" data-id="cj0f336g4001x7kvvlpbpng43" class="article-share-link" data-share="baidu" data-title="代理模式.md">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/02/17/设计模式-代理模式/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-设计模式-单例模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/设计模式-单例模式/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-单例模式/">单例设计模式.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>确保某一类只有一个实例，而且自行实例化并向整个系统提供这个实例</p>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景:"></a>使用场景:</h3><p>确保某个类只存在一个对象,当创建这个对象需要消耗过多的资源时,例如IO 的读取数据库等操作</p>
-<pre><code>/**
- * 第二种方法
- */
-private static CEO mInstance = null;
-
-private CEO() {
-}
-public static CEO getInstance() {
-    if (mInstance == null) {
-        synchronized (CEO.class){
-            if (mInstance == null) {
-                mInstance = new CEO();
-            }
-        }
-    }
-    return mInstance;
-}
-</code></pre><hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/02/17/设计模式-单例模式/" data-id="cj0f336ff001s7kvv7m9gsvyd" class="article-share-link" data-share="baidu" data-title="单例设计模式.md">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/02/17/设计模式-单例模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -520,7 +544,7 @@ public static CEO getInstance() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/20/MySQL使用/" data-id="cj0f3366w00067kvv76rj93ex" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
+        <a data-url="http://anranz.com/2017/01/20/MySQL使用/" data-id="cj0f397fq000754vvgefwlos6" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
       
 
       
@@ -596,7 +620,7 @@ public class XMLUtil {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/20/读取XML中的配置参数/" data-id="cj0f336iw002h7kvvvhwk8wcv" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
+        <a data-url="http://anranz.com/2017/01/20/读取XML中的配置参数/" data-id="cj0f397u4002b54vvq52unwo9" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
       
 
       
@@ -723,7 +747,7 @@ print (c)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/14/自学Python-常用内建模块/" data-id="cj0f336do001i7kvvyg81bsdo" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
+        <a data-url="http://anranz.com/2017/01/14/自学Python-常用内建模块/" data-id="cj0f397ow001f54vv9gscx2he" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
       
 
       
@@ -811,7 +835,7 @@ print (s)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/14/自学Python-正则表达式/" data-id="cj0f336de001g7kvvw500i3xw" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
+        <a data-url="http://anranz.com/2017/01/14/自学Python-正则表达式/" data-id="cj0f397ql001l54vvb44j8xd5" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
       
 
       
@@ -989,7 +1013,7 @@ t2.join()
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/13/自学Python-线程和进程/" data-id="cj0f336ft001u7kvvhsnluw09" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/13/自学Python-线程和进程/" data-id="cj0f397qb001j54vvrmp7t3rk" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
       
 
       
@@ -1201,7 +1225,7 @@ print(r)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/13/自学Python-IO编程/" data-id="cj0f336bt00147kvvv3e46boh" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/13/自学Python-IO编程/" data-id="cj0f397n2001554vvr1uuyo2v" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
       
 
       
@@ -1218,263 +1242,10 @@ print(r)
 
 
   
-    <article id="post-自学Python-面向对象高级编程" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/12/自学Python-面向对象高级编程/" class="article-date">
-  <time datetime="2017-01-12T06:30:26.000Z" itemprop="datePublished">2017-01-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/12/自学Python-面向对象高级编程/">自学Python-面向对象高级编程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="使用slots"><a href="#使用slots" class="headerlink" title="使用slots"></a>使用<strong>slots</strong></h2><ul>
-<li>正常情况下定义一个class,创建class实例后,我们可以给实例绑定任何属性和方法,这就是动态语言的灵活性</li>
-</ul>
-<ul>
-<li><p>绑定属性</p>
-<pre><code>class Student(object):
-    def __init__(self, name):
-        super(Student, self).__init__()
-        self.name = name
-
-s = Student(&apos;anakin&apos;)
-s.age = 10
-print(s.age)  # 给对象绑定属性
-print(s)
-</code></pre></li>
-</ul>
-<p><strong>绑定方法</strong></p>
-<ul>
-<li><p>这样给实例绑定一个方法,对另外一个实例是不起作用的</p>
-<pre><code>class Student(object):
-    def __init__(self, name):
-        super(Student, self).__init__()
-        self.name = name
-
-# 给实例绑定一个方法
-s = Student(&apos;anakin&apos;)
-def set_age(self,age):
-    self.age= age
-from types import MethodType
-s.set_age= MethodType(set_age,s)
-s.set_age(25)
-print(s.age) # 25
-</code></pre></li>
-<li><p>为了给所有实例绑定方法,可以给class绑定方法</p>
-<pre><code>def set_score(self,score):
-    self.score=score
-
-Student.set_score =set_score  # 给类绑定方法
-s.set_score(&apos;abc&apos;)
-print(s.score)
-</code></pre></li>
-<li><p>使用<strong>slots</strong> 限制绑定的属性</p>
-</li>
-</ul>
-<pre><code>class Student(object):
-    __slots__ = (&apos;name&apos;,&apos;age&apos;) # 限制绑定的属性
-
-s  = Student()
-s.name= &apos;anakin&apos;
-print(s.name)
-# s.score =&apos;abc&apos;   #  绑定score会报错,因为限制了绑定的属性
-# print(s.score)
-</code></pre><blockquote>
-<p>注意: <strong>slots</strong> 只对当前的类起作用,对子类没有作用</p>
-</blockquote>
-<h3 id="使用-property"><a href="#使用-property" class="headerlink" title="使用@property"></a>使用@property</h3><ul>
-<li><p>通过提供set和get方法,检查参数</p>
-<p>  class Student(object):</p>
-<pre><code># 提供getScore和setScore方法
-def get_Score(self):
-    return self._score
-
-def set_Score(self,value):
-    if not isinstance(value,int):
-        print(&apos;输入数据类型错误&apos;)
-    if value&lt; 0 or value &gt; 100:
-        print(&apos;数据超出范围&apos;)
-    self._score= value
-</code></pre><p>  s = Student()<br>  s.set_Score(105)</p>
-</li>
-<li><p>使用<code>@property</code> 对设置的属性进行检查<code>s.score=109</code> 相当于<code>s.set_score(109)``,s.score</code> 相当于<code>s.get_score()</code></p>
-<pre><code>class Student(object):
-    @property
-    def score(self):
-        return self._score
-
-    @score.setter
-    def score(self,value):
-        if not isinstance (value,int):
-            print(&apos;数据类型不合法&apos;)
-        if value &lt; 0 or value &gt; 100:
-            print(&apos;数据超出范围&apos;)
-        self._score =value
-s= Student()
-s.score=109
-print(s.score)
-</code></pre></li>
-<li><p>定义只读属性，提供get方法，不提供set方法</p>
-<pre><code>class People(object):
-
-    @property
-    def birth(self):
-        return self._birth
-
-    @birth.setter
-    def birth(self, value):
-        self._birth = value
-
-    @property
-    def age(self):
-        return 2015 - self._birth
-
-p = People()
-p.birth=1993
-print(p.birth)
-print(p.age)
-</code></pre></li>
-</ul>
-<h3 id="多重继承"><a href="#多重继承" class="headerlink" title="多重继承"></a>多重继承</h3><ul>
-<li>Python支持多继承</li>
-</ul>
-<h3 id="定制类"><a href="#定制类" class="headerlink" title="定制类"></a>定制类</h3><p> Python 中有很多特殊用途的函数，帮助我们定制类</p>
-<h4 id="str"><a href="#str" class="headerlink" title="__str__()"></a><code>__str__()</code></h4><ul>
-<li><p>作用：返回自定义的字符串</p>
-<pre><code># 定制函数
-class Student(object):
-    &quot;&quot;&quot;docstring forStudent.&quot;&quot;&quot;
-    def __init__(self, name):
-        self._name = name
-    def __str__(self):
-        return &apos;Student name :&apos;+self._name
-s =Student(&apos;anakin&apos;)
-print(s)
-</code></pre></li>
-<li><p>让用户看到的字符串和程序开发者看到的字符串是一样的使用<code>__repr__</code></p>
-<pre><code># 定制函数
-class Student(object):
-    def __init__(self, name):
-        self._name = name
-    def __str__(self):
-        return &apos;Student name :&apos;+self._name
-    __repr__ =__str__
-s =Student(&apos;anakin&apos;)
-print(s)
-</code></pre></li>
-</ul>
-<h3 id="iter"><a href="#iter" class="headerlink" title="__iter__"></a><code>__iter__</code></h3><ul>
-<li><p>如果一个对象想被<code>for..in ...</code>循环 ，就要实现<code>__iter__</code>函数 ，返回self</p>
-<pre><code>class Fib(object):
-    def __init__(self):
-        self.a,self.b = 0,1
-
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        self.a ,self.b = self.b,self.a+self.b
-        if self.a&gt;10000:
-            raise StopIteration();
-        return self.a
-
-for x in Fib():
-    print(x)
-</code></pre></li>
-</ul>
-<h3 id="getitem"><a href="#getitem" class="headerlink" title="__getitem__"></a><code>__getitem__</code></h3><ul>
-<li><p>实现<code>__iter__</code> 方法可以使类<code>for.. in..</code>循环，实现<code>getitem</code>可以通过角标获取元素</p>
-<pre><code>class Fib(object):
-    def __init__(self):
-        self.a,self.b = 0,1
-
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        self.a ,self.b = self.b,self.a+self.b
-        if self.a&gt;10000:
-            raise StopIteration();
-        return self.a
-
-    def __getitem__(self,n):
-        a,b =1,1
-        for x in range(n):
-            a,b =b,a+b
-        return a
-</code></pre></li>
-</ul>
-<pre><code>for x in Fib():
-    print(x)
-f= Fib()
-print(f[20])
-</code></pre><h3 id="getattr"><a href="#getattr" class="headerlink" title="__getattr__"></a><code>__getattr__</code></h3><ul>
-<li><p>那就是写一个<strong>getattr</strong>()方法，动态返回一个属性</p>
-<pre><code>class Student(object):
-    def __init__(self):
-            self.name =&quot;anakin&quot;
-    def __getattr__(self,attr):
-        if attr == &apos;age&apos;:
-            return 18
-s= Student()
-print(s.name)
-print(s.age)
-</code></pre></li>
-</ul>
-<ul>
-<li><code>__getattr__()</code>方法 也可以返回一个方法，调用方式对象.方法（）</li>
-</ul>
-<h3 id="call"><a href="#call" class="headerlink" title="__call__"></a><code>__call__</code></h3><ul>
-<li><p>调用类中的方法</p>
-<pre><code>class Student(object):
-    &quot;&quot;&quot;docstring forStudent.&quot;&quot;&quot;
-    def __init__(self):
-        self.name =&apos;anakin&apos;
-    def __call__(self):
-        print(&apos;调用自己的方法。。。。&apos;)
-s= Student()
-s()
-</code></pre></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/" data-id="cj0f336eh001n7kvvuj6frcs8" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象高级编程">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">下一页 &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -1487,7 +1258,7 @@ s()
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -1496,7 +1267,7 @@ s()
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 17.5px;">设计模式</a> <a href="/tags/随想/" style="font-size: 12.5px;">随想</a>
+      <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 16.67px;">设计模式</a> <a href="/tags/随想/" style="font-size: 13.33px;">随想</a>
     </div>
   </div>
 
@@ -1505,7 +1276,7 @@ s()
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
     </div>
   </div>
 
@@ -1515,6 +1286,10 @@ s()
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/03/18/焦虑/">焦虑</a>
+          </li>
         
           <li>
             <a href="/2017/03/17/使用RxJava实现EventBus-事件总线）/">使用RxJava实现EventBus(事件总线）</a>
@@ -1530,10 +1305,6 @@ s()
         
           <li>
             <a href="/2017/03/08/RxJave和Retrofits的实现网络请求/">RxJave和Retrofits的实现网络请求</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/06/RxJava-简单使用/">RxJava-简单使用</a>
           </li>
         
       </ul>
