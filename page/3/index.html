@@ -115,7 +115,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/设计模式-工厂方法模式/" data-id="cj0jbvr860029jcvvgjknpvvw" class="article-share-link" data-share="baidu" data-title="工厂方法模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-工厂方法模式/" data-id="cj0jcp1nx0028o8vv6nfvtkyw" class="article-share-link" data-share="baidu" data-title="工厂方法模式.md">分享到</a>
       
 
       
@@ -166,7 +166,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/设计模式-简单工厂模式/" data-id="cj0jbvr8b002ejcvvugfi798j" class="article-share-link" data-share="baidu" data-title="简单工厂模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-简单工厂模式/" data-id="cj0jcp1o3002co8vva7x369br" class="article-share-link" data-share="baidu" data-title="简单工厂模式.md">分享到</a>
       
 
       
@@ -230,7 +230,7 @@ public static CEO getInstance() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/设计模式-单例模式/" data-id="cj0jbvr7z0024jcvvoj3c8ovf" class="article-share-link" data-share="baidu" data-title="单例设计模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-单例模式/" data-id="cj0jcp1nr0023o8vvjj4fsm5a" class="article-share-link" data-share="baidu" data-title="单例设计模式.md">分享到</a>
       
 
       
@@ -324,7 +324,7 @@ proxy.operation();
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/设计模式-代理模式/" data-id="cj0jbvr7y0021jcvvx4oonn9x" class="article-share-link" data-share="baidu" data-title="代理模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-代理模式/" data-id="cj0jcp1nm001yo8vvwz3xw4nz" class="article-share-link" data-share="baidu" data-title="代理模式.md">分享到</a>
       
 
       
@@ -341,9 +341,9 @@ proxy.operation();
 
 
   
-    <article id="post-设计模式-Builder模式" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-MySQL进阶-操作详解" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/17/设计模式-Builder模式/" class="article-date">
+    <a href="/2017/02/17/MySQL进阶-操作详解/" class="article-date">
   <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
@@ -355,7 +355,7 @@ proxy.operation();
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-Builder模式/">Builder模式.md</a>
+      <a class="article-title" href="/2017/02/17/MySQL进阶-操作详解/">MySQL基本操作.md</a>
     </h1>
   
 
@@ -363,173 +363,116 @@ proxy.operation();
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Builder模式"><a href="#Builder模式" class="headerlink" title="Builder模式"></a>Builder模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>将复杂的创建与他的表示分离,使同样的创建过程可以创建不同的表示</p>
-<h3 id="设计的步骤"><a href="#设计的步骤" class="headerlink" title="设计的步骤:"></a>设计的步骤:</h3><pre><code>Builder builder = new AppleBuilder();
-        Director director = new Director(builder);
-        director.construct(4,2,&quot;linux&quot;);
-        Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
-</code></pre><hr>
-<ol>
-<li><p>以组装电脑为例,创建电脑的抽象类,包含os ram,core定义,提供设置的抽象方法</p>
+        <h3 id="MySQL基本操作"><a href="#MySQL基本操作" class="headerlink" title="MySQL基本操作"></a>MySQL基本操作</h3><ol>
+<li><p>打开数据库 sudo service mysql start;</p>
 </li>
-<li><p>创建要组装的具体电脑类AppleComputer,继承Computer类,实现所用方法</p>
+<li><p>连接数据库 mysql -u root -p</p>
 </li>
-<li><p>创建抽象的Builder类,提供builder的设置方法,另外提供返回Computer的create的抽象方法</p>
+<li><p>查看数据库 show dabases</p>
 </li>
-<li><p>创建具体的AppleBuilder类实现抽象方法,创建AppleComputer 实例对象,并设置数据,返回AppleComputer的实例</p>
+<li><p>使用数据库 use 数据库名字</p>
 </li>
-<li><p>创建具体的Director类,构造方法中接受builder对象,提供接受数据的construct 方法,将参数传递给builder对象</p>
+<li><p>创建数据库 create database 数据库名 eg : create database test</p>
 </li>
-<li><p>传递的参数最终被AppleBuilder接收,并返回一个具体的AppleComputer对象</p>
+<li><p>创建表 create table 表名（列名 数据类型 约束）<br>eg : create table pet(name VARCHAR(20),owner VARCHAR(20),species VARCHAR(20),sex CHAR(1),birth DATE , death DATE);</p>
+</li>
+<li><p>查看创建的表 DESCRIBE pet;</p>
+</li>
+<li><p>插入数据 insert into test VALUES(‘tom’,’panda’,’hamster’,’f’,’2017-02-06’，NULL);</p>
+</li>
+<li><p>从表中检索数据 select * from pet;</p>
 </li>
 </ol>
-<h3 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h3><pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public abstract class Computer {
-    protected int mCore = 1;
-    protected int mRam = 10;
-    protected String mOs = &quot;dos&quot;;
-
-    protected Computer() {
-
-    }
-
-    public abstract void setCore(int core);
-
-    public abstract void setRem(int rem);
-
-    public abstract void setOs(String os);
-
-    @Override
-    public String toString() {
-        return &quot;Computer{&quot; +
-                &quot;mCore=&quot; + mCore +
-                &quot;, mRam=&quot; + mRam +
-                &quot;, mOs=&apos;&quot; + mOs + &apos;\&apos;&apos; +
-                &apos;}&apos;;
-    }
-}
-</code></pre><hr>
-<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public class AppleComputer extends Computer {
-
-
-    protected AppleComputer() {
-
-    }
-
-    @Override
-    public void setCore(int core) {
-        this.mCore = core;
-    }
-
-    @Override
-    public void setRem(int ram) {
-        this.mRam = ram;
-    }
-
-    @Override
-    public void setOs(String os) {
-        this.mOs = os;
-    }
-}
-</code></pre><hr>
-<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
-
-/**
-* Created by demo on 2017/2/8 0008
-*/
-public class AppleBuilder extends Builder {
-
-private  Computer mApplePc =new AppleComputer();
-@Override
-public void buildCore(int core) {
-    mApplePc.setCore(core);
-}
-
-@Override
-public void buildRam(int ram) {
-    mApplePc.setRem(ram);
-}
-
-@Override
-public void buildOs(String os) {
-    mApplePc.setOs(os);
-}
-
-@Override
-public Computer create() {
-
-    return mApplePc;
-}
-
-
-}
-</code></pre><hr>
-<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public abstract class Builder {
-
-
-    public abstract void buildCore(int core);
-
-    public abstract void buildRam(int ram);
-
-    public abstract void buildOs(String os);
-
-    public abstract Computer create();
-}
-</code></pre><hr>
-<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public class Director {
-    Builder mBuilder=null;
-
-    public Director(Builder builder) {
-        mBuilder = builder;
-    }
-
-    public void construct(int core,int ram, String os){
-        mBuilder.buildCore(core);
-        mBuilder.buildRam(ram);
-        mBuilder.buildOs(os);
-    }
-}
-</code></pre><hr>
-<p> 测试代码</p>
-<pre><code>// 测试运行效果
-      Builder builder = new AppleBuilder();
-      Director director = new Director(builder);
-      director.construct(4,2,&quot;linux&quot;);
-      Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
-</code></pre><hr>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/设计模式-Builder模式/" data-id="cj0jbvr7w001zjcvvxmidk1ct" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/MySQL进阶-操作详解/" data-id="cj0jcp1l20007o8vvrqg869wm" class="article-share-link" data-share="baidu" data-title="MySQL基本操作.md">分享到</a>
       
 
       
-        <a href="http://anranz.com/2017/02/17/设计模式-Builder模式/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/02/17/MySQL进阶-操作详解/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-读取XML中的配置参数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/20/读取XML中的配置参数/" class="article-date">
+  <time datetime="2017-01-20T02:22:04.000Z" itemprop="datePublished">2017-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/20/读取XML中的配置参数/">Android-读取XML中的配置参数工具类XMLUtil</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一个读取xml文件中配置文件的工具类XMLUtil"><a href="#一个读取xml文件中配置文件的工具类XMLUtil" class="headerlink" title="一个读取xml文件中配置文件的工具类XMLUtil"></a>一个读取xml文件中配置文件的工具类XMLUtil</h2><h3 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h3><pre><code>import javax.xml.parsers.*;  
+import org.w3c.dom.*;  
+import org.xml.sax.SAXException;  
+import java.io.*;  
+
+public class XMLUtil {  
+    //该方法用于从XML配置文件中提取配置文件
+    public static String getChartType() {  
+        try {  
+            //创建文档对象  
+            DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();  
+            DocumentBuilder builder = dFactory.newDocumentBuilder();  
+            Document doc;                             
+            doc = builder.parse(new File(&quot;config.xml&quot;));   
+
+            //获取包含配置文件的文本节点  
+            NodeList nl = doc.getElementsByTagName(&quot;chartType&quot;);  
+            Node classNode = nl.item(0).getFirstChild();  
+            String chartType = classNode.getNodeValue().trim();  
+            return chartType;  
+        }     
+        catch(Exception e) {  
+            e.printStackTrace();  
+            return null;  
+        }  
+    }  
+}
+</code></pre><hr>
+<h3 id="XML-文件代码"><a href="#XML-文件代码" class="headerlink" title="XML 文件代码"></a>XML 文件代码</h3><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;  
+&lt;config&gt;  
+    &lt;chartType&gt;histogram&lt;/chartType&gt;  
+&lt;/config&gt;
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/01/20/读取XML中的配置参数/" data-id="cj0jcp1o8002go8vveon6kslg" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/01/20/读取XML中的配置参数/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
 
     </footer>
   </div>
@@ -625,7 +568,7 @@ public class Director {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/20/MySQL使用/" data-id="cj0jbvr4v0009jcvvxdkh1of8" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
+        <a data-url="http://anranz.com/2017/01/20/MySQL使用/" data-id="cj0jcp1le000bo8vvtw3fcc46" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
       
 
       
@@ -634,82 +577,6 @@ public class Director {
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-读取XML中的配置参数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/20/读取XML中的配置参数/" class="article-date">
-  <time datetime="2017-01-20T02:22:04.000Z" itemprop="datePublished">2017-01-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/20/读取XML中的配置参数/">Android-读取XML中的配置参数工具类XMLUtil</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一个读取xml文件中配置文件的工具类XMLUtil"><a href="#一个读取xml文件中配置文件的工具类XMLUtil" class="headerlink" title="一个读取xml文件中配置文件的工具类XMLUtil"></a>一个读取xml文件中配置文件的工具类XMLUtil</h2><h3 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h3><pre><code>import javax.xml.parsers.*;  
-import org.w3c.dom.*;  
-import org.xml.sax.SAXException;  
-import java.io.*;  
-
-public class XMLUtil {  
-    //该方法用于从XML配置文件中提取配置文件
-    public static String getChartType() {  
-        try {  
-            //创建文档对象  
-            DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();  
-            DocumentBuilder builder = dFactory.newDocumentBuilder();  
-            Document doc;                             
-            doc = builder.parse(new File(&quot;config.xml&quot;));   
-
-            //获取包含配置文件的文本节点  
-            NodeList nl = doc.getElementsByTagName(&quot;chartType&quot;);  
-            Node classNode = nl.item(0).getFirstChild();  
-            String chartType = classNode.getNodeValue().trim();  
-            return chartType;  
-        }     
-        catch(Exception e) {  
-            e.printStackTrace();  
-            return null;  
-        }  
-    }  
-}
-</code></pre><hr>
-<h3 id="XML-文件代码"><a href="#XML-文件代码" class="headerlink" title="XML 文件代码"></a>XML 文件代码</h3><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;  
-&lt;config&gt;  
-    &lt;chartType&gt;histogram&lt;/chartType&gt;  
-&lt;/config&gt;
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/01/20/读取XML中的配置参数/" data-id="cj0jbvr8g002ijcvvp6odwkzd" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/01/20/读取XML中的配置参数/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
 
     </footer>
   </div>
@@ -828,7 +695,7 @@ print (c)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/14/自学Python-常用内建模块/" data-id="cj0jbvr73001kjcvvnru5m9lz" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
+        <a data-url="http://anranz.com/2017/01/14/自学Python-常用内建模块/" data-id="cj0jcp1mx001ko8vvmmjiwqet" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
       
 
       
@@ -916,7 +783,7 @@ print (s)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/14/自学Python-正则表达式/" data-id="cj0jbvr7c001ojcvvxuwclqhq" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
+        <a data-url="http://anranz.com/2017/01/14/自学Python-正则表达式/" data-id="cj0jcp1n5001oo8vvlfms7lu4" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
       
 
       
@@ -1094,7 +961,7 @@ t2.join()
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/13/自学Python-线程和进程/" data-id="cj0jbvr7f001qjcvv30a0e58m" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/13/自学Python-线程和进程/" data-id="cj0jcp1n7001qo8vv3tzzvykr" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
       
 
       
