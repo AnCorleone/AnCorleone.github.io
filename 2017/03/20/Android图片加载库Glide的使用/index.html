@@ -7,40 +7,70 @@
   <title>Android图片加载库Glide的使用 | Write the code. Change the world.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前言Android中有不少的图片记载库,谷歌推荐使用Glide,Glide很强大,可以显示网络图片,本地图片,gif和本地vedio,Glide实现了多级缓存,提供了丰富的接口,使我们的图片加载变得很简单.
+内容目录
 简单使用
-在项目中添加依赖
 
-compile &amp;#39;com.github.bumptech.glide:glide:3.7.0&amp;#39;
+显示本地图片
 
 显示网络图片
 
-1234String url =">
+显示文件中的图片
+
+加载gif图片和本地视频
+
+使用占位符和错误图片
+
+设置图片大小和显示缩略图
+
+设置缓存和缓存优先级
+
+自定义磁盘缓存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android图片加载库Glide的使用">
 <meta property="og:url" content="http://anranz.com/2017/03/20/Android图片加载库Glide的使用/index.html">
 <meta property="og:site_name" content="Write the code. Change the world.">
 <meta property="og:description" content="前言Android中有不少的图片记载库,谷歌推荐使用Glide,Glide很强大,可以显示网络图片,本地图片,gif和本地vedio,Glide实现了多级缓存,提供了丰富的接口,使我们的图片加载变得很简单.
+内容目录
 简单使用
-在项目中添加依赖
 
-compile &amp;#39;com.github.bumptech.glide:glide:3.7.0&amp;#39;
+显示本地图片
 
 显示网络图片
 
-1234String url =">
+显示文件中的图片
+
+加载gif图片和本地视频
+
+使用占位符和错误图片
+
+设置图片大小和显示缩略图
+
+设置缓存和缓存优先级
+
+自定义磁盘缓存">
 <meta property="og:image" content="http://cn.bing.com/az/hprichbg/rb/TingSakura_ZH-CN14945610051_1920x1080.jpg">
-<meta property="og:updated_time" content="2017-03-21T09:13:27.660Z">
+<meta property="og:updated_time" content="2017-03-21T09:39:27.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android图片加载库Glide的使用">
 <meta name="twitter:description" content="前言Android中有不少的图片记载库,谷歌推荐使用Glide,Glide很强大,可以显示网络图片,本地图片,gif和本地vedio,Glide实现了多级缓存,提供了丰富的接口,使我们的图片加载变得很简单.
+内容目录
 简单使用
-在项目中添加依赖
 
-compile &amp;#39;com.github.bumptech.glide:glide:3.7.0&amp;#39;
+显示本地图片
 
 显示网络图片
 
-1234String url =">
+显示文件中的图片
+
+加载gif图片和本地视频
+
+使用占位符和错误图片
+
+设置图片大小和显示缩略图
+
+设置缓存和缓存优先级
+
+自定义磁盘缓存">
 <meta name="twitter:image" content="http://cn.bing.com/az/hprichbg/rb/TingSakura_ZH-CN14945610051_1920x1080.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Write the code. Change the world." type="application/atom+xml">
@@ -115,7 +145,7 @@ compile &amp;#39;com.github.bumptech.glide:glide:3.7.0&amp;#39;
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/TingSakura_ZH-CN14945610051_1920x1080.jpg" rel="gallery_cj0jbp44r0001fwvvc2nmea92">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/TingSakura_ZH-CN14945610051_1920x1080.jpg" rel="gallery_cj0jbvr4d0002jcvv5r8o697v">
         <img src="http://cn.bing.com/az/hprichbg/rb/TingSakura_ZH-CN14945610051_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -136,8 +166,53 @@ compile &amp;#39;com.github.bumptech.glide:glide:3.7.0&amp;#39;
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Android中有不少的图片记载库,谷歌推荐使用Glide,Glide很强大,可以显示网络图片,本地图片,gif和本地vedio,Glide实现了多级缓存,提供了丰富的接口,使我们的图片加载变得很简单.</p>
+<h3 id="内容目录"><a href="#内容目录" class="headerlink" title="内容目录"></a>内容目录</h3><ul>
+<li><p>简单使用</p>
+</li>
+<li><p>显示本地图片</p>
+</li>
+<li><p>显示网络图片</p>
+</li>
+<li><p>显示文件中的图片</p>
+</li>
+<li><p>加载gif图片和本地视频</p>
+</li>
+<li><p>使用占位符和错误图片</p>
+</li>
+<li><p>设置图片大小和显示缩略图</p>
+</li>
+<li><p>设置缓存和缓存优先级</p>
+</li>
+<li><p>自定义磁盘缓存</p>
+</li>
+<li><p>设置请求优先级</p>
+</li>
+<li><p>Glide Target回调</p>
+<ol>
+<li>ViewTarget</li>
+<li>SimpleTarget</li>
+<li>NotificationTarget</li>
+<li>AppWidgetTarget</li>
+</ol>
+</li>
+<li><p>Glide的监听和异常处理</p>
+</li>
+<li><p>自定义转换 - Custom Transformations</p>
+</li>
+<li><p>图片模糊处理</p>
+</li>
+<li><p>Glide 转换设置</p>
+</li>
+<li><p>Glide自定义动画</p>
+</li>
+<li><p>实现圆角图片和圆形图片</p>
+</li>
+</ul>
 <h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><ul>
-<li>在项目中添加依赖</li>
+<li><p>在项目中添加依赖</p>
+</li>
+<li><p><a href="https://github.com/bumptech/glide" target="_blank" rel="external">Glide Github地址</a></p>
+</li>
 </ul>
 <p><code>compile &#39;com.github.bumptech.glide:glide:3.7.0&#39;</code></p>
 <ul>
@@ -306,8 +381,7 @@ compile &amp;#39;com.github.bumptech.glide:glide:3.7.0&amp;#39;
 <li>使用方法</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Glide</div><div class="line">        .with(<span class="keyword">this</span>)</div><div class="line">        .load(url)</div><div class="line">        .error(R.mipmap.pic062)</div><div class="line">        .animate(animationObject) <span class="comment">// 使用自定义的动画</span></div><div class="line">      <span class="comment">//  .animate(android.R.anim.slide_in_left) // 使用系统的xml动画</span></div><div class="line">        <span class="comment">//.animate(R.anim.zoom_in) // 自定义的xml动画</span></div><div class="line">        .into(img);</div></pre></td></tr></table></figure>
-<h3 id="实现圆角图片和圆形图片"><a href="#实现圆角图片和圆形图片" class="headerlink" title="实现圆角图片和圆形图片"></a>实现圆角图片和圆形图片</h3><p><img src="/img/circle_img.png" alt="圆形图片"></p>
-<p><img src="/img/round_img.png" alt="圆角图片"></p>
+<h3 id="实现圆角图片和圆形图片"><a href="#实现圆角图片和圆形图片" class="headerlink" title="实现圆角图片和圆形图片"></a>实现圆角图片和圆形图片</h3><p><img src="/img/circle_img.png" alt="圆形图片"><br><img src="/img/round_img.png" alt="圆角图片"></p>
 <p>实现原理是使用transform()对图片进行转换，自定义类<br><code>GlideRoundTransform.class</code>和<code>GlideCircleTransform.class</code></p>
 <ul>
 <li>实现圆形图片</li>
@@ -328,7 +402,7 @@ compile &amp;#39;com.github.bumptech.glide:glide:3.7.0&amp;#39;
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/20/Android图片加载库Glide的使用/" data-id="cj0jbp44r0001fwvvc2nmea92" class="article-share-link" data-share="baidu" data-title="Android图片加载库Glide的使用">分享到</a>
+        <a data-url="http://anranz.com/2017/03/20/Android图片加载库Glide的使用/" data-id="cj0jbvr4d0002jcvv5r8o697v" class="article-share-link" data-share="baidu" data-title="Android图片加载库Glide的使用">分享到</a>
       
 
       

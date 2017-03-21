@@ -90,7 +90,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/TingSakura_ZH-CN14945610051_1920x1080.jpg" rel="gallery_cj0jbp44r0001fwvvc2nmea92">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/TingSakura_ZH-CN14945610051_1920x1080.jpg" rel="gallery_cj0jbvr4d0002jcvv5r8o697v">
         <img src="http://cn.bing.com/az/hprichbg/rb/TingSakura_ZH-CN14945610051_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -111,8 +111,53 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Android中有不少的图片记载库,谷歌推荐使用Glide,Glide很强大,可以显示网络图片,本地图片,gif和本地vedio,Glide实现了多级缓存,提供了丰富的接口,使我们的图片加载变得很简单.</p>
+<h3 id="内容目录"><a href="#内容目录" class="headerlink" title="内容目录"></a>内容目录</h3><ul>
+<li><p>简单使用</p>
+</li>
+<li><p>显示本地图片</p>
+</li>
+<li><p>显示网络图片</p>
+</li>
+<li><p>显示文件中的图片</p>
+</li>
+<li><p>加载gif图片和本地视频</p>
+</li>
+<li><p>使用占位符和错误图片</p>
+</li>
+<li><p>设置图片大小和显示缩略图</p>
+</li>
+<li><p>设置缓存和缓存优先级</p>
+</li>
+<li><p>自定义磁盘缓存</p>
+</li>
+<li><p>设置请求优先级</p>
+</li>
+<li><p>Glide Target回调</p>
+<ol>
+<li>ViewTarget</li>
+<li>SimpleTarget</li>
+<li>NotificationTarget</li>
+<li>AppWidgetTarget</li>
+</ol>
+</li>
+<li><p>Glide的监听和异常处理</p>
+</li>
+<li><p>自定义转换 - Custom Transformations</p>
+</li>
+<li><p>图片模糊处理</p>
+</li>
+<li><p>Glide 转换设置</p>
+</li>
+<li><p>Glide自定义动画</p>
+</li>
+<li><p>实现圆角图片和圆形图片</p>
+</li>
+</ul>
 <h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><ul>
-<li>在项目中添加依赖</li>
+<li><p>在项目中添加依赖</p>
+</li>
+<li><p><a href="https://github.com/bumptech/glide" target="_blank" rel="external">Glide Github地址</a></p>
+</li>
 </ul>
 <p><code>compile &#39;com.github.bumptech.glide:glide:3.7.0&#39;</code></p>
 <ul>
@@ -281,8 +326,7 @@
 <li>使用方法</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Glide</div><div class="line">        .with(<span class="keyword">this</span>)</div><div class="line">        .load(url)</div><div class="line">        .error(R.mipmap.pic062)</div><div class="line">        .animate(animationObject) <span class="comment">// 使用自定义的动画</span></div><div class="line">      <span class="comment">//  .animate(android.R.anim.slide_in_left) // 使用系统的xml动画</span></div><div class="line">        <span class="comment">//.animate(R.anim.zoom_in) // 自定义的xml动画</span></div><div class="line">        .into(img);</div></pre></td></tr></table></figure>
-<h3 id="实现圆角图片和圆形图片"><a href="#实现圆角图片和圆形图片" class="headerlink" title="实现圆角图片和圆形图片"></a>实现圆角图片和圆形图片</h3><p><img src="/img/circle_img.png" alt="圆形图片"></p>
-<p><img src="/img/round_img.png" alt="圆角图片"></p>
+<h3 id="实现圆角图片和圆形图片"><a href="#实现圆角图片和圆形图片" class="headerlink" title="实现圆角图片和圆形图片"></a>实现圆角图片和圆形图片</h3><p><img src="/img/circle_img.png" alt="圆形图片"><br><img src="/img/round_img.png" alt="圆角图片"></p>
 <p>实现原理是使用transform()对图片进行转换，自定义类<br><code>GlideRoundTransform.class</code>和<code>GlideCircleTransform.class</code></p>
 <ul>
 <li>实现圆形图片</li>
@@ -303,7 +347,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/20/Android图片加载库Glide的使用/" data-id="cj0jbp44r0001fwvvc2nmea92" class="article-share-link" data-share="baidu" data-title="Android图片加载库Glide的使用">分享到</a>
+        <a data-url="http://anranz.com/2017/03/20/Android图片加载库Glide的使用/" data-id="cj0jbvr4d0002jcvv5r8o697v" class="article-share-link" data-share="baidu" data-title="Android图片加载库Glide的使用">分享到</a>
       
 
       
@@ -332,7 +376,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/RiverofLife_ZH-CN8454523790_1920x1080.jpg" rel="gallery_cj0jbp46v0018fwvv44bwp7db">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/RiverofLife_ZH-CN8454523790_1920x1080.jpg" rel="gallery_cj0jbvr6e0017jcvvtuf3x4s3">
         <img src="http://cn.bing.com/az/hprichbg/rb/RiverofLife_ZH-CN8454523790_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -360,7 +404,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/18/焦虑/" data-id="cj0jbp46v0018fwvv44bwp7db" class="article-share-link" data-share="baidu" data-title="焦虑">分享到</a>
+        <a data-url="http://anranz.com/2017/03/18/焦虑/" data-id="cj0jbvr6e0017jcvvtuf3x4s3" class="article-share-link" data-share="baidu" data-title="焦虑">分享到</a>
       
 
       
@@ -389,7 +433,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://oje1oqb9c.bkt.clouddn.com/image/bus.jpg" rel="gallery_cj0jbp46k000zfwvvjw0uq38q">
+      <a class="article-gallery-img fancybox" href="http://oje1oqb9c.bkt.clouddn.com/image/bus.jpg" rel="gallery_cj0jbvr5y000yjcvvpc9kq4rb">
         <img src="http://oje1oqb9c.bkt.clouddn.com/image/bus.jpg" itemprop="image">
       </a>
     
@@ -516,7 +560,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/17/使用RxJava实现EventBus-事件总线）/" data-id="cj0jbp46k000zfwvvjw0uq38q" class="article-share-link" data-share="baidu" data-title="使用RxJava实现EventBus(事件总线）">分享到</a>
+        <a data-url="http://anranz.com/2017/03/17/使用RxJava实现EventBus-事件总线）/" data-id="cj0jbvr5y000yjcvvpc9kq4rb" class="article-share-link" data-share="baidu" data-title="使用RxJava实现EventBus(事件总线）">分享到</a>
       
 
       
@@ -545,7 +589,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://oje1oqb9c.bkt.clouddn.com/image/android6.0bg.png" rel="gallery_cj0jbp46a000nfwvvgra1ayo6">
+      <a class="article-gallery-img fancybox" href="http://oje1oqb9c.bkt.clouddn.com/image/android6.0bg.png" rel="gallery_cj0jbvr5a000jjcvvx3lxnzvz">
         <img src="http://oje1oqb9c.bkt.clouddn.com/image/android6.0bg.png" itemprop="image">
       </a>
     
@@ -603,7 +647,7 @@ $ chmod a+x ~/bin/repo
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/16/Ubuntu16-04下载编译Android6-0源码/" data-id="cj0jbp46a000nfwvvgra1ayo6" class="article-share-link" data-share="baidu" data-title="Ubuntu16.04下载编译Android6.0源码">分享到</a>
+        <a data-url="http://anranz.com/2017/03/16/Ubuntu16-04下载编译Android6-0源码/" data-id="cj0jbvr5a000jjcvvx3lxnzvz" class="article-share-link" data-share="baidu" data-title="Ubuntu16.04下载编译Android6.0源码">分享到</a>
       
 
       
@@ -632,7 +676,7 @@ $ chmod a+x ~/bin/repo
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg" rel="gallery_cj0jbp45z000ffwvvj819pvfm">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg" rel="gallery_cj0jbvr57000hjcvv3nbhel0w">
         <img src="http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -718,7 +762,7 @@ $ chmod a+x ~/bin/repo
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/10/RxJava-简单使用（二）/" data-id="cj0jbp45z000ffwvvj819pvfm" class="article-share-link" data-share="baidu" data-title="RxJava--简单使用（二）">分享到</a>
+        <a data-url="http://anranz.com/2017/03/10/RxJava-简单使用（二）/" data-id="cj0jbvr57000hjcvv3nbhel0w" class="article-share-link" data-share="baidu" data-title="RxJava--简单使用（二）">分享到</a>
       
 
       
@@ -747,7 +791,7 @@ $ chmod a+x ~/bin/repo
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg" rel="gallery_cj0jbp462000ifwvv2u7n5e39">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg" rel="gallery_cj0jbvr55000ejcvvub9fsrgq">
         <img src="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -873,7 +917,7 @@ service.getTopMovie(1,1)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/08/RxJave和Retrofits的实现网络请求/" data-id="cj0jbp462000ifwvv2u7n5e39" class="article-share-link" data-share="baidu" data-title="RxJave和Retrofits的实现网络请求">分享到</a>
+        <a data-url="http://anranz.com/2017/03/08/RxJave和Retrofits的实现网络请求/" data-id="cj0jbvr55000ejcvvub9fsrgq" class="article-share-link" data-share="baidu" data-title="RxJave和Retrofits的实现网络请求">分享到</a>
       
 
       
@@ -902,7 +946,7 @@ service.getTopMovie(1,1)
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cj0jbp45w000efwvv54x2y3wl">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cj0jbvr53000djcvvlu6xbv0d">
         <img src="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -1182,7 +1226,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/06/RxJava-简单使用/" data-id="cj0jbp45w000efwvv54x2y3wl" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
+        <a data-url="http://anranz.com/2017/03/06/RxJava-简单使用/" data-id="cj0jbvr53000djcvvlu6xbv0d" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
       
 
       
@@ -1211,7 +1255,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" rel="gallery_cj0jbp45f0006fwvvms99a659">
+      <a class="article-gallery-img fancybox" href="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" rel="gallery_cj0jbvr4m0004jcvvokxhfzhl">
         <img src="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" itemprop="image">
       </a>
     
@@ -1254,7 +1298,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/06/Atom插件打造PHP开发平台/" data-id="cj0jbp45f0006fwvvms99a659" class="article-share-link" data-share="baidu" data-title="Atom插件打造PHP开发平台">分享到</a>
+        <a data-url="http://anranz.com/2017/03/06/Atom插件打造PHP开发平台/" data-id="cj0jbvr4m0004jcvvokxhfzhl" class="article-share-link" data-share="baidu" data-title="Atom插件打造PHP开发平台">分享到</a>
       
 
       
@@ -1283,7 +1327,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" rel="gallery_cj0jbp46h000ufwvvqpe7kz2c">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" rel="gallery_cj0jbvr5q000tjcvvrqanvnxy">
         <img src="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -1313,7 +1357,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/02/不忘初心/" data-id="cj0jbp46h000ufwvvqpe7kz2c" class="article-share-link" data-share="baidu" data-title="不忘初心">分享到</a>
+        <a data-url="http://anranz.com/2017/03/02/不忘初心/" data-id="cj0jbvr5q000tjcvvrqanvnxy" class="article-share-link" data-share="baidu" data-title="不忘初心">分享到</a>
       
 
       
@@ -1342,7 +1386,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cj0jbp46f000sfwvvdyug9zre">
+      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cj0jbvr5m000rjcvv6mfapmy5">
         <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" itemprop="image">
       </a>
     
@@ -1372,7 +1416,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/01/三月/" data-id="cj0jbp46f000sfwvvdyug9zre" class="article-share-link" data-share="baidu" data-title="三月">分享到</a>
+        <a data-url="http://anranz.com/2017/03/01/三月/" data-id="cj0jbvr5m000rjcvv6mfapmy5" class="article-share-link" data-share="baidu" data-title="三月">分享到</a>
       
 
       
