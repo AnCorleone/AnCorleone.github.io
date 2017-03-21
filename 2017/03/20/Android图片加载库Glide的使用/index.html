@@ -1,0 +1,456 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android图片加载库Glide的使用 | Write the code. Change the world.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言Android中有不少的图片记载库,谷歌推荐使用Glide,Glide很强大,可以显示网络图片,本地图片,gif和本地vedio,Glide实现了多级缓存,提供了丰富的接口,使我们的图片加载变得很简单.
+简单使用
+在项目中添加依赖
+
+compile &amp;#39;com.github.bumptech.glide:glide:3.7.0&amp;#39;
+
+显示网络图片
+
+1234String url =">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android图片加载库Glide的使用">
+<meta property="og:url" content="http://anranz.com/2017/03/20/Android图片加载库Glide的使用/index.html">
+<meta property="og:site_name" content="Write the code. Change the world.">
+<meta property="og:description" content="前言Android中有不少的图片记载库,谷歌推荐使用Glide,Glide很强大,可以显示网络图片,本地图片,gif和本地vedio,Glide实现了多级缓存,提供了丰富的接口,使我们的图片加载变得很简单.
+简单使用
+在项目中添加依赖
+
+compile &amp;#39;com.github.bumptech.glide:glide:3.7.0&amp;#39;
+
+显示网络图片
+
+1234String url =">
+<meta property="og:image" content="http://cn.bing.com/az/hprichbg/rb/TingSakura_ZH-CN14945610051_1920x1080.jpg">
+<meta property="og:updated_time" content="2017-03-21T02:36:40.880Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android图片加载库Glide的使用">
+<meta name="twitter:description" content="前言Android中有不少的图片记载库,谷歌推荐使用Glide,Glide很强大,可以显示网络图片,本地图片,gif和本地vedio,Glide实现了多级缓存,提供了丰富的接口,使我们的图片加载变得很简单.
+简单使用
+在项目中添加依赖
+
+compile &amp;#39;com.github.bumptech.glide:glide:3.7.0&amp;#39;
+
+显示网络图片
+
+1234String url =">
+<meta name="twitter:image" content="http://cn.bing.com/az/hprichbg/rb/TingSakura_ZH-CN14945610051_1920x1080.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="Write the code. Change the world." type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+
+  
+
+  <meta name="keywords" content="Android">
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Write the code. Change the world.</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Welcome to Anakin&#39;s blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">所有文章</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="anranz.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-Android图片加载库Glide的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/20/Android图片加载库Glide的使用/" class="article-date">
+  <time datetime="2017-03-20T09:12:14.000Z" itemprop="datePublished">2017-03-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/TingSakura_ZH-CN14945610051_1920x1080.jpg" rel="gallery_cj0hwv6lj0001fwvvyl7i1lcv">
+        <img src="http://cn.bing.com/az/hprichbg/rb/TingSakura_ZH-CN14945610051_1920x1080.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android图片加载库Glide的使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Android中有不少的图片记载库,谷歌推荐使用Glide,Glide很强大,可以显示网络图片,本地图片,gif和本地vedio,Glide实现了多级缓存,提供了丰富的接口,使我们的图片加载变得很简单.</p>
+<h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><ul>
+<li>在项目中添加依赖</li>
+</ul>
+<p><code>compile &#39;com.github.bumptech.glide:glide:3.7.0&#39;</code></p>
+<ul>
+<li>显示网络图片</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">String url = <span class="string">"http://cn.bing.com/az/hprichbg/rb/TingSakura_ZH-CN14945610051_1920x1080.jpg"</span>;</div><div class="line">Glide.with(<span class="keyword">this</span>)</div><div class="line">        .load(url)</div><div class="line">        .into(img);</div></pre></td></tr></table></figure>
+<ul>
+<li>显示本地图片</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Glide.with(<span class="keyword">this</span>)</div><div class="line">        .load(R.drawable.ic_launcher)</div><div class="line">        .into(img);</div><div class="line">`</div></pre></td></tr></table></figure>
+<ul>
+<li>显示文件中图片</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">File file = <span class="keyword">new</span> File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),<span class="string">"Running.jpg"</span>);</div><div class="line">Glide.with(<span class="keyword">this</span>)</div><div class="line">        .load(file)</div><div class="line">        .into(img);</div></pre></td></tr></table></figure>
+<h3 id="显示Gif和本地视频"><a href="#显示Gif和本地视频" class="headerlink" title="显示Gif和本地视频"></a>显示Gif和本地视频</h3><ul>
+<li>显示gif</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Glide</div><div class="line">        .with(<span class="keyword">this</span>)</div><div class="line">        .load(gifUrl)</div><div class="line">        <span class="comment">//new GlideDrawableImageViewTarget() 第二个参数为gif 播放的次数</span></div><div class="line">        .into(<span class="keyword">new</span> GlideDrawableImageViewTarget(img, <span class="number">100</span>));</div></pre></td></tr></table></figure>
+<ul>
+<li>将gif转换成bitmap</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Glide  </div><div class="line">    .with( context )</div><div class="line">    .load( gifUrl )</div><div class="line">    .asBitmap()</div><div class="line">    .into( img );</div></pre></td></tr></table></figure>
+<ul>
+<li>播放本地Video</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">String filePath = <span class="string">"/storage/emulated/0/Pictures/example_video.mp4"</span>;</div><div class="line">Glide</div><div class="line">        .with(<span class="keyword">this</span>)</div><div class="line">        .load(Uri.fromFile(<span class="keyword">new</span> File(filePath)))</div><div class="line">        .into(img);</div></pre></td></tr></table></figure>
+<h3 id="占位符和错误图片"><a href="#占位符和错误图片" class="headerlink" title="占位符和错误图片"></a>占位符和错误图片</h3><ul>
+<li>添加占位符和错误图片</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Glide.with(<span class="keyword">this</span>)</div><div class="line">        .load(url)</div><div class="line">        .placeholder(R.mipmap.ic_launcher) <span class="comment">// 占位图</span></div><div class="line">        .error(R.mipmap.ic_launcher)  <span class="comment">// 加载错误图片</span></div><div class="line">        .into(img);</div></pre></td></tr></table></figure>
+<h3 id="设置图片大小和显示缩略图"><a href="#设置图片大小和显示缩略图" class="headerlink" title="设置图片大小和显示缩略图"></a>设置图片大小和显示缩略图</h3><ul>
+<li>调整图片大小</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Glide.with(<span class="keyword">this</span>)</div><div class="line">        .load(url)</div><div class="line">        .override(<span class="number">600</span>,<span class="number">600</span>)   <span class="comment">// 调整图片大小</span></div><div class="line">        .into(img);</div></pre></td></tr></table></figure>
+<h3 id="CenterCrop和FitCenter"><a href="#CenterCrop和FitCenter" class="headerlink" title="CenterCrop和FitCenter"></a>CenterCrop和FitCenter</h3><blockquote>
+<p>CenterCrop()是一个裁剪技术，即缩放图像让它填充到 ImageView 界限内并且裁剪额外的部分。ImageView 可能会完全填充，但图像可能不会完整显示。</p>
+<p>FitCenter() 是裁剪技术，即缩放图像让图像都测量出来等于或小于 ImageView 的边界范围。该图像将会完全显示，但可能不会填满整个 ImageView。</p>
+</blockquote>
+<ul>
+<li>CenterCrop</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Glide</div><div class="line">    .with(context)</div><div class="line">    .load(url)</div><div class="line">    .override(<span class="number">600</span>, <span class="number">200</span>) <span class="comment">// resizes the image to these dimensions (in pixel)</span></div><div class="line">    .centerCrop() <span class="comment">// this cropping technique scales the image so that it fills the requested bounds and then crops the extra.</span></div><div class="line">    .into(imageViewResizeCenterCrop);</div></pre></td></tr></table></figure>
+<ul>
+<li>FitCenter</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Glide</div><div class="line">    .with(context)</div><div class="line">    .load(url)</div><div class="line">    .override(<span class="number">600</span>, <span class="number">200</span>)</div><div class="line">    .fitCenter()</div><div class="line">    .into(imageViewResizeFitCenter);</div></pre></td></tr></table></figure>
+<h3 id="缓存好请求优先级"><a href="#缓存好请求优先级" class="headerlink" title="缓存好请求优先级"></a>缓存好请求优先级</h3><blockquote>
+<p>Glide默认使用内存缓存和磁盘缓存，减少不必要的网络请求次数</p>
+</blockquote>
+<ul>
+<li>跳过内存缓存</li>
+</ul>
+<p><code>.skipMemoryCache( true )</code></p>
+<ul>
+<li>跳过磁盘缓存</li>
+</ul>
+<p><code>.diskCacheStrategy( DiskCacheStrategy.NONE )</code></p>
+<h3 id="自定义磁盘缓存"><a href="#自定义磁盘缓存" class="headerlink" title="自定义磁盘缓存"></a>自定义磁盘缓存</h3><h3 id="Glide-Target回调"><a href="#Glide-Target回调" class="headerlink" title="Glide Target回调"></a>Glide Target回调</h3><h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><h3 id="Glide转换实现模糊图片"><a href="#Glide转换实现模糊图片" class="headerlink" title="Glide转换实现模糊图片"></a>Glide转换实现模糊图片</h3><h3 id="Glide动画"><a href="#Glide动画" class="headerlink" title="Glide动画"></a>Glide动画</h3><h3 id="实现圆角图片"><a href="#实现圆角图片" class="headerlink" title="实现圆角图片"></a>实现圆角图片</h3><h3 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a><a href="参考地址">参考地址</a></h3>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/03/20/Android图片加载库Glide的使用/" data-id="cj0hwv6lj0001fwvvyl7i1lcv" class="article-share-link" data-share="baidu" data-title="Android图片加载库Glide的使用">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/03/20/Android图片加载库Glide的使用/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/03/18/焦虑/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">焦虑</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017/03/20/Android图片加载库Glide的使用/" data-title="Android图片加载库Glide的使用" data-url="http://anranz.com/2017/03/20/Android图片加载库Glide的使用/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/随想/" style="font-size: 12.5px;">随想</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/20/Android图片加载库Glide的使用/">Android图片加载库Glide的使用</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/18/焦虑/">焦虑</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/17/使用RxJava实现EventBus-事件总线）/">使用RxJava实现EventBus(事件总线）</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/16/Ubuntu16-04下载编译Android6-0源码/">Ubuntu16.04下载编译Android6.0源码</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/10/RxJava-简单使用（二）/">RxJava--简单使用（二）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="https://www.google.com.hk" target="_blank">Googel</a>
+          </li>
+        
+          <li>
+            <a href="http://developers.google.cn" target="_blank">developers</a>
+          </li>
+        
+          <li>
+            <a href="http://litten.me/" target="_blank">yilia</a>
+          </li>
+        
+          <li>
+            <a href="https://github.com/AnCorleone/AnCorleone.github.io" target="_blank">github</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Anakin<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a><br>
+      本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, <br>
+      访客数 <span id="busuanzi_value_site_uv"></span> 人次, <br>
+      本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次<br>
+      </p>
+    </div>
+
+  </div>
+</footer>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">所有文章</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"AnCorleone.github.io.git"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>
