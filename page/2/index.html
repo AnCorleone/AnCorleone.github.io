@@ -172,7 +172,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/28/设计模式-桥接模式/" data-id="cj0jengb1002ak0vv2h33cbpr" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/28/设计模式-桥接模式/" data-id="cj0kafbcr002avgvv2zqxk1gx" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
       
 
       
@@ -234,7 +234,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/22/怎样选择基金/" data-id="cj0jeng9o0011k0vvng454lnb" class="article-share-link" data-share="baidu" data-title="怎样选择基金">分享到</a>
+        <a data-url="http://anranz.com/2017/02/22/怎样选择基金/" data-id="cj0kafbbn0011vgvvd55cpt6u" class="article-share-link" data-share="baidu" data-title="怎样选择基金">分享到</a>
       
 
       
@@ -326,7 +326,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/22/Vim基本操作/" data-id="cj0jeng9c000nk0vve6gdq289" class="article-share-link" data-share="baidu" data-title="Vim基本操作">分享到</a>
+        <a data-url="http://anranz.com/2017/02/22/Vim基本操作/" data-id="cj0kafbb3000nvgvvv2sgl98d" class="article-share-link" data-share="baidu" data-title="Vim基本操作">分享到</a>
       
 
       
@@ -486,7 +486,7 @@ import java.io.File;
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/22/文件操作的工具类/" data-id="cj0jeng9q0013k0vvzai4jfa9" class="article-share-link" data-share="baidu" data-title="文件操作的工具类">分享到</a>
+        <a data-url="http://anranz.com/2017/02/22/文件操作的工具类/" data-id="cj0kafbbp0013vgvv59oj9tyb" class="article-share-link" data-share="baidu" data-title="文件操作的工具类">分享到</a>
       
 
       
@@ -582,7 +582,7 @@ import java.io.File;
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/MYSQL的修改和删除/" data-id="cj0jeng8m0007k0vv5r1qoocm" class="article-share-link" data-share="baidu" data-title="MySql的修改和删除.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/MYSQL的修改和删除/" data-id="cj0kafbab0007vgvv0a3miigb" class="article-share-link" data-share="baidu" data-title="MySql的修改和删除.md">分享到</a>
       
 
       
@@ -599,9 +599,9 @@ import java.io.File;
 
 
   
-    <article id="post-设计模式-Builder模式" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-设计模式-代理模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/17/设计模式-Builder模式/" class="article-date">
+    <a href="/2017/02/17/设计模式-代理模式/" class="article-date">
   <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
@@ -613,7 +613,7 @@ import java.io.File;
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-Builder模式/">Builder模式.md</a>
+      <a class="article-title" href="/2017/02/17/设计模式-代理模式/">代理模式.md</a>
     </h1>
   
 
@@ -621,169 +621,66 @@ import java.io.File;
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Builder模式"><a href="#Builder模式" class="headerlink" title="Builder模式"></a>Builder模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>将复杂的创建与他的表示分离,使同样的创建过程可以创建不同的表示</p>
-<h3 id="设计的步骤"><a href="#设计的步骤" class="headerlink" title="设计的步骤:"></a>设计的步骤:</h3><pre><code>Builder builder = new AppleBuilder();
-        Director director = new Director(builder);
-        director.construct(4,2,&quot;linux&quot;);
-        Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
-</code></pre><hr>
-<ol>
-<li><p>以组装电脑为例,创建电脑的抽象类,包含os ram,core定义,提供设置的抽象方法</p>
-</li>
-<li><p>创建要组装的具体电脑类AppleComputer,继承Computer类,实现所用方法</p>
-</li>
-<li><p>创建抽象的Builder类,提供builder的设置方法,另外提供返回Computer的create的抽象方法</p>
-</li>
-<li><p>创建具体的AppleBuilder类实现抽象方法,创建AppleComputer 实例对象,并设置数据,返回AppleComputer的实例</p>
-</li>
-<li><p>创建具体的Director类,构造方法中接受builder对象,提供接受数据的construct 方法,将参数传递给builder对象</p>
-</li>
-<li><p>传递的参数最终被AppleBuilder接收,并返回一个具体的AppleComputer对象</p>
-</li>
-</ol>
-<h3 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h3><pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+        <h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>代理模式是对象结构模式,代理模式给某个对象提供一个代理对象,并由代理对象控制控制原对象的引用.</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><h3 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h3><p>定义抽象类</p>
+<pre><code>package com.anakin.design_pattern_test.proxy_method;
 
 /**
  * Created by demo on 2017/2/8 0008
  */
-public abstract class Computer {
-    protected int mCore = 1;
-    protected int mRam = 10;
-    protected String mOs = &quot;dos&quot;;
+public abstract class AbstractObject {
 
-    protected Computer() {
+    // 需要的操作
+    public abstract void operation();
 
-    }
-
-    public abstract void setCore(int core);
-
-    public abstract void setRem(int rem);
-
-    public abstract void setOs(String os);
-
-    @Override
-    public String toString() {
-        return &quot;Computer{&quot; +
-                &quot;mCore=&quot; + mCore +
-                &quot;, mRam=&quot; + mRam +
-                &quot;, mOs=&apos;&quot; + mOs + &apos;\&apos;&apos; +
-                &apos;}&apos;;
-    }
 }
 </code></pre><hr>
-<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+<p>定义真正的实现的类</p>
+<pre><code>package com.anakin.design_pattern_test.proxy_method;
 
 /**
  * Created by demo on 2017/2/8 0008
  */
-public class AppleComputer extends Computer {
-
-
-    protected AppleComputer() {
-
-    }
-
+public class RealObject extends AbstractObject {
     @Override
-    public void setCore(int core) {
-        this.mCore = core;
-    }
-
-    @Override
-    public void setRem(int ram) {
-        this.mRam = ram;
-    }
-
-    @Override
-    public void setOs(String os) {
-        this.mOs = os;
+    public void operation() {
+        System.out.println(&quot;  need to do something &gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
     }
 }
 </code></pre><hr>
-<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
-
-/**
-* Created by demo on 2017/2/8 0008
-*/
-public class AppleBuilder extends Builder {
-
-private  Computer mApplePc =new AppleComputer();
-@Override
-public void buildCore(int core) {
-    mApplePc.setCore(core);
-}
-
-@Override
-public void buildRam(int ram) {
-    mApplePc.setRem(ram);
-}
-
-@Override
-public void buildOs(String os) {
-    mApplePc.setOs(os);
-}
-
-@Override
-public Computer create() {
-
-    return mApplePc;
-}
-
-
-}
-</code></pre><hr>
-<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+<p>定义代理类</p>
+<pre><code>package com.anakin.design_pattern_test.proxy_method;
 
 /**
  * Created by demo on 2017/2/8 0008
  */
-public abstract class Builder {
-
-
-    public abstract void buildCore(int core);
-
-    public abstract void buildRam(int ram);
-
-    public abstract void buildOs(String os);
-
-    public abstract Computer create();
-}
-</code></pre><hr>
-<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public class Director {
-    Builder mBuilder=null;
-
-    public Director(Builder builder) {
-        mBuilder = builder;
-    }
-
-    public void construct(int core,int ram, String os){
-        mBuilder.buildCore(core);
-        mBuilder.buildRam(ram);
-        mBuilder.buildOs(os);
+public class ProxyObject extends AbstractObject {
+    @Override
+    public void operation() {
+        // 调用具体操作前可以做操作
+        AbstractObject real = new RealObject();
+        real.operation();
+        // 调用具体操作后可以做操作
     }
 }
 </code></pre><hr>
-<p> 测试代码</p>
-<pre><code>// 测试运行效果
-      Builder builder = new AppleBuilder();
-      Director director = new Director(builder);
-      director.construct(4,2,&quot;linux&quot;);
-      Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
+<p>测试</p>
+<pre><code>// 代理模式测试
+AbstractObject proxy =new ProxyObject();
+proxy.operation();
 </code></pre><hr>
-
+<p>测试结果</p>
+<pre><code>02-08 09:46:41.821 18278-18278/com.anakin.design_pattern_test I/System.out:   need to do something &gt;&gt;&gt;&gt;&gt;&gt;&gt;
+</code></pre>
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/设计模式-Builder模式/" data-id="cj0jengav0020k0vv1a78vyx2" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-代理模式/" data-id="cj0kafbcl0020vgvvo9idl9w0" class="article-share-link" data-share="baidu" data-title="代理模式.md">分享到</a>
       
 
       
-        <a href="http://anranz.com/2017/02/17/设计模式-Builder模式/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/02/17/设计模式-代理模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -843,7 +740,7 @@ public class Director {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/MySQL进阶-操作详解/" data-id="cj0jeng8y000bk0vv1hsfto2g" class="article-share-link" data-share="baidu" data-title="MySQL基本操作.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/MySQL进阶-操作详解/" data-id="cj0kafbal000bvgvvybt0rl1s" class="article-share-link" data-share="baidu" data-title="MySQL基本操作.md">分享到</a>
       
 
       
@@ -860,9 +757,9 @@ public class Director {
 
 
   
-    <article id="post-设计模式-观察者模式" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-设计模式-简单工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/17/设计模式-观察者模式/" class="article-date">
+    <a href="/2017/02/17/设计模式-简单工厂模式/" class="article-date">
   <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
@@ -874,7 +771,7 @@ public class Director {
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-观察者模式/">观察者模式.md</a>
+      <a class="article-title" href="/2017/02/17/设计模式-简单工厂模式/">简单工厂模式.md</a>
     </h1>
   
 
@@ -882,47 +779,23 @@ public class Director {
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><h3 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h3><ol>
-<li>观察者模式基本组成是，观察者Observer和被观察者（观察目标）Subject,当目标发生改变的时候，观察者会随之改变</li>
-<li>一个被观察者可以被多个观察者观察</li>
-<li>被观察者一般提供一个集合保存观察者，提供对观察者的管理，删除和增加观察者，提供一个抽象的notify方法，由具体的被观察者实现，实现方式为，遍历观察者的集合，调用观察者的update()方法，通知每一个观察者</li>
-<li>观察者申明为一个接口，一般提供update()方法，由不同的观察者去实现，具体的观察者在接收到观察者的notify()后做出相应的更新</li>
+        <p>##　简单工厂模式</p>
+<ol>
+<li>定义抽象的工厂类</li>
+<li>工厂类包定义公共的方法实现，和不同实现的抽象方法</li>
+<li>定义根据参数创建实例对象，返回抽象类的静态方法</li>
+<li>使用静态方法传入要获取对象的tag,获取对象的实例，调用实例的方法</li>
 </ol>
-<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><ol>
-<li>观察者提供update()方法，在update()方法中变量观察者的集合，调用观察者的update()方法</li>
-<li>一般定义被观察者为抽象类提供管理观察者的方法，和抽象的notify()方法</li>
-<li>一般将观察者声明为接口，提供update()方法，由具体的观察者去实现，根据需要对被观察者的改变做出不同的实现</li>
-</ol>
-<hr>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p><strong> 背景：</strong></p>
-<p>以游戏为例，多人组队玩一个游戏，当有一个人遭受攻击时向控制中心发消息，控制中心收到消息通知每个队友，队友收到消息过来支援</p>
-<ul>
-<li>每个队员都作为观察者，被观察者为控制中心</li>
-<li>当有队员Player受到攻击时，调用控制中心的notifyObsever() 方法，在notifyObsever()方法中遍历观察者也就是所有队员，会调用所有队友的help() 方法</li>
-</ul>
-<h3 id="代码过程"><a href="#代码过程" class="headerlink" title="代码过程"></a>代码过程</h3><ol>
-<li><p>观察者的接口 ：观察者的接口Observer 申明了help（），beAttached()方法</p>
-</li>
-<li><p>具体的观察者 ：具体的观察者Player类，实现接口中的方法</p>
-</li>
-<li><p>被观察者抽象类 ：被观察者抽象类AllyControlCenter,包括对观察的管理的集合和join()和quit()方法，和通知每个观察者的抽象方法notifyObsever()方法，</p>
-</li>
-<li><p>被观察者 ：被观察者的实现类ConcreteAllyControlCenter ，是先notifyObsever()方法，遍历观察者集合，调用每个人观察者对象的help()方法</p>
-</li>
-<li><p>客户端 ：创建观察者对象Observer player = new Player()，创建被观察者实例AllyControlCenter ally = new ConcreteAllyControlCenter();，将观察者加入到集合中， all.join(Player),player调用beAttached(),所有观察者收到消息调用help()方法，（当被观察者触发beAttached() 方法时候，在beAttached()中调用notifyObsever() 方法通知每个观察者调用help()方法）</p>
-</li>
-</ol>
-<h3 id="代码调用流程"><a href="#代码调用流程" class="headerlink" title="代码调用流程"></a>代码调用流程</h3><p> player.beAttached()—–&gt; AllyControlCenter.notifyObsever()—-&gt; player.help()</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/设计模式-观察者模式/" data-id="cj0jengb8002gk0vv5fcoj1v9" class="article-share-link" data-share="baidu" data-title="观察者模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-简单工厂模式/" data-id="cj0kafbcw002gvgvv8fm38ksf" class="article-share-link" data-share="baidu" data-title="简单工厂模式.md">分享到</a>
       
 
       
-        <a href="http://anranz.com/2017/02/17/设计模式-观察者模式/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/02/17/设计模式-简单工厂模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -978,7 +851,7 @@ public class Director {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/Java设计模式/" data-id="cj0jeng8h0006k0vvikn7nkag" class="article-share-link" data-share="baidu" data-title="Java设计模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/Java设计模式/" data-id="cj0kafba80006vgvvp6npu3tl" class="article-share-link" data-share="baidu" data-title="Java设计模式.md">分享到</a>
       
 
       
@@ -1124,7 +997,7 @@ public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistent
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/Android基础知识-md/" data-id="cj0jeng870003k0vvxob149xi" class="article-share-link" data-share="baidu" data-title="Android基础知识.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/Android基础知识-md/" data-id="cj0kafb9s0003vgvv9nct85hc" class="article-share-link" data-share="baidu" data-title="Android基础知识.md">分享到</a>
       
 
       
