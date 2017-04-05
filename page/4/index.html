@@ -78,6 +78,209 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-读取XML中的配置参数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/20/读取XML中的配置参数/" class="article-date">
+  <time datetime="2017-01-20T02:22:04.000Z" itemprop="datePublished">2017-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/20/读取XML中的配置参数/">Android-读取XML中的配置参数工具类XMLUtil</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一个读取xml文件中配置文件的工具类XMLUtil"><a href="#一个读取xml文件中配置文件的工具类XMLUtil" class="headerlink" title="一个读取xml文件中配置文件的工具类XMLUtil"></a>一个读取xml文件中配置文件的工具类XMLUtil</h2><h3 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h3><pre><code>import javax.xml.parsers.*;  
+import org.w3c.dom.*;  
+import org.xml.sax.SAXException;  
+import java.io.*;  
+
+public class XMLUtil {  
+    //该方法用于从XML配置文件中提取配置文件
+    public static String getChartType() {  
+        try {  
+            //创建文档对象  
+            DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();  
+            DocumentBuilder builder = dFactory.newDocumentBuilder();  
+            Document doc;                             
+            doc = builder.parse(new File(&quot;config.xml&quot;));   
+
+            //获取包含配置文件的文本节点  
+            NodeList nl = doc.getElementsByTagName(&quot;chartType&quot;);  
+            Node classNode = nl.item(0).getFirstChild();  
+            String chartType = classNode.getNodeValue().trim();  
+            return chartType;  
+        }     
+        catch(Exception e) {  
+            e.printStackTrace();  
+            return null;  
+        }  
+    }  
+}
+</code></pre><hr>
+<h3 id="XML-文件代码"><a href="#XML-文件代码" class="headerlink" title="XML 文件代码"></a>XML 文件代码</h3><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;  
+&lt;config&gt;  
+    &lt;chartType&gt;histogram&lt;/chartType&gt;  
+&lt;/config&gt;
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/01/20/读取XML中的配置参数/" data-id="cj14ort66002mmwvvdjluvln6" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/01/20/读取XML中的配置参数/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-自学Python-常用内建模块" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/14/自学Python-常用内建模块/" class="article-date">
+  <time datetime="2017-01-14T04:03:14.000Z" itemprop="datePublished">2017-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/14/自学Python-常用内建模块/">自学Python-常用内建模块</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Python内建模块"><a href="#Python内建模块" class="headerlink" title="Python内建模块"></a>Python内建模块</h2><h3 id="关于时间"><a href="#关于时间" class="headerlink" title="关于时间"></a>关于时间</h3><pre><code># 1. 获取当前时间
+from datetime import datetime,timedelta
+r =datetime.now()
+print (r)
+
+# 2. 获取指定的时间和日期
+r1 = datetime(2017,1,14,12,53)
+print (r1)
+
+# 3. 将datetime转换为datestamp
+t= 12345645.12
+r2 = datetime.fromtimestamp(t)
+print(r2)
+
+# 4. str转换为datetime
+r3 = datetime.strptime(&apos;2017-01-14 15:58:29&apos;,&apos;%Y-%m-%d %H:%M:%S&apos;)
+print(r3)
+
+# 5. datetime转换为str
+s1 = datetime.now()
+r4 = s1.strftime(&apos;%a, %b %d %H:%M&apos;)
+print(r4)
+
+# 6. 时间的加减
+n1 = datetime.now()
+print(n1)
+n2 =n1+timedelta(hours=10)  # 增加10小时
+print (n2)
+</code></pre><h3 id="collections"><a href="#collections" class="headerlink" title="collections"></a>collections</h3><blockquote>
+<p>collections是Python的内建模块提供集合操作的类</p>
+</blockquote>
+<pre><code># Python的内建模块 - collections
+
+# 1. 使用namedtuple表示一个点的坐标
+
+from collections import namedtuple,deque,defaultdict,OrderedDict
+Point = namedtuple(&apos;point&apos;,[&apos;x&apos;,&apos;y&apos;])
+p =Point(1,2)
+print(p.x)
+print(p.y)
+
+# 2. deque 高效的对list进行删除和插入
+
+d = deque([&apos;a&apos;,&apos;b&apos;,&apos;c&apos;])
+s = d.appendleft(&apos;x&apos;)
+d.append(&apos;z&apos;)
+d.pop()
+print(s)
+print(d)
+
+# 3 .defaultdict ,使用dict的时候如果应用的key不存在会抛出keyError ,使用defaultdict 返回一个默认值
+
+dd = defaultdict(lambda :&apos;N/A&apos;)
+dd[&apos;key1&apos;] =&apos;anakin&apos;
+s1 = dd[&apos;key1&apos;]
+s2 = dd[&apos;key2&apos;]
+print(s1)
+print(s2)
+
+# 4. 使用OrderedDict ,dict 是无序的,迭代的时候不能按照顺序取出数据,使用OrderedDict
+
+d1 = dict([(&apos;a&apos;,&apos;1&apos;),(&apos;b&apos;,&apos;2&apos;),(&apos;c&apos;,&apos;3&apos;)])
+print(d1)
+
+d2= OrderedDict([(&apos;a&apos;,&apos;1&apos;),(&apos;b&apos;,&apos;2&apos;),(&apos;c&apos;,&apos;3&apos;)])
+print (d2)
+#  注意 OrderedDict会按照插入的顺序排序,而不是按照key 的顺序
+
+d3 = OrderedDict()
+d3[&apos;x&apos;]=3
+d3[&apos;z&apos;]=6
+d3[&apos;d&apos;]=4
+print d3
+</code></pre><h3 id="计数函数Counter"><a href="#计数函数Counter" class="headerlink" title="计数函数Counter"></a>计数函数Counter</h3><ul>
+<li><p>统计字符出现的次数</p>
+<pre><code># Counter 计数的方法,可以统计字符出现的次数
+
+c = Counter()
+for ch in &apos;luoyang&apos;:
+    c[ch]= c[ch]+1
+print (c)
+</code></pre></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/01/14/自学Python-常用内建模块/" data-id="cj14ort64002lmwvvf24hxogm" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/01/14/自学Python-常用内建模块/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-自学Python-正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/14/自学Python-正则表达式/" class="article-date">
@@ -149,7 +352,7 @@ print (s)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/14/自学Python-正则表达式/" data-id="cj0ku26mr001s7cvv7pkozikr" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
+        <a data-url="http://anranz.com/2017/01/14/自学Python-正则表达式/" data-id="cj14ort5e001vmwvvhogm2gne" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
       
 
       
@@ -327,7 +530,7 @@ t2.join()
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/13/自学Python-线程和进程/" data-id="cj0ku26mu001v7cvvrgnafuhx" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/13/自学Python-线程和进程/" data-id="cj14ort5h001zmwvvgd1hf6wl" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
       
 
       
@@ -539,7 +742,7 @@ print(r)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/13/自学Python-IO编程/" data-id="cj0ku26m8001d7cvvhlmcfyb5" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/13/自学Python-IO编程/" data-id="cj14ort4x001jmwvvw0nl5alf" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
       
 
       
@@ -792,94 +995,11 @@ s()
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/" data-id="cj0ku26mw001y7cvvawv0ydek" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象高级编程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/" data-id="cj14ort5g001xmwvvtwqveex8" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象高级编程">分享到</a>
       
 
       
         <a href="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-自学Python-Python基础" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/11/自学Python-Python基础/" class="article-date">
-  <time datetime="2017-01-11T11:38:56.000Z" itemprop="datePublished">2017-01-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/11/自学Python-Python基础/">自学Python-Python基础.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><ol>
-<li>以#开头作为注释右面的代码不会被执行</li>
-</ol>
-<h3 id="代码格式"><a href="#代码格式" class="headerlink" title="代码格式"></a>代码格式</h3><ul>
-<li>语法比较简单,不同于java以分号作为结束,Python采用缩进的方式,所以代码格式非常重要</li>
-</ul>
-<h2 id="数据类型和变量"><a href="#数据类型和变量" class="headerlink" title="数据类型和变量"></a>数据类型和变量</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><ul>
-<li>整数:可以处理任意大小的整数</li>
-<li><p>浮点数 : 1.11, -3.15,,对于很大和很小的浮点数需要用科学计数法</p>
-<blockquote>
-<p>注意:证书和浮点数在计算机内部存储方式是不同的,整数永远是精确的(除法也是精确的),浮点可能会四舍五入</p>
-</blockquote>
-</li>
-<li><p>字符串:以单引号或者双引号括起来的任意文本,”字符串”,’字符串’</p>
-</li>
-<li><p>boolean :一个布尔值只有True ,False两种值</p>
-<blockquote>
-<p>注意大小写</p>
-</blockquote>
-</li>
-<li><p>空值:一个特殊的值None,不能理解为0 ,0是有意义的,None是一个特殊的空值</p>
-</li>
-</ul>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><blockquote>
-<p>变量不仅可以是数字,可说是任意数据类型,变量在程序中使用一个变量名表示,变量名必须符号命名规范</p>
-</blockquote>
-<ul>
-<li>“=” 是赋值语句,表示把任意数据类型赋值给变量,同一个变量可以反复赋值,而且可以是不同类型的变量<br>  eg:a= 123, a=’abc’</li>
-</ul>
-<blockquote>
-<p>这种变量本身不固定的语言称为动态语言,与之对应的静态语言比如java,定义变量时必须指定变量的数据类型,并且,一旦指定就不能被其他类型的变量赋值</p>
-</blockquote>
-<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><ul>
-<li>常量是不能改变的变量,比如数学中的常数π,就是一个常量,通常用全部大学表示常量</li>
-</ul>
-<h4 id="Python中的除法"><a href="#Python中的除法" class="headerlink" title="Python中的除法"></a>Python中的除法</h4><ol>
-<li>/ 10/3 = 3.33333333整数相除得到的结果是浮点数</li>
-<li>// 10//3 =3  只取结果的整数部分</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/01/11/自学Python-Python基础/" data-id="cj0ku26mb001f7cvv6tv56cnz" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础.md">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/01/11/自学Python-Python基础/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -1074,11 +1194,94 @@ print(s5)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/11/自学Python-面向对象编程/" data-id="cj0ku26mv001w7cvv1tgt8zu4" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象编程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/11/自学Python-面向对象编程/" data-id="cj14ort5i0021mwvvdttbyu6c" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象编程">分享到</a>
       
 
       
         <a href="http://anranz.com/2017/01/11/自学Python-面向对象编程/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-自学Python-Python基础" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/11/自学Python-Python基础/" class="article-date">
+  <time datetime="2017-01-11T11:38:56.000Z" itemprop="datePublished">2017-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/11/自学Python-Python基础/">自学Python-Python基础.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><ol>
+<li>以#开头作为注释右面的代码不会被执行</li>
+</ol>
+<h3 id="代码格式"><a href="#代码格式" class="headerlink" title="代码格式"></a>代码格式</h3><ul>
+<li>语法比较简单,不同于java以分号作为结束,Python采用缩进的方式,所以代码格式非常重要</li>
+</ul>
+<h2 id="数据类型和变量"><a href="#数据类型和变量" class="headerlink" title="数据类型和变量"></a>数据类型和变量</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><ul>
+<li>整数:可以处理任意大小的整数</li>
+<li><p>浮点数 : 1.11, -3.15,,对于很大和很小的浮点数需要用科学计数法</p>
+<blockquote>
+<p>注意:证书和浮点数在计算机内部存储方式是不同的,整数永远是精确的(除法也是精确的),浮点可能会四舍五入</p>
+</blockquote>
+</li>
+<li><p>字符串:以单引号或者双引号括起来的任意文本,”字符串”,’字符串’</p>
+</li>
+<li><p>boolean :一个布尔值只有True ,False两种值</p>
+<blockquote>
+<p>注意大小写</p>
+</blockquote>
+</li>
+<li><p>空值:一个特殊的值None,不能理解为0 ,0是有意义的,None是一个特殊的空值</p>
+</li>
+</ul>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><blockquote>
+<p>变量不仅可以是数字,可说是任意数据类型,变量在程序中使用一个变量名表示,变量名必须符号命名规范</p>
+</blockquote>
+<ul>
+<li>“=” 是赋值语句,表示把任意数据类型赋值给变量,同一个变量可以反复赋值,而且可以是不同类型的变量<br>  eg:a= 123, a=’abc’</li>
+</ul>
+<blockquote>
+<p>这种变量本身不固定的语言称为动态语言,与之对应的静态语言比如java,定义变量时必须指定变量的数据类型,并且,一旦指定就不能被其他类型的变量赋值</p>
+</blockquote>
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><ul>
+<li>常量是不能改变的变量,比如数学中的常数π,就是一个常量,通常用全部大学表示常量</li>
+</ul>
+<h4 id="Python中的除法"><a href="#Python中的除法" class="headerlink" title="Python中的除法"></a>Python中的除法</h4><ol>
+<li>/ 10/3 = 3.33333333整数相除得到的结果是浮点数</li>
+<li>// 10//3 =3  只取结果的整数部分</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/01/11/自学Python-Python基础/" data-id="cj14ort51001mmwvvo3wfnca7" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础.md">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/01/11/自学Python-Python基础/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -1180,7 +1383,7 @@ im.save(&apos;thmb.jpg&apos;,&apos;JPEG&apos;)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/11/自学Python-模块/" data-id="cj0ku26mn001r7cvvqjigisnr" class="article-share-link" data-share="baidu" data-title="自学Python-模块">分享到</a>
+        <a data-url="http://anranz.com/2017/01/11/自学Python-模块/" data-id="cj14ort5c001smwvvd1tarni9" class="article-share-link" data-share="baidu" data-title="自学Python-模块">分享到</a>
       
 
       
@@ -1333,306 +1536,11 @@ print(s)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/11/自学Python-函数式编程/" data-id="cj0ku26mj001m7cvvyfsdnzkm" class="article-share-link" data-share="baidu" data-title="自学Python-函数式编程.md">分享到</a>
+        <a data-url="http://anranz.com/2017/01/11/自学Python-函数式编程/" data-id="cj14ort55001qmwvv6ant39js" class="article-share-link" data-share="baidu" data-title="自学Python-函数式编程.md">分享到</a>
       
 
       
         <a href="http://anranz.com/2017/01/11/自学Python-函数式编程/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-自学Python-高级特性" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/11/自学Python-高级特性/" class="article-date">
-  <time datetime="2017-01-11T01:23:15.000Z" itemprop="datePublished">2017-01-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/11/自学Python-高级特性/">自学Python-高级特性</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>使用场景： 取一个list或者tuple的部分元素</p>
-<pre><code>L = [&apos;Michael&apos;, &apos;Sarah&apos;, &apos;Tracy&apos;, &apos;Bob&apos;, &apos;Jack&apos;]
-r=L[0:3]
-print(r)
-</code></pre><p>[X:Y] X:代表开始的角标，Y:结束的角标，可以是负数，从后向前取</p>
-<p>tuple 与list 的区别是tuple是不可变的</p>
-<p>tupel也可以切片操作，只是结果仍然是tuple</p>
-<pre><code>T= (1,2,3,4,5)
-print(T)
-r= T[:3]
-print(r)
-print(T)
-
-结果：
-
-(1, 2, 3, 4, 5)
-(1, 2, 3)
-(1, 2, 3, 4, 5)
-</code></pre><p>字符串’xxxx’也可以看成是list,每个元素就是一个字符，字符串也可以切片操作，结果仍然是字符串</p>
-<pre><code>T= &apos;abcdefg&apos;
-print(T)
-r= T[:3]
-print(r)
-print(T)
-
-结果
-
-abcdefg
-abc
-abcdefg
-</code></pre><h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><p>通过<code>for in</code> 循环遍历list和tuple ,这种遍历称为迭代</p>
-<p>可以对字符串，tuple ,list ,dict进行迭代</p>
-<p><strong>迭代dict获取key:</strong></p>
-<pre><code>d={&apos;1&apos;:&apos;a&apos;,&apos;2&apos;:&apos;b&apos;,&apos;3&apos;:&apos;c&apos;}
-for x in d:
-    print(x)
-</code></pre><p><strong>迭代dict获取values</strong></p>
-<pre><code>d={&apos;1&apos;:&apos;a&apos;,&apos;2&apos;:&apos;b&apos;,&apos;3&apos;:&apos;c&apos;}
-for x in d.values():
-    print(x)
-</code></pre><p><strong>判断是否可以迭代</strong></p>
-<pre><code>from collections import Iterable
-r =isinstance(&apos;abc&apos;,Iterable)
-print(r)
-</code></pre><p><strong>迭代list 获取角标-元素对</strong></p>
-<pre><code>L = [&apos;A&apos;,&apos;B&apos;,&apos;C&apos;,&apos;D&apos;]
-for i,values in enumerate(L):
-    print(i,values)
-</code></pre><p><strong>python for 循环可以同时应用两个变量</strong></p>
-<pre><code>L = [(1,1),(2,4),(3,9)]
-for x,y in L:
-    print(x,y)
-结果
-(1, 1)
-(2, 4)
-(3, 9)
-</code></pre><h2 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h2><p>写列表生成式的时，把要生成的元素<code>x*x</code>放在前面，后面跟<code>for</code>循环，就可以创建list<br><strong>求偶数的平方和</strong></p>
-<pre><code>L = [x*x for x in range(1,11) if x%2==0]
-print (L)
-</code></pre><p><strong>双层循环，生成全排列</strong></p>
-<pre><code>L = [m+n for m in &apos;abc&apos; for n in &apos;xyz&apos;]
-print(L)
-[&apos;ax&apos;, &apos;ay&apos;, &apos;az&apos;, &apos;bx&apos;, &apos;by&apos;, &apos;bz&apos;, &apos;cx&apos;, &apos;cy&apos;, &apos;cz&apos;]
-</code></pre><p><strong>for循环同时可以使用两个或者更多的个变量</strong><br><code>dict</code>的<code>items()</code>可以同时迭代key和value</p>
-<pre><code>D = {1:&apos;A&apos;,2:&apos;B&apos;,3:&apos;C&apos;}
-for x, y in D.items() :
-    print(x,&apos;=&apos;,y)
-</code></pre><p><strong>把集合中的元素都变成小写</strong></p>
-<pre><code>L = [&apos;Hello&apos;, &apos;World&apos;, &apos;IBM&apos;, &apos;Apple&apos;]
-r= [s.lower() for s in L]
-print(r)
-</code></pre><h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><p>在Python中一边循环一边计算的机制，称为生成器：generator</p>
-<p>创建generator</p>
-<ul>
-<li><p>把列表生成器的<code>[]</code>改成<code>（）</code>，就可以创建genetator</p>
-<p>  g= (x for x in range(100))<br>  print(g)</p>
-</li>
-</ul>
-<p>获取生成器中的元素，使用迭代的方式</p>
-<pre><code>g= (x for x in range(100))
-for y in g:
-    print(y)
-</code></pre><p>斐波拉契数列</p>
-<pre><code>def fib(max):
-    a,b,n= 0,1,0;
-    while n &lt; max:
-        print(b)
-        a,b=b,a+b
-        n=n+1
-    return &apos;done&apos;
-fib(100）
-</code></pre><p>将打印斐波拉契数列改变成genetator 需要将<code>print</code>变成<code>yield</code></p>
-<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p><strong>可以直接作用于for 循环的的数据类型</strong></p>
-<ol>
-<li>集合数据类型，如 <code>list,tuple,set,str</code></li>
-<li><code>generator</code>,包括生成器自带的<code>yield</code> 的generator funxtion</li>
-</ol>
-<p><strong>使用isinstance()判断对象是否是Iterable</strong></p>
-<pre><code>from collections import Iterable
-r =isinstance([],Iterable)
-print(r)
-</code></pre><blockquote>
-<p>生成器不但可以作用于<code>for</code>循环，还可以调用<code>next()</code>,获取下一个值<br>可以被<code>next()</code>调用，并不断返回下一个值的对象称为<strong>迭代器</strong></p>
-</blockquote>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><ul>
-<li>凡是可以用于<code>for</code>循环的对象都是<code>Iterable</code>类型；</li>
-<li>凡是可作用于<code>next()</code>函数的对象都是<code>Iterator</code>类型</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/01/11/自学Python-高级特性/" data-id="cj0ku26mx00207cvvjf6g6sfc" class="article-share-link" data-share="baidu" data-title="自学Python-高级特性">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/01/11/自学Python-高级特性/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-自学Python-函数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/10/自学Python-函数/" class="article-date">
-  <time datetime="2017-01-10T08:30:36.000Z" itemprop="datePublished">2017-01-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/10/自学Python-函数/">自学Python- 函数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h3><p>Python内置了很多有用的函数，我们可以直接调用。</p>
-<p>要调用一个函数，需要知道函数的名称和参数，比如求绝对值的函数abs，只有一个参数</p>
-<p>调用函数的要传入正确的参数个数和参数类型</p>
-<h4 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h4><ul>
-<li>比如int() 把其他类型转换为整数</li>
-</ul>
-<h3 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h3><p>定义函数使用 <code>def</code> 后面依次跟 函数名 括号() 冒号: 然后在缩进语句块中写函数体,函数返回值用<code>retun</code>返回</p>
-<p><strong>导入函数</strong></p>
-<ul>
-<li>定义函数run保存为functions.py ,在test.py 中调用run函数,需要使用<code>from functions import run</code>导入函数run()</li>
-</ul>
-<h3 id="空函数"><a href="#空函数" class="headerlink" title="空函数"></a>空函数</h3><p>定意一个函数什么也不做</p>
-<p><code>def nullFun():
-    pres</code></p>
-<h3 id="参数检查"><a href="#参数检查" class="headerlink" title="参数检查"></a>参数检查</h3><ul>
-<li>调用函数时如果参数的个数不对,会抛出异常</li>
-<li>如果参数类型不对,不会被检查出来</li>
-</ul>
-<p>检查参数:</p>
-<pre><code>def my_abs(x):
-if not isinstance (x,(int,float)):
-    raise TypeError(&apos;bad operand type&apos;)
-if x&gt;0:
-    return x
-else :
-    return -x
-print(my_abs(4))
-</code></pre><h3 id="返回多个值"><a href="#返回多个值" class="headerlink" title="返回多个值"></a>返回多个值</h3><pre><code>import math
-def move(x, y, step, angle=0):
-    nx = x + step * math.cos(angle)
-    ny = y - step * math.sin(angle)
-    return nx, ny
-x,y = move(100,100,60,math.pi/6)
-print(x,y)
-</code></pre><p>实质是返回了一个tuple</p>
-<h2 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h2><p>Python 可以使用默认参数,可变参数,关键字参数</p>
-<h3 id="位置参数"><a href="#位置参数" class="headerlink" title="位置参数"></a>位置参数</h3><pre><code>def power(x):
-    return x*x
-print(power(2))
-</code></pre><h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><ul>
-<li><p>必选参数在前面,默认参数在后面</p>
-</li>
-<li><p>函数有多个函数时,把变化大的放在前面,变化小的放在后面</p>
-</li>
-</ul>
-<pre><code>def power(x, n=2):
-    s = 1
-    while n &gt; 0:
-        n = n - 1
-        s = s * x
-    return s
-print(power(6))  # 36
-print(power(6,2))# 36
-print(power(2,3))# 8
-</code></pre><ul>
-<li><p>添加一个list 并在最后加上”END”,默认参数初始赋值为None</p>
-<pre><code>def add_end(L=None):
-    L.append(&apos;END&apos;)
-    return L
-
-print(add_end([1,2,3]))
-</code></pre></li>
-</ul>
-<h3 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h3><p>定义可变参数在参数前面加一个*</p>
-<pre><code>def calc(*number):
-    sum =0
-    for n in number:
-        sum = sum+n*n
-    return sum
-print(calc(1,2,3,4))
-print(calc(1,2))
-
-#传入一个集合,在集合前面加上一个*
-nums =[1,2,3]
-print(calc(*nums))
-</code></pre><h3 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h3><ul>
-<li>可变参数允许传入0个或者任意个参数,这些可变参数在函数中会自动组装为一个tuple</li>
-<li>关键字参数允许你传入0个或者任意个参数名的参数,这些关键字参数在函数内部自动组装为一个dict</li>
-</ul>
-<p>当有多个参数时使用dict 进行组合,作为参数</p>
-<pre><code>def person(name,age,**kw):
-    print(&apos;name&apos;,name,&apos;age&apos;,age,&apos;other&apos;,kw)
-
-extra ={&apos;city&apos;:&apos;beijing&apos;,&apos;job&apos;:&apos;enginner&apos;}
-person(&apos;ankin&apos;,24)
-person(&apos;ankin&apos;,24,city=extra[&apos;city&apos;],job=extra[&apos;job&apos;])
-</code></pre><h3 id="命名关键字参数"><a href="#命名关键字参数" class="headerlink" title="命名关键字参数"></a>命名关键字参数</h3><ul>
-<li>关键字参数,函数的调用者可以传入任意不受限制的关键字参数,至于传入哪些,需要再函数的内部通过<code>kw</code> 检查</li>
-<li><p>命名关键字必须传入参数名</p>
-<pre><code>def person(name, age, *, city, job):
-    print(name, age, city, job)
-person(&apos;Jack&apos;, 24, city=&apos;Beijing&apos;, job=&apos;Engineer&apos;)
-</code></pre></li>
-</ul>
-<h2 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h2><p>以调用其他函数。如果一个函数在内部调用自身本身，这个函数就是递归函数。</p>
-<pre><code>def fact(n):
-    if n==1:
-        return 1
-    return n * fact(n - 1)
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/01/10/自学Python-函数/" data-id="cj0ku26mc001h7cvvaek6v749" class="article-share-link" data-share="baidu" data-title="自学Python- 函数">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/01/10/自学Python-函数/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -1661,7 +1569,7 @@ person(&apos;Jack&apos;, 24, city=&apos;Beijing&apos;, job=&apos;Engineer&apos;)
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">3</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxJava/">RxJava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -1670,7 +1578,7 @@ person(&apos;Jack&apos;, 24, city=&apos;Beijing&apos;, job=&apos;Engineer&apos;)
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/随想/" style="font-size: 12.5px;">随想</a>
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 16.67px;">设计模式</a> <a href="/tags/随想/" style="font-size: 13.33px;">随想</a>
     </div>
   </div>
 
@@ -1679,7 +1587,7 @@ person(&apos;Jack&apos;, 24, city=&apos;Beijing&apos;, job=&apos;Engineer&apos;)
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
     </div>
   </div>
 
@@ -1691,6 +1599,14 @@ person(&apos;Jack&apos;, 24, city=&apos;Beijing&apos;, job=&apos;Engineer&apos;)
       <ul>
         
           <li>
+            <a href="/2017/04/05/Android使用RxJava获取U盘中的视频文件/">Android使用RxJava获取U盘中的视频文件</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/24/Android视频播放/">Android视频播放</a>
+          </li>
+        
+          <li>
             <a href="/2017/03/22/Ubuntu搭建Web开发环境/">Ubuntu搭建Web开发环境</a>
           </li>
         
@@ -1700,14 +1616,6 @@ person(&apos;Jack&apos;, 24, city=&apos;Beijing&apos;, job=&apos;Engineer&apos;)
         
           <li>
             <a href="/2017/03/20/Android图片加载库Glide的使用/">Android图片加载库Glide的使用</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/18/焦虑/">焦虑</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/17/使用RxJava实现EventBus-事件总线）/">使用RxJava实现EventBus(事件总线）</a>
           </li>
         
       </ul>
