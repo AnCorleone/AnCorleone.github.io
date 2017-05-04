@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://anranz.com/about/index.html</loc>
+    
+    <lastmod>2017-04-05T09:07:40.425Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://anranz.com/2017/04/05/Android%E4%BD%BF%E7%94%A8RxJava%E8%8E%B7%E5%8F%96U%E7%9B%98%E4%B8%AD%E7%9A%84%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/</loc>
     
     <lastmod>2017-04-05T08:34:48.963Z</lastmod>
@@ -96,13 +103,6 @@
     <loc>http://anranz.com/2017/03/06/RxJava-%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</loc>
     
     <lastmod>2017-03-08T02:37:59.050Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://anranz.com/about/index.html</loc>
-    
-    <lastmod>2017-03-06T02:11:57.903Z</lastmod>
     
   </url>
   
