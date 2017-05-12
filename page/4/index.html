@@ -78,6 +78,279 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-设计模式-Builder模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/设计模式-Builder模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/设计模式-Builder模式/">Builder模式.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Builder模式"><a href="#Builder模式" class="headerlink" title="Builder模式"></a>Builder模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>将复杂的创建与他的表示分离,使同样的创建过程可以创建不同的表示</p>
+<h3 id="设计的步骤"><a href="#设计的步骤" class="headerlink" title="设计的步骤:"></a>设计的步骤:</h3><pre><code>Builder builder = new AppleBuilder();
+        Director director = new Director(builder);
+        director.construct(4,2,&quot;linux&quot;);
+        Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
+</code></pre><hr>
+<ol>
+<li><p>以组装电脑为例,创建电脑的抽象类,包含os ram,core定义,提供设置的抽象方法</p>
+</li>
+<li><p>创建要组装的具体电脑类AppleComputer,继承Computer类,实现所用方法</p>
+</li>
+<li><p>创建抽象的Builder类,提供builder的设置方法,另外提供返回Computer的create的抽象方法</p>
+</li>
+<li><p>创建具体的AppleBuilder类实现抽象方法,创建AppleComputer 实例对象,并设置数据,返回AppleComputer的实例</p>
+</li>
+<li><p>创建具体的Director类,构造方法中接受builder对象,提供接受数据的construct 方法,将参数传递给builder对象</p>
+</li>
+<li><p>传递的参数最终被AppleBuilder接收,并返回一个具体的AppleComputer对象</p>
+</li>
+</ol>
+<h3 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h3><pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public abstract class Computer {
+    protected int mCore = 1;
+    protected int mRam = 10;
+    protected String mOs = &quot;dos&quot;;
+
+    protected Computer() {
+
+    }
+
+    public abstract void setCore(int core);
+
+    public abstract void setRem(int rem);
+
+    public abstract void setOs(String os);
+
+    @Override
+    public String toString() {
+        return &quot;Computer{&quot; +
+                &quot;mCore=&quot; + mCore +
+                &quot;, mRam=&quot; + mRam +
+                &quot;, mOs=&apos;&quot; + mOs + &apos;\&apos;&apos; +
+                &apos;}&apos;;
+    }
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class AppleComputer extends Computer {
+
+
+    protected AppleComputer() {
+
+    }
+
+    @Override
+    public void setCore(int core) {
+        this.mCore = core;
+    }
+
+    @Override
+    public void setRem(int ram) {
+        this.mRam = ram;
+    }
+
+    @Override
+    public void setOs(String os) {
+        this.mOs = os;
+    }
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+* Created by demo on 2017/2/8 0008
+*/
+public class AppleBuilder extends Builder {
+
+private  Computer mApplePc =new AppleComputer();
+@Override
+public void buildCore(int core) {
+    mApplePc.setCore(core);
+}
+
+@Override
+public void buildRam(int ram) {
+    mApplePc.setRem(ram);
+}
+
+@Override
+public void buildOs(String os) {
+    mApplePc.setOs(os);
+}
+
+@Override
+public Computer create() {
+
+    return mApplePc;
+}
+
+
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public abstract class Builder {
+
+
+    public abstract void buildCore(int core);
+
+    public abstract void buildRam(int ram);
+
+    public abstract void buildOs(String os);
+
+    public abstract Computer create();
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class Director {
+    Builder mBuilder=null;
+
+    public Director(Builder builder) {
+        mBuilder = builder;
+    }
+
+    public void construct(int core,int ram, String os){
+        mBuilder.buildCore(core);
+        mBuilder.buildRam(ram);
+        mBuilder.buildOs(os);
+    }
+}
+</code></pre><hr>
+<p> 测试代码</p>
+<pre><code>// 测试运行效果
+      Builder builder = new AppleBuilder();
+      Director director = new Director(builder);
+      director.construct(4,2,&quot;linux&quot;);
+      Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
+</code></pre><hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/02/17/设计模式-Builder模式/" data-id="cj2l8y1rm002dy0vv934wuvrn" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/02/17/设计模式-Builder模式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-读取XML中的配置参数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/20/读取XML中的配置参数/" class="article-date">
+  <time datetime="2017-01-20T02:22:04.000Z" itemprop="datePublished">2017-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/20/读取XML中的配置参数/">Android-读取XML中的配置参数工具类XMLUtil</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一个读取xml文件中配置文件的工具类XMLUtil"><a href="#一个读取xml文件中配置文件的工具类XMLUtil" class="headerlink" title="一个读取xml文件中配置文件的工具类XMLUtil"></a>一个读取xml文件中配置文件的工具类XMLUtil</h2><h3 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h3><pre><code>import javax.xml.parsers.*;  
+import org.w3c.dom.*;  
+import org.xml.sax.SAXException;  
+import java.io.*;  
+
+public class XMLUtil {  
+    //该方法用于从XML配置文件中提取配置文件
+    public static String getChartType() {  
+        try {  
+            //创建文档对象  
+            DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();  
+            DocumentBuilder builder = dFactory.newDocumentBuilder();  
+            Document doc;                             
+            doc = builder.parse(new File(&quot;config.xml&quot;));   
+
+            //获取包含配置文件的文本节点  
+            NodeList nl = doc.getElementsByTagName(&quot;chartType&quot;);  
+            Node classNode = nl.item(0).getFirstChild();  
+            String chartType = classNode.getNodeValue().trim();  
+            return chartType;  
+        }     
+        catch(Exception e) {  
+            e.printStackTrace();  
+            return null;  
+        }  
+    }  
+}
+</code></pre><hr>
+<h3 id="XML-文件代码"><a href="#XML-文件代码" class="headerlink" title="XML 文件代码"></a>XML 文件代码</h3><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;  
+&lt;config&gt;  
+    &lt;chartType&gt;histogram&lt;/chartType&gt;  
+&lt;/config&gt;
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/01/20/读取XML中的配置参数/" data-id="cj2l8y1sa002uy0vvxdlcsjjr" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/01/20/读取XML中的配置参数/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-MySQL使用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/20/MySQL使用/" class="article-date">
@@ -165,7 +438,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/20/MySQL使用/" data-id="cj29vuh3z000i14vv0mopje9p" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
+        <a data-url="http://anranz.com/2017/01/20/MySQL使用/" data-id="cj2l8y1ot000ky0vvw2k1u92p" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
       
 
       
@@ -174,82 +447,6 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-读取XML中的配置参数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/20/读取XML中的配置参数/" class="article-date">
-  <time datetime="2017-01-20T02:22:04.000Z" itemprop="datePublished">2017-01-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/20/读取XML中的配置参数/">Android-读取XML中的配置参数工具类XMLUtil</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一个读取xml文件中配置文件的工具类XMLUtil"><a href="#一个读取xml文件中配置文件的工具类XMLUtil" class="headerlink" title="一个读取xml文件中配置文件的工具类XMLUtil"></a>一个读取xml文件中配置文件的工具类XMLUtil</h2><h3 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h3><pre><code>import javax.xml.parsers.*;  
-import org.w3c.dom.*;  
-import org.xml.sax.SAXException;  
-import java.io.*;  
-
-public class XMLUtil {  
-    //该方法用于从XML配置文件中提取配置文件
-    public static String getChartType() {  
-        try {  
-            //创建文档对象  
-            DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();  
-            DocumentBuilder builder = dFactory.newDocumentBuilder();  
-            Document doc;                             
-            doc = builder.parse(new File(&quot;config.xml&quot;));   
-
-            //获取包含配置文件的文本节点  
-            NodeList nl = doc.getElementsByTagName(&quot;chartType&quot;);  
-            Node classNode = nl.item(0).getFirstChild();  
-            String chartType = classNode.getNodeValue().trim();  
-            return chartType;  
-        }     
-        catch(Exception e) {  
-            e.printStackTrace();  
-            return null;  
-        }  
-    }  
-}
-</code></pre><hr>
-<h3 id="XML-文件代码"><a href="#XML-文件代码" class="headerlink" title="XML 文件代码"></a>XML 文件代码</h3><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;  
-&lt;config&gt;  
-    &lt;chartType&gt;histogram&lt;/chartType&gt;  
-&lt;/config&gt;
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/01/20/读取XML中的配置参数/" data-id="cj29vuh6c002r14vvt3nbm5ff" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/01/20/读取XML中的配置参数/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
 
     </footer>
   </div>
@@ -368,7 +565,7 @@ print (c)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/14/自学Python-常用内建模块/" data-id="cj29vuh5n001w14vvm4xh9zi7" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
+        <a data-url="http://anranz.com/2017/01/14/自学Python-常用内建模块/" data-id="cj2l8y1r40021y0vva8jzngj6" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
       
 
       
@@ -456,7 +653,7 @@ print (s)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/14/自学Python-正则表达式/" data-id="cj29vuh5q002014vv0sfrb326" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
+        <a data-url="http://anranz.com/2017/01/14/自学Python-正则表达式/" data-id="cj2l8y1r90025y0vv0v6o1zec" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
       
 
       
@@ -634,7 +831,7 @@ t2.join()
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/13/自学Python-线程和进程/" data-id="cj29vuh5r002214vvquk7ik64" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/13/自学Python-线程和进程/" data-id="cj2l8y1rg0029y0vvrf1ab3qn" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
       
 
       
@@ -846,7 +1043,7 @@ print(r)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/13/自学Python-IO编程/" data-id="cj29vuh5a001m14vvybgv6vlk" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/13/自学Python-IO编程/" data-id="cj2l8y1qh001qy0vvdblkuq79" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
       
 
       
@@ -1099,94 +1296,11 @@ s()
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/" data-id="cj29vuh5v002714vvawp07y2o" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象高级编程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/" data-id="cj2l8y1rk002by0vvy8z7ypzl" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象高级编程">分享到</a>
       
 
       
         <a href="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-自学Python-Python基础" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/11/自学Python-Python基础/" class="article-date">
-  <time datetime="2017-01-11T11:38:56.000Z" itemprop="datePublished">2017-01-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/11/自学Python-Python基础/">自学Python-Python基础.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><ol>
-<li>以#开头作为注释右面的代码不会被执行</li>
-</ol>
-<h3 id="代码格式"><a href="#代码格式" class="headerlink" title="代码格式"></a>代码格式</h3><ul>
-<li>语法比较简单,不同于java以分号作为结束,Python采用缩进的方式,所以代码格式非常重要</li>
-</ul>
-<h2 id="数据类型和变量"><a href="#数据类型和变量" class="headerlink" title="数据类型和变量"></a>数据类型和变量</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><ul>
-<li>整数:可以处理任意大小的整数</li>
-<li><p>浮点数 : 1.11, -3.15,,对于很大和很小的浮点数需要用科学计数法</p>
-<blockquote>
-<p>注意:证书和浮点数在计算机内部存储方式是不同的,整数永远是精确的(除法也是精确的),浮点可能会四舍五入</p>
-</blockquote>
-</li>
-<li><p>字符串:以单引号或者双引号括起来的任意文本,”字符串”,’字符串’</p>
-</li>
-<li><p>boolean :一个布尔值只有True ,False两种值</p>
-<blockquote>
-<p>注意大小写</p>
-</blockquote>
-</li>
-<li><p>空值:一个特殊的值None,不能理解为0 ,0是有意义的,None是一个特殊的空值</p>
-</li>
-</ul>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><blockquote>
-<p>变量不仅可以是数字,可说是任意数据类型,变量在程序中使用一个变量名表示,变量名必须符号命名规范</p>
-</blockquote>
-<ul>
-<li>“=” 是赋值语句,表示把任意数据类型赋值给变量,同一个变量可以反复赋值,而且可以是不同类型的变量<br>  eg:a= 123, a=’abc’</li>
-</ul>
-<blockquote>
-<p>这种变量本身不固定的语言称为动态语言,与之对应的静态语言比如java,定义变量时必须指定变量的数据类型,并且,一旦指定就不能被其他类型的变量赋值</p>
-</blockquote>
-<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><ul>
-<li>常量是不能改变的变量,比如数学中的常数π,就是一个常量,通常用全部大学表示常量</li>
-</ul>
-<h4 id="Python中的除法"><a href="#Python中的除法" class="headerlink" title="Python中的除法"></a>Python中的除法</h4><ol>
-<li>/ 10/3 = 3.33333333整数相除得到的结果是浮点数</li>
-<li>// 10//3 =3  只取结果的整数部分</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/01/11/自学Python-Python基础/" data-id="cj29vuh5d001o14vvk8j1omm6" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础.md">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/01/11/自学Python-Python基础/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -1381,7 +1495,7 @@ print(s5)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/11/自学Python-面向对象编程/" data-id="cj29vuh5t002514vvxbiznig5" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象编程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/11/自学Python-面向对象编程/" data-id="cj2l8y1rc0027y0vvq6ii87ru" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象编程">分享到</a>
       
 
       
@@ -1398,10 +1512,10 @@ print(s5)
 
 
   
-    <article id="post-自学Python-模块" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-自学Python-Python基础" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/11/自学Python-模块/" class="article-date">
-  <time datetime="2017-01-11T09:35:35.000Z" itemprop="datePublished">2017-01-11</time>
+    <a href="/2017/01/11/自学Python-Python基础/" class="article-date">
+  <time datetime="2017-01-11T11:38:56.000Z" itemprop="datePublished">2017-01-11</time>
 </a>
     
   </div>
@@ -1412,7 +1526,7 @@ print(s5)
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/11/自学Python-模块/">自学Python-模块</a>
+      <a class="article-title" href="/2017/01/11/自学Python-Python基础/">自学Python-Python基础.md</a>
     </h1>
   
 
@@ -1420,78 +1534,55 @@ print(s5)
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h3><p><strong>标准注释</strong></p>
-<pre><code>#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-</code></pre><ul>
-<li><p>test_1.py</p>
-<pre><code>#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-&apos;a test module&apos;
-___author__=&apos;anakin&apos;
-
-import sys
-
-def test():
-    args = sys.argv
-    if len(args)==1:
-        print(&apos;hello,world&apos;)
-    elif len(args)==2:
-        print(&apos;hello :&apos;+ args[1])
-    else:
-        print(&apos;too many argument!&apos;)
-
-if __name__==&apos;__main__&apos;:
-    test()
-</code></pre></li>
+        <h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><ol>
+<li>以#开头作为注释右面的代码不会被执行</li>
+</ol>
+<h3 id="代码格式"><a href="#代码格式" class="headerlink" title="代码格式"></a>代码格式</h3><ul>
+<li>语法比较简单,不同于java以分号作为结束,Python采用缩进的方式,所以代码格式非常重要</li>
 </ul>
+<h2 id="数据类型和变量"><a href="#数据类型和变量" class="headerlink" title="数据类型和变量"></a>数据类型和变量</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><ul>
+<li>整数:可以处理任意大小的整数</li>
+<li><p>浮点数 : 1.11, -3.15,,对于很大和很小的浮点数需要用科学计数法</p>
+<blockquote>
+<p>注意:证书和浮点数在计算机内部存储方式是不同的,整数永远是精确的(除法也是精确的),浮点可能会四舍五入</p>
+</blockquote>
+</li>
+<li><p>字符串:以单引号或者双引号括起来的任意文本,”字符串”,’字符串’</p>
+</li>
+<li><p>boolean :一个布尔值只有True ,False两种值</p>
+<blockquote>
+<p>注意大小写</p>
+</blockquote>
+</li>
+<li><p>空值:一个特殊的值None,不能理解为0 ,0是有意义的,None是一个特殊的空值</p>
+</li>
+</ul>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><blockquote>
+<p>变量不仅可以是数字,可说是任意数据类型,变量在程序中使用一个变量名表示,变量名必须符号命名规范</p>
+</blockquote>
 <ul>
-<li><p>test_2.py</p>
-<pre><code>import test_1
-
-test_1.test()
-</code></pre></li>
+<li>“=” 是赋值语句,表示把任意数据类型赋值给变量,同一个变量可以反复赋值,而且可以是不同类型的变量<br>  eg:a= 123, a=’abc’</li>
 </ul>
-<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><ul>
-<li><p>外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。</p>
-<pre><code>#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-&apos;函数的作用域&apos;
-___author__=&apos;anakin&apos;
-
-def _private_1(name):
-    print(&apos;private 1 run&apos;)
-
-def _private_2(name):
-    print(&apos;private 2 run&apos;)
-
-def greeting(name):
-    if len(name)&gt;3:
-        return _private_1(name)
-    else :
-        return _private_2(name)
-</code></pre><h3 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h3></li>
+<blockquote>
+<p>这种变量本身不固定的语言称为动态语言,与之对应的静态语言比如java,定义变量时必须指定变量的数据类型,并且,一旦指定就不能被其他类型的变量赋值</p>
+</blockquote>
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><ul>
+<li>常量是不能改变的变量,比如数学中的常数π,就是一个常量,通常用全部大学表示常量</li>
 </ul>
-<p>安装Pillow</p>
-<pre><code>安装Pillow
-pip install Pillow
+<h4 id="Python中的除法"><a href="#Python中的除法" class="headerlink" title="Python中的除法"></a>Python中的除法</h4><ol>
+<li>/ 10/3 = 3.33333333整数相除得到的结果是浮点数</li>
+<li>// 10//3 =3  只取结果的整数部分</li>
+</ol>
 
-from PIL import Image
-im = Image.open(&apos;img.png&apos;)
-print(im.format,im.size,im.mode)
-</code></pre><p>生成缩略图</p>
-<pre><code>im.thumbnail((200, 100))
-im.save(&apos;thmb.jpg&apos;,&apos;JPEG&apos;)
-</code></pre>
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/11/自学Python-模块/" data-id="cj29vuh5o001x14vv0x5h3rht" class="article-share-link" data-share="baidu" data-title="自学Python-模块">分享到</a>
+        <a data-url="http://anranz.com/2017/01/11/自学Python-Python基础/" data-id="cj2l8y1ql001ry0vv57ro1tvu" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础.md">分享到</a>
       
 
       
-        <a href="http://anranz.com/2017/01/11/自学Python-模块/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/01/11/自学Python-Python基础/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -1520,7 +1611,7 @@ im.save(&apos;thmb.jpg&apos;,&apos;JPEG&apos;)
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxJava/">RxJava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">4</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxJava/">RxJava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -1529,7 +1620,7 @@ im.save(&apos;thmb.jpg&apos;,&apos;JPEG&apos;)
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 17.5px;">设计模式</a> <a href="/tags/随想/" style="font-size: 15px;">随想</a>
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="/tags/Ubuntu/" style="font-size: 12px;">Ubuntu</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 18px;">设计模式</a> <a href="/tags/随想/" style="font-size: 16px;">随想</a>
     </div>
   </div>
 
@@ -1538,7 +1629,7 @@ im.save(&apos;thmb.jpg&apos;,&apos;JPEG&apos;)
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年05月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年05月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
     </div>
   </div>
 
@@ -1548,6 +1639,10 @@ im.save(&apos;thmb.jpg&apos;,&apos;JPEG&apos;)
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/05/12/Windows-Ubuntu双系统安装/">Windows+Ubuntu双系统安装</a>
+          </li>
         
           <li>
             <a href="/2017/05/04/5-4-少年少年/">5.4 少年少年</a>
@@ -1563,10 +1658,6 @@ im.save(&apos;thmb.jpg&apos;,&apos;JPEG&apos;)
         
           <li>
             <a href="/2017/03/22/Ubuntu搭建Web开发环境/">Ubuntu搭建Web开发环境</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/22/Android网络请求框架Rrtrofit的使用总结/">Android网络请求框架Rrtrofit的使用总结</a>
           </li>
         
       </ul>
