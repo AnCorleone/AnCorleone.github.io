@@ -78,6 +78,93 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-Ubuntu16-04下载编译Android6-0源码" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/16/Ubuntu16-04下载编译Android6-0源码/" class="article-date">
+  <time datetime="2017-03-16T07:04:26.000Z" itemprop="datePublished">2017-03-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://oje1oqb9c.bkt.clouddn.com/image/android6.0bg.png" rel="gallery_cj2rcbate0012wcvvj9526n4w">
+        <img src="http://oje1oqb9c.bkt.clouddn.com/image/android6.0bg.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/Ubuntu16-04下载编译Android6-0源码/">Ubuntu16.04下载编译Android6.0源码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一-源码下载"><a href="#一-源码下载" class="headerlink" title="一. 源码下载"></a>一. 源码下载</h2><h3 id="准备Git"><a href="#准备Git" class="headerlink" title="准备Git"></a>准备Git</h3><p>如果没有安装git,首先需要安装git,安装完成需要验证用户名的和邮箱</p>
+<ul>
+<li>安装git<br><code>sudo apt-get install git</code></li>
+<li>验证用户名和邮箱<br><code>git config --global user.name &quot;your git name&quot;</code><br><code>git config --global user.email &quot;you@example.com&quot;</code></li>
+</ul>
+<h3 id="安装curl"><a href="#安装curl" class="headerlink" title="安装curl"></a>安装curl</h3><p><code>sudo apt-get install curl</code></p>
+<h3 id="下载repo"><a href="#下载repo" class="headerlink" title="下载repo"></a>下载repo</h3><p>repo是google为方便管理android源码编写的一系列python脚本。</p>
+<pre><code>$ mkdir ~/bin
+$ PATH=~/bin:$PATH
+
+$ curl https://storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo
+$ chmod a+x ~/bin/repo
+</code></pre><h3 id="同步代码"><a href="#同步代码" class="headerlink" title="同步代码"></a>同步代码</h3><ul>
+<li><p>创建存放源码目录：<br><code>mkdir android-6.0.1_r46</code><br><code>cd android-6.0.1_r46</code></p>
+</li>
+<li><p>使用repo init指定要同步的代码版本。你可以在这里找到目前所有android源码的版本 :  <a href="https://source.android.com/source/build-numbers.html" target="_blank" rel="external">选择源码版本</a></p>
+</li>
+<li><p>这里使用google的镜像服务器上同步代码，如果你没有翻墙工具或者下载很慢的话可以使用国内的源，比如清华的，像下面这样修改～/bin/repo中的REPO_URL。</p>
+<blockquote>
+<p>REPO_URL = ‘<a href="https://gerrit-google.tuna.tsinghua.edu.cn/git-repo" target="_blank" rel="external">https://gerrit-google.tuna.tsinghua.edu.cn/git-repo</a>‘</p>
+</blockquote>
+</li>
+<li><p>然后同样使用repo init来执行同步的版本  </p>
+</li>
+</ul>
+<p><code>repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-6.0.1_r46</code></p>
+<ul>
+<li>开始同步代码<blockquote>
+<p>然后使用下面的命令下载源码。因为源码比较大，所以下载时间会很长，android6.0.1的代码大概有46G左右。repo支持断线重连，所以直接挂在哪里就可以了</p>
+</blockquote>
+</li>
+</ul>
+<p><code>repo sync</code></p>
+<h2 id="二-编译源码"><a href="#二-编译源码" class="headerlink" title="二. 编译源码"></a>二. 编译源码</h2><h2 id="三-导入源码到Android-Studio"><a href="#三-导入源码到Android-Studio" class="headerlink" title="三. 导入源码到Android Studio"></a>三. 导入源码到Android Studio</h2><h2 id="四-刷入开发板"><a href="#四-刷入开发板" class="headerlink" title="四. 刷入开发板"></a>四. 刷入开发板</h2><h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a><a href="http://zke1ev3n.me/2016/08/25/Ubuntu16-04%E7%BC%96%E8%AF%91android6-0%E6%BA%90%E4%BB%A3%E7%A0%81/" target="_blank" rel="external">参考文章</a></h2>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/03/16/Ubuntu16-04下载编译Android6-0源码/" data-id="cj2rcbate0012wcvvj9526n4w" class="article-share-link" data-share="baidu" data-title="Ubuntu16.04下载编译Android6.0源码">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/03/16/Ubuntu16-04下载编译Android6-0源码/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-RxJava-简单使用（二）" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/10/RxJava-简单使用（二）/" class="article-date">
@@ -90,7 +177,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg" rel="gallery_cj2l8y1p2000qy0vvw4b9exea">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg" rel="gallery_cj2rcbat3000twcvvdgr2r7s3">
         <img src="http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -176,7 +263,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/10/RxJava-简单使用（二）/" data-id="cj2l8y1p2000qy0vvw4b9exea" class="article-share-link" data-share="baidu" data-title="RxJava--简单使用（二）">分享到</a>
+        <a data-url="http://anranz.com/2017/03/10/RxJava-简单使用（二）/" data-id="cj2rcbat3000twcvvdgr2r7s3" class="article-share-link" data-share="baidu" data-title="RxJava--简单使用（二）">分享到</a>
       
 
       
@@ -205,7 +292,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg" rel="gallery_cj2l8y1p4000ty0vvxb53m418">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg" rel="gallery_cj2rcbat7000xwcvvaljc2zyt">
         <img src="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -331,7 +418,7 @@ service.getTopMovie(1,1)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/08/RxJave和Retrofits的实现网络请求/" data-id="cj2l8y1p4000ty0vvxb53m418" class="article-share-link" data-share="baidu" data-title="RxJave和Retrofits的实现网络请求">分享到</a>
+        <a data-url="http://anranz.com/2017/03/08/RxJave和Retrofits的实现网络请求/" data-id="cj2rcbat7000xwcvvaljc2zyt" class="article-share-link" data-share="baidu" data-title="RxJave和Retrofits的实现网络请求">分享到</a>
       
 
       
@@ -360,7 +447,7 @@ service.getTopMovie(1,1)
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cj2l8y1oz000oy0vvyzed4c9f">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cj2rcbat5000vwcvv5m902xx8">
         <img src="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -640,7 +727,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/06/RxJava-简单使用/" data-id="cj2l8y1oz000oy0vvyzed4c9f" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
+        <a data-url="http://anranz.com/2017/03/06/RxJava-简单使用/" data-id="cj2rcbat5000vwcvv5m902xx8" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
       
 
       
@@ -669,7 +756,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" rel="gallery_cj2l8y1oi000cy0vvfpg4jrad">
+      <a class="article-gallery-img fancybox" href="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" rel="gallery_cj2rcbasb000cwcvvtxx41bna">
         <img src="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" itemprop="image">
       </a>
     
@@ -712,7 +799,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/06/Atom插件打造PHP开发平台/" data-id="cj2l8y1oi000cy0vvfpg4jrad" class="article-share-link" data-share="baidu" data-title="Atom插件打造PHP开发平台">分享到</a>
+        <a data-url="http://anranz.com/2017/03/06/Atom插件打造PHP开发平台/" data-id="cj2rcbasb000cwcvvtxx41bna" class="article-share-link" data-share="baidu" data-title="Atom插件打造PHP开发平台">分享到</a>
       
 
       
@@ -741,7 +828,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" rel="gallery_cj2l8y1pu0017y0vv3ujn6v93">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" rel="gallery_cj2rcbatw001ewcvv7fkmnq0k">
         <img src="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -771,7 +858,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/02/不忘初心/" data-id="cj2l8y1pu0017y0vv3ujn6v93" class="article-share-link" data-share="baidu" data-title="不忘初心">分享到</a>
+        <a data-url="http://anranz.com/2017/03/02/不忘初心/" data-id="cj2rcbatw001ewcvv7fkmnq0k" class="article-share-link" data-share="baidu" data-title="不忘初心">分享到</a>
       
 
       
@@ -800,7 +887,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cj2l8y1pz0019y0vvwai5781w">
+      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cj2rcbath0014wcvvmeld2e94">
         <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" itemprop="image">
       </a>
     
@@ -830,7 +917,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/01/三月/" data-id="cj2l8y1pz0019y0vvwai5781w" class="article-share-link" data-share="baidu" data-title="三月">分享到</a>
+        <a data-url="http://anranz.com/2017/03/01/三月/" data-id="cj2rcbath0014wcvvmeld2e94" class="article-share-link" data-share="baidu" data-title="三月">分享到</a>
       
 
       
@@ -941,7 +1028,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/28/设计模式-桥接模式/" data-id="cj2l8y1rz002ny0vvmqrsz6sj" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/28/设计模式-桥接模式/" data-id="cj2rcbav3002iwcvvb1kkbtej" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
       
 
       
@@ -1003,7 +1090,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/22/怎样选择基金/" data-id="cj2l8y1q7001gy0vvf7kctnew" class="article-share-link" data-share="baidu" data-title="怎样选择基金">分享到</a>
+        <a data-url="http://anranz.com/2017/02/22/怎样选择基金/" data-id="cj2rcbaty001gwcvvsp35g3dn" class="article-share-link" data-share="baidu" data-title="怎样选择基金">分享到</a>
       
 
       
@@ -1095,7 +1182,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/22/Vim基本操作/" data-id="cj2l8y1pj0010y0vvk0kb9ueq" class="article-share-link" data-share="baidu" data-title="Vim基本操作">分享到</a>
+        <a data-url="http://anranz.com/2017/02/22/Vim基本操作/" data-id="cj2rcbatr0019wcvvplotuxg1" class="article-share-link" data-share="baidu" data-title="Vim基本操作">分享到</a>
       
 
       
@@ -1104,166 +1191,6 @@ protected void onDestroy() {
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vim/">Vim</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-文件操作的工具类" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/22/文件操作的工具类/" class="article-date">
-  <time datetime="2017-02-22T03:04:08.000Z" itemprop="datePublished">2017-02-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/22/文件操作的工具类/">文件操作的工具类</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>判断文件类型</p>
-</li>
-<li><p>判断打开方式</p>
-</li>
-<li><p>Android中对多媒体文件的打开操作，图片，视屏，音乐，文本</p>
-</li>
-</ol>
-<hr>
-<h3 id="判断文件类型"><a href="#判断文件类型" class="headerlink" title="判断文件类型"></a>判断文件类型</h3><pre><code>package com.dy.explorer.utils;
-
-/**
- * 获取文件的类型
- */
-public class TypeUtils {
-    public static boolean isTxt(String name){
-        if(name.endsWith(&quot;.txt&quot;)||name.endsWith(&quot;.log&quot;)||name.endsWith(&quot;.rtf&quot;)||name.endsWith(&quot;.conf&quot;)||name.endsWith(&quot;.xml&quot;)){
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean isImage(String name){
-        if(name.endsWith(&quot;.jpg&quot;)||name.endsWith(&quot;.png&quot;)||name.endsWith(&quot;jpeg&quot;)){
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean isVideo(String name){
-        if(name.endsWith(&quot;.mp4&quot;)||name.endsWith(&quot;.avi&quot;)||name.endsWith(&quot;.flv&quot;)||name.endsWith(&quot;.rmvb&quot;)||name.endsWith(&quot;wmv&quot;)||name.endsWith(&quot;.mkv&quot;)||name.equals(&quot;.mov&quot;)||name.endsWith(&quot;.mpeg&quot;)||name.endsWith(&quot;mpg&quot;))
-        {return true;}
-        return false;
-    }
-
-    public static boolean isAudio(String name){
-        if(name.endsWith(&quot;.mp3&quot;)||name.endsWith(&quot;wav&quot;)||name.endsWith(&quot;.wma&quot;)||name.endsWith(&quot;.midi&quot;)){
-            return true;
-        }
-        return false;
-    }
-}
-</code></pre><hr>
-<h3 id="判断打开方式"><a href="#判断打开方式" class="headerlink" title="判断打开方式"></a>判断打开方式</h3><pre><code>if(TypeUtils.isImage(file.getName())){
-  OperationUtils.openPhoto(file.getAbsolutePath());
-}else if(TypeUtils.isAudio(file.getName())){
-  OperationUtils.openAudio(file.getAbsolutePath());
-}else if(TypeUtils.isVideo(file.getName())){
-  OperationUtils.openVideo(file.getAbsolutePath());
-}
-</code></pre><hr>
-<h3 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h3><pre><code>package com.dy.explorer.utils;
-
-import android.content.Intent;
-import android.net.Uri;
-import android.widget.Toast;
-
-import java.io.File;
-
-    /**
-     * 对文件进行操作的工具类
-     */
-    public class OperationUtils {
-        public static void openTxt(String path) {
-            try {
-                //        text/plain
-                Uri uri = Uri.parse(path);
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.setDataAndType(uri, &quot;text/plain&quot;);
-                UiUtils.getContext().startActivity(intent);
-            } catch (Exception ex) {
-                Toast.makeText(UiUtils.getContext(), &quot;系统没有安装打开该文件的应用&quot;, Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        /**
-         * 打开视频
-         *
-         * @param path
-         */
-        public static void openVideo(String path) {
-            Uri uri = Uri.parse(path);
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setDataAndType(uri, &quot;video/mp4&quot;);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            UiUtils.getContext().startActivity(intent);
-        }
-
-        /**
-         * 打开图片
-         *
-         * @param path
-         */
-        public static void openPhoto(String path) {
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setDataAndType(Uri.fromFile(new File(path)), &quot;image/*&quot;);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            UiUtils.getContext().startActivity(intent);
-        }
-
-        /**
-         * 打开音频文件
-         *
-         * @param absolutePath
-         */
-        public static void openAudio(String absolutePath) {
-            Intent intent = new Intent();
-            intent.setAction(android.content.Intent.ACTION_VIEW);
-            Uri uri = Uri.parse(&quot;file:&quot; + absolutePath);
-            intent.setDataAndType(uri, &quot;audio/*&quot;);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            UiUtils.getContext().startActivity(intent);
-        }
-    }
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/02/22/文件操作的工具类/" data-id="cj2l8y1q8001jy0vv49zgesqv" class="article-share-link" data-share="baidu" data-title="文件操作的工具类">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/02/22/文件操作的工具类/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
 
     </footer>
   </div>
@@ -1288,7 +1215,7 @@ import java.io.File;
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxJava/">RxJava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">4</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material-Design/">Material Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxJava/">RxJava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -1297,7 +1224,7 @@ import java.io.File;
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="/tags/Ubuntu/" style="font-size: 12px;">Ubuntu</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 18px;">设计模式</a> <a href="/tags/随想/" style="font-size: 16px;">随想</a>
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Material-Design/" style="font-size: 10px;">Material Design</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 18.33px;">Python</a> <a href="/tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="/tags/Ubuntu/" style="font-size: 11.67px;">Ubuntu</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 16.67px;">设计模式</a> <a href="/tags/随想/" style="font-size: 15px;">随想</a>
     </div>
   </div>
 
@@ -1306,7 +1233,7 @@ import java.io.File;
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年05月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
     </div>
   </div>
 
@@ -1316,6 +1243,10 @@ import java.io.File;
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/05/16/Android-Material-design使用/">Android Material design使用</a>
+          </li>
         
           <li>
             <a href="/2017/05/12/Windows-Ubuntu双系统安装/">Windows+Ubuntu双系统安装</a>
@@ -1331,10 +1262,6 @@ import java.io.File;
         
           <li>
             <a href="/2017/03/24/Android视频播放/">Android视频播放</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/22/Ubuntu搭建Web开发环境/">Ubuntu搭建Web开发环境</a>
           </li>
         
       </ul>
