@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>http://anranz.com/2017/03/16/Ubuntu16-04%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91Android6-0%E6%BA%90%E7%A0%81/</loc>
+    <lastmod>2017-05-25T05:42:26.786Z</lastmod>
+    <data>
+        <display>
+        <title>Ubuntu16.04下载编译Android6.0源码</title>
+        <pubTime>2017-03-16T07:04:26.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://anranz.com/2017/05/16/Android-Material-design%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2017-05-16T09:20:51.418Z</lastmod>
     <data>
@@ -121,23 +138,6 @@
         <display>
         <title>Android网络请求框架Rrtrofit的使用总结</title>
         <pubTime>2017-03-22T01:33:54.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://anranz.com/2017/03/16/Ubuntu16-04%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91Android6-0%E6%BA%90%E7%A0%81/</loc>
-    <lastmod>2017-03-22T01:25:03.687Z</lastmod>
-    <data>
-        <display>
-        <title>Ubuntu16.04下载编译Android6.0源码</title>
-        <pubTime>2017-03-16T07:04:26.000Z</pubTime>
         
         <tag>Android</tag>
          
@@ -819,21 +819,6 @@
         <display>
         <title>Java设计模式.md</title>
         <pubTime>2017-02-17T03:25:59.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://anranz.com/2017/01/09/hello-world/</loc>
-    <lastmod>2017-01-09T03:05:39.372Z</lastmod>
-    <data>
-        <display>
-        <title>Hello World</title>
-        <pubTime>2017-01-09T03:05:39.368Z</pubTime>
         
          
            

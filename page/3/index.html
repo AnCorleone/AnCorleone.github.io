@@ -221,7 +221,7 @@ import java.io.File;
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/22/文件操作的工具类/" data-id="cj2rcbau2001jwcvvx7zgdhke" class="article-share-link" data-share="baidu" data-title="文件操作的工具类">分享到</a>
+        <a data-url="http://anranz.com/2017/02/22/文件操作的工具类/" data-id="cj33ztwd7001rxgvvqlnjuqgv" class="article-share-link" data-share="baidu" data-title="文件操作的工具类">分享到</a>
       
 
       
@@ -230,631 +230,6 @@ import java.io.File;
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-MYSQL的修改和删除" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/MYSQL的修改和删除/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/MYSQL的修改和删除/">MySql的修改和删除.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="数据库的修改和删除"><a href="#数据库的修改和删除" class="headerlink" title="数据库的修改和删除"></a>数据库的修改和删除</h3><ol>
-<li>打开数据库 ‘sudo service mysql start’</li>
-<li>登录数据库 ‘mysql -u root -p’</li>
-<li>查看数据卡 show databsaes</li>
-<li>删除数据库 drop databsaes 数据库名</li>
-<li>连接数据库 use 数据库名</li>
-<li>显示数据库中的表 show tables</li>
-<li>查看表中的类容 select * from 表名</li>
-<li>修改表的名字 rename table 旧表名 to 新表名</li>
-<li>删除一张表 drop table 表名</li>
-<li>增加列 alter table 表名 add column 列名字 数据类型 约束 eg: alter table employee add height int(4) default 170  (给employee 表增加height列 )</li>
-<li>增加列并指定新增列的位置 使用after  eg: alter table employee add height int(4) dafault 170 after age ; 新增加列放在第一个使用 first</li>
-<li>删除一列 alter table 表名 drop column 列名字</li>
-<li>修改表中的某个值 update 表名 set 列1=值1，列2=值2 where 条件 eg: update employee set age=24,salary=300 where name = ‘Tom’</li>
-<li>根据条件删除一列 delete table from employee where name=’Tom’;</li>
-</ol>
-<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><ol>
-<li>增加索引 create index 索引名字 on 表名（列名）<br>eg : create index idx_id on employee(id)</li>
-</ol>
-<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>视图是从一个或多个表中取出数据在窗口中展示，可以看作一张表，但数据依赖原表</p>
-<ol>
-<li>创建视图的语句: create view 视图名字（列a,列b，列c) as select 列1,列2,列3 from 表名<br>eg : create view v_emp(v_name,v_age,v_salary) as select name,age,salary from employee;</li>
-</ol>
-<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><blockquote>
-<p>把文件中的数据导入表中</p>
-</blockquote>
-<ol>
-<li>导入语句格式 load data infile ‘文件路径’ to 表名<br>eg: load data infile ‘/home/anakin/MySql/SQL6/in.txt’ to employee</li>
-</ol>
-<h3 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h3><blockquote>
-<p>将表中的数据导出到文本中</p>
-</blockquote>
-<ol>
-<li>导出的语句格式：select name,age into outfile ‘文件路径和文件名’ from 表名<br>eg : select * into outfile ‘/tmp/out.txt’ from employee</li>
-</ol>
-<h3 id="数据库备份"><a href="#数据库备份" class="headerlink" title="数据库备份"></a>数据库备份</h3><blockquote>
-<p>使用mysqldump备份数据库，生成sql脚本文件</p>
-</blockquote>
-<ol>
-<li><p>备份整个数据库 mysqldump -u root 数据库名&gt;备份文件名</p>
-</li>
-<li><p>备份数据表 mysqldump -u root 数据库名 表名&gt;备份文件名</p>
-</li>
-</ol>
-<p>eg : mysqldump -u root -p mysql_shiyanlou&gt;bak.sql;</p>
-<h3 id="数据库恢复"><a href="#数据库恢复" class="headerlink" title="数据库恢复"></a>数据库恢复</h3><ol>
-<li>恢复数据的语句：<ol>
-<li>使用source sql 脚本</li>
-<li>新建一个数据库 create database test;  恢复数据 mysqldump -u root -p test&lt;bak.sqp</li>
-</ol>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/02/17/MYSQL的修改和删除/" data-id="cj2rcbasj000fwcvvmrb6rtsh" class="article-share-link" data-share="baidu" data-title="MySql的修改和删除.md">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/02/17/MYSQL的修改和删除/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-设计模式-单例模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/设计模式-单例模式/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-单例模式/">单例设计模式.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>确保某一类只有一个实例，而且自行实例化并向整个系统提供这个实例</p>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景:"></a>使用场景:</h3><p>确保某个类只存在一个对象,当创建这个对象需要消耗过多的资源时,例如IO 的读取数据库等操作</p>
-<pre><code>/**
- * 第二种方法
- */
-private static CEO mInstance = null;
-
-private CEO() {
-}
-public static CEO getInstance() {
-    if (mInstance == null) {
-        synchronized (CEO.class){
-            if (mInstance == null) {
-                mInstance = new CEO();
-            }
-        }
-    }
-    return mInstance;
-}
-</code></pre><hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/02/17/设计模式-单例模式/" data-id="cj2rcbavu0030wcvvs9dayq5a" class="article-share-link" data-share="baidu" data-title="单例设计模式.md">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/02/17/设计模式-单例模式/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java设计模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/Java设计模式/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/Java设计模式/">Java设计模式.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><h3 id="1-单一职责原则"><a href="#1-单一职责原则" class="headerlink" title="1.单一职责原则 :"></a>1.单一职责原则 :</h3><blockquote>
-<p>一个类只负责一个功能领域中的相应职责</p>
-</blockquote>
-<h3 id="2-开闭原则"><a href="#2-开闭原则" class="headerlink" title="2. 开闭原则 :"></a>2. 开闭原则 :</h3><blockquote>
-<p>一个软件实体应当对扩展开放，对修改关闭</p>
-</blockquote>
-<h3 id="3-里氏代换原则"><a href="#3-里氏代换原则" class="headerlink" title="3. 里氏代换原则 :"></a>3. 里氏代换原则 :</h3><blockquote>
-<p>　所有应用基类（父类）的地方，必须能透明的使用其子类对象</p>
-</blockquote>
-<ol>
-<li>使用原则 : 在程序设计时,尽量使用基类类型对对象进行定义,而在运行时再确定子类类型,用子类对象替换父类对象</li>
-</ol>
-<h3 id="4-依赖倒转原则"><a href="#4-依赖倒转原则" class="headerlink" title="4. 依赖倒转原则"></a>4. 依赖倒转原则</h3><blockquote>
-<p>抽象不应该依赖于细节,细节应当依赖于抽象.换言之就是,要面向接口编程,而不是针对实现编程.</p>
-<p>程序代码中传递参数或关联关系时,尽量应用层次高的抽象层类,既使用抽象类,接口进行变量类型声明,参数声明,返回值类型声明,以及数据类型的转换等,而不要用具体的类来做这些事.</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/02/17/Java设计模式/" data-id="cj2rcbasr000kwcvv3e2qpyw5" class="article-share-link" data-share="baidu" data-title="Java设计模式.md">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/02/17/Java设计模式/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-设计模式-代理模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/设计模式-代理模式/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-代理模式/">代理模式.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>代理模式是对象结构模式,代理模式给某个对象提供一个代理对象,并由代理对象控制控制原对象的引用.</p>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><h3 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h3><p>定义抽象类</p>
-<pre><code>package com.anakin.design_pattern_test.proxy_method;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public abstract class AbstractObject {
-
-    // 需要的操作
-    public abstract void operation();
-
-}
-</code></pre><hr>
-<p>定义真正的实现的类</p>
-<pre><code>package com.anakin.design_pattern_test.proxy_method;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public class RealObject extends AbstractObject {
-    @Override
-    public void operation() {
-        System.out.println(&quot;  need to do something &gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
-    }
-}
-</code></pre><hr>
-<p>定义代理类</p>
-<pre><code>package com.anakin.design_pattern_test.proxy_method;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public class ProxyObject extends AbstractObject {
-    @Override
-    public void operation() {
-        // 调用具体操作前可以做操作
-        AbstractObject real = new RealObject();
-        real.operation();
-        // 调用具体操作后可以做操作
-    }
-}
-</code></pre><hr>
-<p>测试</p>
-<pre><code>// 代理模式测试
-AbstractObject proxy =new ProxyObject();
-proxy.operation();
-</code></pre><hr>
-<p>测试结果</p>
-<pre><code>02-08 09:46:41.821 18278-18278/com.anakin.design_pattern_test I/System.out:   need to do something &gt;&gt;&gt;&gt;&gt;&gt;&gt;
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/02/17/设计模式-代理模式/" data-id="cj2rcbav9002owcvvfj9atic0" class="article-share-link" data-share="baidu" data-title="代理模式.md">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/02/17/设计模式-代理模式/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-设计模式-模版模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/设计模式-模版模式/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-模版模式/">模版模式.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##模版模式</p>
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义 :"></a>定义 :</h3><p>定一个操作中的算法框架,而将一些步骤延迟到子类中,使子类不用改变算法的结构重新定义算法中的步骤.</p>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
-<li>多个子类共有方法并且逻辑基本相同</li>
-<li>重要,复杂的核心算法,可以把核心算法设计成模版方法,周边的具体细节由子类去实现</li>
-<li>重构时,将相同的代码抽取到父类中,然后通过子函数约束其行为</li>
-</ol>
-<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><ol>
-<li>以电脑开机为例,基本过程相同,不同的电脑具体细节不同</li>
-</ol>
-<p><strong> 开机的父类定义模版方法,调用开机的过程</strong></p>
-<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.templatemethod;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public abstract class OpenComputer {
-
-    public void loadOs() {
-        System.out.println(&quot;加载系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
-    }
-
-    public void checkHardware() {
-        System.out.println(&quot;检查防火墙&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
-    }
-
-
-    public void powerOn() {
-        System.out.println(&quot;连接电源&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
-    }
-
-    public void login() {
-        System.out.println(&quot;验证登录系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
-    }
-
-    public final void  startUp(){
-        System.out.println(&quot;=========== open start ============&quot;);
-        powerOn();
-        checkHardware();
-        loadOs();
-        login();
-        System.out.println(&quot;=========== open end  ============&quot;);
-    }
-
-}
-</code></pre><hr>
-<ol>
-<li>以程序员的电脑和军人的电脑开机为例,程序在登录的时候需要输出密码,而军人的电脑在开机的过程中需要检查防火墙</li>
-</ol>
-<p><strong> 程序员的电脑</strong></p>
-<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.templatemethod;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public class CoderComputer extends OpenComputer {
-
-    @Override
-    public void login() {
-//        super.login();
-        System.out.println(&quot; ......... coder&apos;s computer open login &quot;);
-    }
-}
-</code></pre><hr>
-<p><strong> 军人的电脑 </strong></p>
-<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.templatemethod;
-
-/**
- * Created by demo on 2017/2/8 0008
- */
-public class MilitaryComputer extends OpenComputer {
-
-    @Override
-    public void checkHardware() {
-        System.out.println(&quot; military&apos;s is check haedware !!!!!!!!!!!&quot;);
-    }
-}
-</code></pre><hr>
-<p><strong> 测试 </strong></p>
-<pre><code>// 模版模式测试
-     OpenComputer coderPc = new CoderComputer();
-     coderPc.startUp();
-
-     OpenComputer militaryPc = new MilitaryComputer();
-     militaryPc.startUp();
-</code></pre><hr>
-<p><strong> 测试结果 </strong></p>
-<pre><code>02-08 08:53:19.246 3221-3221/com.anakin.design_pattern_test I/System.out: =========== open start ============
-02-08 08:53:19.246 3221-3221/com.anakin.design_pattern_test I/System.out: 连接电源&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
-02-08 08:53:19.246 3221-3221/com.anakin.design_pattern_test I/System.out: 检查防火墙&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
-02-08 08:53:19.246 3221-3221/com.anakin.design_pattern_test I/System.out: 加载系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
-02-08 08:53:19.247 3221-3221/com.anakin.design_pattern_test I/System.out:  ......... coder&apos;s computer open login
-02-08 08:53:19.247 3221-3221/com.anakin.design_pattern_test I/System.out: =========== open end  ============
-02-08 08:53:19.247 3221-3221/com.anakin.design_pattern_test I/System.out: =========== open start ============
-02-08 08:53:19.247 3221-3221/com.anakin.design_pattern_test I/System.out: 连接电源&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
-02-08 08:53:19.248 3221-3221/com.anakin.design_pattern_test I/System.out:  military&apos;s is check haedware !!!!!!!!!!!
-02-08 08:53:19.248 3221-3221/com.anakin.design_pattern_test I/System.out: 加载系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
-02-08 08:53:19.248 3221-3221/com.anakin.design_pattern_test I/System.out: 验证登录系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
-02-08 08:53:19.253 3221-3221/com.anakin.design_pattern_test I/System.out: =========== open end  ============
-</code></pre><p>　</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/02/17/设计模式-模版模式/" data-id="cj2rcbavt002ywcvv7j35js90" class="article-share-link" data-share="baidu" data-title="模版模式.md">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/02/17/设计模式-模版模式/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-MySQL进阶-操作详解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/MySQL进阶-操作详解/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/MySQL进阶-操作详解/">MySQL基本操作.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="MySQL基本操作"><a href="#MySQL基本操作" class="headerlink" title="MySQL基本操作"></a>MySQL基本操作</h3><ol>
-<li><p>打开数据库 sudo service mysql start;</p>
-</li>
-<li><p>连接数据库 mysql -u root -p</p>
-</li>
-<li><p>查看数据库 show dabases</p>
-</li>
-<li><p>使用数据库 use 数据库名字</p>
-</li>
-<li><p>创建数据库 create database 数据库名 eg : create database test</p>
-</li>
-<li><p>创建表 create table 表名（列名 数据类型 约束）<br>eg : create table pet(name VARCHAR(20),owner VARCHAR(20),species VARCHAR(20),sex CHAR(1),birth DATE , death DATE);</p>
-</li>
-<li><p>查看创建的表 DESCRIBE pet;</p>
-</li>
-<li><p>插入数据 insert into test VALUES(‘tom’,’panda’,’hamster’,’f’,’2017-02-06’，NULL);</p>
-</li>
-<li><p>从表中检索数据 select * from pet;</p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/02/17/MySQL进阶-操作详解/" data-id="cj2rcbasv000mwcvvh3kq8dye" class="article-share-link" data-share="baidu" data-title="MySQL基本操作.md">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/02/17/MySQL进阶-操作详解/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-设计模式-工厂方法模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/设计模式-工厂方法模式/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-工厂方法模式/">工厂方法模式.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式　"></a>工厂方法模式　</h2><p>和简单工厂模式不同是,简单工厂模式,实例都由一个工厂类创建,工厂类的代码量会比较多,而且增加新的对象需要修改工厂类的代码,增加if else 的判断.</p>
-<p>工厂模式,创建产品的抽象类和实现类,以及工厂的抽象类和实现类.</p>
-<p>以打印log为例,log的存储方式可以是db也可以是file中,需要创建Logger的抽象类,具体是FileLogger实现类和DbLogger的实现类,工厂的抽象类LoggerFactory,和具体的实现类DbLoggerFactory,FileLoggerFactory</p>
-<ol>
-<li>在抽象Logger类中定义公共的抽象方法writeLog()</li>
-<li>在具体实现类DbLogger和FileLogger中实现各自的具体的writeLog方法</li>
-<li>在抽象的工厂类中定义抽象的创建对象的方法creatLogger()</li>
-<li>在具体的实类DbLoggerFactory,FileLoggerFactory中实现方法,创建DbLogger和FileLogger的实例,并返回其父类Logger</li>
-<li>客户端的使用 : 根据需要创建工厂的实例,调用实例中创建对象的方法creatLogger返回具体log存放的实例对象,在调用具体打印log的方法writeLog()</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/02/17/设计模式-工厂方法模式/" data-id="cj2rcbav8002mwcvvao0ejv31" class="article-share-link" data-share="baidu" data-title="工厂方法模式.md">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/02/17/设计模式-工厂方法模式/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-设计模式-简单工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/设计模式-简单工厂模式/" class="article-date">
-  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-简单工厂模式/">简单工厂模式.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##　简单工厂模式</p>
-<ol>
-<li>定义抽象的工厂类</li>
-<li>工厂类包定义公共的方法实现，和不同实现的抽象方法</li>
-<li>定义根据参数创建实例对象，返回抽象类的静态方法</li>
-<li>使用静态方法传入要获取对象的tag,获取对象的实例，调用实例的方法</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/02/17/设计模式-简单工厂模式/" data-id="cj2rcbavr002wwcvv6oehtm3m" class="article-share-link" data-share="baidu" data-title="简单工厂模式.md">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/02/17/设计模式-简单工厂模式/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
 
     </footer>
   </div>
@@ -994,7 +369,7 @@ public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistent
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/Android基础知识-md/" data-id="cj2rcbas6000awcvv2cs7ixmx" class="article-share-link" data-share="baidu" data-title="Android基础知识.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/Android基础知识-md/" data-id="cj33ztwa90006xgvvcr1tgehf" class="article-share-link" data-share="baidu" data-title="Android基础知识.md">分享到</a>
       
 
       
@@ -1003,6 +378,753 @@ public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistent
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式-模版模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/设计模式-模版模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/设计模式-模版模式/">模版模式.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##模版模式</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义 :"></a>定义 :</h3><p>定一个操作中的算法框架,而将一些步骤延迟到子类中,使子类不用改变算法的结构重新定义算法中的步骤.</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
+<li>多个子类共有方法并且逻辑基本相同</li>
+<li>重要,复杂的核心算法,可以把核心算法设计成模版方法,周边的具体细节由子类去实现</li>
+<li>重构时,将相同的代码抽取到父类中,然后通过子函数约束其行为</li>
+</ol>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><ol>
+<li>以电脑开机为例,基本过程相同,不同的电脑具体细节不同</li>
+</ol>
+<p><strong> 开机的父类定义模版方法,调用开机的过程</strong></p>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.templatemethod;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public abstract class OpenComputer {
+
+    public void loadOs() {
+        System.out.println(&quot;加载系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
+    }
+
+    public void checkHardware() {
+        System.out.println(&quot;检查防火墙&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
+    }
+
+
+    public void powerOn() {
+        System.out.println(&quot;连接电源&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
+    }
+
+    public void login() {
+        System.out.println(&quot;验证登录系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
+    }
+
+    public final void  startUp(){
+        System.out.println(&quot;=========== open start ============&quot;);
+        powerOn();
+        checkHardware();
+        loadOs();
+        login();
+        System.out.println(&quot;=========== open end  ============&quot;);
+    }
+
+}
+</code></pre><hr>
+<ol>
+<li>以程序员的电脑和军人的电脑开机为例,程序在登录的时候需要输出密码,而军人的电脑在开机的过程中需要检查防火墙</li>
+</ol>
+<p><strong> 程序员的电脑</strong></p>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.templatemethod;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class CoderComputer extends OpenComputer {
+
+    @Override
+    public void login() {
+//        super.login();
+        System.out.println(&quot; ......... coder&apos;s computer open login &quot;);
+    }
+}
+</code></pre><hr>
+<p><strong> 军人的电脑 </strong></p>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.templatemethod;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class MilitaryComputer extends OpenComputer {
+
+    @Override
+    public void checkHardware() {
+        System.out.println(&quot; military&apos;s is check haedware !!!!!!!!!!!&quot;);
+    }
+}
+</code></pre><hr>
+<p><strong> 测试 </strong></p>
+<pre><code>// 模版模式测试
+     OpenComputer coderPc = new CoderComputer();
+     coderPc.startUp();
+
+     OpenComputer militaryPc = new MilitaryComputer();
+     militaryPc.startUp();
+</code></pre><hr>
+<p><strong> 测试结果 </strong></p>
+<pre><code>02-08 08:53:19.246 3221-3221/com.anakin.design_pattern_test I/System.out: =========== open start ============
+02-08 08:53:19.246 3221-3221/com.anakin.design_pattern_test I/System.out: 连接电源&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+02-08 08:53:19.246 3221-3221/com.anakin.design_pattern_test I/System.out: 检查防火墙&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+02-08 08:53:19.246 3221-3221/com.anakin.design_pattern_test I/System.out: 加载系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+02-08 08:53:19.247 3221-3221/com.anakin.design_pattern_test I/System.out:  ......... coder&apos;s computer open login
+02-08 08:53:19.247 3221-3221/com.anakin.design_pattern_test I/System.out: =========== open end  ============
+02-08 08:53:19.247 3221-3221/com.anakin.design_pattern_test I/System.out: =========== open start ============
+02-08 08:53:19.247 3221-3221/com.anakin.design_pattern_test I/System.out: 连接电源&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+02-08 08:53:19.248 3221-3221/com.anakin.design_pattern_test I/System.out:  military&apos;s is check haedware !!!!!!!!!!!
+02-08 08:53:19.248 3221-3221/com.anakin.design_pattern_test I/System.out: 加载系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+02-08 08:53:19.248 3221-3221/com.anakin.design_pattern_test I/System.out: 验证登录系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+02-08 08:53:19.253 3221-3221/com.anakin.design_pattern_test I/System.out: =========== open end  ============
+</code></pre><p>　</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/02/17/设计模式-模版模式/" data-id="cj33ztwfz0036xgvvh1876zq7" class="article-share-link" data-share="baidu" data-title="模版模式.md">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/02/17/设计模式-模版模式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式-Builder模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/设计模式-Builder模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/设计模式-Builder模式/">Builder模式.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Builder模式"><a href="#Builder模式" class="headerlink" title="Builder模式"></a>Builder模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>将复杂的创建与他的表示分离,使同样的创建过程可以创建不同的表示</p>
+<h3 id="设计的步骤"><a href="#设计的步骤" class="headerlink" title="设计的步骤:"></a>设计的步骤:</h3><pre><code>Builder builder = new AppleBuilder();
+        Director director = new Director(builder);
+        director.construct(4,2,&quot;linux&quot;);
+        Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
+</code></pre><hr>
+<ol>
+<li><p>以组装电脑为例,创建电脑的抽象类,包含os ram,core定义,提供设置的抽象方法</p>
+</li>
+<li><p>创建要组装的具体电脑类AppleComputer,继承Computer类,实现所用方法</p>
+</li>
+<li><p>创建抽象的Builder类,提供builder的设置方法,另外提供返回Computer的create的抽象方法</p>
+</li>
+<li><p>创建具体的AppleBuilder类实现抽象方法,创建AppleComputer 实例对象,并设置数据,返回AppleComputer的实例</p>
+</li>
+<li><p>创建具体的Director类,构造方法中接受builder对象,提供接受数据的construct 方法,将参数传递给builder对象</p>
+</li>
+<li><p>传递的参数最终被AppleBuilder接收,并返回一个具体的AppleComputer对象</p>
+</li>
+</ol>
+<h3 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h3><pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public abstract class Computer {
+    protected int mCore = 1;
+    protected int mRam = 10;
+    protected String mOs = &quot;dos&quot;;
+
+    protected Computer() {
+
+    }
+
+    public abstract void setCore(int core);
+
+    public abstract void setRem(int rem);
+
+    public abstract void setOs(String os);
+
+    @Override
+    public String toString() {
+        return &quot;Computer{&quot; +
+                &quot;mCore=&quot; + mCore +
+                &quot;, mRam=&quot; + mRam +
+                &quot;, mOs=&apos;&quot; + mOs + &apos;\&apos;&apos; +
+                &apos;}&apos;;
+    }
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class AppleComputer extends Computer {
+
+
+    protected AppleComputer() {
+
+    }
+
+    @Override
+    public void setCore(int core) {
+        this.mCore = core;
+    }
+
+    @Override
+    public void setRem(int ram) {
+        this.mRam = ram;
+    }
+
+    @Override
+    public void setOs(String os) {
+        this.mOs = os;
+    }
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+* Created by demo on 2017/2/8 0008
+*/
+public class AppleBuilder extends Builder {
+
+private  Computer mApplePc =new AppleComputer();
+@Override
+public void buildCore(int core) {
+    mApplePc.setCore(core);
+}
+
+@Override
+public void buildRam(int ram) {
+    mApplePc.setRem(ram);
+}
+
+@Override
+public void buildOs(String os) {
+    mApplePc.setOs(os);
+}
+
+@Override
+public Computer create() {
+
+    return mApplePc;
+}
+
+
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public abstract class Builder {
+
+
+    public abstract void buildCore(int core);
+
+    public abstract void buildRam(int ram);
+
+    public abstract void buildOs(String os);
+
+    public abstract Computer create();
+}
+</code></pre><hr>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.builder;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class Director {
+    Builder mBuilder=null;
+
+    public Director(Builder builder) {
+        mBuilder = builder;
+    }
+
+    public void construct(int core,int ram, String os){
+        mBuilder.buildCore(core);
+        mBuilder.buildRam(ram);
+        mBuilder.buildOs(os);
+    }
+}
+</code></pre><hr>
+<p> 测试代码</p>
+<pre><code>// 测试运行效果
+      Builder builder = new AppleBuilder();
+      Director director = new Director(builder);
+      director.construct(4,2,&quot;linux&quot;);
+      Log.d(TAG,&quot;test result &gt;&gt;&gt;&gt;&gt; :: &quot; +builder.create().toString());
+</code></pre><hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/02/17/设计模式-Builder模式/" data-id="cj33ztwe2002fxgvv9cfebdcu" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/02/17/设计模式-Builder模式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式-简单工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/设计模式-简单工厂模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/设计模式-简单工厂模式/">简单工厂模式.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##　简单工厂模式</p>
+<ol>
+<li>定义抽象的工厂类</li>
+<li>工厂类包定义公共的方法实现，和不同实现的抽象方法</li>
+<li>定义根据参数创建实例对象，返回抽象类的静态方法</li>
+<li>使用静态方法传入要获取对象的tag,获取对象的实例，调用实例的方法</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/02/17/设计模式-简单工厂模式/" data-id="cj33ztwfj0030xgvvkerxnpvw" class="article-share-link" data-share="baidu" data-title="简单工厂模式.md">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/02/17/设计模式-简单工厂模式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/Java设计模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/Java设计模式/">Java设计模式.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><h3 id="1-单一职责原则"><a href="#1-单一职责原则" class="headerlink" title="1.单一职责原则 :"></a>1.单一职责原则 :</h3><blockquote>
+<p>一个类只负责一个功能领域中的相应职责</p>
+</blockquote>
+<h3 id="2-开闭原则"><a href="#2-开闭原则" class="headerlink" title="2. 开闭原则 :"></a>2. 开闭原则 :</h3><blockquote>
+<p>一个软件实体应当对扩展开放，对修改关闭</p>
+</blockquote>
+<h3 id="3-里氏代换原则"><a href="#3-里氏代换原则" class="headerlink" title="3. 里氏代换原则 :"></a>3. 里氏代换原则 :</h3><blockquote>
+<p>　所有应用基类（父类）的地方，必须能透明的使用其子类对象</p>
+</blockquote>
+<ol>
+<li>使用原则 : 在程序设计时,尽量使用基类类型对对象进行定义,而在运行时再确定子类类型,用子类对象替换父类对象</li>
+</ol>
+<h3 id="4-依赖倒转原则"><a href="#4-依赖倒转原则" class="headerlink" title="4. 依赖倒转原则"></a>4. 依赖倒转原则</h3><blockquote>
+<p>抽象不应该依赖于细节,细节应当依赖于抽象.换言之就是,要面向接口编程,而不是针对实现编程.</p>
+<p>程序代码中传递参数或关联关系时,尽量应用层次高的抽象层类,既使用抽象类,接口进行变量类型声明,参数声明,返回值类型声明,以及数据类型的转换等,而不要用具体的类来做这些事.</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/02/17/Java设计模式/" data-id="cj33ztwas000exgvvow8c0f4k" class="article-share-link" data-share="baidu" data-title="Java设计模式.md">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/02/17/Java设计模式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式-观察者模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/设计模式-观察者模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/设计模式-观察者模式/">观察者模式.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><h3 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h3><ol>
+<li>观察者模式基本组成是，观察者Observer和被观察者（观察目标）Subject,当目标发生改变的时候，观察者会随之改变</li>
+<li>一个被观察者可以被多个观察者观察</li>
+<li>被观察者一般提供一个集合保存观察者，提供对观察者的管理，删除和增加观察者，提供一个抽象的notify方法，由具体的被观察者实现，实现方式为，遍历观察者的集合，调用观察者的update()方法，通知每一个观察者</li>
+<li>观察者申明为一个接口，一般提供update()方法，由不同的观察者去实现，具体的观察者在接收到观察者的notify()后做出相应的更新</li>
+</ol>
+<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><ol>
+<li>观察者提供update()方法，在update()方法中变量观察者的集合，调用观察者的update()方法</li>
+<li>一般定义被观察者为抽象类提供管理观察者的方法，和抽象的notify()方法</li>
+<li>一般将观察者声明为接口，提供update()方法，由具体的观察者去实现，根据需要对被观察者的改变做出不同的实现</li>
+</ol>
+<hr>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p><strong> 背景：</strong></p>
+<p>以游戏为例，多人组队玩一个游戏，当有一个人遭受攻击时向控制中心发消息，控制中心收到消息通知每个队友，队友收到消息过来支援</p>
+<ul>
+<li>每个队员都作为观察者，被观察者为控制中心</li>
+<li>当有队员Player受到攻击时，调用控制中心的notifyObsever() 方法，在notifyObsever()方法中遍历观察者也就是所有队员，会调用所有队友的help() 方法</li>
+</ul>
+<h3 id="代码过程"><a href="#代码过程" class="headerlink" title="代码过程"></a>代码过程</h3><ol>
+<li><p>观察者的接口 ：观察者的接口Observer 申明了help（），beAttached()方法</p>
+</li>
+<li><p>具体的观察者 ：具体的观察者Player类，实现接口中的方法</p>
+</li>
+<li><p>被观察者抽象类 ：被观察者抽象类AllyControlCenter,包括对观察的管理的集合和join()和quit()方法，和通知每个观察者的抽象方法notifyObsever()方法，</p>
+</li>
+<li><p>被观察者 ：被观察者的实现类ConcreteAllyControlCenter ，是先notifyObsever()方法，遍历观察者集合，调用每个人观察者对象的help()方法</p>
+</li>
+<li><p>客户端 ：创建观察者对象Observer player = new Player()，创建被观察者实例AllyControlCenter ally = new ConcreteAllyControlCenter();，将观察者加入到集合中， all.join(Player),player调用beAttached(),所有观察者收到消息调用help()方法，（当被观察者触发beAttached() 方法时候，在beAttached()中调用notifyObsever() 方法通知每个观察者调用help()方法）</p>
+</li>
+</ol>
+<h3 id="代码调用流程"><a href="#代码调用流程" class="headerlink" title="代码调用流程"></a>代码调用流程</h3><p> player.beAttached()—–&gt; AllyControlCenter.notifyObsever()—-&gt; player.help()</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/02/17/设计模式-观察者模式/" data-id="cj33ztweq002yxgvvihq4xnwc" class="article-share-link" data-share="baidu" data-title="观察者模式.md">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/02/17/设计模式-观察者模式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MySQL进阶-操作详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/MySQL进阶-操作详解/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/MySQL进阶-操作详解/">MySQL基本操作.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="MySQL基本操作"><a href="#MySQL基本操作" class="headerlink" title="MySQL基本操作"></a>MySQL基本操作</h3><ol>
+<li><p>打开数据库 sudo service mysql start;</p>
+</li>
+<li><p>连接数据库 mysql -u root -p</p>
+</li>
+<li><p>查看数据库 show dabases</p>
+</li>
+<li><p>使用数据库 use 数据库名字</p>
+</li>
+<li><p>创建数据库 create database 数据库名 eg : create database test</p>
+</li>
+<li><p>创建表 create table 表名（列名 数据类型 约束）<br>eg : create table pet(name VARCHAR(20),owner VARCHAR(20),species VARCHAR(20),sex CHAR(1),birth DATE , death DATE);</p>
+</li>
+<li><p>查看创建的表 DESCRIBE pet;</p>
+</li>
+<li><p>插入数据 insert into test VALUES(‘tom’,’panda’,’hamster’,’f’,’2017-02-06’，NULL);</p>
+</li>
+<li><p>从表中检索数据 select * from pet;</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/02/17/MySQL进阶-操作详解/" data-id="cj33ztwb6000sxgvvt2nwz0dp" class="article-share-link" data-share="baidu" data-title="MySQL基本操作.md">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/02/17/MySQL进阶-操作详解/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式-单例模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/设计模式-单例模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/设计模式-单例模式/">单例设计模式.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>确保某一类只有一个实例，而且自行实例化并向整个系统提供这个实例</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景:"></a>使用场景:</h3><p>确保某个类只存在一个对象,当创建这个对象需要消耗过多的资源时,例如IO 的读取数据库等操作</p>
+<pre><code>/**
+ * 第二种方法
+ */
+private static CEO mInstance = null;
+
+private CEO() {
+}
+public static CEO getInstance() {
+    if (mInstance == null) {
+        synchronized (CEO.class){
+            if (mInstance == null) {
+                mInstance = new CEO();
+            }
+        }
+    }
+    return mInstance;
+}
+</code></pre><hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/02/17/设计模式-单例模式/" data-id="cj33ztwei002uxgvvmg297x6l" class="article-share-link" data-share="baidu" data-title="单例设计模式.md">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/02/17/设计模式-单例模式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式-代理模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/设计模式-代理模式/" class="article-date">
+  <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/设计模式-代理模式/">代理模式.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>代理模式是对象结构模式,代理模式给某个对象提供一个代理对象,并由代理对象控制控制原对象的引用.</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><h3 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h3><p>定义抽象类</p>
+<pre><code>package com.anakin.design_pattern_test.proxy_method;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public abstract class AbstractObject {
+
+    // 需要的操作
+    public abstract void operation();
+
+}
+</code></pre><hr>
+<p>定义真正的实现的类</p>
+<pre><code>package com.anakin.design_pattern_test.proxy_method;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class RealObject extends AbstractObject {
+    @Override
+    public void operation() {
+        System.out.println(&quot;  need to do something &gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
+    }
+}
+</code></pre><hr>
+<p>定义代理类</p>
+<pre><code>package com.anakin.design_pattern_test.proxy_method;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class ProxyObject extends AbstractObject {
+    @Override
+    public void operation() {
+        // 调用具体操作前可以做操作
+        AbstractObject real = new RealObject();
+        real.operation();
+        // 调用具体操作后可以做操作
+    }
+}
+</code></pre><hr>
+<p>测试</p>
+<pre><code>// 代理模式测试
+AbstractObject proxy =new ProxyObject();
+proxy.operation();
+</code></pre><hr>
+<p>测试结果</p>
+<pre><code>02-08 09:46:41.821 18278-18278/com.anakin.design_pattern_test I/System.out:   need to do something &gt;&gt;&gt;&gt;&gt;&gt;&gt;
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/02/17/设计模式-代理模式/" data-id="cj33ztwel002wxgvv8zz9afu9" class="article-share-link" data-share="baidu" data-title="代理模式.md">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/02/17/设计模式-代理模式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
 
     </footer>
   </div>
@@ -1045,7 +1167,7 @@ public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistent
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">17</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">16</span></li></ul>
     </div>
   </div>
 
