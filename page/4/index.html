@@ -78,9 +78,9 @@
     <div class="outer">
       <section id="main">
   
-    <article id="post-MYSQL的修改和删除" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-设计模式-单例模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/17/MYSQL的修改和删除/" class="article-date">
+    <a href="/2017/02/17/设计模式-单例模式/" class="article-date">
   <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
@@ -92,7 +92,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/MYSQL的修改和删除/">MySql的修改和删除.md</a>
+      <a class="article-title" href="/2017/02/17/设计模式-单例模式/">单例设计模式.md</a>
     </h1>
   
 
@@ -100,72 +100,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="数据库的修改和删除"><a href="#数据库的修改和删除" class="headerlink" title="数据库的修改和删除"></a>数据库的修改和删除</h3><ol>
-<li>打开数据库 ‘sudo service mysql start’</li>
-<li>登录数据库 ‘mysql -u root -p’</li>
-<li>查看数据卡 show databsaes</li>
-<li>删除数据库 drop databsaes 数据库名</li>
-<li>连接数据库 use 数据库名</li>
-<li>显示数据库中的表 show tables</li>
-<li>查看表中的类容 select * from 表名</li>
-<li>修改表的名字 rename table 旧表名 to 新表名</li>
-<li>删除一张表 drop table 表名</li>
-<li>增加列 alter table 表名 add column 列名字 数据类型 约束 eg: alter table employee add height int(4) default 170  (给employee 表增加height列 )</li>
-<li>增加列并指定新增列的位置 使用after  eg: alter table employee add height int(4) dafault 170 after age ; 新增加列放在第一个使用 first</li>
-<li>删除一列 alter table 表名 drop column 列名字</li>
-<li>修改表中的某个值 update 表名 set 列1=值1，列2=值2 where 条件 eg: update employee set age=24,salary=300 where name = ‘Tom’</li>
-<li>根据条件删除一列 delete table from employee where name=’Tom’;</li>
-</ol>
-<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><ol>
-<li>增加索引 create index 索引名字 on 表名（列名）<br>eg : create index idx_id on employee(id)</li>
-</ol>
-<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>视图是从一个或多个表中取出数据在窗口中展示，可以看作一张表，但数据依赖原表</p>
-<ol>
-<li>创建视图的语句: create view 视图名字（列a,列b，列c) as select 列1,列2,列3 from 表名<br>eg : create view v_emp(v_name,v_age,v_salary) as select name,age,salary from employee;</li>
-</ol>
-<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><blockquote>
-<p>把文件中的数据导入表中</p>
-</blockquote>
-<ol>
-<li>导入语句格式 load data infile ‘文件路径’ to 表名<br>eg: load data infile ‘/home/anakin/MySql/SQL6/in.txt’ to employee</li>
-</ol>
-<h3 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h3><blockquote>
-<p>将表中的数据导出到文本中</p>
-</blockquote>
-<ol>
-<li>导出的语句格式：select name,age into outfile ‘文件路径和文件名’ from 表名<br>eg : select * into outfile ‘/tmp/out.txt’ from employee</li>
-</ol>
-<h3 id="数据库备份"><a href="#数据库备份" class="headerlink" title="数据库备份"></a>数据库备份</h3><blockquote>
-<p>使用mysqldump备份数据库，生成sql脚本文件</p>
-</blockquote>
-<ol>
-<li><p>备份整个数据库 mysqldump -u root 数据库名&gt;备份文件名</p>
-</li>
-<li><p>备份数据表 mysqldump -u root 数据库名 表名&gt;备份文件名</p>
-</li>
-</ol>
-<p>eg : mysqldump -u root -p mysql_shiyanlou&gt;bak.sql;</p>
-<h3 id="数据库恢复"><a href="#数据库恢复" class="headerlink" title="数据库恢复"></a>数据库恢复</h3><ol>
-<li>恢复数据的语句：<ol>
-<li>使用source sql 脚本</li>
-<li>新建一个数据库 create database test;  恢复数据 mysqldump -u root -p test&lt;bak.sqp</li>
-</ol>
-</li>
-</ol>
+        <h2 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p>确保某一类只有一个实例，而且自行实例化并向整个系统提供这个实例</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景:"></a>使用场景:</h3><p>确保某个类只存在一个对象,当创建这个对象需要消耗过多的资源时,例如IO 的读取数据库等操作</p>
+<pre><code>/**
+ * 第二种方法
+ */
+private static CEO mInstance = null;
+
+private CEO() {
+}
+public static CEO getInstance() {
+    if (mInstance == null) {
+        synchronized (CEO.class){
+            if (mInstance == null) {
+                mInstance = new CEO();
+            }
+        }
+    }
+    return mInstance;
+}
+</code></pre><hr>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/MYSQL的修改和删除/" data-id="cj33ztwca001axgvvbqsa7yt7" class="article-share-link" data-share="baidu" data-title="MySql的修改和删除.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-单例模式/" data-id="cj33zx14z002i4kvv6bo4vipt" class="article-share-link" data-share="baidu" data-title="单例设计模式.md">分享到</a>
       
 
       
-        <a href="http://anranz.com/2017/02/17/MYSQL的修改和删除/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/02/17/设计模式-单例模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
 
     </footer>
   </div>
@@ -174,9 +142,9 @@
 
 
   
-    <article id="post-设计模式-工厂方法模式" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-设计模式-代理模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/17/设计模式-工厂方法模式/" class="article-date">
+    <a href="/2017/02/17/设计模式-代理模式/" class="article-date">
   <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
@@ -188,7 +156,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/设计模式-工厂方法模式/">工厂方法模式.md</a>
+      <a class="article-title" href="/2017/02/17/设计模式-代理模式/">代理模式.md</a>
     </h1>
   
 
@@ -196,26 +164,66 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式　"></a>工厂方法模式　</h2><p>和简单工厂模式不同是,简单工厂模式,实例都由一个工厂类创建,工厂类的代码量会比较多,而且增加新的对象需要修改工厂类的代码,增加if else 的判断.</p>
-<p>工厂模式,创建产品的抽象类和实现类,以及工厂的抽象类和实现类.</p>
-<p>以打印log为例,log的存储方式可以是db也可以是file中,需要创建Logger的抽象类,具体是FileLogger实现类和DbLogger的实现类,工厂的抽象类LoggerFactory,和具体的实现类DbLoggerFactory,FileLoggerFactory</p>
-<ol>
-<li>在抽象Logger类中定义公共的抽象方法writeLog()</li>
-<li>在具体实现类DbLogger和FileLogger中实现各自的具体的writeLog方法</li>
-<li>在抽象的工厂类中定义抽象的创建对象的方法creatLogger()</li>
-<li>在具体的实类DbLoggerFactory,FileLoggerFactory中实现方法,创建DbLogger和FileLogger的实例,并返回其父类Logger</li>
-<li>客户端的使用 : 根据需要创建工厂的实例,调用实例中创建对象的方法creatLogger返回具体log存放的实例对象,在调用具体打印log的方法writeLog()</li>
-</ol>
+        <h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>代理模式是对象结构模式,代理模式给某个对象提供一个代理对象,并由代理对象控制控制原对象的引用.</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><h3 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h3><p>定义抽象类</p>
+<pre><code>package com.anakin.design_pattern_test.proxy_method;
 
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public abstract class AbstractObject {
+
+    // 需要的操作
+    public abstract void operation();
+
+}
+</code></pre><hr>
+<p>定义真正的实现的类</p>
+<pre><code>package com.anakin.design_pattern_test.proxy_method;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class RealObject extends AbstractObject {
+    @Override
+    public void operation() {
+        System.out.println(&quot;  need to do something &gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
+    }
+}
+</code></pre><hr>
+<p>定义代理类</p>
+<pre><code>package com.anakin.design_pattern_test.proxy_method;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class ProxyObject extends AbstractObject {
+    @Override
+    public void operation() {
+        // 调用具体操作前可以做操作
+        AbstractObject real = new RealObject();
+        real.operation();
+        // 调用具体操作后可以做操作
+    }
+}
+</code></pre><hr>
+<p>测试</p>
+<pre><code>// 代理模式测试
+AbstractObject proxy =new ProxyObject();
+proxy.operation();
+</code></pre><hr>
+<p>测试结果</p>
+<pre><code>02-08 09:46:41.821 18278-18278/com.anakin.design_pattern_test I/System.out:   need to do something &gt;&gt;&gt;&gt;&gt;&gt;&gt;
+</code></pre>
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/设计模式-工厂方法模式/" data-id="cj33ztwe6002kxgvvwypi504p" class="article-share-link" data-share="baidu" data-title="工厂方法模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-代理模式/" data-id="cj33zx14y002g4kvv6y6z7sko" class="article-share-link" data-share="baidu" data-title="代理模式.md">分享到</a>
       
 
       
-        <a href="http://anranz.com/2017/02/17/设计模式-工厂方法模式/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/02/17/设计模式-代理模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -315,7 +323,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/20/MySQL使用/" data-id="cj33ztwak000axgvvtmtodl55" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
+        <a data-url="http://anranz.com/2017/01/20/MySQL使用/" data-id="cj33zx136000k4kvv3yo7datr" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
       
 
       
@@ -391,7 +399,7 @@ public class XMLUtil {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/20/读取XML中的配置参数/" data-id="cj33ztwfy0035xgvvog26ageb" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
+        <a data-url="http://anranz.com/2017/01/20/读取XML中的配置参数/" data-id="cj33zx15c002t4kvvztk4py70" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
       
 
       
@@ -518,7 +526,7 @@ print (c)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/14/自学Python-常用内建模块/" data-id="cj33ztwe0002dxgvv1kvd2bg9" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
+        <a data-url="http://anranz.com/2017/01/14/自学Python-常用内建模块/" data-id="cj33zx14l001z4kvvfi4uc7hx" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
       
 
       
@@ -606,7 +614,7 @@ print (s)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/14/自学Python-正则表达式/" data-id="cj33ztwdq0024xgvv2qhp4pkz" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
+        <a data-url="http://anranz.com/2017/01/14/自学Python-正则表达式/" data-id="cj33zx14n00224kvvnn9e4die" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
       
 
       
@@ -784,7 +792,7 @@ t2.join()
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/13/自学Python-线程和进程/" data-id="cj33ztwdx0029xgvveta34i5e" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/13/自学Python-线程和进程/" data-id="cj33zx14p00244kvvf5yc806j" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
       
 
       
@@ -996,7 +1004,7 @@ print(r)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/13/自学Python-IO编程/" data-id="cj33ztwcz001nxgvv4jmmxuyo" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/13/自学Python-IO编程/" data-id="cj33zx14a001o4kvvmuo8nr3o" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
       
 
       
@@ -1249,7 +1257,7 @@ s()
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/" data-id="cj33ztwef002sxgvv6hpkh3vm" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象高级编程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/" data-id="cj33zx14t00294kvv12n5tqua" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象高级编程">分享到</a>
       
 
       
@@ -1448,7 +1456,7 @@ print(s5)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/11/自学Python-面向对象编程/" data-id="cj33ztwg20038xgvvnje8ogru" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象编程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/11/自学Python-面向对象编程/" data-id="cj33zx14q00264kvvfe0khx6r" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象编程">分享到</a>
       
 
       
