@@ -4,6 +4,65 @@
 
     
   <url>
+    <loc>http://anranz.com/2017/06/16/%E7%89%A9%E8%81%94%E7%BD%91%E5%BC%80%E5%8F%91%E4%B9%8BAndroid-Things%E5%85%A5%E9%97%A8/</loc>
+    <lastmod>2017-06-16T03:42:23.616Z</lastmod>
+    <data>
+        <display>
+        <title>物联网开发之Android Things入门</title>
+        <pubTime>2017-06-16T03:13:26.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Android Things</tag>
+         
+        <tag>物联网</tag>
+         
+        <tag>树莓派3</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://anranz.com/2017/06/02/C%E8%AF%AD%E8%A8%80-%E6%8C%87%E9%92%88/</loc>
+    <lastmod>2017-06-07T07:39:24.790Z</lastmod>
+    <data>
+        <display>
+        <title>C语言-指针</title>
+        <pubTime>2017-06-02T08:12:22.000Z</pubTime>
+        
+        <tag>C语言</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://anranz.com/2017/06/07/Android-Studio%E4%B8%AD%E4%BD%BF%E7%94%A8Jni/</loc>
+    <lastmod>2017-06-07T07:39:22.200Z</lastmod>
+    <data>
+        <display>
+        <title>Android Studio中使用Jni</title>
+        <pubTime>2017-06-07T07:36:37.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Jni</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://anranz.com/2017/06/01/Android-Fragment%E5%85%A5%E9%97%A8-AMS-ActivityManagerService/</loc>
     <lastmod>2017-06-01T09:57:41.683Z</lastmod>
     <data>

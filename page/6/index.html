@@ -1,0 +1,1084 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Write the code. Change the world.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="曾万般觉难，一朝回收，一渡万水千山。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Write the code. Change the world.">
+<meta property="og:url" content="http://anranz.com/page/6/index.html">
+<meta property="og:site_name" content="Write the code. Change the world.">
+<meta property="og:description" content="曾万般觉难，一朝回收，一渡万水千山。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Write the code. Change the world.">
+<meta name="twitter:description" content="曾万般觉难，一朝回收，一渡万水千山。">
+  
+    <link rel="alternative" href="/atom.xml" title="Write the code. Change the world." type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+
+  
+
+  <meta name="keywords" content="Android">
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Write the code. Change the world.</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Welcome to Anakin&#39;s blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">所有文章</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="anranz.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main">
+  
+    <article id="post-代码示例" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/10/代码示例/" class="article-date">
+  <time datetime="2017-01-10T01:57:30.000Z" itemprop="datePublished">2017-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/10/代码示例/">代码示例</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>package com.dy.dyth.base;
+
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 创建者     demo
+ * 创建时间   2016/7/26 16:48
+ * &lt;p&gt;
+ * 更新者     $Author$
+ * 更新时间   $Date$
+ */
+public abstract class BaseAdapter&lt;T&gt; extends RecyclerView.Adapter {
+
+private static final String TAG = &quot;BaseAdapter&quot;;
+public List&lt;T&gt; mDatas = new ArrayList&lt;&gt;();
+public int layoutResId;
+public int layoutResIdtwo;   //两种布局
+public RecyclerView mRecyclerView;
+
+public BaseAdapter() {
+
+}
+
+public BaseAdapter(List&lt;T&gt; data, int layoutResId) {
+    this.mDatas = data;
+    this.layoutResId = layoutResId;
+}
+
+/**
+ * 两种布局
+ *
+ * @param data
+ * @param layoutResId
+ * @param layoutResIdtwo
+ */
+public BaseAdapter(List&lt;T&gt; data, int layoutResId, int layoutResIdtwo) {
+    this.mDatas = data;
+    this.layoutResId = layoutResId;
+    this.layoutResIdtwo = layoutResIdtwo;
+}
+
+//设置回调监听
+public interface OnFocusChange {
+    void onFocusChangeListener(View v, boolean hasFocus, int position);
+}
+
+OnFocusChange mOnFocusChange;
+
+public void setOnFocusChange(OnFocusChange listener) {
+    this.mOnFocusChange = listener;
+}
+
+
+//按键监听
+public interface OnKey {
+    void onKeyListener(View v, int keyCode, KeyEvent event, Object o, int position);
+}
+
+OnKey mOnKey;
+
+public void setOnKeyListener(OnKey listener) {
+    this.mOnKey = listener;
+}
+
+// 长按
+
+
+public interface OnLongClick {
+    void onLongClickListener(View v, int position, Object bean);
+}
+
+OnLongClick mOnLongClick;
+
+public void setOnLongClickListener(OnLongClick listener) {
+    this.mOnLongClick = listener;
+}
+
+//按下监听
+
+
+public interface OnClick {
+    void onClickListener(View v, int position, Object bean);
+}
+
+OnClick mOnClick;
+
+public void setOnClickListener(OnClick listener) {
+    this.mOnClick = listener;
+}
+
+
+@Override
+public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    return initCreateViewHolder(parent, viewType);
+}
+
+protected abstract RecyclerView.ViewHolder initCreateViewHolder(ViewGroup parent, int viewType);
+
+@Override
+public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+    final int itemPosition = holder.getLayoutPosition();
+    initBindViewHolder(holder, itemPosition);
+    final Object bean = mDatas.get(position);
+    //按下监听
+    if (mOnClick != null) {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnClick.onClickListener(v, itemPosition, bean);
+            }
+        });
+    }
+
+    // 焦点监听
+    if (mOnFocusChange != null) {
+        holder.itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                mOnFocusChange.onFocusChangeListener(v, hasFocus, itemPosition);
+            }
+        });
+    }
+    //长按监听
+    if (mOnLongClick != null) {
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                mOnLongClick.onLongClickListener(v, itemPosition, bean);
+                return true;
+            }
+        });
+    }
+
+    //按键监听
+    if (mOnKey != null) {
+        holder.itemView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                mOnKey.onKeyListener(v, keyCode, event, bean, position);
+                return false;
+            }
+        });
+    }
+}
+
+protected abstract void initBindViewHolder(RecyclerView.ViewHolder holder, int position);
+
+@Override
+public int getItemCount() {
+    if (mDatas != null) {
+        return mDatas.size();
+    }
+    return 0;
+}
+
+
+
+/**
+ * 解决当显示两张相同资源图片的时候，发生抖动，提高图片质量为Bitmap.Config.ARGB_8888
+ *
+ * @param drawable 当前资源
+ * @return bitmap对象
+ */
+
+private Bitmap drawableToBitmap(Drawable drawable) // drawable 转换成bitmap
+{
+    int width = drawable.getIntrinsicWidth();// 取drawable的长宽
+    int height = drawable.getIntrinsicHeight();
+    Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);// 建立对应bitmap
+    Canvas canvas = new Canvas(bitmap);// 建立对应bitmap的画布
+    drawable.setBounds(0, 0, width, height);
+    drawable.draw(canvas);// 把drawable内容画到画布中
+    return bitmap;
+}
+</code></pre><p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/01/10/代码示例/" data-id="cj3zb6pjm0020y4vv66vdsysf" class="article-share-link" data-share="baidu" data-title="代码示例">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/01/10/代码示例/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-日常笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/09/日常笔记/" class="article-date">
+  <time datetime="2017-01-09T09:59:29.000Z" itemprop="datePublished">2017-01-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg" rel="gallery_cj3zb6pju0025y4vv5bc4ogxa">
+        <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/09/日常笔记/">日常笔记.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><pre><code>1 .使用mainup 解决左边不显示焦点框
+2 .使用boderview 解决recyclerview 滑动中焦点的错位
+3 .使用recylcerviewtv 控制焦点在中间
+4 .recyclerview 显示左边复杂布局
+</code></pre><h4 id="选择方法-1-，-3"><a href="#选择方法-1-，-3" class="headerlink" title="选择方法  1  ， 3"></a>选择方法  1  ， 3</h4><pre><code>问题 了解框架
+</code></pre><h3 id="焦点框错位"><a href="#焦点框错位" class="headerlink" title="焦点框错位"></a>焦点框错位</h3><pre><code>1. 焦点框图片     
+2. 计算方法
+3. 布局文件问题
+</code></pre><h4 id="选择方法"><a href="#选择方法" class="headerlink" title="选择方法"></a>选择方法</h4><pre><code>1. 布局问题
+package com.dy.dyth.view;
+
+import android.content.Context;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
+import android.util.AttributeSet;
+
+/**
+ * Created by lph on 2016/8/17.
+ * adapter TV
+ */
+public class TvRecyclerView extends RecyclerView {
+public TvRecyclerView(Context context) {
+    this(context,null);
+}
+
+public TvRecyclerView(Context context, @Nullable AttributeSet attrs) {
+    this(context, attrs,0);
+}
+
+public TvRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) {
+    super(context, attrs, defStyle);
+    init();
+}
+
+private void init(){
+    setChildrenDrawingOrderEnabled(true);
+}
+
+
+//设置当前选中条目显示在最前面
+@Override
+protected int getChildDrawingOrder(int childCount, int i) {
+    int currentPos = getChildAdapterPosition(findFocus());
+    if(i==childCount-1){
+        return currentPos;
+    }
+    if(i==currentPos){
+        return childCount - 1;
+    }
+    return super.getChildDrawingOrder(childCount, i);
+}
+</code></pre><p>}</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h4 id="首页焦点在滑动过程中错位"><a href="#首页焦点在滑动过程中错位" class="headerlink" title="首页焦点在滑动过程中错位"></a>首页焦点在滑动过程中错位</h4><p>####解决办法  ####</p>
+<pre><code>1. 修改本来布局 在layoutmanger中找到问题
+2. 使用新的框架
+</code></pre><h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><pre><code>1. 新框架需要改动的东西太多
+2. 原有框架不明确出问题的地方
+</code></pre><h4 id="综合考虑"><a href="#综合考虑" class="headerlink" title="综合考虑"></a>综合考虑</h4><pre><code>1 .半天时间在原有框架上找出解决方法
+2 .无法解决，则使用新的框架
+</code></pre><p>###超出边界分析</p>
+<pre><code>1. 为什么滑动的过程中会超出边界
+    1. recycler View  或者gridLyaoutManger 本身的问题
+    2. 或者 我自己布局的问题
+</code></pre><hr>
+<p><strong>解决方法</strong></p>
+<ul>
+<li><strong><em>当滑动停止的时候 recyclerView 向右移动</em></strong></li>
+<li><strong><em>使recyclerview的滑动不超过边界</em></strong></li>
+</ul>
+<p><strong>原因确认</strong></p>
+<ul>
+<li>view放大没有超出边界</li>
+</ul>
+<p><strong>解决方法</strong></p>
+<ul>
+<li>手动当view获取焦点手懂控制recycler 向右移动10dp</li>
+</ul>
+<p><strong>头大</strong></p>
+<hr>
+<p><em>2016年9月5日09:51:14</em></p>
+<h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><ul>
+<li>焦点框<h3 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h3></li>
+<li>修改布局</li>
+</ul>
+<p><strong><em>坚持一种方法 不要一直换</em></strong></p>
+<p><strong><em>使用框架，了解基本用法</em></strong></p>
+<p><strong>记住</strong></p>
+<ul>
+<li><p>clipToPadding就是说控件的绘制区域是否在padding里面的</p>
+</li>
+<li><p>clipChildren是指子控件是否超过padding区域</p>
+</li>
+</ul>
+<hr>
+<p>###初始化显示焦点框##</p>
+<ul>
+<li>隐藏不了</li>
+</ul>
+<h3 id="显示时间天气-wifi"><a href="#显示时间天气-wifi" class="headerlink" title="显示时间天气 wifi"></a>显示时间天气 wifi</h3><h3 id="显示圆角图片"><a href="#显示圆角图片" class="headerlink" title="显示圆角图片"></a>显示圆角图片</h3><hr>
+<p><em>2016年9月7日10:56:09</em></p>
+<h3 id="待解决"><a href="#待解决" class="headerlink" title="待解决"></a>待解决</h3><ul>
+<li>页面切换焦点的问题</li>
+<li>分类和首页item 在没有焦点的情况下隐藏焦点框</li>
+<li>首页appinfo 按下鼠标下键的焦点切换</li>
+</ul>
+<hr>
+<p><em>2016年9月9日 14:30:46</em></p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ul>
+<li>在第三方库中找到焦点框的变化,设置显示影藏</li>
+</ul>
+<hr>
+<p><em>2016年9月12日09:43:33</em></p>
+<h3 id="模拟网络请求显示图片"><a href="#模拟网络请求显示图片" class="headerlink" title="模拟网络请求显示图片"></a>模拟网络请求显示图片</h3><ul>
+<li>使用okhttp</li>
+<li>使用rxjava</li>
+<li><p>修改坑位命名 homekw_1;</p>
+</li>
+<li><p><a href="http://192.168.1.119:8080/home/home.json" title="json" target="_blank" rel="external"> http://192.168.1.119:8080/home/home.json</a></p>
+</li>
+<li><a href="http://192.168.1.119:8080/home/home.json" title="图片地址" target="_blank" rel="external">http://192.168.1.119:8080/home/kw1.png</a></li>
+<li>解决打开app 应用崩溃的问题</li>
+</ul>
+<hr>
+<p><em>2016年9月13日10:28:43</em></p>
+<h3 id="设置launcher"><a href="#设置launcher" class="headerlink" title="设置launcher"></a>设置launcher</h3><p> <strong>添加下面属性</strong></p>
+<pre><code>&lt;category android:name=&quot;ansroid.intent.category.HOME&quot;/&gt;
+&lt;category android:name=&quot;ansroid.intent.category.DEFAULT&quot;/&gt;`
+</code></pre><h3 id="问题-：-打开app后laucnher崩溃"><a href="#问题-：-打开app后laucnher崩溃" class="headerlink" title="问题 ： 打开app后laucnher崩溃"></a>问题 ： 打开app后laucnher崩溃</h3><h4 id="原因-："><a href="#原因-：" class="headerlink" title="原因 ："></a>原因 ：</h4><ol>
+<li>bean中的Drawable没有序列化<br>####解决办法####</li>
+<li>修改bean中的Bean</li>
+<li>重写home中的app管理逻辑</li>
+<li>360的实现方法</li>
+</ol>
+<h2 id="Bugly-日志"><a href="#Bugly-日志" class="headerlink" title="Bugly 日志:"></a>Bugly 日志:</h2><h4 id="帐号-2014161860"><a href="#帐号-2014161860" class="headerlink" title="帐号:2014161860"></a>帐号:2014161860</h4><h4 id="密码-dyth123456"><a href="#密码-dyth123456" class="headerlink" title="密码:dyth123456"></a>密码:dyth123456</h4><h4 id="Bugly崩溃日志-https-bugly-qq-com-issueIndex-app-900052943-amp-pid-1"><a href="#Bugly崩溃日志-https-bugly-qq-com-issueIndex-app-900052943-amp-pid-1" class="headerlink" title="Bugly崩溃日志 : https://bugly.qq.com/issueIndex?app=900052943&amp;pid=1"></a>Bugly崩溃日志 : <a href="https://bugly.qq.com/issueIndex?app=900052943&amp;pid=1" title="Bugly崩溃日志" target="_blank" rel="external">https://bugly.qq.com/issueIndex?app=900052943&amp;pid=1</a></h4><h2 id="git命令："><a href="#git命令：" class="headerlink" title="git命令："></a>git命令：</h2><h3 id="提交到远程服务器"><a href="#提交到远程服务器" class="headerlink" title="提交到远程服务器"></a>提交到远程服务器</h3><pre><code>git remote add origin git@github.com:AnCorleone/TvVertiacalViewPager.git关联一个远程库
+git remote rm origin   // 添加错误清楚仓储
+git push -u origin master  //第一次推送master分支的所有内容
+git push origin master   //推送最新修改
+</code></pre><h3 id="同步代码-合并-解决冲突"><a href="#同步代码-合并-解决冲突" class="headerlink" title="同步代码 合并 解决冲突"></a>同步代码 合并 解决冲突</h3><pre><code>git fetch origin master:temp  
+git merge temp
+</code></pre><h3 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h3><pre><code>git branch
+</code></pre><h3 id="Git忽略规则及-gitignore规则不生效的解决办法"><a href="#Git忽略规则及-gitignore规则不生效的解决办法" class="headerlink" title="Git忽略规则及.gitignore规则不生效的解决办法"></a>Git忽略规则及.gitignore规则不生效的解决办法</h3><p>Git忽略规则及.gitignore规则不生效的解决办法 :<a href="http://www.pfeng.org/archives/840" target="_blank" rel="external">http://www.pfeng.org/archives/840</a></p>
+<h2 id="解决打开app-launcher崩溃"><a href="#解决打开app-launcher崩溃" class="headerlink" title="解决打开app launcher崩溃"></a>解决打开app launcher崩溃</h2><p><em>2016年9月14日16:41:05</em></p>
+<ul>
+<li>将Drawable 从bean 中移除</li>
+</ul>
+<hr>
+<p><em>2016年9月18日13:51:15</em></p>
+<h3 id="monkey-测试"><a href="#monkey-测试" class="headerlink" title="monkey 测试"></a>monkey 测试</h3><pre><code>adb shell monkey -p com.dy.dyth –-throttle 300 500  // monkey 测试命令
+</code></pre><h3 id="app-管理"><a href="#app-管理" class="headerlink" title="app 管理"></a>app 管理</h3><ul>
+<li><p><strong>卸载app</strong></p>
+<ol>
+<li>判断用户是否卸载成功<br>2.</li>
+</ol>
+</li>
+<li><p>影梭购买地址 ：<a href="https://shadowsocks.com/" title="影梭地址" target="_blank" rel="external">https://shadowsocks.com/</a></p>
+</li>
+<li><p>服务器搭建 ：  <a href="https://www.loyalsoldier.me/fuck-the-gfw-with-my-own-shadowsocks-server/" title="服务器搭建" target="_blank" rel="external">https://www.loyalsoldier.me/fuck-the-gfw-with-my-own-shadowsocks-server/</a></p>
+</li>
+<li><p>服务器搭建(大胡子) :<a href="http://www.barretlee.com/blog/2016/08/03/shadowsocks/" target="_blank" rel="external">http://www.barretlee.com/blog/2016/08/03/shadowsocks/</a></p>
+</li>
+<li><p>搬瓦工 :<a href="http://banwagong.cn/" target="_blank" rel="external">http://banwagong.cn/</a></p>
+</li>
+<li><p>阿里服务器网址 ：<a href="https://account.aliyun.com/alipay/quick_login_return.htm?email=1018966939%40qq.com&amp;is_success=T&amp;notify_id=RqPnCoPT3K9%252Fvwbh3InWesh3oVFcSYEmWEsOrU6Ju2PrpgPSTlRM7rUmqTlV9kW%252F9%252B99&amp;real_name=%E5%BC%A0%E5%AE%89%E7%84%B6&amp;token=20160918d1f108c5face4ef69365c381a89a0X20&amp;user_id=2088602257446202&amp;sign=37548480cde2b1f14e73a5c3dc51220d&amp;sign_type=MD5" target="_blank" rel="external">https://account.aliyun.com/alipay/quick_login_return.htm?email=1018966939%40qq.com&amp;is_success=T&amp;notify_id=RqPnCoPT3K9%252Fvwbh3InWesh3oVFcSYEmWEsOrU6Ju2PrpgPSTlRM7rUmqTlV9kW%252F9%252B99&amp;real_name=%E5%BC%A0%E5%AE%89%E7%84%B6&amp;token=20160918d1f108c5face4ef69365c381a89a0X20&amp;user_id=2088602257446202&amp;sign=37548480cde2b1f14e73a5c3dc51220d&amp;sign_type=MD5</a></p>
+</li>
+<li>影梭指南 :<a href="http://www.auooo.com/2015/06/26/shadowsocks%EF%BC%88%E5%BD%B1%E6%A2%AD%EF%BC%89%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97/" title="影梭指南" target="_blank" rel="external">http://www.auooo.com/2015/06/26/shadowsocks%EF%BC%88%E5%BD%B1%E6%A2%AD%EF%BC%89%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97/</a></li>
+</ul>
+<hr>
+<p><em>2016年9月19日 09:43:17</em></p>
+<h2 id="路线"><a href="#路线" class="headerlink" title="路线"></a>路线</h2><pre><code>深圳 ——&gt; 南昌（10.1 5：13）——&gt;长沙 ——&gt; 武昌（10.1 9：31） ——&gt; 襄阳——&gt;南漳（签证）
+</code></pre><h3 id="电子地图-："><a href="#电子地图-：" class="headerlink" title="电子地图  ："></a>电子地图  ：</h3><p><a href="http://poi.mapbar.com/" title="地图" target="_blank" rel="external">http://poi.mapbar.com/</a></p>
+<hr>
+<p><em>2016年9月20日09:42:44</em></p>
+<h2 id="安装和卸载软件更新界面"><a href="#安装和卸载软件更新界面" class="headerlink" title="安装和卸载软件更新界面"></a>安装和卸载软件更新界面</h2><ul>
+<li>监听广播，有软件安装获取安装的软件信息，或者重新查询一遍获取所有的app重新加入集合</li>
+<li>notify adapter</li>
+<li>卸载软件 获取卸载的软件信息 ，从mall集合中移除或者重新查询，notify()<h3 id="问题-："><a href="#问题-：" class="headerlink" title="问题 ："></a>问题 ：</h3></li>
+<li><strong>安装软件空指针异常，软件崩溃</strong></li>
+<li><strong>安装和卸载软件后焦点跑到home 上了 ，并显示了焦点框</strong></li>
+</ul>
+<h3 id="adb-path"><a href="#adb-path" class="headerlink" title="adb path"></a>adb path</h3><p>adb path :<br><a href="C:\DevTools\Android\Sdk\platform-tools" target="_blank" rel="external">C:\DevTools\Android\Sdk\platform-tools</a></p>
+<h3 id="脚本代码-："><a href="#脚本代码-：" class="headerlink" title="脚本代码 ："></a>脚本代码 ：</h3><pre><code>@ECHO off  
+@REM 无限循环的标签  
+:LOOP  
+ECHO 请插入手机…  
+adb wait-for-device  
+@REM 循环安装本目录下的APK文件  
+FOR %%i IN (*.apk) DO (   
+ECHO 正在安装：%%i  
+adb install &quot;%%i&quot;  
+)  
+ECHO 安装完毕；请更换下一台手机！
+PAUSE  
+GOTO LOOP  
+@ECHO on
+</code></pre><p>9/21/2016 11:22:57 AM</p>
+<h3 id="问题-：-1"><a href="#问题-：-1" class="headerlink" title="问题 ："></a>问题 ：</h3><h4 id="dialog-dismiss-焦点跑到home"><a href="#dialog-dismiss-焦点跑到home" class="headerlink" title="dialog  dismiss 焦点跑到home"></a><em>dialog  dismiss 焦点跑到home</em></h4><p>RecyclerView进行数据更新时焦点丢失的解决方案 : <a href="http://www.jianshu.com/p/749c0c91eb9c" target="_blank" rel="external">http://www.jianshu.com/p/749c0c91eb9c</a></p>
+<pre><code>android:descendantFocusability=&quot;afterDescendants&quot;
+android:duplicateParentState=&quot;true&quot;
+</code></pre><h3 id="大数据"><a href="#大数据" class="headerlink" title="大数据"></a>大数据</h3><h3 id="优达学院"><a href="#优达学院" class="headerlink" title="优达学院"></a>优达学院</h3><blockquote>
+<p>网址 :<a href="https://cn.udacity.com/" target="_blank" rel="external">https://cn.udacity.com/</a></p>
+<p><em>“我是一名码农,请尊重我的职业”</em></p>
+</blockquote>
+<h3 id="问题-：-2"><a href="#问题-：-2" class="headerlink" title="问题 ："></a>问题 ：</h3><ul>
+<li>notify后可以获取焦点，但不显示焦点框</li>
+</ul>
+<hr>
+<p> 9/22/2016 10:47:37 AM</p>
+<h2 id="问题-：-3"><a href="#问题-：-3" class="headerlink" title="问题 ："></a>问题 ：</h2><h3 id="dilog-在卸软件卸载后弹出位置错位"><a href="#dilog-在卸软件卸载后弹出位置错位" class="headerlink" title="dilog 在卸软件卸载后弹出位置错位"></a>dilog 在卸软件卸载后弹出位置错位</h3><h4 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h4><ol>
+<li>重新计算dilog 弹出的位置 x 轴计算问题 没有发现规律 可能是软件卸载后,布局跟新</li>
+</ol>
+<h2 id="微信公众平台"><a href="#微信公众平台" class="headerlink" title="微信公众平台"></a>微信公众平台</h2><blockquote>
+<p><a href="https://mp.weixin.qq.com/cgi-bin/home?token=511173594" target="_blank" rel="external">https://mp.weixin.qq.com/cgi-bin/home?token=511173594</a></p>
+</blockquote>
+<h2 id="问题-2"><a href="#问题-2" class="headerlink" title="问题 :"></a>问题 :</h2><h3 id="app移动过程的bug"><a href="#app移动过程的bug" class="headerlink" title="app移动过程的bug"></a>app移动过程的bug</h3><h4 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法:"></a>解决方法:</h4><ol>
+<li>调整移动的逻辑</li>
+</ol>
+<hr>
+<p> 9/23/2016 10:29:59 AM</p>
+<h2 id="问题-：-4"><a href="#问题-：-4" class="headerlink" title="问题 ："></a>问题 ：</h2><h3 id="学籍注册"><a href="#学籍注册" class="headerlink" title="学籍注册"></a>学籍注册</h3><h3 id="移动的逻辑-："><a href="#移动的逻辑-：" class="headerlink" title="移动的逻辑 ："></a>移动的逻辑 ：</h3><blockquote>
+<h3 id="微信公众平台-小程序开发文档-http-mp-weixin-qq-com-wiki-t-resource-res-main-amp-id-mp1445241432-amp-token-amp-lang-zh-CN"><a href="#微信公众平台-小程序开发文档-http-mp-weixin-qq-com-wiki-t-resource-res-main-amp-id-mp1445241432-amp-token-amp-lang-zh-CN" class="headerlink" title="微信公众平台,小程序开发文档 :http://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1445241432&amp;token=&amp;lang=zh_CN"></a>微信公众平台,小程序开发文档 :<a href="http://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1445241432&amp;token=&amp;lang=zh_CN" target="_blank" rel="external">http://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1445241432&amp;token=&amp;lang=zh_CN</a></h3><h3 id="微信小程序：-http-www-helloxcx-com"><a href="#微信小程序：-http-www-helloxcx-com" class="headerlink" title="微信小程序：  http://www.helloxcx.com/"></a>微信小程序：  <a href="http://www.helloxcx.com/" target="_blank" rel="external">http://www.helloxcx.com/</a></h3><h3 id="小程序api：-http-wxopen-notedown-cn"><a href="#小程序api：-http-wxopen-notedown-cn" class="headerlink" title="小程序api： http://wxopen.notedown.cn/"></a>小程序api： <a href="http://wxopen.notedown.cn/" target="_blank" rel="external">http://wxopen.notedown.cn/</a></h3></blockquote>
+<hr>
+<p>9/24/2016 9:36:06 AM</p>
+<h3 id="显示网络错误的占位图片-Fresco"><a href="#显示网络错误的占位图片-Fresco" class="headerlink" title="显示网络错误的占位图片　Fresco"></a>显示网络错误的占位图片　Fresco</h3><hr>
+<p>9/26/2016 9:47:03 AM</p>
+<h3 id="新建分类文件夹，显示预览效果"><a href="#新建分类文件夹，显示预览效果" class="headerlink" title="新建分类文件夹，显示预览效果"></a>新建分类文件夹，显示预览效果</h3><ol>
+<li>预览显示app icon从分类集合中获取显示，分类集合有多少显示多少</li>
+<li>数据回显，存储info 到数据库中，并对每个分类添加分类的名字，根据类名查询该分类下的 所有信息</li>
+<li>删除和替换，删除，从集合中删除，根据package name 从数据库删除 该app ； 替换：从集合中删除要替换的元素，并加入要替换的app ,从数据库中查找该分类删除该app，添加新的app info</li>
+</ol>
+<hr>
+<p>9/27/2016 10:15:47 AM</p>
+<h3 id="分类页面展示app-数据的回显，删除和替换"><a href="#分类页面展示app-数据的回显，删除和替换" class="headerlink" title="分类页面展示app,数据的回显，删除和替换"></a>分类页面展示app,数据的回显，删除和替换</h3><ol>
+<li>回显数据的问题，初始化界面的是时候从sp 中获取集合<strong>mAddList</strong>，在adapter中显示，并添加一个空的待添加item,加到集合，每次点击添加，把添加的应用加到<strong>mAddList</strong>,把集合加到sp 中。</li>
+<li>点击添加替换原来的坑位,增加一个坑位(<em>在倒数第二个位置插入一个元素</em>)</li>
+</ol>
+<h2 id="添加应用回显数据"><a href="#添加应用回显数据" class="headerlink" title="添加应用回显数据"></a>添加应用回显数据</h2><ol>
+<li>添加到size-1 位置 ，notify</li>
+</ol>
+<h3 id="1-替换回显会有问题"><a href="#1-替换回显会有问题" class="headerlink" title="1. 替换回显会有问题"></a>1. 替换回显会有问题</h3><h3 id="2-删除会回到主界面"><a href="#2-删除会回到主界面" class="headerlink" title="2. 删除会回到主界面"></a>2. 删除会回到主界面</h3><p>10/8/2016 9:55:34 AM</p>
+<h2 id="问题-3"><a href="#问题-3" class="headerlink" title="问题"></a>问题</h2><h3 id="app-长按弹出-移动-卸载-替换-新建分类逻辑的实现"><a href="#app-长按弹出-移动-卸载-替换-新建分类逻辑的实现" class="headerlink" title="app 长按弹出 ,移动 ,卸载,替换,新建分类逻辑的实现"></a>app 长按弹出 ,移动 ,卸载,替换,新建分类逻辑的实现</h3><h3 id="解决卸载-替换-打开应用-数据回显-新建分类"><a href="#解决卸载-替换-打开应用-数据回显-新建分类" class="headerlink" title="解决卸载  替换 打开应用  数据回显  新建分类"></a><em>解决卸载  替换 打开应用  数据回显  新建分类</em></h3><h2 id="小程序教程网址"><a href="#小程序教程网址" class="headerlink" title="小程序教程网址"></a>小程序教程网址</h2><p><a href="http://www.helloxcx.com/article-20.php" target="_blank" rel="external">http://www.helloxcx.com/article-20.php</a></p>
+<h3 id="PAC-翻墙"><a href="#PAC-翻墙" class="headerlink" title="PAC 翻墙"></a>PAC 翻墙</h3><p> <a href="https://www.seavia.com/share/iphone-ipad-mac-firefox-chrome-proxy.html" target="_blank" rel="external">https://www.seavia.com/share/iphone-ipad-mac-firefox-chrome-proxy.html</a></p>
+<h3 id="小米mini-路由翻墙"><a href="#小米mini-路由翻墙" class="headerlink" title="小米mini 路由翻墙"></a>小米mini 路由翻墙</h3><p><a href="https://seonoco.com/xiaomi-router-ss" target="_blank" rel="external">https://seonoco.com/xiaomi-router-ss</a></p>
+<h2 id="问题-4"><a href="#问题-4" class="headerlink" title="问题"></a>问题</h2><h3 id="app-移动和坑位焦点框出边界"><a href="#app-移动和坑位焦点框出边界" class="headerlink" title="app 移动和坑位焦点框出边界"></a>app 移动和坑位焦点框出边界</h3><h2 id="问题-5"><a href="#问题-5" class="headerlink" title="问题"></a>问题</h2><p>10/11/2016 9:14:51 AM</p>
+<h3 id="android官网镜像网站-http-android-youdaxue-com"><a href="#android官网镜像网站-http-android-youdaxue-com" class="headerlink" title="android官网镜像网站 http://android.youdaxue.com/"></a>android官网镜像网站 <a href="http://android.youdaxue.com/" target="_blank" rel="external">http://android.youdaxue.com/</a></h3><h3 id="API-文档镜像-http-developer-android-youdaxue-com-guide-index-html"><a href="#API-文档镜像-http-developer-android-youdaxue-com-guide-index-html" class="headerlink" title="API 文档镜像 http://developer.android.youdaxue.com/guide/index.html"></a>API 文档镜像 <a href="http://developer.android.youdaxue.com/guide/index.html" target="_blank" rel="external">http://developer.android.youdaxue.com/guide/index.html</a></h3><h3 id="优达Android基础视屏-https-classroom-udacity-com-courses-ud837-lessons-4027328704-concepts-43295507890923"><a href="#优达Android基础视屏-https-classroom-udacity-com-courses-ud837-lessons-4027328704-concepts-43295507890923" class="headerlink" title="优达Android基础视屏 https://classroom.udacity.com/courses/ud837/lessons/4027328704/concepts/43295507890923#"></a>优达Android基础视屏 <a href="https://classroom.udacity.com/courses/ud837/lessons/4027328704/concepts/43295507890923#" target="_blank" rel="external">https://classroom.udacity.com/courses/ud837/lessons/4027328704/concepts/43295507890923#</a></h3><h3 id="Google-优达资源-https-discussions-youdaxue-com-t-android-84"><a href="#Google-优达资源-https-discussions-youdaxue-com-t-android-84" class="headerlink" title="Google 优达资源 https://discussions.youdaxue.com/t/android/84"></a>Google 优达资源 <a href="https://discussions.youdaxue.com/t/android/84" target="_blank" rel="external">https://discussions.youdaxue.com/t/android/84</a></h3><h3 id="Google-Play下载apk-http-apps-evozi-com-apk-downloader"><a href="#Google-Play下载apk-http-apps-evozi-com-apk-downloader" class="headerlink" title="Google Play下载apk http://apps.evozi.com/apk-downloader"></a>Google Play下载apk <a href="http://apps.evozi.com/apk-downloader" target="_blank" rel="external">http://apps.evozi.com/apk-downloader</a></h3><hr>
+<h4 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h4><ol>
+<li>App item 移动</li>
+</ol>
+<hr>
+<h3 id="理财平台-https-www-zhihu-com-question-24454597"><a href="#理财平台-https-www-zhihu-com-question-24454597" class="headerlink" title="理财平台 https://www.zhihu.com/question/24454597"></a>理财平台 <a href="https://www.zhihu.com/question/24454597" target="_blank" rel="external">https://www.zhihu.com/question/24454597</a></h3><h2 id="问题-6"><a href="#问题-6" class="headerlink" title="问题"></a>问题</h2><p>10/12/2016 10:34:49 AM</p>
+<ol>
+<li>app 移动dialog 没有一起移动</li>
+</ol>
+<h3 id="一个接口demo-http-www-jianshu-com-p-a28d4260a9d4"><a href="#一个接口demo-http-www-jianshu-com-p-a28d4260a9d4" class="headerlink" title="一个接口demo :  http://www.jianshu.com/p/a28d4260a9d4"></a>一个接口demo :  <a href="http://www.jianshu.com/p/a28d4260a9d4" target="_blank" rel="external">http://www.jianshu.com/p/a28d4260a9d4</a></h3><h3 id="View-的绘制流程-http-www-idtkm-com-customview-customview1"><a href="#View-的绘制流程-http-www-idtkm-com-customview-customview1" class="headerlink" title="View 的绘制流程 http://www.idtkm.com/customview/customview1/"></a>View 的绘制流程 <a href="http://www.idtkm.com/customview/customview1/" target="_blank" rel="external">http://www.idtkm.com/customview/customview1/</a></h3><h3 id="2016安卓开发资料大全-http-www-jcodecraeer-com-a-anzhuokaifa-androidkaifa-2016-1007-6660-html"><a href="#2016安卓开发资料大全-http-www-jcodecraeer-com-a-anzhuokaifa-androidkaifa-2016-1007-6660-html" class="headerlink" title="2016安卓开发资料大全 http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/1007/6660.html"></a>2016安卓开发资料大全 <a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/1007/6660.html" target="_blank" rel="external">http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/1007/6660.html</a></h3><h2 id=""><a href="#" class="headerlink" title="#"></a>#</h2><p>10/13/2016 11:23:27 AM</p>
+<h3 id="两步搞定Fragment的返回键-http-blog-csdn-net-lx448593jp-article-details-51121581"><a href="#两步搞定Fragment的返回键-http-blog-csdn-net-lx448593jp-article-details-51121581" class="headerlink" title="两步搞定Fragment的返回键 http://blog.csdn.net/lx448593jp/article/details/51121581"></a>两步搞定Fragment的返回键 <a href="http://blog.csdn.net/lx448593jp/article/details/51121581" target="_blank" rel="external">http://blog.csdn.net/lx448593jp/article/details/51121581</a></h3><hr>
+<h3 id="Android-中文文档-http-hukai-me-android-training-course-in-chinese-basics-index-html"><a href="#Android-中文文档-http-hukai-me-android-training-course-in-chinese-basics-index-html" class="headerlink" title="Android 中文文档  http://hukai.me/android-training-course-in-chinese/basics/index.html"></a>Android 中文文档  <a href="http://hukai.me/android-training-course-in-chinese/basics/index.html" target="_blank" rel="external">http://hukai.me/android-training-course-in-chinese/basics/index.html</a></h3><p>10/14/2016 3:08:34 PM</p>
+<h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p>10/17/2016 4:56:51 PM<br>      <imageview android:id="@+id/iv_home_app_icon" style="@style/unFocusable" android:layout_width="143dp" android:layout_height="147dp" android:layout_centerhorizontal="true" android:layout_margintop="5dp"></imageview></p>
+<h2 id="首页问题"><a href="#首页问题" class="headerlink" title="首页问题"></a>首页问题</h2><ol>
+<li>替换没有问题</li>
+<li>新建 卸载  移动 item 错乱</li>
+</ol>
+<p>使用imageloader 加载图片</p>
+<h3 id="一切都可以被改变"><a href="#一切都可以被改变" class="headerlink" title="一切都可以被改变"></a><em>一切都可以被改变</em></h3><p>11/1/2016 10:11:35 AM</p>
+<hr>
+<p><strong>长记性</strong></p>
+<h3 id="获取view的位置-https-my-oschina-net-u-1376187-blog-172792"><a href="#获取view的位置-https-my-oschina-net-u-1376187-blog-172792" class="headerlink" title="获取view的位置  https://my.oschina.net/u/1376187/blog/172792"></a>获取view的位置  <a href="https://my.oschina.net/u/1376187/blog/172792" target="_blank" rel="external">https://my.oschina.net/u/1376187/blog/172792</a></h3><h3 id="获取view的坐标系：http-blog-csdn-net-jason0539-article-details-42743531"><a href="#获取view的坐标系：http-blog-csdn-net-jason0539-article-details-42743531" class="headerlink" title="获取view的坐标系：http://blog.csdn.net/jason0539/article/details/42743531"></a>获取view的坐标系：<a href="http://blog.csdn.net/jason0539/article/details/42743531" target="_blank" rel="external">http://blog.csdn.net/jason0539/article/details/42743531</a></h3><h3 id="问题-1-切换后来RecylerView-没有焦点框"><a href="#问题-1-切换后来RecylerView-没有焦点框" class="headerlink" title="问题 1: 切换后来RecylerView 没有焦点框"></a>问题 1: 切换后来RecylerView 没有焦点框</h3><hr>
+<p>11/4/2016 9:37:00 AM</p>
+<h3 id="RecyclerView-局部刷新闪烁-http-wetest-qq-com-lab-view-176-html-from-content-zhihuzhuanlan"><a href="#RecyclerView-局部刷新闪烁-http-wetest-qq-com-lab-view-176-html-from-content-zhihuzhuanlan" class="headerlink" title="RecyclerView 局部刷新闪烁 http://wetest.qq.com/lab/view/176.html?from=content_zhihuzhuanlan"></a>RecyclerView 局部刷新闪烁 <a href="http://wetest.qq.com/lab/view/176.html?from=content_zhihuzhuanlan" target="_blank" rel="external">http://wetest.qq.com/lab/view/176.html?from=content_zhihuzhuanlan</a></h3><h3 id="Google-镜像站-http-xiaoyu2er-github-io-2016-03-16-google-mirror"><a href="#Google-镜像站-http-xiaoyu2er-github-io-2016-03-16-google-mirror" class="headerlink" title="Google 镜像站 http://xiaoyu2er.github.io/2016/03/16/google-mirror/"></a>Google 镜像站 <a href="http://xiaoyu2er.github.io/2016/03/16/google-mirror/" target="_blank" rel="external">http://xiaoyu2er.github.io/2016/03/16/google-mirror/</a></h3><h3 id="问题1-删除一个分类后焦点框不在正确的位置显示-上面一行最后一个"><a href="#问题1-删除一个分类后焦点框不在正确的位置显示-上面一行最后一个" class="headerlink" title="问题1 : 删除一个分类后焦点框不在正确的位置显示 (上面一行最后一个)"></a>问题1 : 删除一个分类后焦点框不在正确的位置显示 (上面一行最后一个)</h3><h3 id="问题2-点击卸载-在弹出对话框的时候点击取消-或者返回-item放大正常不能缩小-在弹出菜单时候设置的放大造成的影响"><a href="#问题2-点击卸载-在弹出对话框的时候点击取消-或者返回-item放大正常不能缩小-在弹出菜单时候设置的放大造成的影响" class="headerlink" title="问题2 : 点击卸载,在弹出对话框的时候点击取消,或者返回,item放大正常不能缩小 ( 在弹出菜单时候设置的放大造成的影响)"></a>问题2 : 点击卸载,在弹出对话框的时候点击取消,或者返回,item放大正常不能缩小 ( <em>在弹出菜单时候设置的放大造成的影响</em>)</h3><h3 id="问题3-在移动过程中操作item-位置不对应-（-操纵的是前一个bean-）"><a href="#问题3-在移动过程中操作item-位置不对应-（-操纵的是前一个bean-）" class="headerlink" title="问题3 : 在移动过程中操作item 位置不对应   （ 操纵的是前一个bean ）"></a>问题3 : 在移动过程中操作item 位置不对应   （ 操纵的是前一个bean ）</h3><h3 id="问题4-卸载应用后新的item不能缩小"><a href="#问题4-卸载应用后新的item不能缩小" class="headerlink" title="问题4 : 卸载应用后新的item不能缩小"></a>问题4 : 卸载应用后新的item不能缩小</h3><h2 id="问题-：-5"><a href="#问题-：-5" class="headerlink" title="问题 ："></a>问题 ：</h2><p>11/8/2016 11:19:03 AM</p>
+<ul>
+<li>软件安装和卸载后焦点丢失  </li>
+<li>移动过程中的放大效果</li>
+</ul>
+<h2 id="问题-7"><a href="#问题-7" class="headerlink" title="问题"></a>问题</h2><p>11/10/2016 9:18:41 AM</p>
+<ol>
+<li>卸载后相同的应用没有卸载</li>
+<li>卸载失败，取消有放大效果</li>
+<li>移动过程中放大异常</li>
+</ol>
+<hr>
+<p>11/11/2016 3:54:01 PM</p>
+<h3 id="问题-8"><a href="#问题-8" class="headerlink" title="问题 :"></a>问题 :</h3><ol>
+<li>新建文件夹的逻辑问题 ,移动后新建退出 焦点异常</li>
+</ol>
+<h3 id="问题-：-6"><a href="#问题-：-6" class="headerlink" title="问题 ："></a>问题 ：</h3><p>11/14/2016 10:19:52 AM</p>
+<ol>
+<li>判断记录head 的view 还是记录recyclerView 的view ，当Head 有焦点的时候将position置为-1 ，当RecyclerView 有焦点的时候将Head view 置为null</li>
+</ol>
+<h3 id="问题-9"><a href="#问题-9" class="headerlink" title="问题 :"></a>问题 :</h3><p>11/15/2016 9:45:02 AM</p>
+<ol>
+<li>记录焦点的view 如果记录view 不为空让记录的view获取焦点，如果为menu 就让menu获取焦点</li>
+<li>menu 有焦点就显示光圈 没有先不显示 （没有问题了 ）</li>
+<li>如果menu hasfocus 按上下键 重现的position 设置为 -1 ；</li>
+</ol>
+<h4 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键:"></a>快捷键:</h4><ul>
+<li>ctrl + p 参数提示</li>
+<li>ctrl + j 自动代码</li>
+<li>ctrl + n 查找类</li>
+</ul>
+<h3 id="自定义接口回掉"><a href="#自定义接口回掉" class="headerlink" title="自定义接口回掉"></a>自定义接口回掉</h3><ol>
+<li>定义一个接口 OnxxListener  接口中的方法 onXxx()</li>
+<li>在需要的回调事件的类中声明接口对象 ， OnxxListener xxlistener ;定义回掉的方法 setOnxxListener(OnxxListener listenr) 将接口对象赋值给listener this.listenr =xxListener</li>
+<li>在事件发生的位置调用接口中的方法 xxlistener. onXxx();</li>
+</ol>
+<h3 id="知乎日报Api"><a href="#知乎日报Api" class="headerlink" title="知乎日报Api"></a>知乎日报Api</h3><p><a href="https://github.com/izzyleung/ZhihuDailyPurify/wiki/%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5-API-%E5%88%86%E6%9E%90" target="_blank" rel="external">https://github.com/izzyleung/ZhihuDailyPurify/wiki/%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5-API-%E5%88%86%E6%9E%90</a></p>
+<h3 id="gank-io-API-http-gank-io-api"><a href="#gank-io-API-http-gank-io-api" class="headerlink" title="gank io API http://gank.io/api"></a>gank io API <a href="http://gank.io/api" target="_blank" rel="external">http://gank.io/api</a></h3><h3 id="mvp-模式"><a href="#mvp-模式" class="headerlink" title="mvp 模式"></a>mvp 模式</h3><h4 id="获取天气实例-http-rocko-xyz-2015-02-06-Android-E4-B8-AD-E7-9A-84MVP"><a href="#获取天气实例-http-rocko-xyz-2015-02-06-Android-E4-B8-AD-E7-9A-84MVP" class="headerlink" title="获取天气实例   http://rocko.xyz/2015/02/06/Android%E4%B8%AD%E7%9A%84MVP/"></a>获取天气实例   <a href="http://rocko.xyz/2015/02/06/Android%E4%B8%AD%E7%9A%84MVP/" target="_blank" rel="external">http://rocko.xyz/2015/02/06/Android%E4%B8%AD%E7%9A%84MVP/</a></h4><h3 id="http-www-jianshu-com-p-9a6845b26856"><a href="#http-www-jianshu-com-p-9a6845b26856" class="headerlink" title="http://www.jianshu.com/p/9a6845b26856"></a><a href="http://www.jianshu.com/p/9a6845b26856" target="_blank" rel="external">http://www.jianshu.com/p/9a6845b26856</a></h3><h3 id="gank-demo-http-blog-csdn-net-castledrv-article-details-51396637"><a href="#gank-demo-http-blog-csdn-net-castledrv-article-details-51396637" class="headerlink" title="gank demo : http://blog.csdn.net/castledrv/article/details/51396637"></a>gank demo : <a href="http://blog.csdn.net/castledrv/article/details/51396637" target="_blank" rel="external">http://blog.csdn.net/castledrv/article/details/51396637</a></h3><ul>
+<li>model<ul>
+<li>entity</li>
+<li>impl</li>
+</ul>
+</li>
+<li>view<ul>
+<li>ui<ul>
+<li>fragment</li>
+<li>activity</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>presenter<ul>
+<li>impl</li>
+<li>listener</li>
+</ul>
+</li>
+</ul>
+<h3 id="一个API-http-v3-wufazhuce-com-8000-api-hp-bymonth-20161125"><a href="#一个API-http-v3-wufazhuce-com-8000-api-hp-bymonth-20161125" class="headerlink" title="一个API http://v3.wufazhuce.com:8000/api/hp/bymonth/20161125"></a>一个API <a href="http://v3.wufazhuce.com:8000/api/hp/bymonth/20161125" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/hp/bymonth/20161125</a></h3><p>###<a href="http://119.29.116.107:8088/fmms/" target="_blank" rel="external">http://119.29.116.107:8088/fmms/</a> ###</p>
+<h3 id="http-rest-wufazhuce-com-OneForWeb-one-getHpinfo-strDate-2016-07-25"><a href="#http-rest-wufazhuce-com-OneForWeb-one-getHpinfo-strDate-2016-07-25" class="headerlink" title="http://rest.wufazhuce.com/OneForWeb/one/getHpinfo?strDate=2016-07-25"></a><a href="http://rest.wufazhuce.com/OneForWeb/one/getHpinfo?strDate=2016-11-25" target="_blank" rel="external">http://rest.wufazhuce.com/OneForWeb/one/getHpinfo?strDate=2016-07-25</a></h3><h3 id="问答-http-v3-wufazhuce-com-8000-api-question-1282"><a href="#问答-http-v3-wufazhuce-com-8000-api-question-1282" class="headerlink" title="问答 http://v3.wufazhuce.com:8000/api/question/1282"></a>问答 <a href="http://v3.wufazhuce.com:8000/api/question/1282" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/question/1282</a></h3><h3 id="文章-http-v3-wufazhuce-com-8000-api-essay-1339"><a href="#文章-http-v3-wufazhuce-com-8000-api-essay-1339" class="headerlink" title="文章 http://v3.wufazhuce.com:8000/api/essay/1339"></a>文章 <a href="http://v3.wufazhuce.com:8000/api/essay/1339" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/essay/1339</a></h3><h3 id="首页-http-v3-wufazhuce-com-8000-api-hp-idlist-0"><a href="#首页-http-v3-wufazhuce-com-8000-api-hp-idlist-0" class="headerlink" title="首页 http://v3.wufazhuce.com:8000/api/hp/idlist/0"></a>首页 <a href="http://v3.wufazhuce.com:8000/api/hp/idlist/0" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/hp/idlist/0</a></h3><h3 id="首页详情-http-v3-wufazhuce-com-8000-api-hp-detail-1275"><a href="#首页详情-http-v3-wufazhuce-com-8000-api-hp-detail-1275" class="headerlink" title="首页详情 http://v3.wufazhuce.com:8000/api/hp/detail/1275"></a>首页详情 <a href="http://v3.wufazhuce.com:8000/api/hp/detail/1275" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/hp/detail/1275</a></h3><h3 id="其他-："><a href="#其他-：" class="headerlink" title="其他  ："></a>其他  ：</h3><h3 id="http-v3-wufazhuce-com-8000-api-music-idlist-0"><a href="#http-v3-wufazhuce-com-8000-api-music-idlist-0" class="headerlink" title="http://v3.wufazhuce.com:8000/api/music/idlist/0"></a><a href="http://v3.wufazhuce.com:8000/api/music/idlist/0" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/music/idlist/0</a></h3><h3 id="http-v3-wufazhuce-com-8000-api-movie-list-0"><a href="#http-v3-wufazhuce-com-8000-api-movie-list-0" class="headerlink" title="http://v3.wufazhuce.com:8000/api/movie/list/0"></a><a href="http://v3.wufazhuce.com:8000/api/movie/list/0" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/movie/list/0</a></h3><h3 id="http-v3-wufazhuce-com-8000-api-movie-detail-1"><a href="#http-v3-wufazhuce-com-8000-api-movie-detail-1" class="headerlink" title="http://v3.wufazhuce.com:8000/api/movie/detail/%1"></a><a href="http://v3.wufazhuce.com:8000/api/movie/detail/%1" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/movie/detail/%1</a></h3><h3 id="http-v3-wufazhuce-com-8000-api-reading-index"><a href="#http-v3-wufazhuce-com-8000-api-reading-index" class="headerlink" title="http://v3.wufazhuce.com:8000/api/reading/index/"></a><a href="http://v3.wufazhuce.com:8000/api/reading/index/" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/reading/index/</a></h3><h3 id="http-v3-wufazhuce-com-8000-api-music-detail-1"><a href="#http-v3-wufazhuce-com-8000-api-music-detail-1" class="headerlink" title="http://v3.wufazhuce.com:8000/api/music/detail/%1"></a><a href="http://v3.wufazhuce.com:8000/api/music/detail/%1" target="_blank" rel="external">http://v3.wufazhuce.com:8000/api/music/detail/%1</a></h3><h3 id="原网址https-gist-github-com-0312birdzhang-6d2ed45457c908a0d290"><a href="#原网址https-gist-github-com-0312birdzhang-6d2ed45457c908a0d290" class="headerlink" title="原网址https://gist.github.com/0312birdzhang/6d2ed45457c908a0d290"></a>原网址<a href="https://gist.github.com/0312birdzhang/6d2ed45457c908a0d290" target="_blank" rel="external">https://gist.github.com/0312birdzhang/6d2ed45457c908a0d290</a></h3><h3 id="bing-每日图片-api-http-www-bing-com-HPImageArchive-aspx-format-js-amp-idx-0-amp-n-1"><a href="#bing-每日图片-api-http-www-bing-com-HPImageArchive-aspx-format-js-amp-idx-0-amp-n-1" class="headerlink" title="bing 每日图片 api http://www.bing.com/HPImageArchive.aspx?format=js&amp;idx=0&amp;n=1"></a>bing 每日图片 api <a href="http://www.bing.com/HPImageArchive.aspx?format=js&amp;idx=0&amp;n=1" target="_blank" rel="external">http://www.bing.com/HPImageArchive.aspx?format=js&amp;idx=0&amp;n=1</a></h3><h3 id="混淆-："><a href="#混淆-：" class="headerlink" title="混淆 ："></a>混淆 ：</h3><p>  <strong>5分钟搞定android混淆 <a href="http://blog.csdn.net/jdsjlzx/article/details/51853423" target="_blank" rel="external">http://blog.csdn.net/jdsjlzx/article/details/51853423</a></strong></p>
+<hr>
+<p>11/29/2016 10:27:39 AM</p>
+<h3 id="问题-10"><a href="#问题-10" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>页面切换，如果有选中item恢复焦点，左边menu会抢焦点</li>
+</ol>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><ol>
+<li>页面显示的时候，如果记录的有item 就让让所有button 不能获取焦点，焦点移动到左边，需要button 获取焦点的时候，监听按键，使button可以获取焦点  </li>
+<li>当button 获取焦点的时候判断是否有item记录，如果有就让不显示焦点图片，没有则显示</li>
+</ol>
+<h3 id="问题-11"><a href="#问题-11" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>新建文件夹添加应用后，将首页显示的item移除</li>
+<li>从分类中删除，在首页恢复显示</li>
+</ol>
+<h3 id="解决办法-1"><a href="#解决办法-1" class="headerlink" title="解决办法"></a>解决办法</h3><ol>
+<li>getDatas setDatas</li>
+</ol>
+<hr>
+<p>11/30/2016 9:11:11 AM<br>重新运行程序的时候，应用列表会显示文件夹</p>
+<h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><ol>
+<li><big> 重新运行程序的时候，应用列表会显示文件夹 </big></li>
+<li>重新运行程序的时候，应用列表会显示文件夹</li>
+</ol>
+<h3 id="解决办法-2"><a href="#解决办法-2" class="headerlink" title="解决办法"></a>解决办法</h3><ol>
+<li><font size="4" color="black">判断类型再加入到集合中</font><br>2.</li>
+</ol>
+<hr>
+<p>12/1/2016 2:47:38 PM</p>
+<p>CSDN 投票 <a href="http://blog.csdn.net/vote/candidate.html?username=lmj623565791" target="_blank" rel="external">http://blog.csdn.net/vote/candidate.html?username=lmj623565791</a></p>
+<h3 id="问题-12"><a href="#问题-12" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>最近使用</li>
+<li>应用收藏<h3 id="解决办法-3"><a href="#解决办法-3" class="headerlink" title="解决办法"></a>解决办法</h3></li>
+<li>使用数据库存储数据 ORMLite</li>
+</ol>
+<hr>
+<p>12/2/2016 11:38:11 AM</p>
+<h5 id="框架应用https-bng86-gitbooks-io-android-third-party-content-greendao-html"><a href="#框架应用https-bng86-gitbooks-io-android-third-party-content-greendao-html" class="headerlink" title="框架应用https://bng86.gitbooks.io/android-third-party-/content/greendao.html"></a>框架应用<a href="https://bng86.gitbooks.io/android-third-party-/content/greendao.html" target="_blank" rel="external">https://bng86.gitbooks.io/android-third-party-/content/greendao.html</a></h5><h5 id="ORMlite-怎删改查-http-www-cnblogs-com-alexthecoder-p-4277758-html"><a href="#ORMlite-怎删改查-http-www-cnblogs-com-alexthecoder-p-4277758-html" class="headerlink" title="ORMlite 怎删改查 http://www.cnblogs.com/alexthecoder/p/4277758.html"></a>ORMlite 怎删改查 <a href="http://www.cnblogs.com/alexthecoder/p/4277758.html" target="_blank" rel="external">http://www.cnblogs.com/alexthecoder/p/4277758.html</a></h5><hr>
+<p>12/3/2016 5:46:06 PM</p>
+<h3 id="问题-13"><a href="#问题-13" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>按下menu键 弹出管理应用的菜单 将移动变为收藏</li>
+<li>按下ok键 显示移动菜单<ol>
+<li>如果是上面一行，不显示向上移动，显示其他操作</li>
+<li>如果是下面一行，不显示向下移动，显示其他操作</li>
+</ol>
+</li>
+</ol>
+<h3 id="问题-14"><a href="#问题-14" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>按ok键弹出菜单，item 上下左右移动</li>
+<li>但</li>
+</ol>
+<hr>
+<p>12/7/2016 9:18:41 AM</p>
+<h3 id="组装配置"><a href="#组装配置" class="headerlink" title="组装配置"></a>组装配置</h3><ol>
+<li>cpu i5 6500        1200</li>
+<li>显卡 gtx1050         1299</li>
+<li>主板 华硕B150M-A M.2 500</li>
+<li>电源 全汉蓝暴450w    269</li>
+<li>机箱 金河田预见N6    169</li>
+<li>散热 九州玄冰智能版   49</li>
+<li>硬盘  </li>
+<li>内存 金士顿120G固态 299<br>9.<font color="red"> 明年双11</font></li>
+<li><br></li>
+</ol>
+<p>=================                    <b>3486</b></p>
+<h3 id="网盘搜索工具-http-panc-cc"><a href="#网盘搜索工具-http-panc-cc" class="headerlink" title="网盘搜索工具  http://panc.cc/"></a>网盘搜索工具  <a href="http://panc.cc/" target="_blank" rel="external">http://panc.cc/</a></h3><h3 id="问题-15"><a href="#问题-15" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>焦点框的放大</li>
+<li>按下返回键，焦点丢失</li>
+</ol>
+<h3 id="问题-16"><a href="#问题-16" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>上下移动没有view没有放大效果</li>
+<li>删除文件夹焦点错乱</li>
+<li>新建文件夹错乱</li>
+<li>替换焦点框错乱</li>
+<li>弹出菜单消失,页面</li>
+</ol>
+<hr>
+<p>12/9/2016 1:58:46 PM</p>
+<h3 id="招商银行卡号-6214-8378-0241-2118"><a href="#招商银行卡号-6214-8378-0241-2118" class="headerlink" title="招商银行卡号  6214 8378 0241 2118"></a>招商银行卡号  6214 8378 0241 2118</h3><hr>
+<p>12/12/2016 10:43:30 AM</p>
+<h3 id="Android-官方课程http-hukai-me-android-training-course-in-chinese"><a href="#Android-官方课程http-hukai-me-android-training-course-in-chinese" class="headerlink" title="Android 官方课程http://hukai.me/android-training-course-in-chinese/"></a>Android 官方课程<a href="http://hukai.me/android-training-course-in-chinese/" target="_blank" rel="external">http://hukai.me/android-training-course-in-chinese/</a></h3><hr>
+<p>12/15/2016 2:36:08 PM</p>
+<h3 id="重新写数据库"><a href="#重新写数据库" class="headerlink" title="重新写数据库"></a>重新写数据库</h3><hr>
+<p>12/16/2016 11:11:40 AM</p>
+<hr>
+<p>12/19/2016 5:10:29 PM<br>流程图工具 亿图图示 :<a href="http://www.edrawsoft.cn/" target="_blank" rel="external">http://www.edrawsoft.cn/</a></p>
+<hr>
+<p>12/21/2016 9:59:43 AM</p>
+<ol>
+<li>先进行移动操作，然后点击新建文件夹，分类会执行移动操作</li>
+<li><code>adb shell am start -n com.dy.dyth/.ui.activity.LaunchActivity</code></li>
+</ol>
+<h3 id="问题-17"><a href="#问题-17" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>选择移动,再选择分类,然后返回,弹出框没有影藏</li>
+<li>保存移动和插入的数据(移动的数序,和插入的分类)</li>
+<li>移动item 选择分类,遥控器按返回 焦点丢失</li>
+</ol>
+<h3 id="问题-18"><a href="#问题-18" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>新建分类或者删除焦点错位</li>
+<li>移动到最后一个返回键，焦点框丢失<br>3.</li>
+</ol>
+<hr>
+<p>12/26/2016 5:16:48 PM</p>
+<h3 id="问题-19"><a href="#问题-19" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>移动到后面 页面切换的恢复错误</li>
+<li>移动 和分类的混乱</li>
+<li>加入分类的应用从首页删除</li>
+</ol>
+<h3 id="问题-20"><a href="#问题-20" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>选择新建分类,不输入名字,点击确定,焦点框错位</li>
+<li>在分类中增加应用,返回首页 ,焦点框丢失</li>
+<li>替换只显示首页的应用(就是不包括已经添加到分类)</li>
+<li>应用分类，替换应用替换掉的重新显示在首页，新的应用从首页删除</li>
+</ol>
+<h3 id="adb截图命令"><a href="#adb截图命令" class="headerlink" title="adb截图命令"></a>adb截图命令</h3><pre><code>adb shell /system/bin/screencap -p /sdcard/image.png
+adb pull /sdcard/image.png c:\dir
+</code></pre><h3 id="问题-21"><a href="#问题-21" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>数据库内存泄露</li>
+</ol>
+<h3 id="Monkey-命令"><a href="#Monkey-命令" class="headerlink" title="Monkey 命令"></a>Monkey 命令</h3><pre><code>adb shell monkey -v -p  com.dy.dyth     --monitor-native-crashes --throttle 500 10000    &gt;D:/7.22-RK_1.LOG
+
+adb shell monkey -v -p com.dy.dyth --monitor-native-crashes --throttle 300 10000&gt;D:/5.7-RK1.LOG
+
+adb shell monkey -v -p  com.dy.dyth --monitor-native-crashes --throttle 300 5000    &gt;D:/NL1.LOG
+
+//优客超级直播 1万次测试
+adb shell monkey -v -p     com.dy.dyth     --monitor-native-crashes --throttle 300 1000
+
+ps | grep monkey    // 获取monkey 端口
+
+adb shell monkey -p com.dy.dyth –-throttle 300 5000  &gt;D:/DYTH.LOG
+
+
+
+
+set rw.sw.defaultlauncherpackage com.dy.dyth
+set rw.sw.defaultlauncherclass com.dy.dyth.LaunchActivity
+set rw.sw.settofirstlauncher 0
+</code></pre><hr>
+<p>1/3/2017 3:44:11 PM</p>
+<h4 id="-1"><a href="#-1" class="headerlink" title="-"></a>-</h4><ul>
+<li><font size="4" color="black">用户卸载软件 从收藏和最近使用中删除</font>
+
+
+
+</li>
+</ul>
+<hr>
+<p>tiem : 2.5<br>火车 2.4 号<br>高铁 2.4 初八</p>
+<h3 id="问题-22"><a href="#问题-22" class="headerlink" title="问题"></a>问题</h3><p>1.按下菜单键 选择替换 选择点击返回,在按下菜单键,按下返回,焦点丢失</p>
+<h3 id="抢票时间"><a href="#抢票时间" class="headerlink" title="抢票时间"></a>抢票时间</h3><ol>
+<li>12.30  武汉到深圳 z</li>
+<li>13.30  武汉到深圳 高铁</li>
+<li>16：00 襄阳到深圳 z232</li>
+<li>16:00 襄阳东到广州 z124 z232</li>
+</ol>
+<h3 id="搭建个人博客"><a href="#搭建个人博客" class="headerlink" title="搭建个人博客"></a>搭建个人博客</h3><p>教程地址<a href="https://xuanwo.org/2015/03/26/hexo-intor/" target="_blank" rel="external">https://xuanwo.org/2015/03/26/hexo-intor/</a></p>
+<p>教程<a href="http://blog.fens.me/hexo-blog-github/" target="_blank" rel="external">http://blog.fens.me/hexo-blog-github/</a></p>
+<h3 id="我的博客地址"><a href="#我的博客地址" class="headerlink" title="我的博客地址"></a>我的博客地址</h3><h4 id="gmail"><a href="#gmail" class="headerlink" title="@gmail"></a>@gmail</h4><p><a href="https://anran0919.github.io/" target="_blank" rel="external">https://anran0919.github.io/</a></p>
+<h4 id="163-mail"><a href="#163-mail" class="headerlink" title="@163 mail"></a>@163 mail</h4><p><a href="https://ancorleone.github.io/" target="_blank" rel="external">https://ancorleone.github.io/</a></p>
+<h3 id="github-ip"><a href="#github-ip" class="headerlink" title="github ip"></a>github ip</h3><p>ping username.github.io</p>
+<h3 id="域名-https-dcc-godaddy-com-manage"><a href="#域名-https-dcc-godaddy-com-manage" class="headerlink" title="域名 https://dcc.godaddy.com/manage/"></a>域名 <a href="https://dcc.godaddy.com/manage/" target="_blank" rel="external">https://dcc.godaddy.com/manage/</a></h3><h3 id="http-jiji262-github-io-2016-04-15-2016-04-15-hexo-github-pages-blog"><a href="#http-jiji262-github-io-2016-04-15-2016-04-15-hexo-github-pages-blog" class="headerlink" title="http://jiji262.github.io/2016/04/15/2016-04-15-hexo-github-pages-blog/"></a><a href="http://jiji262.github.io/2016/04/15/2016-04-15-hexo-github-pages-blog/" target="_blank" rel="external">http://jiji262.github.io/2016/04/15/2016-04-15-hexo-github-pages-blog/</a></h3><h3 id="Hexo更新博客命令"><a href="#Hexo更新博客命令" class="headerlink" title="Hexo更新博客命令"></a>Hexo更新博客命令</h3><pre><code>hexo clean // 清空
+hexo g // 生成静态网页
+hexo s // 预览
+hexo d // 更新到github
+</code></pre><h3 id="hexo-主题"><a href="#hexo-主题" class="headerlink" title="hexo 主题"></a>hexo 主题</h3><blockquote>
+<p><a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">github链接</a></p>
+</blockquote>
+<h3 id="给博客添加相册"><a href="#给博客添加相册" class="headerlink" title="给博客添加相册"></a>给博客添加相册</h3><blockquote>
+<p><a href="https://github.com/litten/zing-gallery" target="_blank" rel="external">github链接</a></p>
+</blockquote>
+<h3 id="GitHub上最火的Android开源项目持续更新中……"><a href="#GitHub上最火的Android开源项目持续更新中……" class="headerlink" title="GitHub上最火的Android开源项目持续更新中……"></a><a href="https://github.com/open-android/Android" target="_blank" rel="external">GitHub上最火的Android开源项目持续更新中</a>……</h3><p>github最大的痛点在于，拿到开源项目不会用，导入各种报错，readme看不懂，推荐给大家一个链接，所有的 项目都亲测没有问题并且全部配置了详细的步骤和配套视频进行解说，欢迎大家star。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/01/09/日常笔记/" data-id="cj3zb6pju0025y4vv5bc4ogxa" class="article-share-link" data-share="baidu" data-title="日常笔记.md">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/01/09/日常笔记/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+  </nav>
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Things/">Android Things</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jni/">Jni</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material-Design/">Material Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxJava/">RxJava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派3/">树莓派3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/物联网/">物联网</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Things/" style="font-size: 10px;">Android Things</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/C语言/" style="font-size: 10px;">C语言</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Jni/" style="font-size: 10px;">Jni</a> <a href="/tags/Material-Design/" style="font-size: 10px;">Material Design</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 18.33px;">Python</a> <a href="/tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="/tags/Ubuntu/" style="font-size: 11.67px;">Ubuntu</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/树莓派3/" style="font-size: 10px;">树莓派3</a> <a href="/tags/物联网/" style="font-size: 10px;">物联网</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 16.67px;">设计模式</a> <a href="/tags/随想/" style="font-size: 15px;">随想</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017年06月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">16</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/16/物联网开发之Android-Things入门/">物联网开发之Android Things入门</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/07/Android-Studio中使用Jni/">Android Studio中使用Jni</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/02/C语言-指针/">C语言-指针</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/01/Android-Fragment入门-AMS-ActivityManagerService/">Android Fragment入门-AMS(ActivityManagerService)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/16/Android-Material-design使用/">Android Material design使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="https://www.google.com.hk" target="_blank">Googel</a>
+          </li>
+        
+          <li>
+            <a href="http://developers.google.cn" target="_blank">developers</a>
+          </li>
+        
+          <li>
+            <a href="http://litten.me/" target="_blank">yilia</a>
+          </li>
+        
+          <li>
+            <a href="https://github.com/AnCorleone/AnCorleone.github.io" target="_blank">github</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Anakin<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a><br>
+      本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, <br>
+      访客数 <span id="busuanzi_value_site_uv"></span> 人次, <br>
+      本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次<br>
+      </p>
+    </div>
+
+  </div>
+</footer>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">所有文章</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"AnCorleone.github.io.git"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

@@ -78,6 +78,403 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-Android网络请求框架Rrtrofit的使用总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/Android网络请求框架Rrtrofit的使用总结/" class="article-date">
+  <time datetime="2017-03-22T01:33:54.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://az29176.vo.msecnd.net/videocontent/GuizhouWaterFall_FF_768_HD_ZH-CN917941712.jpg" rel="gallery_cj3zb6pf80008y4vvgpkzuk7q">
+        <img src="http://az29176.vo.msecnd.net/videocontent/GuizhouWaterFall_FF_768_HD_ZH-CN917941712.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/Android网络请求框架Rrtrofit的使用总结/">Android网络请求框架Rrtrofit的使用总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a><a href="http://bugly.qq.com/bbs/forum.php?mod=viewthread&amp;tid=1117" target="_blank" rel="external">参考文章</a></h3>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/03/22/Android网络请求框架Rrtrofit的使用总结/" data-id="cj3zb6pf80008y4vvgpkzuk7q" class="article-share-link" data-share="baidu" data-title="Android网络请求框架Rrtrofit的使用总结">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/03/22/Android网络请求框架Rrtrofit的使用总结/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Android图片加载库Glide的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/20/Android图片加载库Glide的使用/" class="article-date">
+  <time datetime="2017-03-20T09:12:14.000Z" itemprop="datePublished">2017-03-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/TingSakura_ZH-CN14945610051_1920x1080.jpg" rel="gallery_cj3zb6pg4000iy4vvnpgbhcvc">
+        <img src="http://cn.bing.com/az/hprichbg/rb/TingSakura_ZH-CN14945610051_1920x1080.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/20/Android图片加载库Glide的使用/">Android图片加载库Glide的使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Android中有不少的图片记载库,谷歌推荐使用Glide,Glide很强大,可以显示网络图片,本地图片,gif和本地vedio,Glide实现了多级缓存,提供了丰富的接口,使我们的图片加载变得很简单.</p>
+<h3 id="内容目录"><a href="#内容目录" class="headerlink" title="内容目录"></a>内容目录</h3><ul>
+<li><p><a href="#simple">简单使用</a></p>
+</li>
+<li><p><a href="#local_img">显示本地图片</a></p>
+</li>
+<li><p><a href="#net_img">显示网络图片</a></p>
+</li>
+<li><p><a href="#file_img">显示文件中的图片</a></p>
+</li>
+<li><p><a href="#gif_and_video">加载gif图片和本地视频</a></p>
+</li>
+<li><p><a href="#error_img">使用占位符和错误图片</a></p>
+</li>
+<li><p><a href="#set_size">设置图片大小和显示缩略图</a></p>
+</li>
+<li><p><a href="#set_cache">设置缓存和缓存优先级</a></p>
+</li>
+<li><p><a href="#custom_cache">自定义磁盘缓存</a></p>
+</li>
+<li><p><a href="#setPriority">设置请求优先级</a></p>
+</li>
+<li><p><a href="#Target">Glide Target回调</a></p>
+<ol>
+<li><a href="#ViewTarget">ViewTarget</a></li>
+<li><a href="#SimpleTarget">SimpleTarget</a></li>
+<li><a href="#NotificationTarget">NotificationTarget</a></li>
+<li><a href="#AppWidgetTarget">AppWidgetTarget</a></li>
+</ol>
+</li>
+<li><p><a href="#listener">Glide的监听和异常处理</a></p>
+</li>
+<li><p><a href="#CustomTransformations">自定义转换 - Custom Transformations</a></p>
+</li>
+<li><p><a href="#图片模糊处理">图片模糊处理</a></p>
+</li>
+<li><p><a href="#Glide 转换设置">Glide 转换设置</a></p>
+</li>
+<li><p><a href="#Glide animate">Glide自定义动画</a></p>
+</li>
+<li><p><a href="#circle_img">实现圆角图片和圆形图片</a></p>
+</li>
+</ul>
+<h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a><span id="simple">简单使用</span></h3><ul>
+<li><p>在项目中添加依赖</p>
+</li>
+<li><p><a href="https://github.com/bumptech/glide" target="_blank" rel="external">Glide Github地址</a></p>
+</li>
+</ul>
+<p><code>compile &#39;com.github.bumptech.glide:glide:3.7.0&#39;</code></p>
+<ul>
+<li><span id="net_img">显示网络图片</span></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">String url = <span class="string">"http://cn.bing.com/az/hprichbg/rb/TingSakura_ZH-CN14945610051_1920x1080.jpg"</span>;</div><div class="line">Glide.with(<span class="keyword">this</span>)</div><div class="line">        .load(url)</div><div class="line">        .into(img);</div></pre></td></tr></table></figure>
+<ul>
+<li><span id="local_img">显示本地图片</span></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Glide.with(<span class="keyword">this</span>)</div><div class="line">        .load(R.drawable.ic_launcher)</div><div class="line">        .into(img);</div><div class="line">`</div></pre></td></tr></table></figure>
+<ul>
+<li><span id="file_img">显示文件中图片</span></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">File file = <span class="keyword">new</span> File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),<span class="string">"Running.jpg"</span>);</div><div class="line">Glide.with(<span class="keyword">this</span>)</div><div class="line">        .load(file)</div><div class="line">        .into(img);</div></pre></td></tr></table></figure>
+<h3 id="显示Gif和本地视频"><a href="#显示Gif和本地视频" class="headerlink" title="显示Gif和本地视频"></a><span id="gif_and_video">显示Gif和本地视频</span></h3><ul>
+<li>显示gif</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Glide</div><div class="line">        .with(<span class="keyword">this</span>)</div><div class="line">        .load(gifUrl)</div><div class="line">        <span class="comment">//new GlideDrawableImageViewTarget() 第二个参数为gif 播放的次数</span></div><div class="line">        .into(<span class="keyword">new</span> GlideDrawableImageViewTarget(img, <span class="number">100</span>));</div></pre></td></tr></table></figure>
+<ul>
+<li>将gif转换成bitmap</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Glide  </div><div class="line">    .with( context )</div><div class="line">    .load( gifUrl )</div><div class="line">    .asBitmap()</div><div class="line">    .into( img );</div></pre></td></tr></table></figure>
+<ul>
+<li>播放本地Video</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">String filePath = <span class="string">"/storage/emulated/0/Pictures/example_video.mp4"</span>;</div><div class="line">Glide</div><div class="line">        .with(<span class="keyword">this</span>)</div><div class="line">        .load(Uri.fromFile(<span class="keyword">new</span> File(filePath)))</div><div class="line">        .into(img);</div></pre></td></tr></table></figure>
+<h3 id="占位符和错误图片"><a href="#占位符和错误图片" class="headerlink" title="占位符和错误图片"></a><span id="error_img">占位符和错误图片</span></h3><ul>
+<li>添加占位符和错误图片</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Glide.with(<span class="keyword">this</span>)</div><div class="line">        .load(url)</div><div class="line">        .placeholder(R.mipmap.ic_launcher) <span class="comment">// 占位图</span></div><div class="line">        .error(R.mipmap.ic_launcher)  <span class="comment">// 加载错误图片</span></div><div class="line">        .into(img);</div></pre></td></tr></table></figure>
+<h3 id="设置图片大小和显示缩略图"><a href="#设置图片大小和显示缩略图" class="headerlink" title="设置图片大小和显示缩略图"></a><span id="set_size">设置图片大小和显示缩略图</span></h3><ul>
+<li>调整图片大小</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Glide.with(<span class="keyword">this</span>)</div><div class="line">        .load(url)</div><div class="line">        .override(<span class="number">600</span>,<span class="number">600</span>)   <span class="comment">// 调整图片大小</span></div><div class="line">        .into(img);</div></pre></td></tr></table></figure>
+<h3 id="CenterCrop和FitCenter"><a href="#CenterCrop和FitCenter" class="headerlink" title="CenterCrop和FitCenter"></a>CenterCrop和FitCenter</h3><blockquote>
+<p>CenterCrop()是一个裁剪技术，即缩放图像让它填充到 ImageView 界限内并且裁剪额外的部分。ImageView 可能会完全填充，但图像可能不会完整显示。</p>
+<p>FitCenter() 是裁剪技术，即缩放图像让图像都测量出来等于或小于 ImageView 的边界范围。该图像将会完全显示，但可能不会填满整个 ImageView。</p>
+</blockquote>
+<ul>
+<li>CenterCrop</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Glide</div><div class="line">    .with(context)</div><div class="line">    .load(url)</div><div class="line">    .override(<span class="number">600</span>, <span class="number">200</span>) <span class="comment">// resizes the image to these dimensions (in pixel)</span></div><div class="line">    .centerCrop() <span class="comment">// this cropping technique scales the image so that it fills the requested bounds and then crops the extra.</span></div><div class="line">    .into(imageViewResizeCenterCrop);</div></pre></td></tr></table></figure>
+<ul>
+<li>FitCenter</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Glide</div><div class="line">    .with(context)</div><div class="line">    .load(url)</div><div class="line">    .override(<span class="number">600</span>, <span class="number">200</span>)</div><div class="line">    .fitCenter()</div><div class="line">    .into(imageViewResizeFitCenter);</div></pre></td></tr></table></figure>
+<h3 id="缓存和请求优先级"><a href="#缓存和请求优先级" class="headerlink" title="缓存和请求优先级"></a><span id="set_cache">缓存和请求优先级</span></h3><blockquote>
+<p>Glide默认使用内存缓存和磁盘缓存，减少不必要的网络请求次数</p>
+</blockquote>
+<ul>
+<li>跳过内存缓存</li>
+</ul>
+<p><code>.skipMemoryCache( true )</code></p>
+<ul>
+<li>跳过磁盘缓存</li>
+</ul>
+<p><code>.diskCacheStrategy( DiskCacheStrategy.NONE )</code></p>
+<h3 id="自定义磁盘缓存"><a href="#自定义磁盘缓存" class="headerlink" title="自定义磁盘缓存"></a><span id="custom_cache">自定义磁盘缓存</span></h3><ul>
+<li><p>DiskCacheStrategy.NONE 什么都不缓存</p>
+</li>
+<li><p>DiskCacheStrategy.SOURCE 仅仅只缓存原来的全分辨率的图像。</p>
+</li>
+<li><p>DiskCacheStrategy.RESULT 仅仅缓存最终的图像，即，降低分辨率后的（或者是转换后的）</p>
+</li>
+<li><p>DiskCacheStrategy.ALL 缓存所有版本的图像（默认行为）</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Glide</div><div class="line">        .with(<span class="keyword">this</span>)</div><div class="line">        .load(url)</div><div class="line">        .diskCacheStrategy(DiskCacheStrategy.SOURCE) <span class="comment">// 缓存原图</span></div><div class="line">        .into(img);</div></pre></td></tr></table></figure>
+<h3 id="请求的优先级"><a href="#请求的优先级" class="headerlink" title="请求的优先级"></a><span id="setPriority">请求的优先级</span></h3><blockquote>
+<p>当一个页面有多个图片，比如首页有一个大图，和若干小图，我们需要先将大图显示出来，这时候我们可以设置图片请求的优先级，控制不同图片的请求顺序,Glide提供了Priority ，选择不同的优先级</p>
+</blockquote>
+<ul>
+<li><code>Priority.LOW</code></li>
+<li><code>Priority.NORMAL</code></li>
+<li><code>Priority.HIGH</code></li>
+<li><code>Priority.IMMEDIATE</code></li>
+</ul>
+<p>示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Glide</div><div class="line">        .with( context )</div><div class="line">        .load( url1)</div><div class="line">        <span class="comment">// 大图优先加载</span></div><div class="line">        .priority( Priority.HIGH )</div><div class="line">        .into(img1);</div><div class="line">Glide</div><div class="line">        .with( context )</div><div class="line">        .load(url2)</div><div class="line">        .priority( Priority.LOW )</div><div class="line">        .into(img2);</div></pre></td></tr></table></figure>
+<h3 id="显示缩略图"><a href="#显示缩略图" class="headerlink" title="显示缩略图"></a>显示缩略图</h3><ul>
+<li>简单显示缩略图</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Glide</div><div class="line">        .with(<span class="keyword">this</span>)</div><div class="line">        .load(url)</div><div class="line">        .thumbnail(<span class="number">0.1f</span>) <span class="comment">// 显示缩略图0.1f 代表原图的1/10</span></div><div class="line">        .into(img);</div></pre></td></tr></table></figure>
+<ul>
+<li>用完全不同的请求去请求缩略图</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">DrawableRequestBuilder&lt;String&gt; request = Glide</div><div class="line">        .with( <span class="keyword">this</span> )</div><div class="line">        .load( url );</div><div class="line">Glide</div><div class="line">        .with( <span class="keyword">this</span> )</div><div class="line">        .load( url )</div><div class="line">        .thumbnail( request )</div><div class="line">        .into( img );</div></pre></td></tr></table></figure>
+<h3 id="Glide-Target回调"><a href="#Glide-Target回调" class="headerlink" title="Glide Target回调"></a><span id="Target">Glide Target回调</span></h3><ul>
+<li><span id="SimpleTarget">SimpleTarget</span></li>
+</ul>
+<p>下面代码中创建一个SimpleTarget,Glide请求成功的图片会回调到SimpleTarget的方法中,可以对Bitmap 进行操作,也可以在SimpleTarget的构造函数中设置图片的大小</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">SimpleTarget&lt;Bitmap&gt; simpleTarget = <span class="keyword">new</span> SimpleTarget&lt;Bitmap&gt;(<span class="number">600</span>,<span class="number">600</span>) &#123;  <span class="comment">// 设置图片的大小,可选参数</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResourceReady</span><span class="params">(Bitmap resource, GlideAnimation&lt;? <span class="keyword">super</span> Bitmap&gt; glideAnimation)</span> </span>&#123;</div><div class="line">        <span class="comment">// 回调中获得Bitmap,可以根据需要对Bitmap进行操作</span></div><div class="line">        img.setImageBitmap(resource);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">Glide</div><div class="line">        .with(<span class="keyword">this</span>)</div><div class="line">        .load(url)</div><div class="line">        .asBitmap()</div><div class="line">        .into(simpleTarget);</div></pre></td></tr></table></figure>
+<ul>
+<li><span id="ViewTarget">ViewTarget</span></li>
+</ul>
+<blockquote>
+<p> 使用ViewTarget实现自定义View显示图片</p>
+</blockquote>
+<p>自定义view</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by demo on 2017/3/21 0021</div><div class="line"> * 自定义view 显示图片和文字</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomView</span> <span class="keyword">extends</span> <span class="title">FrameLayout</span> </span>&#123;</div><div class="line">    ImageView iv;</div><div class="line">    TextView tv;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomView</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context);</div><div class="line">        initialize(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomView</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs);</div><div class="line">        initialize(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs, defStyleAttr);</div><div class="line">        initialize(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initialize</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        inflate( context, R.layout.custom_view_futurestudio, <span class="keyword">this</span> );</div><div class="line">        iv = (ImageView) findViewById( R.id.custom_view_image );</div><div class="line">        tv = (TextView) findViewById( R.id.custom_view_text );</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setImage</span><span class="params">(Drawable drawable)</span> </span>&#123;</div><div class="line">        iv = (ImageView) findViewById( R.id.custom_view_image );</div><div class="line">        iv.setImageDrawable( drawable );</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用ViewTarget在自定义view中显示图片<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">ViewTarget&lt;CustomView, GlideDrawable&gt; viewTarget = <span class="keyword">new</span> ViewTarget&lt;CustomView, GlideDrawable&gt;(mCustomView) &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResourceReady</span><span class="params">(GlideDrawable resource, GlideAnimation&lt;? <span class="keyword">super</span> GlideDrawable&gt; glideAnimation)</span> </span>&#123;</div><div class="line">        mCustomView.setImage(resource.getCurrent());</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">Glide</div><div class="line">        .with(<span class="keyword">this</span>)</div><div class="line">        .load(url)</div><div class="line">        .into(viewTarget);</div></pre></td></tr></table></figure></p>
+<h3 id="加载图片到通知栏和应用小部件"><a href="#加载图片到通知栏和应用小部件" class="headerlink" title="加载图片到通知栏和应用小部件"></a>加载图片到通知栏和应用小部件</h3><ul>
+<li><span id="NotificationTarget">NotificationTarget</span></li>
+</ul>
+<p>使用Notification 和 RemoteViews 以及常量 NOTIFICATION_ID,再加上NotificationTarget,就可以实现通知栏的图片显示.</p>
+<p>示例代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initNotification</span><span class="params">()</span> </span>&#123;</div><div class="line">        String url = <span class="string">"http://cn.bing.com/az/hprichbg/rb/TingSakura_ZH-CN14945610051_1920x1080.jpg"</span>;</div><div class="line">        <span class="keyword">final</span> RemoteViews rv = <span class="keyword">new</span> RemoteViews(<span class="keyword">this</span>.getPackageName(), R.layout.notifycation);</div><div class="line"></div><div class="line">        rv.setImageViewResource(R.id.remoteview_notification_icon, R.mipmap.pic062);</div><div class="line"></div><div class="line">        rv.setTextViewText(R.id.remoteview_notification_headline, <span class="string">"Headline"</span>);</div><div class="line">        rv.setTextViewText(R.id.remoteview_notification_short_message, <span class="string">"Short Message"</span>);</div><div class="line"></div><div class="line"></div><div class="line">        android.support.v4.app.NotificationCompat.Builder builder = <span class="keyword">new</span> NotificationCompat</div><div class="line">                .Builder(<span class="keyword">this</span>.getApplication())</div><div class="line">                .setSmallIcon(R.mipmap.pic062)</div><div class="line">                .setContentText(<span class="string">"content text"</span>)</div><div class="line">                .setContentTitle(<span class="string">" content title "</span>)</div><div class="line">                .setContent(rv)</div><div class="line">                .setPriority(NotificationCompat.PRIORITY_MIN);</div><div class="line"></div><div class="line">        Notification notification = builder.build();</div><div class="line">        <span class="keyword">if</span> (android.os.Build.VERSION.SDK_INT &gt;= <span class="number">16</span>) &#123;</div><div class="line">            notification.bigContentView = rv;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        NotificationManager mNotificationManager = (NotificationManager) <span class="keyword">this</span>.getSystemService(Context.NOTIFICATION_SERVICE);</div><div class="line">        mNotificationManager.notify(NOTIFICATION_ID, notification);</div><div class="line"></div><div class="line">        NotificationTarget notificationTarget = <span class="keyword">new</span> NotificationTarget(</div><div class="line">                <span class="keyword">this</span>,</div><div class="line">                rv,</div><div class="line">                R.id.remoteview_notification_icon,</div><div class="line">                notification,</div><div class="line">                NOTIFICATION_ID);</div><div class="line"></div><div class="line"></div><div class="line">        Glide</div><div class="line">                .with(<span class="keyword">this</span>.getApplicationContext() ) <span class="comment">// safer!</span></div><div class="line">                .load(url)</div><div class="line">                .asBitmap()</div><div class="line">                .into( notificationTarget );</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><span id="AppWidgetTarget">AppWidgetTarget</span></li>
+</ul>
+<p>使用AppWidgetTarget结合Glide显示应用小部件图片</p>
+<p>代码实例:</p>
+<p>FSAppWidgetProvider.class<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FSAppWidgetProvider</span> <span class="keyword">extends</span> <span class="title">AppWidgetProvider</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> AppWidgetTarget appWidgetTarget;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onUpdate</span><span class="params">(Context context, AppWidgetManager appWidgetManager, <span class="keyword">int</span>[] appWidgetIds)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onUpdate(context, appWidgetManager, appWidgetIds);</div><div class="line"></div><div class="line">        String url = <span class="string">"http://cn.bing.com/az/hprichbg/rb/TingSakura_ZH-CN14945610051_1920x1080.jpg"</span>;</div><div class="line">        RemoteViews rv = <span class="keyword">new</span> RemoteViews(context.getPackageName(), R.layout.custom_view_futurestudio);</div><div class="line"></div><div class="line">        appWidgetTarget = <span class="keyword">new</span> AppWidgetTarget( context, rv, R.id.custom_view_image, appWidgetIds );</div><div class="line"></div><div class="line">        Glide</div><div class="line">                .with( context.getApplicationContext() ) <span class="comment">// safer!</span></div><div class="line">                .load(url)</div><div class="line">                .asBitmap()</div><div class="line">                .into( appWidgetTarget );</div><div class="line"></div><div class="line">        pushWidgetUpdate(context, rv);</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">pushWidgetUpdate</span><span class="params">(Context context, RemoteViews rv)</span> </span>&#123;</div><div class="line">        ComponentName myWidget = <span class="keyword">new</span> ComponentName(context, FSAppWidgetProvider.class);</div><div class="line">        AppWidgetManager manager = AppWidgetManager.getInstance(context);</div><div class="line">        manager.updateAppWidget(myWidget, rv);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>需要在AndroidManifest中配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">".glide_test.FSAppWidgetProvider"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta-data</span> <span class="attr">android:name</span>=<span class="string">"android.appwidget.provider"</span></span></div><div class="line">               <span class="attr">android:resource</span>=<span class="string">"@xml/appwidget_info"</span>&gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">meta-data</span>&gt;</span></div><div class="line">    //引用的在res/xml下创建的文件</div><div class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>//这个是接收广播时的过滤器 Android定义的</div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.appwidget.action.APPWIDGET_UPDATE"</span>&gt;</span><span class="tag">&lt;/<span class="name">action</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>appwidget_info.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">appwidget-provider</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">                    <span class="attr">android:initialLayout</span>=<span class="string">"@layout/custom_view_futurestudio"</span></div><div class="line">                    <span class="attr">android:minHeight</span>=<span class="string">"40dp"</span></div><div class="line">                    <span class="attr">android:minWidth</span>=<span class="string">"100dp"</span></div><div class="line">                    <span class="attr">android:updatePeriodMillis</span>=<span class="string">"86400000"</span></div><div class="line">&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">appwidget-provider</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="Glide的监听和异常处理"><a href="#Glide的监听和异常处理" class="headerlink" title="Glide的监听和异常处理"></a><span id="listener">Glide的监听和异常处理</span></h3><p>默认情况下，如果访问的图片出错，Glide会默默的抛出一个异常，如果设置了<code>.error()</code>,会显示配置的错误图片，如果需要明确知道异常的，或者想要对异常做一些处理，可以设置<code>.listener()</code>,监听图片的加载，你也可以在成功后做一些其他操作</p>
+<ul>
+<li>监听glide加载图片</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">RequestListener&lt;String, GlideDrawable&gt; requestListener = <span class="keyword">new</span> RequestListener&lt;String, GlideDrawable&gt;() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onException</span><span class="params">(Exception e, String model, Target&lt;GlideDrawable&gt; target, <span class="keyword">boolean</span> isFirstResource)</span> </span>&#123;</div><div class="line">        <span class="comment">// 发生异常时</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onResourceReady</span><span class="params">(GlideDrawable resource, String model, Target&lt;GlideDrawable&gt; target, <span class="keyword">boolean</span> isFromMemoryCache, <span class="keyword">boolean</span> isFirstResource)</span> </span>&#123;</div><div class="line">        <span class="comment">//  请求成功</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">Glide</div><div class="line">        .with(<span class="keyword">this</span>)</div><div class="line">        .load(url)</div><div class="line">        .error(R.mipmap.pic062)</div><div class="line">        .listener(requestListener)</div><div class="line">        .into(img);</div></pre></td></tr></table></figure>
+<h3 id="自定义转换-Custom-Transformations"><a href="#自定义转换-Custom-Transformations" class="headerlink" title="自定义转换 - Custom Transformations"></a><span id="CustomTransformations">自定义转换 - Custom Transformations</span></h3><p>为了实现自定义转换，我们需要实现 Transformation 接口，这个方法比较复杂，如果我们只是处理图片，是不是git或者video,使用BitmapTransformation抽象类可以满足我们的要求</p>
+<ul>
+<li><span id="图片模糊处理">使用转换实现模糊图像</span></li>
+</ul>
+<p>代码示例：</p>
+<p>BlurTransformation.class<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.anakin.design_pattern_test.glide_test;</div><div class="line"></div><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.graphics.Bitmap;</div><div class="line"><span class="keyword">import</span> android.renderscript.Allocation;</div><div class="line"><span class="keyword">import</span> android.renderscript.Element;</div><div class="line"><span class="keyword">import</span> android.renderscript.RenderScript;</div><div class="line"><span class="keyword">import</span> android.renderscript.ScriptIntrinsicBlur;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;</div><div class="line"><span class="keyword">import</span> com.bumptech.glide.load.resource.bitmap.BitmapTransformation;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by demo on 2017/3/21 0021</div><div class="line"> * 实现模糊图片</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BlurTransformation</span> <span class="keyword">extends</span> <span class="title">BitmapTransformation</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> RenderScript rs;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BlurTransformation</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context);</div><div class="line">        rs = RenderScript.create( context );</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> Bitmap <span class="title">transform</span><span class="params">(BitmapPool pool, Bitmap toTransform, <span class="keyword">int</span> outWidth, <span class="keyword">int</span> outHeight)</span> </span>&#123;</div><div class="line">        Bitmap blurredBitmap = toTransform.copy( Bitmap.Config.ARGB_8888, <span class="keyword">true</span> );</div><div class="line"></div><div class="line">        <span class="comment">// Allocate memory for Renderscript to work with</span></div><div class="line">        Allocation input = Allocation.createFromBitmap(</div><div class="line">                rs,</div><div class="line">                blurredBitmap,</div><div class="line">                Allocation.MipmapControl.MIPMAP_FULL,</div><div class="line">                Allocation.USAGE_SHARED</div><div class="line">        );</div><div class="line">        Allocation output = Allocation.createTyped(rs, input.getType());</div><div class="line"></div><div class="line">        <span class="comment">// Load up an instance of the specific script that we want to use.</span></div><div class="line">        ScriptIntrinsicBlur script = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));</div><div class="line">        script.setInput(input);</div><div class="line"></div><div class="line">        <span class="comment">// Set the blur radius</span></div><div class="line">        script.setRadius(<span class="number">10</span>);</div><div class="line"></div><div class="line">        <span class="comment">// Start the ScriptIntrinisicBlur</span></div><div class="line">        script.forEach(output);</div><div class="line"></div><div class="line">        <span class="comment">// Copy the output to the blurred bitmap</span></div><div class="line">        output.copyTo(blurredBitmap);</div><div class="line"></div><div class="line">        toTransform.recycle();</div><div class="line"></div><div class="line">        <span class="keyword">return</span> blurredBitmap;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">/**</span></div><div class="line">         * Glide 使用该键作为缓存系统的一部分，为了避免意外的问题，你要确保它是唯一的。</div><div class="line">         */</div><div class="line">        <span class="keyword">return</span> <span class="string">"jjj"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用转换：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Glide</div><div class="line">        .with(<span class="keyword">this</span>)</div><div class="line">        .load(url)</div><div class="line">        .error(R.mipmap.pic062)</div><div class="line">        .transform(<span class="keyword">new</span> BlurTransformation(<span class="keyword">this</span>))</div><div class="line">        .into(img);</div></pre></td></tr></table></figure></p>
+<ul>
+<li>运用多种转换</li>
+</ul>
+<p><code>public DrawableRequestBuilder&lt;ModelType&gt; transform(BitmapTransformation... transformations)</code> 可以接受多个参数，对图片进行多种转换</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Glide  </div><div class="line">    .with( context )</div><div class="line">    .load( eatFoodyImages[<span class="number">1</span>] )</div><div class="line">    .transform( <span class="keyword">new</span> GreyscaleTransformation( context ), <span class="keyword">new</span> BlurTransformation( context ) )</div><div class="line">    .into( imageView2 );</div></pre></td></tr></table></figure>
+<h3 id="Glide-转换设置"><a href="#Glide-转换设置" class="headerlink" title="Glide 转换设置"></a><span id="Glide 转换设置">Glide 转换设置</span></h3><ul>
+<li>设置起来很简单，对于基础版本你只需要在你当前的 build.gradle 中添加一行代码就可以了</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;  </div><div class="line">    compile <span class="string">'jp.wasabeef:glide-transformations:1.2.1'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>如果你想要使用 GPU 转换：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">repositories &#123;  </div><div class="line">    jcenter()</div><div class="line">    mavenCentral()</div><div class="line">&#125;</div><div class="line"></div><div class="line">dependencies &#123;  </div><div class="line">    compile <span class="string">'jp.wasabeef:glide-transformations:1.2.1'</span></div><div class="line">    compile <span class="string">'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.3.0'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>如果你想使用 BlurTransformation,就添加下面这些代码到你的 build.gradle 中。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">android &#123;  </div><div class="line">    ...</div><div class="line">    defaultConfig &#123;</div><div class="line">        ...</div><div class="line">        renderscriptTargetApi <span class="number">23</span></div><div class="line">        renderscriptSupportModeEnabled <span class="keyword">true</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>使用BlurTransformation（<code>jp.wasabeef.glide.transformations.BlurTransformation</code>）,对图片进行模糊处理</li>
+</ul>
+<p>示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Glide</div><div class="line">        .with(<span class="keyword">this</span>)</div><div class="line">        .load(url)</div><div class="line">        .error(R.mipmap.pic062)</div><div class="line">        <span class="comment">// BlurTransformation(Context context, int radius, int sampling)</span></div><div class="line">        .bitmapTransform(<span class="keyword">new</span> BlurTransformation(<span class="keyword">this</span>,<span class="number">25</span>,<span class="number">1</span>))</div><div class="line">        .into(img);</div></pre></td></tr></table></figure>
+<h3 id="Glide自定义动画"><a href="#Glide自定义动画" class="headerlink" title="Glide自定义动画"></a><span id="Glide animate">Glide自定义动画</span></h3><p>Glide使用<code>.animate（）</code>可以使用xml创建的动画，也可以接收自定义的动画类</p>
+<ul>
+<li>使用Android系统定义的动画xml</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;  </div><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">translate</span> <span class="attr">android:fromXDelta</span>=<span class="string">"-50%p"</span> <span class="attr">android:toXDelta</span>=<span class="string">"0"</span></span></div><div class="line">            <span class="attr">android:duration</span>=<span class="string">"@android:integer/config_mediumAnimTime"</span>/&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">alpha</span> <span class="attr">android:fromAlpha</span>=<span class="string">"0.0"</span> <span class="attr">android:toAlpha</span>=<span class="string">"1.0"</span></span></div><div class="line">            <span class="attr">android:duration</span>=<span class="string">"@android:integer/config_mediumAnimTime"</span> /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>自定义动画xml</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;  </div><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>  </span></div><div class="line">     <span class="attr">android:fillAfter</span>=<span class="string">"true"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">scale</span></span></div><div class="line">        <span class="attr">android:duration</span>=<span class="string">"@android:integer/config_longAnimTime"</span></div><div class="line">        <span class="attr">android:fromXScale</span>=<span class="string">"0.1"</span></div><div class="line">        <span class="attr">android:fromYScale</span>=<span class="string">"0.1"</span></div><div class="line">        <span class="attr">android:pivotX</span>=<span class="string">"50%"</span></div><div class="line">        <span class="attr">android:pivotY</span>=<span class="string">"50%"</span></div><div class="line">        <span class="attr">android:toXScale</span>=<span class="string">"1"</span></div><div class="line">        <span class="attr">android:toYScale</span>=<span class="string">"1"</span>/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>自定义类实现动画</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ViewPropertyAnimation.Animator animationObject = <span class="keyword">new</span> ViewPropertyAnimation.Animator() &#123;  </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">animate</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">        view.setAlpha( <span class="number">0f</span> );</div><div class="line">        ObjectAnimator fadeAnim = ObjectAnimator.ofFloat( view, <span class="string">"alpha"</span>, <span class="number">0f</span>, <span class="number">1f</span> );</div><div class="line">        fadeAnim.setDuration( <span class="number">2500</span> );</div><div class="line">        fadeAnim.start();</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ul>
+<li>使用方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Glide</div><div class="line">        .with(<span class="keyword">this</span>)</div><div class="line">        .load(url)</div><div class="line">        .error(R.mipmap.pic062)</div><div class="line">        .animate(animationObject) <span class="comment">// 使用自定义的动画</span></div><div class="line">      <span class="comment">//  .animate(android.R.anim.slide_in_left) // 使用系统的xml动画</span></div><div class="line">        <span class="comment">//.animate(R.anim.zoom_in) // 自定义的xml动画</span></div><div class="line">        .into(img);</div></pre></td></tr></table></figure>
+<h3 id="实现圆角图片和圆形图片"><a href="#实现圆角图片和圆形图片" class="headerlink" title="实现圆角图片和圆形图片"></a><span id="circle_img">实现圆角图片和圆形图片</span></h3><p><img src="/img/circle_img.png" alt="圆形图片"><br><img src="/img/round_img.png" alt="圆角图片"></p>
+<p>实现原理是使用transform()对图片进行转换，自定义类<br><code>GlideRoundTransform.class</code>和<code>GlideCircleTransform.class</code></p>
+<ul>
+<li>实现圆形图片</li>
+</ul>
+<p>GlideCircleTransform.class</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by demo on 2017/3/21 0021</div><div class="line"> * 实现原型图片转换</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GlideCircleTransform</span> <span class="keyword">extends</span> <span class="title">BitmapTransformation</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GlideCircleTransform</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> Bitmap <span class="title">transform</span><span class="params">(BitmapPool pool, Bitmap toTransform, <span class="keyword">int</span> outWidth, <span class="keyword">int</span> outHeight)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> circleCrop(pool, toTransform);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Bitmap <span class="title">circleCrop</span><span class="params">(BitmapPool pool, Bitmap source)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (source == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> size = Math.min(source.getWidth(), source.getHeight());</div><div class="line">        <span class="keyword">int</span> x = (source.getWidth() - size) / <span class="number">2</span>;</div><div class="line">        <span class="keyword">int</span> y = (source.getHeight() - size) / <span class="number">2</span>;</div><div class="line"></div><div class="line">        <span class="comment">// TODO this could be acquired from the pool too</span></div><div class="line">        Bitmap squared = Bitmap.createBitmap(source, x, y, size, size);</div><div class="line"></div><div class="line">        Bitmap result = pool.get(size, size, Bitmap.Config.ARGB_8888);</div><div class="line">        <span class="keyword">if</span> (result == <span class="keyword">null</span>) &#123;</div><div class="line">            result = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        Canvas canvas = <span class="keyword">new</span> Canvas(result);</div><div class="line">        Paint paint = <span class="keyword">new</span> Paint();</div><div class="line">        paint.setShader(<span class="keyword">new</span> BitmapShader(squared, BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP));</div><div class="line">        paint.setAntiAlias(<span class="keyword">true</span>);</div><div class="line">        <span class="keyword">float</span> r = size / <span class="number">2f</span>;</div><div class="line">        canvas.drawCircle(r, r, r, paint);</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> getClass().getName();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>圆角图片转换</li>
+</ul>
+<p>GlideRoundTransform.class</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by demo on 2017/3/21 0021</div><div class="line"> * Glide圆角图片转换</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GlideRoundTransform</span> <span class="keyword">extends</span> <span class="title">BitmapTransformation</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">float</span> radius = <span class="number">0f</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GlideRoundTransform</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>(context, <span class="number">4</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GlideRoundTransform</span><span class="params">(Context context, <span class="keyword">int</span> dp)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context);</div><div class="line">        <span class="keyword">this</span>.radius = Resources.getSystem().getDisplayMetrics().density * dp;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span> <span class="function"><span class="keyword">protected</span> Bitmap <span class="title">transform</span><span class="params">(BitmapPool pool, Bitmap toTransform, <span class="keyword">int</span> outWidth, <span class="keyword">int</span> outHeight)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> roundCrop(pool, toTransform);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Bitmap <span class="title">roundCrop</span><span class="params">(BitmapPool pool, Bitmap source)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (source == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line"></div><div class="line">        Bitmap result = pool.get(source.getWidth(), source.getHeight(), Bitmap.Config.ARGB_8888);</div><div class="line">        <span class="keyword">if</span> (result == <span class="keyword">null</span>) &#123;</div><div class="line">            result = Bitmap.createBitmap(source.getWidth(), source.getHeight(), Bitmap.Config.ARGB_8888);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        Canvas canvas = <span class="keyword">new</span> Canvas(result);</div><div class="line">        Paint paint = <span class="keyword">new</span> Paint();</div><div class="line">        paint.setShader(<span class="keyword">new</span> BitmapShader(source, BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP));</div><div class="line">        paint.setAntiAlias(<span class="keyword">true</span>);</div><div class="line">        RectF rectF = <span class="keyword">new</span> RectF(<span class="number">0f</span>, <span class="number">0f</span>, source.getWidth(), source.getHeight());</div><div class="line">        canvas.drawRoundRect(rectF, radius, radius, paint);</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> getClass().getName() + Math.round(radius);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>实现转换</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Glide</div><div class="line">        .with(<span class="keyword">this</span>)</div><div class="line">        .load(url)</div><div class="line">        .error(R.mipmap.pic062)</div><div class="line">        .animate(animationObject) <span class="comment">// 使用自定义的动画</span></div><div class="line">        <span class="comment">//.transform(new GlideCircleTransform(this)) // 转换成圆形图片</span></div><div class="line">        .transform(<span class="keyword">new</span> GlideRoundTransform(<span class="keyword">this</span>,<span class="number">20</span>))   <span class="comment">// 转换成圆角图片</span></div><div class="line">        .into(img);</div></pre></td></tr></table></figure>
+<h3 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a><a href="https://mrfu.me/2016/02/28/Glide_Custom_Transformations/" target="_blank" rel="external">参考地址</a></h3>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/03/20/Android图片加载库Glide的使用/" data-id="cj3zb6pg4000iy4vvnpgbhcvc" class="article-share-link" data-share="baidu" data-title="Android图片加载库Glide的使用">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/03/20/Android图片加载库Glide的使用/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-焦虑" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/18/焦虑/" class="article-date">
+  <time datetime="2017-03-18T09:55:12.000Z" itemprop="datePublished">2017-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/RiverofLife_ZH-CN8454523790_1920x1080.jpg" rel="gallery_cj3zb6pjq0022y4vvu994lmfd">
+        <img src="http://cn.bing.com/az/hprichbg/rb/RiverofLife_ZH-CN8454523790_1920x1080.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/18/焦虑/">焦虑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>所有的焦虑和迷茫，都是因为你太闲和太懒。</p>
+<p>其实迷茫和焦虑并不可怕，</p>
+<p>可怕的是你在迷茫和焦虑的过程中浪费了大把的「美好时光」</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/03/18/焦虑/" data-id="cj3zb6pjq0022y4vvu994lmfd" class="article-share-link" data-share="baidu" data-title="焦虑">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/03/18/焦虑/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-使用RxJava实现EventBus-事件总线）" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/17/使用RxJava实现EventBus-事件总线）/" class="article-date">
@@ -90,7 +487,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://oje1oqb9c.bkt.clouddn.com/image/bus.jpg" rel="gallery_cj3e8zmo70015h4vve5lnhftv">
+      <a class="article-gallery-img fancybox" href="http://oje1oqb9c.bkt.clouddn.com/image/bus.jpg" rel="gallery_cj3zb6pj4001ty4vvkkw8szh7">
         <img src="http://oje1oqb9c.bkt.clouddn.com/image/bus.jpg" itemprop="image">
       </a>
     
@@ -217,7 +614,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/17/使用RxJava实现EventBus-事件总线）/" data-id="cj3e8zmo70015h4vve5lnhftv" class="article-share-link" data-share="baidu" data-title="使用RxJava实现EventBus(事件总线）">分享到</a>
+        <a data-url="http://anranz.com/2017/03/17/使用RxJava实现EventBus-事件总线）/" data-id="cj3zb6pj4001ty4vvkkw8szh7" class="article-share-link" data-share="baidu" data-title="使用RxJava实现EventBus(事件总线）">分享到</a>
       
 
       
@@ -246,7 +643,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://oje1oqb9c.bkt.clouddn.com/image/android6.0bg.png" rel="gallery_cj3e8zmny000wh4vv04lg9r2m">
+      <a class="article-gallery-img fancybox" href="http://oje1oqb9c.bkt.clouddn.com/image/android6.0bg.png" rel="gallery_cj3zb6pix001oy4vv5858jihn">
         <img src="http://oje1oqb9c.bkt.clouddn.com/image/android6.0bg.png" itemprop="image">
       </a>
     
@@ -304,7 +701,7 @@ $ chmod a+x ~/bin/repo
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/16/Ubuntu16-04下载编译Android6-0源码/" data-id="cj3e8zmny000wh4vv04lg9r2m" class="article-share-link" data-share="baidu" data-title="Ubuntu16.04下载编译Android6.0源码">分享到</a>
+        <a data-url="http://anranz.com/2017/03/16/Ubuntu16-04下载编译Android6-0源码/" data-id="cj3zb6pix001oy4vv5858jihn" class="article-share-link" data-share="baidu" data-title="Ubuntu16.04下载编译Android6.0源码">分享到</a>
       
 
       
@@ -333,7 +730,7 @@ $ chmod a+x ~/bin/repo
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg" rel="gallery_cj3e8zmne000jh4vvvdccafms">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg" rel="gallery_cj3zb6pie0019y4vv18htzifc">
         <img src="http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -419,7 +816,7 @@ $ chmod a+x ~/bin/repo
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/10/RxJava-简单使用（二）/" data-id="cj3e8zmne000jh4vvvdccafms" class="article-share-link" data-share="baidu" data-title="RxJava--简单使用（二）">分享到</a>
+        <a data-url="http://anranz.com/2017/03/10/RxJava-简单使用（二）/" data-id="cj3zb6pie0019y4vv18htzifc" class="article-share-link" data-share="baidu" data-title="RxJava--简单使用（二）">分享到</a>
       
 
       
@@ -448,7 +845,7 @@ $ chmod a+x ~/bin/repo
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg" rel="gallery_cj3e8zmq8002th4vvb1rnmyc6">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg" rel="gallery_cj3zb6pil001fy4vvr2dooew5">
         <img src="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -574,7 +971,7 @@ service.getTopMovie(1,1)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/08/RxJave和Retrofits的实现网络请求/" data-id="cj3e8zmq8002th4vvb1rnmyc6" class="article-share-link" data-share="baidu" data-title="RxJave和Retrofits的实现网络请求">分享到</a>
+        <a data-url="http://anranz.com/2017/03/08/RxJave和Retrofits的实现网络请求/" data-id="cj3zb6pil001fy4vvr2dooew5" class="article-share-link" data-share="baidu" data-title="RxJave和Retrofits的实现网络请求">分享到</a>
       
 
       
@@ -603,7 +1000,7 @@ service.getTopMovie(1,1)
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cj3e8zmo50013h4vvzshb1szp">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" rel="gallery_cj3zb6pj1001qy4vv0w3zryhj">
         <img src="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -883,7 +1280,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/06/RxJava-简单使用/" data-id="cj3e8zmo50013h4vvzshb1szp" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
+        <a data-url="http://anranz.com/2017/03/06/RxJava-简单使用/" data-id="cj3zb6pj1001qy4vv0w3zryhj" class="article-share-link" data-share="baidu" data-title="RxJava-简单使用">分享到</a>
       
 
       
@@ -912,7 +1309,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" rel="gallery_cj3e8zmmx000bh4vvzai5eyar">
+      <a class="article-gallery-img fancybox" href="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" rel="gallery_cj3zb6pi40015y4vv9x5l1pzz">
         <img src="http://imgsrc.baidu.com/forum/pic/item/501c8434970a304e605d6990d5c8a786c9175c65.jpg" itemprop="image">
       </a>
     
@@ -955,7 +1352,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/06/Atom插件打造PHP开发平台/" data-id="cj3e8zmmx000bh4vvzai5eyar" class="article-share-link" data-share="baidu" data-title="Atom插件打造PHP开发平台">分享到</a>
+        <a data-url="http://anranz.com/2017/03/06/Atom插件打造PHP开发平台/" data-id="cj3zb6pi40015y4vv9x5l1pzz" class="article-share-link" data-share="baidu" data-title="Atom插件打造PHP开发平台">分享到</a>
       
 
       
@@ -984,7 +1381,7 @@ protected void onDestroy() {
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" rel="gallery_cj3e8zmog001dh4vvk7ko0pqk">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" rel="gallery_cj3zb6piu001ly4vvuh67wrfz">
         <img src="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -1014,7 +1411,7 @@ protected void onDestroy() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/02/不忘初心/" data-id="cj3e8zmog001dh4vvk7ko0pqk" class="article-share-link" data-share="baidu" data-title="不忘初心">分享到</a>
+        <a data-url="http://anranz.com/2017/03/02/不忘初心/" data-id="cj3zb6piu001ly4vvuh67wrfz" class="article-share-link" data-share="baidu" data-title="不忘初心">分享到</a>
       
 
       
@@ -1031,242 +1428,10 @@ protected void onDestroy() {
 
 
   
-    <article id="post-三月" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/01/三月/" class="article-date">
-  <time datetime="2017-03-01T07:38:43.000Z" itemprop="datePublished">2017-03-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-<div class="article-gallery">
-  <div class="article-gallery-photos">
-    
-      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cj3e8zmoi001eh4vvja2otous">
-        <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" itemprop="image">
-      </a>
-    
-  </div>
-</div>
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/01/三月/">三月</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>爱情本就是一场关于你的信仰。</p>
-<p>爱你想爱的，</p>
-<p>追随你甘心追随的。</p>
-<p>其余的，</p>
-<p>就交给时间。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/03/01/三月/" data-id="cj3e8zmoi001eh4vvja2otous" class="article-share-link" data-share="baidu" data-title="三月">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/03/01/三月/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-设计模式-桥接模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/28/设计模式-桥接模式/" class="article-date">
-  <time datetime="2017-02-28T06:27:59.000Z" itemprop="datePublished">2017-02-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/28/设计模式-桥接模式/">桥接模式.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h2><p>桥接是用于把抽象化和实例化解耦，使二者可以独立变化。这种类型的设计模式属于结构型模式，它通过提供抽象化和实例化之间的桥接结构，来实现二者解耦。</p>
-<h3 id="使用实例"><a href="#使用实例" class="headerlink" title="使用实例"></a>使用实例</h3><blockquote>
-<p>画不同圆形，包括半径和x,y,可以添加不同的实现类定制圆形的颜色,在调用方法传入不同的参数,定制圆形的半径和其他坐标参数</p>
-</blockquote>
-<h3 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程:"></a>实现过程:</h3><ol>
-<li>定义一个画图的接口<code>DrawApi</code>，包含一个<code>drawCircle(int radius,int x,int y)</code>方法</li>
-<li>定义一个Shape的抽象类,包含一个<code>draw()</code>方法,构造函数接受<code>DrawApi</code>的实例</li>
-<li>分别定义一个画<code>RedCircle</code>和<code>GreenCircle</code>的类,实现<code>DrawApi</code>接口</li>
-<li>定义一个<code>Circle</code>类,继承<code>shape</code>类,构造函数接受<code>drawCircle(int radius,int x,int y)</code>需要的参数,<br>实现<code>draw()</code>方法,在方法中调用<code>drawCircle()</code>方法</li>
-<li>最后new Circle(),接受<code>DrawApi</code>的实例,传入所需参数</li>
-</ol>
-<hr>
-<h3 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h3><p>只要解决一种事物的多种可能性,如实例图形的形状,颜色,半径,实例中要画两种不同的圆形,首先在圆形具体类Circle中继承Shape类,在Shape类中获取操作图形参数的接口DrawApi实例,并在draw 方法中调用DrawApi的方法,所需参数需要DrawApi的实例,和具体的并在draw 的参数,由调用者传入具体的参数</p>
-<h3 id="调用过程"><a href="#调用过程" class="headerlink" title="调用过程"></a>调用过程</h3><p>DrawApi的实例(如:不同颜色的圆形 ) –Shape的实例(构造方法传入半径,坐标) –&gt;实例中调用DrawApi的方法,传入获得的参数,实际调用的DrawApi实例的方法,参数在Shape中传入</p>
-<blockquote>
-<p>　在一个特性中获取另一个特性的实例，并把这个实例的参数传入到另一特性中</p>
-</blockquote>
-<h3 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下:"></a>代码如下:</h3><p>定义DrawApi接口</p>
-<pre><code>public interface DrawApi {
- void  drawCircle(int radius,int x,int y);
-}
-</code></pre><p>定义Shape抽象类</p>
-<pre><code>public abstract class Shape {
-    DrawApi mDrawApi;
-
-    public Shape(DrawApi drawApi) {
-        mDrawApi = drawApi;
-    }
-
-    public abstract void  draw();
-}
-</code></pre><p>定义不同颜色圆形的实现类,实现DrawApi接口</p>
-<pre><code>public class GreenCircle implements DrawApi {
-    @Override
-    public void drawCircle(int radius, int x, int y) {
-        System.out.println(&quot; 画一个绿色的圆形 &quot;+&quot;radius:&quot;+radius+&quot;x :: &quot;+ x+&quot;  y ::&quot;+y);
-    }
-}
-</code></pre><p>定义Circle继承Shape类</p>
-<pre><code>public class Circle extends Shape {
-    private  int radius;
-    private  int x;
-    private  int y ;
-
-    public Circle(DrawApi drawApi, int radius, int x, int y) {
-        super(drawApi);
-        this.radius = radius;
-        this.x = x;
-        this.y = y;
-    }
-
-    @Override
-    public void draw() {
-        mDrawApi.drawCircle(radius,x,y);
-    }
-}
-</code></pre><p>测试调用</p>
-<pre><code>DrawApi gc,rc;
-    gc = new GreenCircle();  // 画绿色的圆
-    rc =new RedCircle();     // 画红色的圆
-    Shape circle = new Circle(gc, 10, 3, 4); //绿色的圆 设置半径和坐标参数
-    circle.draw();  // 作图
-    Shape circle2= new Circle(rc,20,6,8);    //红色的圆 设置半径和坐标参数
-    circle2.draw(); // 作图
-</code></pre><p>测试结果</p>
-<pre><code>02-28 05:22:51.529 28053-28053/com.anakin.design_pattern_test I/System.out:  画一个绿色的圆形 radius:10x :: 3  y ::4
-02-28 05:22:51.530 28053-28053/com.anakin.design_pattern_test I/System.out:  画一个红色的圆形 radius:20x :: 6  y ::8
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/02/28/设计模式-桥接模式/" data-id="cj3e8zmq4002ph4vv8jn9wtvl" class="article-share-link" data-share="baidu" data-title="桥接模式.md">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/02/28/设计模式-桥接模式/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-怎样选择基金" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/22/怎样选择基金/" class="article-date">
-  <time datetime="2017-02-22T03:41:02.000Z" itemprop="datePublished">2017-02-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/22/怎样选择基金/">怎样选择基金</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一-看收益"><a href="#一-看收益" class="headerlink" title="一. 看收益"></a>一. 看收益</h3><ul>
-<li>两年中排名前十位</li>
-<li>同类排名靠前</li>
-<li>超过同类平均</li>
-</ul>
-<h3 id="二-看波动-波动率"><a href="#二-看波动-波动率" class="headerlink" title="二.看波动(波动率)"></a>二.看波动(波动率)</h3><ul>
-<li>看最大回馈</li>
-<li>晨星评级</li>
-</ul>
-<h3 id="三-看投向"><a href="#三-看投向" class="headerlink" title="三.看投向"></a>三.看投向</h3><ul>
-<li>谨慎选择房地产，创业板中小板（重仓持股）</li>
-</ul>
-<h3 id="四-看基金经理"><a href="#四-看基金经理" class="headerlink" title="四.看基金经理"></a>四.看基金经理</h3><ul>
-<li>尽量一年以上，无频繁更换</li>
-</ul>
-<h3 id="五-基金公司"><a href="#五-基金公司" class="headerlink" title="五.基金公司"></a>五.基金公司</h3><ul>
-<li>从大公司中选择</li>
-</ul>
-<h3 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a><a href="https://www.zhihu.com/question/22774011" target="_blank" rel="external">参考地址</a></h3>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/02/22/怎样选择基金/" data-id="cj3e8zmoc0018h4vv3nblnklu" class="article-share-link" data-share="baidu" data-title="怎样选择基金">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/02/22/怎样选择基金/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/理财/">理财</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -1279,7 +1444,7 @@ protected void onDestroy() {
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material-Design/">Material Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxJava/">RxJava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">4</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Things/">Android Things</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jni/">Jni</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material-Design/">Material Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxJava/">RxJava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派3/">树莓派3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/物联网/">物联网</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -1288,7 +1453,7 @@ protected void onDestroy() {
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Material-Design/" style="font-size: 10px;">Material Design</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 18.33px;">Python</a> <a href="/tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="/tags/Ubuntu/" style="font-size: 11.67px;">Ubuntu</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 16.67px;">设计模式</a> <a href="/tags/随想/" style="font-size: 15px;">随想</a>
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Things/" style="font-size: 10px;">Android Things</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/C语言/" style="font-size: 10px;">C语言</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Jni/" style="font-size: 10px;">Jni</a> <a href="/tags/Material-Design/" style="font-size: 10px;">Material Design</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 18.33px;">Python</a> <a href="/tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="/tags/Ubuntu/" style="font-size: 11.67px;">Ubuntu</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/树莓派3/" style="font-size: 10px;">树莓派3</a> <a href="/tags/物联网/" style="font-size: 10px;">物联网</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 16.67px;">设计模式</a> <a href="/tags/随想/" style="font-size: 15px;">随想</a>
     </div>
   </div>
 
@@ -1297,7 +1462,7 @@ protected void onDestroy() {
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">16</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017年06月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">16</span></li></ul>
     </div>
   </div>
 
@@ -1309,23 +1474,23 @@ protected void onDestroy() {
       <ul>
         
           <li>
+            <a href="/2017/06/16/物联网开发之Android-Things入门/">物联网开发之Android Things入门</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/07/Android-Studio中使用Jni/">Android Studio中使用Jni</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/02/C语言-指针/">C语言-指针</a>
+          </li>
+        
+          <li>
             <a href="/2017/06/01/Android-Fragment入门-AMS-ActivityManagerService/">Android Fragment入门-AMS(ActivityManagerService)</a>
           </li>
         
           <li>
             <a href="/2017/05/16/Android-Material-design使用/">Android Material design使用</a>
-          </li>
-        
-          <li>
-            <a href="/2017/05/12/Windows-Ubuntu双系统安装/">Windows+Ubuntu双系统安装</a>
-          </li>
-        
-          <li>
-            <a href="/2017/05/04/5-4-少年少年/">5.4 少年少年</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/05/Android使用RxJava获取U盘中的视频文件/">Android使用RxJava获取U盘中的视频文件</a>
           </li>
         
       </ul>
