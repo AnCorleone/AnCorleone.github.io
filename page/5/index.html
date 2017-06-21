@@ -78,6 +78,94 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-自学Python-正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/14/自学Python-正则表达式/" class="article-date">
+  <time datetime="2017-01-14T02:46:38.000Z" itemprop="datePublished">2017-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/14/自学Python-正则表达式/">自学Python-正则表达式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><ul>
+<li>[0-9a-zA-Z_]匹配任意数字字母和下划线</li>
+<li>[0-9a-zA-Z_]+ 匹配至少一个字母数字下划线组成的字符串</li>
+<li>[a-zA-Z_][0-9a-zA-Z_]* 匹配以字母或者下划线开头，后面跟任意个字母或数字</li>
+<li>[a-zA-Z_][0-9a-zA-Z_]{0，19} 匹配一字母或者下划线开头，后面0到19个数字或者字母下划线</li>
+<li>A|B 可以匹配 A或者B ，（P\p)ython可以匹配python,或者Python</li>
+<li>^ 表示行的开头</li>
+<li>^\d表示以数字开头</li>
+<li>$ 表示行的末尾</li>
+</ul>
+<h3 id="re模块"><a href="#re模块" class="headerlink" title="re模块"></a>re模块</h3><ul>
+<li><p>判断表达式是否匹配成功,如果成功,返回一个Match对象,失败返回None</p>
+<pre><code># 判断一个电话号码
+s= re.match(r&apos;^\d{3}-\d{3,8}$&apos;,&apos;012-1234&apos;)
+print (s)
+</code></pre></li>
+<li><p>切割字符串</p>
+<pre><code># 通过空格切割字符串
+str = &apos;q we r   t&apos;
+r =re.split(r&apos;[\s]+&apos;,str);
+print (r)
+</code></pre></li>
+</ul>
+<h3 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h3><ul>
+<li><p>除了简单的匹配,正则表达式还可以提取子串,用()表示要提取的分组(Group)</p>
+<pre><code># 提取分组
+# 提取区号和电话号码
+s = re.match(r&apos;^(\d{3})-(\d{3,8})$&apos;,&apos;021-5386112&apos;)
+print (s)
+g1 =s.group(1)
+g2 =s.group(2)
+print (g1)
+print (g2)
+</code></pre></li>
+</ul>
+<h3 id="预编译"><a href="#预编译" class="headerlink" title="预编译"></a>预编译</h3><ul>
+<li><p>如果执行横多次的正则匹配,每次执行都要对正则表达式进行编译,出于效率我们可以预编译正则表达式</p>
+<pre><code># 编译
+re_tel = re.compile(r&apos;^(\d{3})-(\d{3,8})$&apos;)
+# 使用
+s = re_tel.match(&apos;021-5386112&apos;).group()
+print (s)
+</code></pre></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/01/14/自学Python-正则表达式/" data-id="cj46mp7y0002g28vv2ntgus9p" class="article-share-link" data-share="baidu" data-title="自学Python-正则表达式">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/01/14/自学Python-正则表达式/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-自学Python-线程和进程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/13/自学Python-线程和进程/" class="article-date">
@@ -239,7 +327,7 @@ t2.join()
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/13/自学Python-线程和进程/" data-id="cj3zb6pkh002oy4vv4bz19bkk" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/13/自学Python-线程和进程/" data-id="cj46mp7y1002h28vvcvg4u2f0" class="article-share-link" data-share="baidu" data-title="自学Python-线程和进程">分享到</a>
       
 
       
@@ -451,7 +539,7 @@ print(r)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/13/自学Python-IO编程/" data-id="cj3zb6pkd002ky4vvrg92hw8w" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/13/自学Python-IO编程/" data-id="cj46mp7xq002028vvuu04s17t" class="article-share-link" data-share="baidu" data-title="自学Python-IO编程">分享到</a>
       
 
       
@@ -704,94 +792,11 @@ s()
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/" data-id="cj3zb6pkv0030y4vv4uv91tl2" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象高级编程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/" data-id="cj46mp7y5002l28vvg4uuyu7y" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象高级编程">分享到</a>
       
 
       
         <a href="http://anranz.com/2017/01/12/自学Python-面向对象高级编程/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-自学Python-Python基础" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/11/自学Python-Python基础/" class="article-date">
-  <time datetime="2017-01-11T11:38:56.000Z" itemprop="datePublished">2017-01-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/11/自学Python-Python基础/">自学Python-Python基础.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><ol>
-<li>以#开头作为注释右面的代码不会被执行</li>
-</ol>
-<h3 id="代码格式"><a href="#代码格式" class="headerlink" title="代码格式"></a>代码格式</h3><ul>
-<li>语法比较简单,不同于java以分号作为结束,Python采用缩进的方式,所以代码格式非常重要</li>
-</ul>
-<h2 id="数据类型和变量"><a href="#数据类型和变量" class="headerlink" title="数据类型和变量"></a>数据类型和变量</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><ul>
-<li>整数:可以处理任意大小的整数</li>
-<li><p>浮点数 : 1.11, -3.15,,对于很大和很小的浮点数需要用科学计数法</p>
-<blockquote>
-<p>注意:证书和浮点数在计算机内部存储方式是不同的,整数永远是精确的(除法也是精确的),浮点可能会四舍五入</p>
-</blockquote>
-</li>
-<li><p>字符串:以单引号或者双引号括起来的任意文本,”字符串”,’字符串’</p>
-</li>
-<li><p>boolean :一个布尔值只有True ,False两种值</p>
-<blockquote>
-<p>注意大小写</p>
-</blockquote>
-</li>
-<li><p>空值:一个特殊的值None,不能理解为0 ,0是有意义的,None是一个特殊的空值</p>
-</li>
-</ul>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><blockquote>
-<p>变量不仅可以是数字,可说是任意数据类型,变量在程序中使用一个变量名表示,变量名必须符号命名规范</p>
-</blockquote>
-<ul>
-<li>“=” 是赋值语句,表示把任意数据类型赋值给变量,同一个变量可以反复赋值,而且可以是不同类型的变量<br>  eg:a= 123, a=’abc’</li>
-</ul>
-<blockquote>
-<p>这种变量本身不固定的语言称为动态语言,与之对应的静态语言比如java,定义变量时必须指定变量的数据类型,并且,一旦指定就不能被其他类型的变量赋值</p>
-</blockquote>
-<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><ul>
-<li>常量是不能改变的变量,比如数学中的常数π,就是一个常量,通常用全部大学表示常量</li>
-</ul>
-<h4 id="Python中的除法"><a href="#Python中的除法" class="headerlink" title="Python中的除法"></a>Python中的除法</h4><ol>
-<li>/ 10/3 = 3.33333333整数相除得到的结果是浮点数</li>
-<li>// 10//3 =3  只取结果的整数部分</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/01/11/自学Python-Python基础/" data-id="cj3zb6pk00027y4vvrbi6ug8y" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础.md">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/01/11/自学Python-Python基础/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -986,11 +991,94 @@ print(s5)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/11/自学Python-面向对象编程/" data-id="cj3zb6pkp002vy4vv49vpxy8g" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象编程">分享到</a>
+        <a data-url="http://anranz.com/2017/01/11/自学Python-面向对象编程/" data-id="cj46mp7y2002i28vvepsjgfqu" class="article-share-link" data-share="baidu" data-title="自学Python-面向对象编程">分享到</a>
       
 
       
         <a href="http://anranz.com/2017/01/11/自学Python-面向对象编程/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-自学Python-Python基础" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/11/自学Python-Python基础/" class="article-date">
+  <time datetime="2017-01-11T11:38:56.000Z" itemprop="datePublished">2017-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/11/自学Python-Python基础/">自学Python-Python基础.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><ol>
+<li>以#开头作为注释右面的代码不会被执行</li>
+</ol>
+<h3 id="代码格式"><a href="#代码格式" class="headerlink" title="代码格式"></a>代码格式</h3><ul>
+<li>语法比较简单,不同于java以分号作为结束,Python采用缩进的方式,所以代码格式非常重要</li>
+</ul>
+<h2 id="数据类型和变量"><a href="#数据类型和变量" class="headerlink" title="数据类型和变量"></a>数据类型和变量</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><ul>
+<li>整数:可以处理任意大小的整数</li>
+<li><p>浮点数 : 1.11, -3.15,,对于很大和很小的浮点数需要用科学计数法</p>
+<blockquote>
+<p>注意:证书和浮点数在计算机内部存储方式是不同的,整数永远是精确的(除法也是精确的),浮点可能会四舍五入</p>
+</blockquote>
+</li>
+<li><p>字符串:以单引号或者双引号括起来的任意文本,”字符串”,’字符串’</p>
+</li>
+<li><p>boolean :一个布尔值只有True ,False两种值</p>
+<blockquote>
+<p>注意大小写</p>
+</blockquote>
+</li>
+<li><p>空值:一个特殊的值None,不能理解为0 ,0是有意义的,None是一个特殊的空值</p>
+</li>
+</ul>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><blockquote>
+<p>变量不仅可以是数字,可说是任意数据类型,变量在程序中使用一个变量名表示,变量名必须符号命名规范</p>
+</blockquote>
+<ul>
+<li>“=” 是赋值语句,表示把任意数据类型赋值给变量,同一个变量可以反复赋值,而且可以是不同类型的变量<br>  eg:a= 123, a=’abc’</li>
+</ul>
+<blockquote>
+<p>这种变量本身不固定的语言称为动态语言,与之对应的静态语言比如java,定义变量时必须指定变量的数据类型,并且,一旦指定就不能被其他类型的变量赋值</p>
+</blockquote>
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><ul>
+<li>常量是不能改变的变量,比如数学中的常数π,就是一个常量,通常用全部大学表示常量</li>
+</ul>
+<h4 id="Python中的除法"><a href="#Python中的除法" class="headerlink" title="Python中的除法"></a>Python中的除法</h4><ol>
+<li>/ 10/3 = 3.33333333整数相除得到的结果是浮点数</li>
+<li>// 10//3 =3  只取结果的整数部分</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/01/11/自学Python-Python基础/" data-id="cj46mp7xr002328vvi4d75qjg" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础.md">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/01/11/自学Python-Python基础/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -1092,7 +1180,7 @@ im.save(&apos;thmb.jpg&apos;,&apos;JPEG&apos;)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/11/自学Python-模块/" data-id="cj3zb6pkf002ly4vvt46dnyly" class="article-share-link" data-share="baidu" data-title="自学Python-模块">分享到</a>
+        <a data-url="http://anranz.com/2017/01/11/自学Python-模块/" data-id="cj46mp7xz002e28vv9tmeh1bg" class="article-share-link" data-share="baidu" data-title="自学Python-模块">分享到</a>
       
 
       
@@ -1245,7 +1333,7 @@ print(s)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/11/自学Python-函数式编程/" data-id="cj3zb6pk7002fy4vvst1swih6" class="article-share-link" data-share="baidu" data-title="自学Python-函数式编程.md">分享到</a>
+        <a data-url="http://anranz.com/2017/01/11/自学Python-函数式编程/" data-id="cj46mp7xw002a28vvzzr6jodz" class="article-share-link" data-share="baidu" data-title="自学Python-函数式编程.md">分享到</a>
       
 
       
@@ -1397,7 +1485,7 @@ print(r)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/11/自学Python-高级特性/" data-id="cj3zb6pkz0035y4vv61362c9f" class="article-share-link" data-share="baidu" data-title="自学Python-高级特性">分享到</a>
+        <a data-url="http://anranz.com/2017/01/11/自学Python-高级特性/" data-id="cj46mp7y9002n28vvrcgs6j7w" class="article-share-link" data-share="baidu" data-title="自学Python-高级特性">分享到</a>
       
 
       
@@ -1540,140 +1628,11 @@ person(&apos;Jack&apos;, 24, city=&apos;Beijing&apos;, job=&apos;Engineer&apos;)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/10/自学Python-函数/" data-id="cj3zb6pkb002jy4vvwpbqshq1" class="article-share-link" data-share="baidu" data-title="自学Python- 函数">分享到</a>
+        <a data-url="http://anranz.com/2017/01/10/自学Python-函数/" data-id="cj46mp7xu002828vvg4fqfxpk" class="article-share-link" data-share="baidu" data-title="自学Python- 函数">分享到</a>
       
 
       
         <a href="http://anranz.com/2017/01/10/自学Python-函数/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-自学Python-Python基础二" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/10/自学Python-Python基础二/" class="article-date">
-  <time datetime="2017-01-10T07:06:47.000Z" itemprop="datePublished">2017-01-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/10/自学Python-Python基础二/">自学Python-Python基础二</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="使用list和tuple"><a href="#使用list和tuple" class="headerlink" title="使用list和tuple"></a>使用list和tuple</h2><h3 id="lsit集合"><a href="#lsit集合" class="headerlink" title="lsit集合"></a>lsit集合</h3><blockquote>
-<p>list 是一种有序集合,可以随时添加和删除元素</p>
-</blockquote>
-<pre><code>classmates =[&apos;xxx&apos;,&apos;yyyy&apos;,&apos;zzzz&apos;]
-print(classmate)
-</code></pre><blockquote>
-<p>使用索引获取每个位置的元素,索引从0开始</p>
-</blockquote>
-<pre><code>classmates[1] # 结果&apos;l&apos;
-</code></pre><blockquote>
-<p>当索引超出边界会报IndexError</p>
-</blockquote>
-<p><strong>增加元素</strong></p>
-<ul>
-<li>classmates.append(‘Adam’)</li>
-</ul>
-<p><strong>插入元素</strong></p>
-<ul>
-<li>classmates.insert(1,’ankain’),(插入的位置,插入的元素)</li>
-</ul>
-<p><strong>删除末尾的元素</strong></p>
-<ul>
-<li>classmats.pop()</li>
-</ul>
-<p><strong>删除指定位置元素</strong></p>
-<ul>
-<li>classmates.pop(1) ,(删除元素的索引)</li>
-</ul>
-<p><strong>替换元素</strong></p>
-<ul>
-<li>classmats[1]=’直接给索引赋值’</li>
-</ul>
-<blockquote>
-<p>list 中的元素也可以是list</p>
-</blockquote>
-<h3 id="tuple有序列列表叫做元组"><a href="#tuple有序列列表叫做元组" class="headerlink" title="tuple有序列列表叫做元组"></a>tuple有序列列表叫做元组</h3><p>tuple与list类似,但是tuple一旦初始化就不能被修改,没有增加和删除的等方法,获取元素方式和list一样</p>
-<pre><code>初始化:f=()
-</code></pre><h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><pre><code>age =3
-if age &gt;= 18:
-    print(&apos;年轻人&apos;)
-elif age&gt;=6:
-    print(&apos;小孩子&apos;)
-else:
-    print(&apos;其他&apos;)
-</code></pre><h3 id="input"><a href="#input" class="headerlink" title="input"></a>input</h3><p>录入用户的输入到年龄 使用birth接收<br>    birth = input(‘borth’)<br>    if birth&gt;=18:<br>        print(‘chengnianren’)<br>    elif birth&gt;=60:<br>        print(‘old man’)<br>    else:<br>        print(‘hahhahhh’)</p>
-<h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><p>Python有两种循环</p>
-<ol>
-<li>for ..in<br> sum =0<br> for x in range(101):<br> sum+=x<br> print(sum)</li>
-<li>while<br> n= 101<br> sum =0<br> sum=sum+n<br> n=n-2<br> print(sum)</li>
-</ol>
-<h3 id="dict和set"><a href="#dict和set" class="headerlink" title="dict和set"></a>dict和set</h3><p>dict 就像java 中的map使用键值对key - velues 存储,查找速度快<br>set 也是一组key的集合,但是没有value ,而且不能存储重复的元素</p>
-<h3 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h3><pre><code>map ={&apos;xiaoming&apos;:90,&apos;xiaohong&apos;:100,&apos;laowang&apos;:99}
-print(map[&apos;xiaoming&apos;])
-</code></pre><ul>
-<li>一个key只能对应一个value 重复放入同一个key会把前面的value冲掉</li>
-<li>如果key不存在,会报错</li>
-<li>判断key是否存在一种方法 : <code>&#39;anakin&#39; in map</code></li>
-<li>另外一种方法 : <code>map.get(&quot;key&quot;)</code> 返回None 或者对应的value</li>
-</ul>
-<p><strong>删除key</strong></p>
-<ul>
-<li><code>key.pop(&#39;key&#39;)</code> 对应的value也会被删除<br><strong>dict和list的区别</strong></li>
-</ul>
-<ol>
-<li>查找和插入速度快,不会随着key的增加而变慢</li>
-<li>需要占用大量内存</li>
-<li>list则相反</li>
-</ol>
-<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><p>是一个无序,不重复的集合<br><strong>创建set</strong></p>
-<ul>
-<li>创建set需要提供一个list : <code>s =set([1,2,3])</code></li>
-</ul>
-<p><strong>增加元素</strong></p>
-<ul>
-<li>通过add(‘add’) 重复添加没有效果</li>
-</ul>
-<p><strong>删除元素</strong></p>
-<ul>
-<li>通过remove(key) 删除元素</li>
-</ul>
-<p><strong>交集和并集运算</strong><br>    s1 = set([1,2,3])<br>    s2 = set([1,2,4])<br>    print(s1&amp;s2)<br>    print(s1|s2)</p>
-<h3 id="可变对象和不可变对象"><a href="#可变对象和不可变对象" class="headerlink" title="可变对象和不可变对象"></a>可变对象和不可变对象</h3><ul>
-<li>str 是不可变对象</li>
-<li>list 是可变对象</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/01/10/自学Python-Python基础二/" data-id="cj3zb6pk5002cy4vv0dn5to93" class="article-share-link" data-share="baidu" data-title="自学Python-Python基础二">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/01/10/自学Python-Python基础二/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -1702,7 +1661,7 @@ print(map[&apos;xiaoming&apos;])
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Things/">Android Things</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jni/">Jni</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material-Design/">Material Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxJava/">RxJava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派3/">树莓派3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/物联网/">物联网</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">4</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Things/">Android Things</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jni/">Jni</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material-Design/">Material Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxJava/">RxJava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派3/">树莓派3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/物联网/">物联网</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -1720,7 +1679,7 @@ print(map[&apos;xiaoming&apos;])
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017年06月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">16</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017年06月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">16</span></li></ul>
     </div>
   </div>
 
@@ -1730,6 +1689,10 @@ print(map[&apos;xiaoming&apos;])
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/06/21/Android中Service和AIDL使用/">Android中Service和AIDL使用</a>
+          </li>
         
           <li>
             <a href="/2017/06/16/物联网开发之Android-Things入门/">物联网开发之Android Things入门</a>
@@ -1745,10 +1708,6 @@ print(map[&apos;xiaoming&apos;])
         
           <li>
             <a href="/2017/06/01/Android-Fragment入门-AMS-ActivityManagerService/">Android Fragment入门-AMS(ActivityManagerService)</a>
-          </li>
-        
-          <li>
-            <a href="/2017/05/16/Android-Material-design使用/">Android Material design使用</a>
           </li>
         
       </ul>

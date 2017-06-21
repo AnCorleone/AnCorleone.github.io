@@ -1,0 +1,411 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android中Service和AIDL使用 | Write the code. Change the world.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言工具
+Android Studio
+Android 6.0
+Windows 10
+
+Service使用(本地服务)创建Service
+创建StudentService类,继承Service
+实现onBind()方法,返回继承Binder的new StudentBinder()对象
+其中StudentBinder类还需要实现IStudent接口
+在StudentBinder中实现接口getNam">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android中Service和AIDL使用">
+<meta property="og:url" content="http://anranz.com/2017/06/21/Android中Service和AIDL使用/index.html">
+<meta property="og:site_name" content="Write the code. Change the world.">
+<meta property="og:description" content="前言工具
+Android Studio
+Android 6.0
+Windows 10
+
+Service使用(本地服务)创建Service
+创建StudentService类,继承Service
+实现onBind()方法,返回继承Binder的new StudentBinder()对象
+其中StudentBinder类还需要实现IStudent接口
+在StudentBinder中实现接口getNam">
+<meta property="og:updated_time" content="2017-06-21T06:24:33.733Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android中Service和AIDL使用">
+<meta name="twitter:description" content="前言工具
+Android Studio
+Android 6.0
+Windows 10
+
+Service使用(本地服务)创建Service
+创建StudentService类,继承Service
+实现onBind()方法,返回继承Binder的new StudentBinder()对象
+其中StudentBinder类还需要实现IStudent接口
+在StudentBinder中实现接口getNam">
+  
+    <link rel="alternative" href="/atom.xml" title="Write the code. Change the world." type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+
+  
+
+  <meta name="keywords" content="Android">
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Write the code. Change the world.</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Welcome to Anakin&#39;s blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">所有文章</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="anranz.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-Android中Service和AIDL使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/21/Android中Service和AIDL使用/" class="article-date">
+  <time datetime="2017-06-21T02:17:01.000Z" itemprop="datePublished">2017-06-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android中Service和AIDL使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><ol>
+<li>Android Studio</li>
+<li>Android 6.0</li>
+<li>Windows 10</li>
+</ol>
+<h2 id="Service使用-本地服务"><a href="#Service使用-本地服务" class="headerlink" title="Service使用(本地服务)"></a>Service使用(本地服务)</h2><h3 id="创建Service"><a href="#创建Service" class="headerlink" title="创建Service"></a>创建Service</h3><ol>
+<li>创建<code>StudentService</code>类,继承<code>Service</code></li>
+<li>实现<code>onBind()</code>方法,返回继承<code>Binder</code>的<code>new StudentBinder()</code>对象</li>
+<li>其中<code>StudentBinder</code>类还需要实现<code>IStudent</code>接口</li>
+<li>在<code>StudentBinder</code>中实现接口<code>getNameByNum(int num)</code>方法并在方法中返回<code>getNameByNo(int num)</code>的结果</li>
+</ol>
+<p><em>StudentService代码 </em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.anakin.nativeservice.service;</div><div class="line"></div><div class="line"><span class="keyword">import</span> android.app.Service;</div><div class="line"><span class="keyword">import</span> android.content.Intent;</div><div class="line"><span class="keyword">import</span> android.os.Binder;</div><div class="line"><span class="keyword">import</span> android.os.IBinder;</div><div class="line"><span class="comment">/**</span></div><div class="line"> * 创建者     demo</div><div class="line"> * 创建时间   2017/6/20 0020 15:45</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String[] nameAry = &#123;<span class="string">"张飞"</span>,<span class="string">"李小龙"</span>,<span class="string">"赵薇"</span>&#125;;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> StudentBinder();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getNameByNo</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(num&gt;=<span class="number">1</span>&amp;&amp;num&lt;<span class="number">4</span>)&#123;</div><div class="line">            <span class="keyword">return</span> nameAry[num-<span class="number">1</span>];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentBinder</span> <span class="keyword">extends</span> <span class="title">Binder</span> <span class="keyword">implements</span> <span class="title">IStudent</span> </span>&#123;</div><div class="line">       <span class="meta">@Override</span></div><div class="line">       <span class="function"><span class="keyword">public</span> String <span class="title">getNameByNum</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</div><div class="line">           <span class="keyword">return</span> getNameByNo(num);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><em>IStudent接口代码</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IStudent</span> </span>&#123;</div><div class="line">     <span class="function">String <span class="title">getNameByNum</span><span class="params">(<span class="keyword">int</span> num)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="调用服务"><a href="#调用服务" class="headerlink" title="调用服务"></a>调用服务</h3><ol>
+<li>在<code>MainActivty</code>中绑定服务</li>
+<li>创建一个<code>StudentConnectio</code>继承<code>ServiceConnection</code></li>
+<li>在<code>onServiceConnected()</code>方法中将<code>iBinder</code>转换为IStudent对象,然后在新线程中调用<code>mIStudent.getNameByNum(int num)</code>方法<br><em>MainActivity代码如下</em></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.anakin.nativeservice;</div><div class="line"></div><div class="line"><span class="keyword">import</span> android.content.ComponentName;</div><div class="line"><span class="keyword">import</span> android.content.Intent;</div><div class="line"><span class="keyword">import</span> android.content.ServiceConnection;</div><div class="line"><span class="keyword">import</span> android.os.Bundle;</div><div class="line"><span class="keyword">import</span> android.os.IBinder;</div><div class="line"><span class="keyword">import</span> android.os.Looper;</div><div class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</div><div class="line"><span class="keyword">import</span> android.widget.Toast;</div><div class="line"><span class="keyword">import</span> com.anakin.nativeservice.service.IStudent;</div><div class="line"><span class="keyword">import</span> com.anakin.nativeservice.service.StudentService;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> IStudent mIStudent;</div><div class="line">    StudentConnection mConnection = <span class="keyword">new</span> StudentConnection();</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        <span class="comment">// 启动服务</span></div><div class="line">        Intent service = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, StudentService.class);</div><div class="line">        bindService(service,mConnection , BIND_AUTO_CREATE);</div><div class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    Thread.sleep(<span class="number">2</span> * <span class="number">1000</span>);</div><div class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">                Looper.prepare();</div><div class="line">                Toast.makeText(MainActivity.<span class="keyword">this</span>,mIStudent.getNameByNum(<span class="number">1</span>),Toast.LENGTH_SHORT).show();</div><div class="line">                Looper.loop();</div><div class="line">            &#125;</div><div class="line">        &#125;).start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentConnection</span> <span class="keyword">implements</span> <span class="title">ServiceConnection</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span><span class="params">(ComponentName componentName, IBinder iBinder)</span> </span>&#123;</div><div class="line">            mIStudent = (IStudent) iBinder;</div><div class="line">        &#125;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceDisconnected</span><span class="params">(ComponentName componentName)</span> </span>&#123;</div><div class="line">            mIStudent =<span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy ();</div><div class="line">        unbindService(mConnection);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Android-Studio使用AIDL"><a href="#Android-Studio使用AIDL" class="headerlink" title="Android Studio使用AIDL"></a>Android Studio使用AIDL</h2><blockquote>
+<p>Service只是适合</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/06/21/Android中Service和AIDL使用/" data-id="cj46mp7v7000728vvuxl6zcg8" class="article-share-link" data-share="baidu" data-title="Android中Service和AIDL使用">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/06/21/Android中Service和AIDL使用/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/06/16/物联网开发之Android-Things入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">物联网开发之Android Things入门</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017/06/21/Android中Service和AIDL使用/" data-title="Android中Service和AIDL使用" data-url="http://anranz.com/2017/06/21/Android中Service和AIDL使用/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Things/">Android Things</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jni/">Jni</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material-Design/">Material Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxJava/">RxJava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派3/">树莓派3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/物联网/">物联网</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Things/" style="font-size: 10px;">Android Things</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/C语言/" style="font-size: 10px;">C语言</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Jni/" style="font-size: 10px;">Jni</a> <a href="/tags/Material-Design/" style="font-size: 10px;">Material Design</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 18.33px;">Python</a> <a href="/tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="/tags/Ubuntu/" style="font-size: 11.67px;">Ubuntu</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/树莓派3/" style="font-size: 10px;">树莓派3</a> <a href="/tags/物联网/" style="font-size: 10px;">物联网</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/设计模式/" style="font-size: 16.67px;">设计模式</a> <a href="/tags/随想/" style="font-size: 15px;">随想</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017年06月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">16</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/21/Android中Service和AIDL使用/">Android中Service和AIDL使用</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/16/物联网开发之Android-Things入门/">物联网开发之Android Things入门</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/07/Android-Studio中使用Jni/">Android Studio中使用Jni</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/02/C语言-指针/">C语言-指针</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/01/Android-Fragment入门-AMS-ActivityManagerService/">Android Fragment入门-AMS(ActivityManagerService)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="https://www.google.com.hk" target="_blank">Googel</a>
+          </li>
+        
+          <li>
+            <a href="http://developers.google.cn" target="_blank">developers</a>
+          </li>
+        
+          <li>
+            <a href="http://litten.me/" target="_blank">yilia</a>
+          </li>
+        
+          <li>
+            <a href="https://github.com/AnCorleone/AnCorleone.github.io" target="_blank">github</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Anakin<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a><br>
+      本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, <br>
+      访客数 <span id="busuanzi_value_site_uv"></span> 人次, <br>
+      本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次<br>
+      </p>
+    </div>
+
+  </div>
+</footer>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">所有文章</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"AnCorleone.github.io.git"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

@@ -78,6 +78,74 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-Android中Service和AIDL使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/21/Android中Service和AIDL使用/" class="article-date">
+  <time datetime="2017-06-21T02:17:01.000Z" itemprop="datePublished">2017-06-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/21/Android中Service和AIDL使用/">Android中Service和AIDL使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><ol>
+<li>Android Studio</li>
+<li>Android 6.0</li>
+<li>Windows 10</li>
+</ol>
+<h2 id="Service使用-本地服务"><a href="#Service使用-本地服务" class="headerlink" title="Service使用(本地服务)"></a>Service使用(本地服务)</h2><h3 id="创建Service"><a href="#创建Service" class="headerlink" title="创建Service"></a>创建Service</h3><ol>
+<li>创建<code>StudentService</code>类,继承<code>Service</code></li>
+<li>实现<code>onBind()</code>方法,返回继承<code>Binder</code>的<code>new StudentBinder()</code>对象</li>
+<li>其中<code>StudentBinder</code>类还需要实现<code>IStudent</code>接口</li>
+<li>在<code>StudentBinder</code>中实现接口<code>getNameByNum(int num)</code>方法并在方法中返回<code>getNameByNo(int num)</code>的结果</li>
+</ol>
+<p><em>StudentService代码 </em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.anakin.nativeservice.service;</div><div class="line"></div><div class="line"><span class="keyword">import</span> android.app.Service;</div><div class="line"><span class="keyword">import</span> android.content.Intent;</div><div class="line"><span class="keyword">import</span> android.os.Binder;</div><div class="line"><span class="keyword">import</span> android.os.IBinder;</div><div class="line"><span class="comment">/**</span></div><div class="line"> * 创建者     demo</div><div class="line"> * 创建时间   2017/6/20 0020 15:45</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String[] nameAry = &#123;<span class="string">"张飞"</span>,<span class="string">"李小龙"</span>,<span class="string">"赵薇"</span>&#125;;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> StudentBinder();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getNameByNo</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(num&gt;=<span class="number">1</span>&amp;&amp;num&lt;<span class="number">4</span>)&#123;</div><div class="line">            <span class="keyword">return</span> nameAry[num-<span class="number">1</span>];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentBinder</span> <span class="keyword">extends</span> <span class="title">Binder</span> <span class="keyword">implements</span> <span class="title">IStudent</span> </span>&#123;</div><div class="line">       <span class="meta">@Override</span></div><div class="line">       <span class="function"><span class="keyword">public</span> String <span class="title">getNameByNum</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</div><div class="line">           <span class="keyword">return</span> getNameByNo(num);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><em>IStudent接口代码</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IStudent</span> </span>&#123;</div><div class="line">     <span class="function">String <span class="title">getNameByNum</span><span class="params">(<span class="keyword">int</span> num)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="调用服务"><a href="#调用服务" class="headerlink" title="调用服务"></a>调用服务</h3><ol>
+<li>在<code>MainActivty</code>中绑定服务</li>
+<li>创建一个<code>StudentConnectio</code>继承<code>ServiceConnection</code></li>
+<li>在<code>onServiceConnected()</code>方法中将<code>iBinder</code>转换为IStudent对象,然后在新线程中调用<code>mIStudent.getNameByNum(int num)</code>方法<br><em>MainActivity代码如下</em></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.anakin.nativeservice;</div><div class="line"></div><div class="line"><span class="keyword">import</span> android.content.ComponentName;</div><div class="line"><span class="keyword">import</span> android.content.Intent;</div><div class="line"><span class="keyword">import</span> android.content.ServiceConnection;</div><div class="line"><span class="keyword">import</span> android.os.Bundle;</div><div class="line"><span class="keyword">import</span> android.os.IBinder;</div><div class="line"><span class="keyword">import</span> android.os.Looper;</div><div class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</div><div class="line"><span class="keyword">import</span> android.widget.Toast;</div><div class="line"><span class="keyword">import</span> com.anakin.nativeservice.service.IStudent;</div><div class="line"><span class="keyword">import</span> com.anakin.nativeservice.service.StudentService;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> IStudent mIStudent;</div><div class="line">    StudentConnection mConnection = <span class="keyword">new</span> StudentConnection();</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        <span class="comment">// 启动服务</span></div><div class="line">        Intent service = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, StudentService.class);</div><div class="line">        bindService(service,mConnection , BIND_AUTO_CREATE);</div><div class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    Thread.sleep(<span class="number">2</span> * <span class="number">1000</span>);</div><div class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">                Looper.prepare();</div><div class="line">                Toast.makeText(MainActivity.<span class="keyword">this</span>,mIStudent.getNameByNum(<span class="number">1</span>),Toast.LENGTH_SHORT).show();</div><div class="line">                Looper.loop();</div><div class="line">            &#125;</div><div class="line">        &#125;).start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentConnection</span> <span class="keyword">implements</span> <span class="title">ServiceConnection</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span><span class="params">(ComponentName componentName, IBinder iBinder)</span> </span>&#123;</div><div class="line">            mIStudent = (IStudent) iBinder;</div><div class="line">        &#125;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceDisconnected</span><span class="params">(ComponentName componentName)</span> </span>&#123;</div><div class="line">            mIStudent =<span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy ();</div><div class="line">        unbindService(mConnection);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Android-Studio使用AIDL"><a href="#Android-Studio使用AIDL" class="headerlink" title="Android Studio使用AIDL"></a>Android Studio使用AIDL</h2><blockquote>
+<p>Service只是适合</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://anranz.com/2017/06/21/Android中Service和AIDL使用/" data-id="cj46mp7v7000728vvuxl6zcg8" class="article-share-link" data-share="baidu" data-title="Android中Service和AIDL使用">分享到</a>
+      
+
+      
+        <a href="http://anranz.com/2017/06/21/Android中Service和AIDL使用/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-物联网开发之Android-Things入门" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/06/16/物联网开发之Android-Things入门/" class="article-date">
@@ -110,7 +178,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/06/16/物联网开发之Android-Things入门/" data-id="cj3zb6pjd001xy4vvuovfwjgh" class="article-share-link" data-share="baidu" data-title="物联网开发之Android Things入门">分享到</a>
+        <a data-url="http://anranz.com/2017/06/16/物联网开发之Android-Things入门/" data-id="cj46mp7xo001y28vv75dyaxe1" class="article-share-link" data-share="baidu" data-title="物联网开发之Android Things入门">分享到</a>
       
 
       
@@ -157,7 +225,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/06/07/Android-Studio中使用Jni/" data-id="cj3zb6pf00004y4vv0995up24" class="article-share-link" data-share="baidu" data-title="Android Studio中使用Jni">分享到</a>
+        <a data-url="http://anranz.com/2017/06/07/Android-Studio中使用Jni/" data-id="cj46mp7v4000628vvmk0yeyqi" class="article-share-link" data-share="baidu" data-title="Android Studio中使用Jni">分享到</a>
       
 
       
@@ -207,7 +275,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/06/02/C语言-指针/" data-id="cj3zb6pft000dy4vvzwtjgek5" class="article-share-link" data-share="baidu" data-title="C语言-指针">分享到</a>
+        <a data-url="http://anranz.com/2017/06/02/C语言-指针/" data-id="cj46mp7w3000n28vv3n1hmdgk" class="article-share-link" data-share="baidu" data-title="C语言-指针">分享到</a>
       
 
       
@@ -260,7 +328,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/06/01/Android-Fragment入门-AMS-ActivityManagerService/" data-id="cj3zb6pek0001y4vv6hlrn2ic" class="article-share-link" data-share="baidu" data-title="Android Fragment入门-AMS(ActivityManagerService)">分享到</a>
+        <a data-url="http://anranz.com/2017/06/01/Android-Fragment入门-AMS-ActivityManagerService/" data-id="cj46mp7v0000528vvggf0abrq" class="article-share-link" data-share="baidu" data-title="Android Fragment入门-AMS(ActivityManagerService)">分享到</a>
       
 
       
@@ -289,7 +357,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/img/head_photo_md_android.png" rel="gallery_cj3zb6pep0002y4vvq3qhq2tc">
+      <a class="article-gallery-img fancybox" href="/img/head_photo_md_android.png" rel="gallery_cj46mp7un000328vvwtdb9s69">
         <img src="/img/head_photo_md_android.png" itemprop="image">
       </a>
     
@@ -320,7 +388,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/05/16/Android-Material-design使用/" data-id="cj3zb6pep0002y4vvq3qhq2tc" class="article-share-link" data-share="baidu" data-title="Android Material design使用">分享到</a>
+        <a data-url="http://anranz.com/2017/05/16/Android-Material-design使用/" data-id="cj46mp7un000328vvwtdb9s69" class="article-share-link" data-share="baidu" data-title="Android Material design使用">分享到</a>
       
 
       
@@ -349,7 +417,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://oje1oqb9c.bkt.clouddn.com/140621103432-2.jpg" rel="gallery_cj3zb6pij001dy4vvrf6nvkyw">
+      <a class="article-gallery-img fancybox" href="http://oje1oqb9c.bkt.clouddn.com/140621103432-2.jpg" rel="gallery_cj46mp7wr001c28vvfsqzc3rl">
         <img src="http://oje1oqb9c.bkt.clouddn.com/140621103432-2.jpg" itemprop="image">
       </a>
     
@@ -380,7 +448,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/05/12/Windows-Ubuntu双系统安装/" data-id="cj3zb6pij001dy4vvrf6nvkyw" class="article-share-link" data-share="baidu" data-title="Windows+Ubuntu双系统安装">分享到</a>
+        <a data-url="http://anranz.com/2017/05/12/Windows-Ubuntu双系统安装/" data-id="cj46mp7wr001c28vvfsqzc3rl" class="article-share-link" data-share="baidu" data-title="Windows+Ubuntu双系统安装">分享到</a>
       
 
       
@@ -409,7 +477,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SSAtlantis_ZH-CN10429588926_1920x1080.jpg" rel="gallery_cj3zb6pfy000fy4vvf48ehdya">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SSAtlantis_ZH-CN10429588926_1920x1080.jpg" rel="gallery_cj46mp7u6000128vvae464mt6">
         <img src="http://cn.bing.com/az/hprichbg/rb/SSAtlantis_ZH-CN10429588926_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -441,7 +509,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/05/04/5-4-少年少年/" data-id="cj3zb6pfy000fy4vvf48ehdya" class="article-share-link" data-share="baidu" data-title="5.4 少年少年">分享到</a>
+        <a data-url="http://anranz.com/2017/05/04/5-4-少年少年/" data-id="cj46mp7u6000128vvae464mt6" class="article-share-link" data-share="baidu" data-title="5.4 少年少年">分享到</a>
       
 
       
@@ -470,7 +538,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/img/48.jpg" rel="gallery_cj3zb6pf30005y4vvlcf0i8g8">
+      <a class="article-gallery-img fancybox" href="/img/48.jpg" rel="gallery_cj46mp7ve000a28vvv80gdlpc">
         <img src="/img/48.jpg" itemprop="image">
       </a>
     
@@ -512,7 +580,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/04/05/Android使用RxJava获取U盘中的视频文件/" data-id="cj3zb6pf30005y4vvlcf0i8g8" class="article-share-link" data-share="baidu" data-title="Android使用RxJava获取U盘中的视频文件">分享到</a>
+        <a data-url="http://anranz.com/2017/04/05/Android使用RxJava获取U盘中的视频文件/" data-id="cj46mp7ve000a28vvv80gdlpc" class="article-share-link" data-share="baidu" data-title="Android使用RxJava获取U盘中的视频文件">分享到</a>
       
 
       
@@ -560,7 +628,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/24/Android视频播放/" data-id="cj3zb6pfm000ay4vvws3n46qh" class="article-share-link" data-share="baidu" data-title="Android视频播放">分享到</a>
+        <a data-url="http://anranz.com/2017/03/24/Android视频播放/" data-id="cj46mp7vt000i28vvfpxyyn0j" class="article-share-link" data-share="baidu" data-title="Android视频播放">分享到</a>
       
 
       
@@ -569,57 +637,6 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Ubuntu搭建Web开发环境" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/22/Ubuntu搭建Web开发环境/" class="article-date">
-  <time datetime="2017-03-22T06:53:34.000Z" itemprop="datePublished">2017-03-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/22/Ubuntu搭建Web开发环境/">Ubuntu搭建Web开发环境</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><ul>
-<li><a href="http://www.jianshu.com/p/a6b299becd2d" target="_blank" rel="external">Ubuntu Server搭建java web环境</a></li>
-<li><a href="http://www.itwendao.com/article/detail/277951.html" target="_blank" rel="external">Ubuntu搭建java开发环境</a></li>
-<li><a href="http://www.linuxdiyf.com/linux/19766.html" target="_blank" rel="external">Ubuntu 16.04环境下安装myeclipse</a></li>
-<li><a href="http://blog.csdn.net/MasterAnt_D/article/details/56839301" target="_blank" rel="external"> Ubuntu的Java开发环境基本搭建(JDK+IDE+Tomcat+MySQL+Navicat)</a></li>
-<li><a href="http://www.linuxidc.com/Linux/2016-11/136958.htm" target="_blank" rel="external">Ubuntu安装JDK详解</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://anranz.com/2017/03/22/Ubuntu搭建Web开发环境/" data-id="cj3zb6pig001by4vvntezgrfp" class="article-share-link" data-share="baidu" data-title="Ubuntu搭建Web开发环境">分享到</a>
-      
-
-      
-        <a href="http://anranz.com/2017/03/22/Ubuntu搭建Web开发环境/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
 
     </footer>
   </div>
@@ -644,7 +661,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Things/">Android Things</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jni/">Jni</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material-Design/">Material Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxJava/">RxJava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派3/">树莓派3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/物联网/">物联网</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">4</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Things/">Android Things</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jni/">Jni</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material-Design/">Material Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxJava/">RxJava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派3/">树莓派3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/物联网/">物联网</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/理财/">理财</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -662,7 +679,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017年06月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">16</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017年06月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年01月</a><span class="archive-list-count">16</span></li></ul>
     </div>
   </div>
 
@@ -672,6 +689,10 @@
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/06/21/Android中Service和AIDL使用/">Android中Service和AIDL使用</a>
+          </li>
         
           <li>
             <a href="/2017/06/16/物联网开发之Android-Things入门/">物联网开发之Android Things入门</a>
@@ -687,10 +708,6 @@
         
           <li>
             <a href="/2017/06/01/Android-Fragment入门-AMS-ActivityManagerService/">Android Fragment入门-AMS(ActivityManagerService)</a>
-          </li>
-        
-          <li>
-            <a href="/2017/05/16/Android-Material-design使用/">Android Material design使用</a>
           </li>
         
       </ul>
