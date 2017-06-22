@@ -151,12 +151,18 @@
 </ol>
 <p>2.在Client断绑定服务</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.anakin.remoteclient;</div><div class="line"></div><div class="line"><span class="keyword">import</span> android.app.Service;</div><div class="line"><span class="keyword">import</span> android.content.ComponentName;</div><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.content.Intent;</div><div class="line"><span class="keyword">import</span> android.content.ServiceConnection;</div><div class="line"><span class="keyword">import</span> android.content.pm.PackageManager;</div><div class="line"><span class="keyword">import</span> android.content.pm.ResolveInfo;</div><div class="line"><span class="keyword">import</span> android.os.Bundle;</div><div class="line"><span class="keyword">import</span> android.os.IBinder;</div><div class="line"><span class="keyword">import</span> android.os.RemoteException;</div><div class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</div><div class="line"><span class="keyword">import</span> android.view.View;</div><div class="line"><span class="keyword">import</span> android.widget.Button;</div><div class="line"><span class="keyword">import</span> android.widget.TextView;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.anakin.remoteservice.aidl.QueryStudent;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> TextView mTv;</div><div class="line">    <span class="keyword">private</span> Button mBt;</div><div class="line">    QueryStudent mQueryStudent;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Intent <span class="title">createExplicitFromImplicitIntent</span><span class="params">(Context context, Intent implicitIntent)</span> </span>&#123;</div><div class="line">        <span class="comment">// Retrieve all services that can match the given intent</span></div><div class="line">        PackageManager pm = context.getPackageManager();</div><div class="line">        List&lt;ResolveInfo&gt; resolveInfo = pm.queryIntentServices(implicitIntent, <span class="number">0</span>);</div><div class="line"></div><div class="line">        <span class="comment">// Make sure only one match was found</span></div><div class="line">        <span class="keyword">if</span> (resolveInfo == <span class="keyword">null</span> || resolveInfo.size() != <span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">// Get component info and create ComponentName</span></div><div class="line">        ResolveInfo serviceInfo = resolveInfo.get(<span class="number">0</span>);</div><div class="line">        String packageName = serviceInfo.serviceInfo.packageName;</div><div class="line">        String className = serviceInfo.serviceInfo.name;</div><div class="line">        ComponentName component = <span class="keyword">new</span> ComponentName(packageName, className);</div><div class="line"></div><div class="line">        <span class="comment">// Create a new intent. Use the old one for extras and such reuse</span></div><div class="line">        Intent explicitIntent = <span class="keyword">new</span> Intent(implicitIntent);</div><div class="line"></div><div class="line">        <span class="comment">// Set the component to be explicit</span></div><div class="line">        explicitIntent.setComponent(component);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> explicitIntent;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    StudentConnection mConnection = <span class="keyword">new</span> StudentConnection();</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line"></div><div class="line">        mTv = (TextView) findViewById(R.id.tv);</div><div class="line">        mBt = (Button) findViewById(R.id.bt);</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// 针对Android 5.0以上,隐式开启服务,需要做以下处理,不然会报错</span></div><div class="line">        <span class="keyword">final</span> Intent intent = <span class="keyword">new</span> Intent();</div><div class="line">        intent.setAction(<span class="string">"com.anakin.student.query"</span>);</div><div class="line">        <span class="keyword">final</span> Intent service = <span class="keyword">new</span> Intent(createExplicitFromImplicitIntent(<span class="keyword">this</span>, intent));</div><div class="line">        bindService(service, mConnection, Service.BIND_AUTO_CREATE);</div><div class="line"></div><div class="line">        mBt.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    mTv.setText(<span class="string">"结果"</span> + mQueryStudent.getStudentByNo());</div><div class="line">                &#125; <span class="keyword">catch</span> (RemoteException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentConnection</span> <span class="keyword">implements</span> <span class="title">ServiceConnection</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span><span class="params">(ComponentName componentName, IBinder iBinder)</span> </span>&#123;</div><div class="line">            mQueryStudent = QueryStudent.Stub.asInterface(iBinder);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceDisconnected</span><span class="params">(ComponentName componentName)</span> </span>&#123;</div><div class="line">            mQueryStudent = <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        unbindService(mConnection);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>在Android5.0以上系统中,隐式开启服务会报错,所以我们需要做一些处理</p>
+</li>
+<li><p>记得要在<code>onDestroy()</code>中解除绑定</p>
+</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/06/21/Android中Service和AIDL使用/" data-id="cj46ui2n70007hovvs3vvs74h" class="article-share-link" data-share="baidu" data-title="Android中Service和AIDL使用">分享到</a>
+        <a data-url="http://anranz.com/2017/06/21/Android中Service和AIDL使用/" data-id="cj47ti1bz0007wwvvuzklp02i" class="article-share-link" data-share="baidu" data-title="Android中Service和AIDL使用">分享到</a>
       
 
       
@@ -205,7 +211,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/06/16/物联网开发之Android-Things入门/" data-id="cj46ui2pg0020hovvsgwmqgb6" class="article-share-link" data-share="baidu" data-title="物联网开发之Android Things入门">分享到</a>
+        <a data-url="http://anranz.com/2017/06/16/物联网开发之Android-Things入门/" data-id="cj47ti1dz001qwwvviwpqu1bh" class="article-share-link" data-share="baidu" data-title="物联网开发之Android Things入门">分享到</a>
       
 
       
@@ -252,7 +258,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/06/07/Android-Studio中使用Jni/" data-id="cj46ui2n30006hovvh9j1q1ya" class="article-share-link" data-share="baidu" data-title="Android Studio中使用Jni">分享到</a>
+        <a data-url="http://anranz.com/2017/06/07/Android-Studio中使用Jni/" data-id="cj47ti1bx0006wwvvms6e12qf" class="article-share-link" data-share="baidu" data-title="Android Studio中使用Jni">分享到</a>
       
 
       
@@ -302,7 +308,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/06/02/C语言-指针/" data-id="cj46ui2nv000nhovvqr5d3h23" class="article-share-link" data-share="baidu" data-title="C语言-指针">分享到</a>
+        <a data-url="http://anranz.com/2017/06/02/C语言-指针/" data-id="cj47ti1cm000jwwvvcll05zcr" class="article-share-link" data-share="baidu" data-title="C语言-指针">分享到</a>
       
 
       
@@ -355,7 +361,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/06/01/Android-Fragment入门-AMS-ActivityManagerService/" data-id="cj46ui2mm0001hovv3otpc5f4" class="article-share-link" data-share="baidu" data-title="Android Fragment入门-AMS(ActivityManagerService)">分享到</a>
+        <a data-url="http://anranz.com/2017/06/01/Android-Fragment入门-AMS-ActivityManagerService/" data-id="cj47ti1bl0003wwvvtkfnrhah" class="article-share-link" data-share="baidu" data-title="Android Fragment入门-AMS(ActivityManagerService)">分享到</a>
       
 
       
@@ -384,7 +390,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/img/head_photo_md_android.png" rel="gallery_cj46ui2n00005hovvchd3cm43">
+      <a class="article-gallery-img fancybox" href="/img/head_photo_md_android.png" rel="gallery_cj47ti1bu0005wwvvq5vowg30">
         <img src="/img/head_photo_md_android.png" itemprop="image">
       </a>
     
@@ -415,7 +421,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/05/16/Android-Material-design使用/" data-id="cj46ui2n00005hovvchd3cm43" class="article-share-link" data-share="baidu" data-title="Android Material design使用">分享到</a>
+        <a data-url="http://anranz.com/2017/05/16/Android-Material-design使用/" data-id="cj47ti1bu0005wwvvq5vowg30" class="article-share-link" data-share="baidu" data-title="Android Material design使用">分享到</a>
       
 
       
@@ -444,7 +450,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://oje1oqb9c.bkt.clouddn.com/140621103432-2.jpg" rel="gallery_cj46ui2oq001ehovvbsfajcsz">
+      <a class="article-gallery-img fancybox" href="http://oje1oqb9c.bkt.clouddn.com/140621103432-2.jpg" rel="gallery_cj47ti1dc0014wwvvn45dz2ac">
         <img src="http://oje1oqb9c.bkt.clouddn.com/140621103432-2.jpg" itemprop="image">
       </a>
     
@@ -475,7 +481,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/05/12/Windows-Ubuntu双系统安装/" data-id="cj46ui2oq001ehovvbsfajcsz" class="article-share-link" data-share="baidu" data-title="Windows+Ubuntu双系统安装">分享到</a>
+        <a data-url="http://anranz.com/2017/05/12/Windows-Ubuntu双系统安装/" data-id="cj47ti1dc0014wwvvn45dz2ac" class="article-share-link" data-share="baidu" data-title="Windows+Ubuntu双系统安装">分享到</a>
       
 
       
@@ -504,7 +510,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SSAtlantis_ZH-CN10429588926_1920x1080.jpg" rel="gallery_cj46ui2mt0003hovvmdg95qsw">
+      <a class="article-gallery-img fancybox" href="http://cn.bing.com/az/hprichbg/rb/SSAtlantis_ZH-CN10429588926_1920x1080.jpg" rel="gallery_cj47ti1bb0001wwvvqeh93xdz">
         <img src="http://cn.bing.com/az/hprichbg/rb/SSAtlantis_ZH-CN10429588926_1920x1080.jpg" itemprop="image">
       </a>
     
@@ -536,7 +542,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/05/04/5-4-少年少年/" data-id="cj46ui2mt0003hovvmdg95qsw" class="article-share-link" data-share="baidu" data-title="5.4 少年少年">分享到</a>
+        <a data-url="http://anranz.com/2017/05/04/5-4-少年少年/" data-id="cj47ti1bb0001wwvvqeh93xdz" class="article-share-link" data-share="baidu" data-title="5.4 少年少年">分享到</a>
       
 
       
@@ -565,7 +571,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/img/48.jpg" rel="gallery_cj46ui2ng0009hovvi1sj43hu">
+      <a class="article-gallery-img fancybox" href="/img/48.jpg" rel="gallery_cj47ti1cu000owwvvg4hvs07g">
         <img src="/img/48.jpg" itemprop="image">
       </a>
     
@@ -607,7 +613,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/04/05/Android使用RxJava获取U盘中的视频文件/" data-id="cj46ui2ng0009hovvi1sj43hu" class="article-share-link" data-share="baidu" data-title="Android使用RxJava获取U盘中的视频文件">分享到</a>
+        <a data-url="http://anranz.com/2017/04/05/Android使用RxJava获取U盘中的视频文件/" data-id="cj47ti1cu000owwvvg4hvs07g" class="article-share-link" data-share="baidu" data-title="Android使用RxJava获取U盘中的视频文件">分享到</a>
       
 
       
@@ -655,7 +661,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/03/24/Android视频播放/" data-id="cj46ui2nq000ihovvovq8v9b4" class="article-share-link" data-share="baidu" data-title="Android视频播放">分享到</a>
+        <a data-url="http://anranz.com/2017/03/24/Android视频播放/" data-id="cj47ti1cf000ewwvvh69oa385" class="article-share-link" data-share="baidu" data-title="Android视频播放">分享到</a>
       
 
       
