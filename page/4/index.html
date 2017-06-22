@@ -78,9 +78,9 @@
     <div class="outer">
       <section id="main">
   
-    <article id="post-MYSQL的修改和删除" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-设计模式-模版模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/17/MYSQL的修改和删除/" class="article-date">
+    <a href="/2017/02/17/设计模式-模版模式/" class="article-date">
   <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
@@ -92,7 +92,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/MYSQL的修改和删除/">MySql的修改和删除.md</a>
+      <a class="article-title" href="/2017/02/17/设计模式-模版模式/">模版模式.md</a>
     </h1>
   
 
@@ -100,72 +100,120 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="数据库的修改和删除"><a href="#数据库的修改和删除" class="headerlink" title="数据库的修改和删除"></a>数据库的修改和删除</h3><ol>
-<li>打开数据库 ‘sudo service mysql start’</li>
-<li>登录数据库 ‘mysql -u root -p’</li>
-<li>查看数据卡 show databsaes</li>
-<li>删除数据库 drop databsaes 数据库名</li>
-<li>连接数据库 use 数据库名</li>
-<li>显示数据库中的表 show tables</li>
-<li>查看表中的类容 select * from 表名</li>
-<li>修改表的名字 rename table 旧表名 to 新表名</li>
-<li>删除一张表 drop table 表名</li>
-<li>增加列 alter table 表名 add column 列名字 数据类型 约束 eg: alter table employee add height int(4) default 170  (给employee 表增加height列 )</li>
-<li>增加列并指定新增列的位置 使用after  eg: alter table employee add height int(4) dafault 170 after age ; 新增加列放在第一个使用 first</li>
-<li>删除一列 alter table 表名 drop column 列名字</li>
-<li>修改表中的某个值 update 表名 set 列1=值1，列2=值2 where 条件 eg: update employee set age=24,salary=300 where name = ‘Tom’</li>
-<li>根据条件删除一列 delete table from employee where name=’Tom’;</li>
+        <p>##模版模式</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义 :"></a>定义 :</h3><p>定一个操作中的算法框架,而将一些步骤延迟到子类中,使子类不用改变算法的结构重新定义算法中的步骤.</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
+<li>多个子类共有方法并且逻辑基本相同</li>
+<li>重要,复杂的核心算法,可以把核心算法设计成模版方法,周边的具体细节由子类去实现</li>
+<li>重构时,将相同的代码抽取到父类中,然后通过子函数约束其行为</li>
 </ol>
-<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><ol>
-<li>增加索引 create index 索引名字 on 表名（列名）<br>eg : create index idx_id on employee(id)</li>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><ol>
+<li>以电脑开机为例,基本过程相同,不同的电脑具体细节不同</li>
 </ol>
-<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>视图是从一个或多个表中取出数据在窗口中展示，可以看作一张表，但数据依赖原表</p>
+<p><strong> 开机的父类定义模版方法,调用开机的过程</strong></p>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.templatemethod;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public abstract class OpenComputer {
+
+    public void loadOs() {
+        System.out.println(&quot;加载系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
+    }
+
+    public void checkHardware() {
+        System.out.println(&quot;检查防火墙&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
+    }
+
+
+    public void powerOn() {
+        System.out.println(&quot;连接电源&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
+    }
+
+    public void login() {
+        System.out.println(&quot;验证登录系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
+    }
+
+    public final void  startUp(){
+        System.out.println(&quot;=========== open start ============&quot;);
+        powerOn();
+        checkHardware();
+        loadOs();
+        login();
+        System.out.println(&quot;=========== open end  ============&quot;);
+    }
+
+}
+</code></pre><hr>
 <ol>
-<li>创建视图的语句: create view 视图名字（列a,列b，列c) as select 列1,列2,列3 from 表名<br>eg : create view v_emp(v_name,v_age,v_salary) as select name,age,salary from employee;</li>
+<li>以程序员的电脑和军人的电脑开机为例,程序在登录的时候需要输出密码,而军人的电脑在开机的过程中需要检查防火墙</li>
 </ol>
-<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><blockquote>
-<p>把文件中的数据导入表中</p>
-</blockquote>
-<ol>
-<li>导入语句格式 load data infile ‘文件路径’ to 表名<br>eg: load data infile ‘/home/anakin/MySql/SQL6/in.txt’ to employee</li>
-</ol>
-<h3 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h3><blockquote>
-<p>将表中的数据导出到文本中</p>
-</blockquote>
-<ol>
-<li>导出的语句格式：select name,age into outfile ‘文件路径和文件名’ from 表名<br>eg : select * into outfile ‘/tmp/out.txt’ from employee</li>
-</ol>
-<h3 id="数据库备份"><a href="#数据库备份" class="headerlink" title="数据库备份"></a>数据库备份</h3><blockquote>
-<p>使用mysqldump备份数据库，生成sql脚本文件</p>
-</blockquote>
-<ol>
-<li><p>备份整个数据库 mysqldump -u root 数据库名&gt;备份文件名</p>
-</li>
-<li><p>备份数据表 mysqldump -u root 数据库名 表名&gt;备份文件名</p>
-</li>
-</ol>
-<p>eg : mysqldump -u root -p mysql_shiyanlou&gt;bak.sql;</p>
-<h3 id="数据库恢复"><a href="#数据库恢复" class="headerlink" title="数据库恢复"></a>数据库恢复</h3><ol>
-<li>恢复数据的语句：<ol>
-<li>使用source sql 脚本</li>
-<li>新建一个数据库 create database test;  恢复数据 mysqldump -u root -p test&lt;bak.sqp</li>
-</ol>
-</li>
-</ol>
+<p><strong> 程序员的电脑</strong></p>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.templatemethod;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class CoderComputer extends OpenComputer {
+
+    @Override
+    public void login() {
+//        super.login();
+        System.out.println(&quot; ......... coder&apos;s computer open login &quot;);
+    }
+}
+</code></pre><hr>
+<p><strong> 军人的电脑 </strong></p>
+<pre><code>package com.anakin.design_pattern_test.demo.singel_instance.templatemethod;
+
+/**
+ * Created by demo on 2017/2/8 0008
+ */
+public class MilitaryComputer extends OpenComputer {
+
+    @Override
+    public void checkHardware() {
+        System.out.println(&quot; military&apos;s is check haedware !!!!!!!!!!!&quot;);
+    }
+}
+</code></pre><hr>
+<p><strong> 测试 </strong></p>
+<pre><code>// 模版模式测试
+     OpenComputer coderPc = new CoderComputer();
+     coderPc.startUp();
+
+     OpenComputer militaryPc = new MilitaryComputer();
+     militaryPc.startUp();
+</code></pre><hr>
+<p><strong> 测试结果 </strong></p>
+<pre><code>02-08 08:53:19.246 3221-3221/com.anakin.design_pattern_test I/System.out: =========== open start ============
+02-08 08:53:19.246 3221-3221/com.anakin.design_pattern_test I/System.out: 连接电源&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+02-08 08:53:19.246 3221-3221/com.anakin.design_pattern_test I/System.out: 检查防火墙&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+02-08 08:53:19.246 3221-3221/com.anakin.design_pattern_test I/System.out: 加载系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+02-08 08:53:19.247 3221-3221/com.anakin.design_pattern_test I/System.out:  ......... coder&apos;s computer open login
+02-08 08:53:19.247 3221-3221/com.anakin.design_pattern_test I/System.out: =========== open end  ============
+02-08 08:53:19.247 3221-3221/com.anakin.design_pattern_test I/System.out: =========== open start ============
+02-08 08:53:19.247 3221-3221/com.anakin.design_pattern_test I/System.out: 连接电源&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+02-08 08:53:19.248 3221-3221/com.anakin.design_pattern_test I/System.out:  military&apos;s is check haedware !!!!!!!!!!!
+02-08 08:53:19.248 3221-3221/com.anakin.design_pattern_test I/System.out: 加载系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+02-08 08:53:19.248 3221-3221/com.anakin.design_pattern_test I/System.out: 验证登录系统&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+02-08 08:53:19.253 3221-3221/com.anakin.design_pattern_test I/System.out: =========== open end  ============
+</code></pre><p>　</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/MYSQL的修改和删除/" data-id="cj47twvfi000sssvvalzbbqoh" class="article-share-link" data-share="baidu" data-title="MySql的修改和删除.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-模版模式/" data-id="cj47ud3ud0030m4vvv9bag94s" class="article-share-link" data-share="baidu" data-title="模版模式.md">分享到</a>
       
 
       
-        <a href="http://anranz.com/2017/02/17/MYSQL的修改和删除/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/02/17/设计模式-模版模式/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
 
     </footer>
   </div>
@@ -217,7 +265,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/Java设计模式/" data-id="cj47twvfg000pssvvguk4edzj" class="article-share-link" data-share="baidu" data-title="Java设计模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/Java设计模式/" data-id="cj47ud3s6000pm4vve9m5dvfj" class="article-share-link" data-share="baidu" data-title="Java设计模式.md">分享到</a>
       
 
       
@@ -232,9 +280,9 @@
 
 
   
-    <article id="post-Android基础知识-md" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-MySQL进阶-操作详解" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/02/17/Android基础知识-md/" class="article-date">
+    <a href="/2017/02/17/MySQL进阶-操作详解/" class="article-date">
   <time datetime="2017-02-17T03:25:59.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
     
@@ -246,7 +294,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/Android基础知识-md/">Android基础知识.md</a>
+      <a class="article-title" href="/2017/02/17/MySQL进阶-操作详解/">MySQL基本操作.md</a>
     </h1>
   
 
@@ -254,124 +302,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p><a href="https://github.com/GeniusVJR/LearningNotes" target="_blank" rel="external">Android学习笔记</a></p>
-</blockquote>
-<h2 id="五种布局"><a href="#五种布局" class="headerlink" title="五种布局"></a>五种布局</h2><h3 id="LinearLayout-线性布局"><a href="#LinearLayout-线性布局" class="headerlink" title="LinearLayout(线性布局)"></a>LinearLayout(线性布局)</h3><ol>
-<li>一行或者一列值放置一个控件的布局,可以设置方向,垂直排列或者水平排列,适用于简单的布局</li>
-<li>适用场景:水平或者垂直的简单排列,如登录界面</li>
+        <h3 id="MySQL基本操作"><a href="#MySQL基本操作" class="headerlink" title="MySQL基本操作"></a>MySQL基本操作</h3><ol>
+<li><p>打开数据库 sudo service mysql start;</p>
+</li>
+<li><p>连接数据库 mysql -u root -p</p>
+</li>
+<li><p>查看数据库 show dabases</p>
+</li>
+<li><p>使用数据库 use 数据库名字</p>
+</li>
+<li><p>创建数据库 create database 数据库名 eg : create database test</p>
+</li>
+<li><p>创建表 create table 表名（列名 数据类型 约束）<br>eg : create table pet(name VARCHAR(20),owner VARCHAR(20),species VARCHAR(20),sex CHAR(1),birth DATE , death DATE);</p>
+</li>
+<li><p>查看创建的表 DESCRIBE pet;</p>
+</li>
+<li><p>插入数据 insert into test VALUES(‘tom’,’panda’,’hamster’,’f’,’2017-02-06’，NULL);</p>
+</li>
+<li><p>从表中检索数据 select * from pet;</p>
+</li>
 </ol>
-<h3 id="RelativeLayout-相对布局"><a href="#RelativeLayout-相对布局" class="headerlink" title="RelativeLayout(相对布局)"></a>RelativeLayout(相对布局)</h3><ol>
-<li>是一个相对自由的布局, 由一个view作为参照,来定位下一个view的摆放位置,可以实现比较复杂的布局</li>
-<li>应用场景:适合比较复杂的布局,LinearLayouy能实现的它也能实现</li>
-</ol>
-<h3 id="FrameLayout-框架布局"><a href="#FrameLayout-框架布局" class="headerlink" title="FrameLayout(框架布局)"></a>FrameLayout(框架布局)</h3><ol>
-<li>所有的子view都会放在左上角,无法指定位置,后面的子view会放在前一个view上.</li>
-<li>使用场景: 放置单一的view,如放置Fragment,显示一张图片</li>
-</ol>
-<h3 id="TableLayout-表格布局"><a href="#TableLayout-表格布局" class="headerlink" title="TableLayout(表格布局)"></a>TableLayout(表格布局)</h3><ol>
-<li>类似HTML中的table,使用tableRow来布局,tableRow代表一行,其中的每个视图组件代表一个单元格</li>
-<li>使用场景:空间之间存在相应关系</li>
-</ol>
-<h3 id="AbsoluteLayout-绝对布局"><a href="#AbsoluteLayout-绝对布局" class="headerlink" title="AbsoluteLayout (绝对布局)"></a>AbsoluteLayout (绝对布局)</h3><ol>
-<li>采用坐标轴的方式来定位view,左上角坐标为(0,0),x轴向右递增,y轴向下递增</li>
-<li>使用场景:准确定位控件位置,但是Android设备的屏幕尺寸,分辨率差别很大,无法解决适配问题,该布局已经过时</li>
-</ol>
-<h2 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h2><h3 id="Activity的生命周期"><a href="#Activity的生命周期" class="headerlink" title="- Activity的生命周期"></a>- Activity的生命周期</h3><ol>
-<li>正常的生命周期:onCreate -&gt; onStart -&gt; onResume -&gt; onPause -&gt; onStop -&gt; onDestory  </li>
-<li>转到其他Activity或者按下home键 执行onPause() -&gt; onStop 进入停滞状态</li>
-<li>Activity返回前台:onRestart() -&gt; onStart() -&gt; onResume()</li>
-<li>当系统内存不足会将后台的Activity杀死,此时这个Activity任然在任务栈中只是引用指向的对象已经为空,若再次回到这个Activity会重新走一遍生命周期</li>
-<li>锁屏: onPause -&gt; onStop</li>
-<li>解锁: onStart -&gt; onResume</li>
-</ol>
-<p><img src="http://oje1oqb9c.bkt.clouddn.com/activity_life.pngactivity_life.png" alt="生命周期图"></p>
-<h3 id="Activty任务栈"><a href="#Activty任务栈" class="headerlink" title="Activty任务栈"></a>Activty任务栈</h3><blockquote>
-<p>任务栈是一种先进后出的结构,每个app默认只有一个任务栈以包名命名,位于栈顶的Activity处于焦点状态,当按下back键时,栈内的Activity会一个一个出栈,调用onDestory()方法,如果栈内没有Activity,系统就会回收这个栈.</p>
-</blockquote>
-<h3 id="启动模式"><a href="#启动模式" class="headerlink" title="启动模式:"></a>启动模式:</h3><ul>
-<li><p>standard :默认的启动模式,每次创建一个新的Activity实例,将其压入任务栈栈顶,不管栈内是否存在这个Activity.Activity启动三次就会调用三次Activity的生命周期.</p>
-</li>
-<li><p>singleTop:栈顶复用模式,启动一个Activity,如果栈顶存在这个Activity的实例,就不在创建新的Activity实例,启动多次也不会创建新的实例,会调用Activity的newIntance()方法,如果栈内存在这个Activity的实例,但不是在栈顶,作用与standard模式一样</p>
-</li>
-<li><p>singleTask:栈内复用模式,创建Activity的时候,系统会确认它需要的任务栈是否已经创建,否则再创建任务栈,然后放入Activity,如果栈内有一个Activity实例,那么这个Activity会被调到栈顶,调用newInstance()方法,并且会清理这个实例上面的所有Activity</p>
-</li>
-<li><p>singleInstance:加强版的singleTask模式,这种模式Activity实例会单独存在一个任务栈中,由于栈内复用的特性,以后不会再创建新的实例,除非任务栈被销毁</p>
-</li>
-</ul>
-<blockquote>
-<p>Activity的堆栈管理是以ActivityRecord为单位的,所有的ActivityRecord都放在一个list中,可以认为一个ActivityRecord就是一个Activity栈</p>
-</blockquote>
-<hr>
-<h3 id="Activity的缓存"><a href="#Activity的缓存" class="headerlink" title="Activity的缓存"></a>Activity的缓存</h3><ul>
-<li><p>有两个Activity A,B ,从A进入B,一段时间后,系统可能叫A回收,这时在按back键回到A,会重新走A的生命周期方法onCreate -&gt; onStart -&gt; onResume ,A被重新创建了一次,这时A中保存的数据和状态就会丢失</p>
-</li>
-<li><p>为了恢复状态,使用onSaveInstanceState()方法保存临时数据和状态,此方法会在Activity销毁前调用,方法中有Bundle参数保存,putString(),putInt()等方法,方法中传入一个参数好一个值,数据保存后会在onCreate()中恢复</p>
-</li>
-<li><p>onSaveInstanceState调用时机:即系统未经你允许销毁了你的Activity,这是系统的责任，因为它必须要提供一个机会让你保存你的数据</p>
-</li>
-<li><p>onSaveInstanceState() 会在onStop()前执行,但不保证是在onPause之前还是之后触发</p>
-</li>
-</ul>
-<p><strong> 代码 </strong></p>
-<pre><code>private static final String TAG = &quot;MainActivity&quot;;
-private static final String SAVE_KEY =&quot;save_key&quot; ;
 
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
-   if(savedInstanceState!=null){
-       // 恢复保存的内容
-       String save = savedInstanceState.getString(SAVE_KEY);
-       Log.d(TAG,&quot;=== 恢复保存的内容 ==&quot;+save);
-   }
-    initEvent();
-}
-
-/**
- * 保存Activity的状态
- * @param outState
- * @param outPersistentState
- */
-@Override
-public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-    super.onSaveInstanceState(outState, outPersistentState);
-    outState.putString(SAVE_KEY,&quot;保存字符串&quot;);
-}
-</code></pre><hr>
-<h3 id="Intent"><a href="#Intent" class="headerlink" title="Intent"></a>Intent</h3><ul>
-<li>Intent可以传递的数据类型:<br>可以传递基本数据类型好基本数据类型的数组,以及实现需序列化接口的飞基本数据类型</li>
-</ul>
-<h2 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment"></a>Fragment</h2><h3 id="Fragment的生命周期和Activity的关系"><a href="#Fragment的生命周期和Activity的关系" class="headerlink" title="Fragment的生命周期和Activity的关系"></a>Fragment的生命周期和Activity的关系</h3><p>onAttach() -&gt; onCreate() -&gt; onCreateView() -&gt; onViewCreatd() -&gt; Activity onCreated() …..</p>
-<p><img src="http://oje1oqb9c.bkt.clouddn.com/image/fragment_and_activity.jpg" alt="Fragment的生命周期和Activity的关系"></p>
-<h3 id="Fragment的生命周期"><a href="#Fragment的生命周期" class="headerlink" title="Fragment的生命周期"></a>Fragment的生命周期</h3><p><img src="http://oje1oqb9c.bkt.clouddn.com/image/fragment_life.png" alt="Fragment的生命周期图"></p>
-<h2 id="Broadcast-Receiver"><a href="#Broadcast-Receiver" class="headerlink" title="Broadcast Receiver"></a>Broadcast Receiver</h2><h3 id="的两种动态注册和静态注册有什么区别"><a href="#的两种动态注册和静态注册有什么区别" class="headerlink" title="的两种动态注册和静态注册有什么区别"></a>的两种动态注册和静态注册有什么区别</h3><ul>
-<li>动态注册: 在代码中注册,app退出就不能接收到广播</li>
-<li>静态注册: 在清单文件中注册,app退出依旧可以接受到广播</li>
-</ul>
-<h2 id="ContentProvider"><a href="#ContentProvider" class="headerlink" title="ContentProvider"></a>ContentProvider</h2><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><h3 id="为什么在Service中创建子线程"><a href="#为什么在Service中创建子线程" class="headerlink" title="为什么在Service中创建子线程"></a>为什么在Service中创建子线程</h3><ul>
-<li>在Activity中创建一个子线程,但Activity被销毁后,就不能获取子线程的实例,而且在在其他Activity中无法对其操作</li>
-<li>在Service创建中就不同,所有的Activity都可以对其进行操作,即使Activity 被销毁后,重新与Service进行关联,就可以获取Binder的实例.因此使用Service做后台处理,Activity可以放心的finish ,不用担心对后台任务无法控制的情况</li>
-</ul>
-<h3 id="Service的两种启动方法-有什么区别"><a href="#Service的两种启动方法-有什么区别" class="headerlink" title="Service的两种启动方法,有什么区别"></a>Service的两种启动方法,有什么区别</h3><ul>
-<li>Context bindService 启动Service 生命周期好Context 绑定在一起</li>
-<li>Context startService 启动Service 生命周期和context 无关</li>
-</ul>
-<h3 id="如何保证Service不被杀死"><a href="#如何保证Service不被杀死" class="headerlink" title="如何保证Service不被杀死"></a>如何保证Service不被杀死</h3><h2 id="动画有哪几类-各有什么特点-有什么区别"><a href="#动画有哪几类-各有什么特点-有什么区别" class="headerlink" title="动画有哪几类,各有什么特点,有什么区别"></a>动画有哪几类,各有什么特点,有什么区别</h2><h2 id="Android的数据存储形式"><a href="#Android的数据存储形式" class="headerlink" title="Android的数据存储形式"></a>Android的数据存储形式</h2><h2 id="Sqlite的基本操作"><a href="#Sqlite的基本操作" class="headerlink" title="Sqlite的基本操作"></a>Sqlite的基本操作</h2><h2 id="如何判断应用被强杀"><a href="#如何判断应用被强杀" class="headerlink" title="如何判断应用被强杀"></a>如何判断应用被强杀</h2><h2 id="Json有什么优劣势"><a href="#Json有什么优劣势" class="headerlink" title="Json有什么优劣势"></a>Json有什么优劣势</h2><h2 id="Asset目录与res目录的区别"><a href="#Asset目录与res目录的区别" class="headerlink" title="Asset目录与res目录的区别"></a>Asset目录与res目录的区别</h2><h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><h3 id="Android怎么加速启动Activity"><a href="#Android怎么加速启动Activity" class="headerlink" title="Android怎么加速启动Activity"></a>Android怎么加速启动Activity</h3><h3 id="Android内存优化方法"><a href="#Android内存优化方法" class="headerlink" title="Android内存优化方法"></a>Android内存优化方法</h3><h2 id="自定义View的流程"><a href="#自定义View的流程" class="headerlink" title="自定义View的流程"></a>自定义View的流程</h2><h2 id="Android长连接-怎样处理心跳机制"><a href="#Android长连接-怎样处理心跳机制" class="headerlink" title="Android长连接,怎样处理心跳机制"></a>Android长连接,怎样处理心跳机制</h2><h2 id="View的绘制流程"><a href="#View的绘制流程" class="headerlink" title="View的绘制流程"></a>View的绘制流程</h2><h2 id="下拉刷新的实现原理"><a href="#下拉刷新的实现原理" class="headerlink" title="下拉刷新的实现原理"></a>下拉刷新的实现原理</h2><h2 id="常用框架和源码分析，底层原理"><a href="#常用框架和源码分析，底层原理" class="headerlink" title="常用框架和源码分析，底层原理"></a>常用框架和源码分析，底层原理</h2><h2 id="Android新特性"><a href="#Android新特性" class="headerlink" title="Android新特性"></a>Android新特性</h2><h3 id="5-0"><a href="#5-0" class="headerlink" title="5.0"></a>5.0</h3><h3 id="6-0"><a href="#6-0" class="headerlink" title="6.0"></a>6.0</h3><h3 id="7-0"><a href="#7-0" class="headerlink" title="7.0"></a>7.0</h3><h2 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h2><h2 id="IntenService"><a href="#IntenService" class="headerlink" title="IntenService"></a>IntenService</h2><h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><h2 id="图片缓存"><a href="#图片缓存" class="headerlink" title="图片缓存"></a>图片缓存</h2><h3 id="查看程序可用最高内存"><a href="#查看程序可用最高内存" class="headerlink" title="查看程序可用最高内存"></a>查看程序可用最高内存</h3><h2 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h2><h3 id="构建工具"><a href="#构建工具" class="headerlink" title="构建工具"></a>构建工具</h3>
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/Android基础知识-md/" data-id="cj47twvf4000fssvvsbr06khp" class="article-share-link" data-share="baidu" data-title="Android基础知识.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/MySQL进阶-操作详解/" data-id="cj47ud3sd000xm4vv4gp4196z" class="article-share-link" data-share="baidu" data-title="MySQL基本操作.md">分享到</a>
       
 
       
-        <a href="http://anranz.com/2017/02/17/Android基础知识-md/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://anranz.com/2017/02/17/MySQL进阶-操作详解/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
 
     </footer>
   </div>
@@ -417,7 +381,7 @@ public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistent
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/设计模式-工厂方法模式/" data-id="cj47twvhn002yssvvgf7f2id3" class="article-share-link" data-share="baidu" data-title="工厂方法模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-工厂方法模式/" data-id="cj47ud3ua002wm4vvhki7srwo" class="article-share-link" data-share="baidu" data-title="工厂方法模式.md">分享到</a>
       
 
       
@@ -481,7 +445,7 @@ public static CEO getInstance() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/设计模式-单例模式/" data-id="cj47twvhl002wssvvt24t62ft" class="article-share-link" data-share="baidu" data-title="单例设计模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-单例模式/" data-id="cj47ud3u9002um4vv5bc6w3qg" class="article-share-link" data-share="baidu" data-title="单例设计模式.md">分享到</a>
       
 
       
@@ -575,7 +539,7 @@ proxy.operation();
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/设计模式-代理模式/" data-id="cj47twvhj002ussvvqn4pbc37" class="article-share-link" data-share="baidu" data-title="代理模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-代理模式/" data-id="cj47ud3u7002sm4vvtlnh7mz3" class="article-share-link" data-share="baidu" data-title="代理模式.md">分享到</a>
       
 
       
@@ -772,7 +736,7 @@ public class Director {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/02/17/设计模式-Builder模式/" data-id="cj47twvhi002sssvvv0nf0mbp" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
+        <a data-url="http://anranz.com/2017/02/17/设计模式-Builder模式/" data-id="cj47ud3u6002qm4vv0ip1w13i" class="article-share-link" data-share="baidu" data-title="Builder模式.md">分享到</a>
       
 
       
@@ -848,7 +812,7 @@ public class XMLUtil {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/20/读取XML中的配置参数/" data-id="cj47twvht0034ssvvjwsscsl7" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
+        <a data-url="http://anranz.com/2017/01/20/读取XML中的配置参数/" data-id="cj47ud3ui0035m4vv3c06woky" class="article-share-link" data-share="baidu" data-title="Android-读取XML中的配置参数工具类XMLUtil">分享到</a>
       
 
       
@@ -952,7 +916,7 @@ public class XMLUtil {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/20/MySQL使用/" data-id="cj47twvfl000ussvvspc05gx7" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
+        <a data-url="http://anranz.com/2017/01/20/MySQL使用/" data-id="cj47ud3sa000um4vv696cdxk2" class="article-share-link" data-share="baidu" data-title="MySQL使用.md">分享到</a>
       
 
       
@@ -1079,7 +1043,7 @@ print (c)
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://anranz.com/2017/01/14/自学Python-常用内建模块/" data-id="cj47twvh5002cssvvp2qt7c7d" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
+        <a data-url="http://anranz.com/2017/01/14/自学Python-常用内建模块/" data-id="cj47ud3tt002dm4vv7ikwy8zh" class="article-share-link" data-share="baidu" data-title="自学Python-常用内建模块">分享到</a>
       
 
       
